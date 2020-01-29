@@ -22,12 +22,16 @@ def data_combo(name):
             j=j+1
 
 def info_file(name,DSID,XSEC):
-    k=0
+    sumw=0
     for file in os.listdir():
         if file[-4:]=='root':
             f = ROOT.TFile.Open(file, 'read')
             hist = f.Get('h_metadata')
-            sumw=hist.GetBinContent(8)
+            sumw+=hist.GetBinContent(8)        
+    k=0
+    for file in os.listdir():
+        if file[-4:]=='root':
+            f = ROOT.TFile.Open(file, 'read')
             a="'%s_%d': {'DSID'    : %d,'events'  : %f,'red_eff' :1,'sumw'    :%f,'xsec'    :%f},"%(name,k,int(DSID),sumw,sumw,float(XSEC))
             print(a)
             k=k+1

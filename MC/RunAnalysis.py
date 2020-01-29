@@ -36,12 +36,12 @@ def runAnalysis(key, fast):
         try:
             lumWeight = totRealLum * 1000 * infos[key]["xsec"] / (infos[key]["sumw"] *
                 infos[key]["red_eff"])
-            print("hi")
+            print(lumWeight)
         except KeyError:
             shortKey = key[:-5]
             lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] /
                 (infos[shortKey]["sumw"] * infos[shortKey]["red_eff"]))
-            print("hi2")
+            print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
 
     # launch the analysis script for the given data set
