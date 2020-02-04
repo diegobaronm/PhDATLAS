@@ -309,7 +309,7 @@ void CLoop::Fill(double weight) {
             cuts[6]=1;
         }
         }
-        /*
+        
         // Cuts relative to otherwise
         vector<int> c_jet={0,1,1,1,1,1,1};
         vector<int> c_btag={1,0,1,1,1,1,1};
@@ -370,7 +370,7 @@ void CLoop::Fill(double weight) {
           if (cuts==c_mreco||cuts==c_all) {
             h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_120->Fill(reco_mass_outside,weight);
           }
-        }*/
+        }
         //  Filling histos
 
         h_met_phi->Fill(met_reco_p4->Phi(),weight);
@@ -421,42 +421,49 @@ void CLoop::Fill(double weight) {
 
 
         // ISO CUT ENRICHING MJ ZONE
-        if (cuts[2]==1 && cuts[1]==1 && cuts[4]==1) {
-          h_inva_mass_ltau->Fill(inv_taulep,weight);
-          h_trans_lepmet_mass->Fill(lepmet_mass,weight);
-          h_rnn_score_jetn_btag_iso_ptmu_omega_mreco->Fill(tau_0_jet_rnn_score_trans,weight);
-          h_jet_n_btag_iso_rnn_ptmu_omega_mreco->Fill(n_jets, weight);
-          h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
-          h_omega_jetn_btag_iso_rnn_ptmu_mreco->Fill(omega,weight);
-          h_met_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
-          h_lep_pt0_jetn_btag_iso_rnn_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+        if (cuts[2]==1 && cuts[1]==1 && cuts[4]==1 && cuts[3]==1 && cuts[5]==1) {
+          h_met_jetn_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
+          h_lep_pt0_jetn_btag_iso_rnn_omega->Fill(muon_0_p4->Pt(),weight);
 
-          h_weight_total_cuts->Fill(weight,1);
-          h_weight_mc_cuts->Fill(weight_total,1);
-          if (inside90) {
-            h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
-            h_angle_cuts->Fill(angle,weight);
-            h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
-            h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
-            //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-            h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
+          
+
+          if (cuts[6]==1){
+            h_trans_lepmet_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
+            h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_taulep,weight);
+            h_met_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
+            h_lep_pt0_jetn_btag_iso_rnn_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+
+            h_weight_total_cuts->Fill(weight,1);
+            h_weight_mc_cuts->Fill(weight_total,1);
+            if (inside90) {
+              h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
+              h_angle_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
+            }
+            if (outside90_lep) {
+              h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
+              h_angle_ouside_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+            }
+            if (outside90_tau){
+              h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
+              h_angle_ouside_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+            }
           }
-          if (outside90_lep) {
-            h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-            h_angle_ouside_cuts->Fill(angle,weight);
-            h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-            h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-            //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-            h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-          }
-          if (outside90_tau){
-            h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-            h_angle_ouside_cuts->Fill(angle,weight);
-            h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-            h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-            //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-            h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-          }
+          
+
+          
+          
         }
       }
     }
