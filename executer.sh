@@ -26,4 +26,6 @@ hadd MC/out/VV.root MC/out/llll_2018.root MC/out/lllv_2018.root MC/out/llvv_2018
 hadd MC/out/Wjets.root MC/out/Wplusenu_2018.root MC/out/Wminusenu_2018.root MC/out/Wplusmunu_2018.root MC/out/Wminusmunu_2018.root MC/out/Wplustaunu_2018.root MC/out/Wminustaunu_2018.root
 hadd MC/out/singletop.root MC/out/st_schan_2018.root MC/out/sat_schan_2018.root MC/out/st_tchan_2018.root MC/out/sat_tchan_2018.root MC/out/st_wt_2018.root MC/out/sat_wt_2018.root
 
+hadd DATA/out/data_2018.root DATA/out/data_2018*
+
 #hadd DATA/out/Data.root MC/out/A_1tau1lep.root MC/out/B_1tau1lep.root MC/out/C_1tau1lep.root MC/out/D_1tau1lep.root

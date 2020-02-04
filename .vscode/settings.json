@@ -1,7 +1,11 @@
 {
     "files.associations": {
         "Analysis.C": "cpp",
-        "CLoop.C": "cpp"
+        "CLoop.C": "cpp",
+        "Analysis_CR.C": "cpp",
+        "random": "cpp",
+        "Analysis_SR.C": "cpp",
+        "new": "cpp"
     },
     "python.pythonPath": "/home/diegol/anaconda3/bin/python"
 }
