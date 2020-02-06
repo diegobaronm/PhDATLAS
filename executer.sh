@@ -1,4 +1,6 @@
 #!/bin/bash
+rm MC/out/*
+rm DATA/out/*
 mc_bg='Wplusenu_2018 Wminusenu_2018 Wplusmunu_2018 Wminusmunu_2018 Wplustaunu_2018 Wminustaunu_2018 Zmumu_2018 llll_2018 lllv_2018 llvv_2018 lvvv_2018 ttbar_2018 st_schan_2018 sat_schan_2018 st_tchan_2018 sat_tchan_2018 st_wt_2018 sat_wt_2018'
 mc_signal='Ztautau_2018'
 data='data_2018'

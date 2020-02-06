@@ -118,9 +118,9 @@ void CLoop::Book() {
     h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_jetn_btag_iso_rnn_ptmu_mreco_120",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score = new TH1F("rnn_score","rnn score",50,0.5,1);
-    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",50,0.5,1);
-    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",50,0.5,1);
+    h_rnn_score = new TH1F("rnn_score","rnn score",60,0.4,1);
+    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",60,0.4,1);
+    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",60,0.4,1);
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
@@ -205,7 +205,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -272,7 +272,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (n_jets<=5) {
+        if (true) {
           cuts[0]=1;
         }
         if (n_bjets==0){
@@ -281,7 +281,7 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (tau_0_jet_rnn_score_trans>=0.55) {
+        if (tau_0_jet_rnn_score_trans>=0.41) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {

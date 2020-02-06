@@ -204,7 +204,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -423,7 +423,7 @@ void CLoop::Fill(double weight) {
         // ISO CUT ENRICHING MJ ZONE
         if (cuts[2]==1 && cuts[1]==1 && cuts[4]==1 && cuts[3]==1 && cuts[5]==1) {
           h_met_jetn_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
-          h_lep_pt0_jetn_btag_iso_rnn_omega->Fill(muon_0_p4->Pt(),weight);
+          h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 
           
 
