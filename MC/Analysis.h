@@ -22,6 +22,12 @@ TH1F * h_tau_matched_after_90_to_120;
 TH1F * h_tau_matched_after_outside;
 TH1F * h_tau_matched_after_outside_120;
 
+TH1F * h_sf_mu_trigger;
+TH1F * h_sf_mu_recoid;
+TH1F * h_sf_mu_vertex;
+TH1F * h_sf_mu_isolation;
+TH1F * h_sf_mu_total;
+
 TH1F * h_rnn_score;
 TH1F * h_rnn_score_jetn_btag_iso;
 TH1F * h_rnn_score_jetn_btag_iso_ptmu_omega_mreco;

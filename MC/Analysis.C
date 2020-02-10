@@ -33,7 +33,7 @@ void CLoop::Book() {
     h_lep_eta = new TH1F("lep_eta","Eta value for lepton",30,-3,3);
     h_inva_mass_ltau = new TH1F("inva_mass_ltau","Invariant mass lepton-tau system",300,0,300);
     h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco","Invariant mass lepton-tau system _jetn_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
-    h_trans_mass = new TH1F("trans_mass","Transverse mass lepton-tau system",300,0,300);
+    h_trans_mass = new TH1F("trans_mass","Transverse mass lepton-tau system",280,20,300);
     //h_visible_mass = new TH1F("visible_mass","visible mass lepton-tau system",280,20,300);
     //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco = new TH1F("visible_mass_jetn_btag_iso_rnn_ptmu_mreco","visible mass lepton-tau system_jetn_btag_iso_rnn_ptmu_mreco",280,20,300);
     h_met_phi=new TH1F("MET phi","MET phi angle",40,-4,4);
@@ -41,28 +41,28 @@ void CLoop::Book() {
     //VARIABLES FOLLOWED AFTER EACH CUT
 
     // Histograms for lepton pT
-    h_lep_pt0 = new TH1F("lep_pt0","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_jetn = new TH1F("lep_pt0_jetn","Transverse momentum of lep_jetn",200,0,200);
-    h_lep_pt0_jetn_btag = new TH1F("lep_pt0_jetn_btag","Transverse momentum of lep_jetn_btag",200,0,200);
-    h_lep_pt0_jetn_btag_iso = new TH1F("lep_pt0_jetn_btag_iso","Transverse momentum of lep_jetn_btag_iso",200,0,200);
-    h_lep_pt0_jetn_btag_iso_rnn = new TH1F("lep_pt0_jetn_btag_iso_rnn","Transverse momentum of lep_jetn_btag_iso_rnn",200,0,200);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu",200,0,200);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega",200,0,200);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
-    h_lep_pt0_jetn_btag_iso_rnn_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
+    h_lep_pt0 = new TH1F("lep_pt0","Transverse momentum of lep1",200,0,140);
+    h_lep_pt0_jetn = new TH1F("lep_pt0_jetn","Transverse momentum of lep_jetn",200,0,140);
+    h_lep_pt0_jetn_btag = new TH1F("lep_pt0_jetn_btag","Transverse momentum of lep_jetn_btag",200,0,140);
+    h_lep_pt0_jetn_btag_iso = new TH1F("lep_pt0_jetn_btag_iso","Transverse momentum of lep_jetn_btag_iso",200,0,140);
+    h_lep_pt0_jetn_btag_iso_rnn = new TH1F("lep_pt0_jetn_btag_iso_rnn","Transverse momentum of lep_jetn_btag_iso_rnn",200,0,140);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu",200,0,140);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega",200,0,140);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,140);
+    h_lep_pt0_jetn_btag_iso_rnn_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,140);
 
 
     // Histograms for tau pT
-    h_lep_pt1 = new TH1F("tau_pt","Transverse momentum of lep1",200,0,200);
-    h_lep_pt1_jetn = new TH1F("tau_pt_jetn","Transverse momentum of tau_jetn",200,0,200);
-    h_lep_pt1_jetn_btag = new TH1F("tau_pt_jetn_btag","Transverse momentum of tau_jetn_btag",200,0,200);
-    h_lep_pt1_jetn_btag_iso = new TH1F("tau_pt_jetn_btag_iso","Transverse momentum of tau_jetn_btag_iso",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn = new TH1F("tau_pt_jetn_btag_iso_rnn","Transverse momentum of tau_jetn_btag_iso_rnn",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_inside",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_outside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_outside",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_mreco_inside",200,0,200);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau_jetn_btag_iso_rnn_omega_mreco_outside",200,0,200);
+    h_lep_pt1 = new TH1F("tau_pt","Transverse momentum of lep1",200,0,140);
+    h_lep_pt1_jetn = new TH1F("tau_pt_jetn","Transverse momentum of tau_jetn",200,0,140);
+    h_lep_pt1_jetn_btag = new TH1F("tau_pt_jetn_btag","Transverse momentum of tau_jetn_btag",200,0,140);
+    h_lep_pt1_jetn_btag_iso = new TH1F("tau_pt_jetn_btag_iso","Transverse momentum of tau_jetn_btag_iso",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn = new TH1F("tau_pt_jetn_btag_iso_rnn","Transverse momentum of tau_jetn_btag_iso_rnn",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_inside",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_outside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_outside",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_mreco_inside",200,0,140);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau_jetn_btag_iso_rnn_omega_mreco_outside",200,0,140);
 
     // MET Histograms
     h_met = new TH1F("MET","Missing Transverse momentum",300,0,300);
@@ -118,9 +118,9 @@ void CLoop::Book() {
     h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_jetn_btag_iso_rnn_ptmu_mreco_120",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score = new TH1F("rnn_score","rnn score",60,0.4,1);
-    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",60,0.4,1);
-    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",60,0.4,1);
+    h_rnn_score = new TH1F("rnn_score","rnn score",50,0.5,1);
+    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",50,0.5,1);
+    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",50,0.5,1);
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
@@ -131,7 +131,12 @@ void CLoop::Book() {
     h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
     h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
     h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
-    
+    h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
+    h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
+    h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
+    h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
+    h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
+
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Eta value for lepton",10,-1,9);
     h_jet_n_btag_iso_rnn_ptmu_omega_mreco = new TH1F("jet_n_btag_iso_rnn_ptmu_omega_mreco","Eta value for lepton_btag_iso_rnn_ptmu_omega_mreco",10,-1,9);
@@ -142,11 +147,9 @@ void CLoop::Book() {
 
 
     // Isolation variables Histograms
-    h_muon_0_iso_FCTightTrackOnly_FixedRad = new TH1F("muon_0_iso_FCTightTrackOnly_FixedRad","lepton 1 isolation",20,0,10);
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag = new TH1F("muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag","lepton 1 isolation_jetn_btag",20,0,10);
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco = new TH1F("muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco","lepton isolation_jetn_btag_iso2_rnn_ptmu_omega_mreco",20,0,10);
-
-    
+    h_muon_0_iso_FCTightTrackOnly_FixedRad = new TH1F("iso_FixedCutLoose","lepton 1 isolation",20,0,10);
+    h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag = new TH1F("iso_FixedCutLoose_jetn_btag","lepton 1 isolation_jetn_btag",20,0,10);
+    h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco = new TH1F("iso_FixedCutLoose_jetn_btag_iso2_rnn_ptmu_omega_mreco","lepton isolation_jetn_btag_iso2_rnn_ptmu_omega_mreco",20,0,10);
 
     // Angular variable
     h_omega = new TH1F("omega","omega variable",30,-1.0,2.0);
@@ -205,7 +208,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -278,7 +281,7 @@ void CLoop::Fill(double weight) {
         if (n_bjets==0){
            cuts[1]=1;
         }
-        if (muon_0_iso_FCTightTrackOnly_FixedRad==1) {
+        if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
         if (tau_0_jet_rnn_score_trans>=0.41) {
@@ -309,8 +312,8 @@ void CLoop::Fill(double weight) {
           if (reco_mass_outside<110 && reco_mass_outside>70) {
             cuts[6]=1;
         }
-      }
-
+        }
+        
         // Cuts relative to otherwise
         vector<int> c_jet={0,1,1,1,1,1,1};
         vector<int> c_btag={1,0,1,1,1,1,1};
@@ -388,6 +391,7 @@ void CLoop::Fill(double weight) {
           h_b_tag->Fill(jet_MV2c10->at(0),weight);
         }*/
         h_omega->Fill(omega,weight);
+
         h_weight_total->Fill(weight,1);
         h_weight_mc->Fill(weight_total,1);
 
@@ -420,150 +424,63 @@ void CLoop::Fill(double weight) {
         }
 
 
-        // JET NUMBER CUT
-        if (cuts[0]==1) {
-          h_met_jetn->Fill(met_reco_p4->Pt(),weight);
-          h_lep_pt0_jetn->Fill(muon_0_p4->Pt(),weight);
-          h_lep_pt1_jetn->Fill(tau_0_p4->Pt(),weight);
-          if (inside90) {
-            h_reco_mass_jetn->Fill(reco_mass,weight);
-          }
-          if (outside90_lep) {
-            h_reco_mass_met_outside_jetn->Fill(reco_mass_outside,weight);
-          }
-          if (outside90_tau){
-            h_reco_mass_met_outside_jetn->Fill(reco_mass_outside,weight);
-          }
+        // ISO CUT ENRICHING MJ ZONE
+        if (cuts[2]==1 && cuts[1]==1 && cuts[4]==1 && cuts[3]==1 && cuts[5]==1) {
+          h_met_jetn_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
+          h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 
+          
 
-          // B TAGGING CUT
-          if (cuts[1]==1 || n_jets==0) {
-            h_met_jetn_btag->Fill(met_reco_p4->Pt(),weight);
-            h_lep_pt0_jetn_btag->Fill(muon_0_p4->Pt(),weight);
-            h_lep_pt1_jetn_btag->Fill(tau_0_p4->Pt(),weight);
+          if (cuts[6]==1){
+            h_trans_lepmet_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
+            h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_taulep,weight);
+            h_met_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
+            h_lep_pt0_jetn_btag_iso_rnn_omega_mreco->Fill(muon_0_p4->Pt(),weight);
 
+            h_weight_total_cuts->Fill(weight,1);
+            h_weight_mc_cuts->Fill(weight_total,1);
+            h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
+            h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
+            h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
+            h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
+            h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+                                *muon_0_NOMINAL_MuEffSF_TTVA,1);
+                                          
             if (inside90) {
-              h_reco_mass_jetn_btag->Fill(reco_mass,weight);
+              h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
+              h_angle_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
             }
             if (outside90_lep) {
-              h_reco_mass_met_outside_jetn_btag->Fill(reco_mass_outside,weight);
+              h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
+              h_angle_ouside_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
             if (outside90_tau){
-              h_reco_mass_met_outside_jetn_btag->Fill(reco_mass_outside,weight);
-            }
-
-            // ISOLATION CUT
-            if (cuts[2]==1) {
-              h_met_jetn_btag_iso->Fill(met_reco_p4->Pt(),weight);
-              h_lep_pt0_jetn_btag_iso->Fill(muon_0_p4->Pt(),weight);
-              h_lep_pt1_jetn_btag_iso->Fill(tau_0_p4->Pt(),weight);
-
-              if (inside90) {
-                h_reco_mass_jetn_btag_iso->Fill(reco_mass,weight);
-              }
-              if (outside90_lep) {
-                h_reco_mass_met_outside_jetn_btag_iso->Fill(reco_mass_outside,weight);
-              }
-              if (outside90_tau){
-                h_reco_mass_met_outside_jetn_btag_iso->Fill(reco_mass_outside,weight);
-              }
-
-              // RNN SCORE
-              if (cuts[3]==1) {
-                h_met_jetn_btag_iso_rnn->Fill(met_reco_p4->Pt(),weight);
-                h_lep_pt0_jetn_btag_iso_rnn->Fill(muon_0_p4->Pt(),weight);
-                h_lep_pt1_jetn_btag_iso_rnn->Fill(tau_0_p4->Pt(),weight);
-
-                if (inside90) {
-                  h_reco_mass_jetn_btag_iso_rnn->Fill(reco_mass,weight);
-                }
-                if (outside90_lep) {
-                  h_reco_mass_met_outside_jetn_btag_iso_rnn->Fill(reco_mass_outside,weight);
-                }
-                if (outside90_tau){
-                  h_reco_mass_met_outside_jetn_btag_iso_rnn->Fill(reco_mass_outside,weight);
-                }
-
-                // TRANSVERSE MASS LEPTON CUT
-                if (cuts[4]==1) {
-                  h_met_jetn_btag_iso_rnn_ptmu->Fill(met_reco_p4->Pt(),weight);
-                  h_lep_pt0_jetn_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt(),weight);
-                  h_lep_pt1_jetn_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt(),weight);
-
-                  if (inside90) {
-                    h_reco_mass_jetn_btag_iso_rnn_ptmu->Fill(reco_mass,weight);
-                  }
-                  if (outside90_lep) {
-                    h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
-                  }
-                  if (outside90_tau){
-                    h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
-                  }
-
-
-                    // OMEGA CUT
-                  if (cuts[5]==1) {
-                    h_met_jetn_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
-                    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
-
-
-                    if (inside90) {
-                      //h_reco_mass_jetn_btag_iso_rnn_ptmu_omega->Fill(reco_mass,weight);
-                      h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_inside->Fill(tau_0_p4->Pt(),weight);
-                    }
-                    if (outside90_lep) {
-                      h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
-                      //h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
-                    }
-                    if (outside90_tau){
-                      h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
-                      //h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
-                    }
-
-                    
-                      // RECO MASS CUT
-                    if (cuts[6]==1) {
-                      h_met_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
-                      h_trans_lepmet_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
-                      h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_taulep,weight);
-                      h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
-                      h_weight_total_cuts->Fill(weight,1);
-                      h_weight_mc_cuts->Fill(weight_total,1);
-
-                      if (inside90) {
-                        h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
-                        h_angle_cuts->Fill(angle,weight);
-                        h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
-                        h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
-                        //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-                        h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
-                      }
-                      if (outside90_lep) {
-                        h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-                        h_angle_ouside_cuts->Fill(angle,weight);
-                        h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-                        h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-                        //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-                        h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-                      }
-                      if (outside90_tau){
-                        h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-                        h_angle_ouside_cuts->Fill(angle,weight);
-                        h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-                        h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-                        //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
-                        h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-                      }
-                }
-              }
+              h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
+              h_angle_ouside_cuts->Fill(angle,weight);
+              h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
+              h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
           }
+          
+
+          
+          
         }
       }
     }
   }
-}
-}
+
+
 
 void CLoop::Style() {
     // This function is where you can control the style elements of your histograms and write them to a file
@@ -597,6 +514,15 @@ void CLoop::Style() {
     h_tau_matched_after_90_to_120->Write();
     h_tau_matched_after_outside->Write();
     h_tau_matched_after_outside_120->Write();
+    h_sf_mu_recoid->Write();
+    h_sf_mu_vertex->Write();
+    h_sf_mu_trigger->Write();
+    h_sf_mu_isolation->Write();
+    h_sf_mu_total->Write();
+    h_weight_mc->Write();
+    h_weight_mc_cuts->Write();
+    h_weight_total->Write();
+    h_weight_total_cuts->Write();
 
     h_rnn_score->Write();
     h_rnn_score_jetn_btag_iso->Write();
@@ -684,11 +610,7 @@ void CLoop::Style() {
     h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag->Write();
     h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco->Write();
 
-    h_weight_mc->Write();
-    h_weight_mc_cuts->Write();
-    h_weight_total->Write();
-    h_weight_total_cuts->Write();
-
+    
 
     h_omega->Write();
     h_omega_jetn_btag_iso_rnn_ptmu_mreco->Write();

@@ -127,6 +127,15 @@ void CLoop::Book() {
     h_tau_matched_after_90_to_120 = new TH1F("tau_matched_after_90_to_120","Tau truth matched after selection 90 to 120",2,0,2);
     h_tau_matched_after_outside = new TH1F("tau_matched_after_outside","Tau truth matched after selection outside",2,0,2);
     h_tau_matched_after_outside_120 = new TH1F("tau_matched_after_outside_120","Tau truth matched after selection outside 120",2,0,2);
+    h_weight_mc = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
+    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
+    h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
+    h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
+    h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
+    h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
+    h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
+    h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
+    h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
 
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Eta value for lepton",10,-1,9);
@@ -141,11 +150,6 @@ void CLoop::Book() {
     h_muon_0_iso_FCTightTrackOnly_FixedRad = new TH1F("iso_FixedCutLoose","lepton 1 isolation",20,0,10);
     h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag = new TH1F("iso_FixedCutLoose_jetn_btag","lepton 1 isolation_jetn_btag",20,0,10);
     h_muon_0_iso_FCTightTrackOnly_FixedRad_jetn_btag_iso2_rnn_ptmu_omega_mreco = new TH1F("iso_FixedCutLoose_jetn_btag_iso2_rnn_ptmu_omega_mreco","lepton isolation_jetn_btag_iso2_rnn_ptmu_omega_mreco",20,0,10);
-
-    h_weight_mc = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
-    h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
-    h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
 
     // Angular variable
     h_omega = new TH1F("omega","omega variable",30,-1.0,2.0);
@@ -204,7 +208,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -271,7 +275,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (n_jets<=5) {
+        if (true) {
           cuts[0]=1;
         }
         if (n_bjets==0){
@@ -280,7 +284,7 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
-        if (tau_0_jet_rnn_score_trans>=0.55) {
+        if (tau_0_jet_rnn_score_trans>=0.41) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {
@@ -423,7 +427,7 @@ void CLoop::Fill(double weight) {
         // ISO CUT ENRICHING MJ ZONE
         if (cuts[2]==1 && cuts[1]==1 && cuts[4]==1 && cuts[3]==1 && cuts[5]==1) {
           h_met_jetn_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
-          h_lep_pt0_jetn_btag_iso_rnn_omega->Fill(muon_0_p4->Pt(),weight);
+          h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 
           
 
@@ -435,6 +439,13 @@ void CLoop::Fill(double weight) {
 
             h_weight_total_cuts->Fill(weight,1);
             h_weight_mc_cuts->Fill(weight_total,1);
+            h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
+            h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
+            h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
+            h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
+            h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+                                *muon_0_NOMINAL_MuEffSF_TTVA,1);
+                                          
             if (inside90) {
               h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
               h_angle_cuts->Fill(angle,weight);
@@ -503,6 +514,11 @@ void CLoop::Style() {
     h_tau_matched_after_90_to_120->Write();
     h_tau_matched_after_outside->Write();
     h_tau_matched_after_outside_120->Write();
+    h_sf_mu_recoid->Write();
+    h_sf_mu_vertex->Write();
+    h_sf_mu_trigger->Write();
+    h_sf_mu_isolation->Write();
+    h_sf_mu_total->Write();
     h_weight_mc->Write();
     h_weight_mc_cuts->Write();
     h_weight_total->Write();

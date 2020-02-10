@@ -118,9 +118,9 @@ void CLoop::Book() {
     h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_jetn_btag_iso_rnn_ptmu_mreco_120",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score = new TH1F("rnn_score","rnn score",50,0.5,1);
-    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",50,0.5,1);
-    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",50,0.5,1);
+    h_rnn_score = new TH1F("rnn_score","rnn score",60,0.4,1);
+    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",60,0.4,1);
+    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",60,0.4,1);
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
@@ -131,6 +131,11 @@ void CLoop::Book() {
     h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
     h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
     h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
+    h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
+    h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
+    h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
+    h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
+    h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
     
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Eta value for lepton",10,-1,9);
@@ -205,7 +210,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -272,7 +277,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (n_jets<=5) {
+        if (true) {
           cuts[0]=1;
         }
         if (n_bjets==0){
@@ -281,7 +286,7 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (tau_0_jet_rnn_score_trans>=0.55) {
+        if (tau_0_jet_rnn_score_trans>=0.41) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {
@@ -527,8 +532,15 @@ void CLoop::Fill(double weight) {
                       h_trans_lepmet_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
                       h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_taulep,weight);
                       h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+                      
                       h_weight_total_cuts->Fill(weight,1);
                       h_weight_mc_cuts->Fill(weight_total,1);
+                      h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
+                      h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
+                      h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
+                      h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
+                      h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+                                          *muon_0_NOMINAL_MuEffSF_TTVA,1);
 
                       if (inside90) {
                         h_reco_mass_jetn_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
