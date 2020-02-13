@@ -5,7 +5,9 @@
         "Analysis_CR.C": "cpp",
         "random": "cpp",
         "Analysis_SR.C": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     },
     "python.pythonPath": "/home/diegol/anaconda3/bin/python"
 }

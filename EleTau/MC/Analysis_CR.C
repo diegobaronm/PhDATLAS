@@ -33,7 +33,7 @@ void CLoop::Book() {
     h_lep_eta = new TH1F("lep_eta","Eta value for lepton",30,-3,3);
     h_inva_mass_ltau = new TH1F("inva_mass_ltau","Invariant mass lepton-tau system",300,0,300);
     h_inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("inva_mass_ltau_jetn_btag_iso_rnn_ptmu_omega_mreco","Invariant mass lepton-tau system _jetn_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
-    h_trans_mass = new TH1F("trans_mass","Transverse mass lepton-tau system",280,20,300);
+    h_trans_mass = new TH1F("trans_mass","Transverse mass lepton-tau system",300,0,300);
     //h_visible_mass = new TH1F("visible_mass","visible mass lepton-tau system",280,20,300);
     //h_visible_mass_jetn_btag_iso_rnn_ptmu_mreco = new TH1F("visible_mass_jetn_btag_iso_rnn_ptmu_mreco","visible mass lepton-tau system_jetn_btag_iso_rnn_ptmu_mreco",280,20,300);
     h_met_phi=new TH1F("MET phi","MET phi angle",40,-4,4);
@@ -41,28 +41,28 @@ void CLoop::Book() {
     //VARIABLES FOLLOWED AFTER EACH CUT
 
     // Histograms for lepton pT
-    h_lep_pt0 = new TH1F("lep_pt0","Transverse momentum of lep1",200,0,140);
-    h_lep_pt0_jetn = new TH1F("lep_pt0_jetn","Transverse momentum of lep_jetn",200,0,140);
-    h_lep_pt0_jetn_btag = new TH1F("lep_pt0_jetn_btag","Transverse momentum of lep_jetn_btag",200,0,140);
-    h_lep_pt0_jetn_btag_iso = new TH1F("lep_pt0_jetn_btag_iso","Transverse momentum of lep_jetn_btag_iso",200,0,140);
-    h_lep_pt0_jetn_btag_iso_rnn = new TH1F("lep_pt0_jetn_btag_iso_rnn","Transverse momentum of lep_jetn_btag_iso_rnn",200,0,140);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu",200,0,140);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega",200,0,140);
-    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,140);
-    h_lep_pt0_jetn_btag_iso_rnn_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,140);
+    h_lep_pt0 = new TH1F("lep_pt0","Transverse momentum of lep1",200,0,200);
+    h_lep_pt0_jetn = new TH1F("lep_pt0_jetn","Transverse momentum of lep_jetn",200,0,200);
+    h_lep_pt0_jetn_btag = new TH1F("lep_pt0_jetn_btag","Transverse momentum of lep_jetn_btag",200,0,200);
+    h_lep_pt0_jetn_btag_iso = new TH1F("lep_pt0_jetn_btag_iso","Transverse momentum of lep_jetn_btag_iso",200,0,200);
+    h_lep_pt0_jetn_btag_iso_rnn = new TH1F("lep_pt0_jetn_btag_iso_rnn","Transverse momentum of lep_jetn_btag_iso_rnn",200,0,200);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu",200,0,200);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega",200,0,200);
+    h_lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
+    h_lep_pt0_jetn_btag_iso_rnn_omega_mreco = new TH1F("lep_pt0_jetn_btag_iso_rnn_omega_mreco","Transverse momentum of lep_jetn_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
 
 
     // Histograms for tau pT
-    h_lep_pt1 = new TH1F("tau_pt","Transverse momentum of lep1",200,0,140);
-    h_lep_pt1_jetn = new TH1F("tau_pt_jetn","Transverse momentum of tau_jetn",200,0,140);
-    h_lep_pt1_jetn_btag = new TH1F("tau_pt_jetn_btag","Transverse momentum of tau_jetn_btag",200,0,140);
-    h_lep_pt1_jetn_btag_iso = new TH1F("tau_pt_jetn_btag_iso","Transverse momentum of tau_jetn_btag_iso",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn = new TH1F("tau_pt_jetn_btag_iso_rnn","Transverse momentum of tau_jetn_btag_iso_rnn",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_inside",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_outside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_outside",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_mreco_inside",200,0,140);
-    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau_jetn_btag_iso_rnn_omega_mreco_outside",200,0,140);
+    h_lep_pt1 = new TH1F("tau_pt","Transverse momentum of lep1",200,0,200);
+    h_lep_pt1_jetn = new TH1F("tau_pt_jetn","Transverse momentum of tau_jetn",200,0,200);
+    h_lep_pt1_jetn_btag = new TH1F("tau_pt_jetn_btag","Transverse momentum of tau_jetn_btag",200,0,200);
+    h_lep_pt1_jetn_btag_iso = new TH1F("tau_pt_jetn_btag_iso","Transverse momentum of tau_jetn_btag_iso",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn = new TH1F("tau_pt_jetn_btag_iso_rnn","Transverse momentum of tau_jetn_btag_iso_rnn",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_inside",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_outside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_outside",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau_jetn_btag_iso_rnn_ptmu_omega_mreco_inside",200,0,200);
+    h_lep_pt1_jetn_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_jetn_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau_jetn_btag_iso_rnn_omega_mreco_outside",200,0,200);
 
     // MET Histograms
     h_met = new TH1F("MET","Missing Transverse momentum",300,0,300);
@@ -118,9 +118,9 @@ void CLoop::Book() {
     h_reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_jetn_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_jetn_btag_iso_rnn_ptmu_mreco_120",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score = new TH1F("rnn_score","rnn score",50,0.5,1);
-    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",50,0.5,1);
-    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",50,0.5,1);
+    h_rnn_score = new TH1F("rnn_score","rnn score",60,0.4,1);
+    h_rnn_score_jetn_btag_iso = new TH1F("rnn_score_jetn_btag_iso","rnn score_jetn_btag_iso",60,0.4,1);
+    h_rnn_score_jetn_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_jetn_btag_iso_ptmu_omega_mreco","rnn score_jetn_btag_iso_ptmu_omega_mreco",60,0.4,1);
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
@@ -208,7 +208,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());

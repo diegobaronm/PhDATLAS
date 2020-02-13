@@ -34,12 +34,12 @@ def runAnalysis(key, fast):
         # calculate luminosity weight
         # if it does not work try again without "_1lep" or "_2lep" suffix for key
         try:
-            lumWeight = totRealLum * 1000 * infos[key]["xsec"] / (infos[key]["sumw"] *
+            lumWeight = totRealLum * 1000 * infos[key]["xsec"] * infos[key]["kfac"] * infos[key]["fil_eff"] / (infos[key]["sumw"] *
                 infos[key]["red_eff"])
             print(lumWeight)
         except KeyError:
             shortKey = key[:-5]
-            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] /
+            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] * infos[shortKey]["kfac"] * infos[shortKey]["fil_eff"] /
                 (infos[shortKey]["sumw"] * infos[shortKey]["red_eff"]))
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
