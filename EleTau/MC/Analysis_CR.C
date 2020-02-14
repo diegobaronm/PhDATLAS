@@ -186,10 +186,10 @@ void CLoop::Fill(double weight) {
         h_lep_type -> Fill(lep_type->at(ilep),weight);
         h_lep_eta ->Fill(lep_eta->at(ilep),weight);
     }*/
-    bool trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
-    if (n_muons==1 && n_taus==1 && trigger_decision) {
+    bool trigger_decision= bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+    if (n_electrons==1 && n_taus==1 && trigger_decision) {
 
-      float ql=muon_0_q;
+      float ql=elec_0_q;
       float qtau=tau_0_q;
       float pair_charge=ql*qtau;
 
