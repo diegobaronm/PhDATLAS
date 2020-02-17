@@ -142,8 +142,8 @@ void CLoop::Book() {
     h_sf_e_total = new TH1F("sf_e_total","elec total scale factor",30,0.85,1.15);
     
     // Jet Number Histograms
-    h_jet_n = new TH1F("jet_n","Eta value for lepton",10,-1,9);
-    h_jet_n_btag_iso_rnn_pte_omega_mreco = new TH1F("jet_n_btag_iso_rnn_pte_omega_mreco","Eta value for lepton_btag_iso_rnn_pte_omega_mreco",10,-1,9);
+    h_jet_n = new TH1F("jet_n","Jet N",10,-1,9);
+    h_jet_n_bdte_btag_iso_rnn_pte_omega_mreco = new TH1F("jet_n_rnne_btag_iso_rnn_pte_omega_mreco","Jet N_rnne_btag_iso_rnn_pte_omega_mreco",10,-1,9);
 
     h_b_tag = new TH1F("b_tag","b taging variable",100,-1,1);
     h_b_tag_bdte = new TH1F("b_tag_bdte","b taging variable_bdte",100,-1,1);
@@ -215,7 +215,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -282,7 +282,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (tau_0_ele_bdt_score_trans>=0.4) {
+        if (tau_0_ele_bdt_score_trans>=0.2) {
           cuts[0]=1;
         }
         if (n_bjets==0){
@@ -333,7 +333,7 @@ void CLoop::Fill(double weight) {
 
 
         if (cuts==c_bdte||cuts==c_all) {
-          h_jet_n_btag_iso_rnn_pte_omega_mreco->Fill(n_jets,weight);
+          h_bdt_e_score_btag_iso_rnn_pte_omega_mreco->Fill(tau_0_ele_bdt_score_trans,weight);
         }
         if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
           h_b_tag_bdte_iso_rnn_pte_omega_mreco->Fill(n_bjets,weight);
@@ -386,10 +386,10 @@ void CLoop::Fill(double weight) {
         h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
         h_inva_mass_ltau->Fill(inv_taulep,weight);
         h_trans_mass->Fill(trans_mass,weight);
-        //h_visible_mass->Fill(visi_mass,weight);
 
         h_trans_lepmet_mass->Fill(lepmet_mass,weight);
         h_rnn_score->Fill(tau_0_jet_rnn_score_trans,weight);
+        h_bdt_e_score->Fill(tau_0_ele_bdt_score_trans,weight);
         h_jet_n->Fill(n_jets, weight);
         h_elec_0_iso_FCTight->Fill(elec_0_iso_FCTight,weight);
         /*if (n_jets!=0) {
@@ -532,6 +532,7 @@ void CLoop::Fill(double weight) {
                       h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mreco->Fill(lepmet_mass,weight);
                       h_inva_mass_ltau_bdte_btag_iso_rnn_pte_omega_mreco->Fill(inv_taulep,weight);
                       h_lep_pt0_bdte_btag_iso_rnn_pte_omega_mreco->Fill(elec_0_p4->Pt(),weight);
+                      h_jet_n_bdte_btag_iso_rnn_pte_omega_mreco->Fill(n_jets, weight);
                       
                       h_weight_total_cuts->Fill(weight,1);
                       h_weight_mc_cuts->Fill(weight_total,1);
@@ -620,6 +621,9 @@ void CLoop::Style() {
     h_rnn_score_bdte_btag_iso->Write();
     h_rnn_score_bdte_btag_iso_pte_omega_mreco->Write();
 
+    h_bdt_e_score->Write();
+    h_bdt_e_score_btag_iso_rnn_pte_omega_mreco->Write();
+
 
     //Writing lep pT
     h_lep_pt0->Write();
@@ -690,7 +694,7 @@ void CLoop::Style() {
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_mreco_120->Write();
     //Writing jet number
     h_jet_n->Write();
-    h_jet_n_btag_iso_rnn_pte_omega_mreco->Write();
+    h_jet_n_bdte_btag_iso_rnn_pte_omega_mreco->Write();
     //Writing b-tag
     h_b_tag->Write();
     h_b_tag_bdte->Write();
