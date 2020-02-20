@@ -285,7 +285,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0};
-        if (tau_0_ele_bdt_score_trans>=0.2) {
+        if (tau_0_ele_bdt_score_trans>=0.11) {
           cuts[0]=1;
         }
         if (n_bjets==0){
