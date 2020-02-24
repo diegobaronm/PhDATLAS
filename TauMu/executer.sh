@@ -1,15 +1,15 @@
 #!/bin/bash
 rm MC/out/*
 rm DATA/out/*
-mc_bg='Wplusenu_$1 Wminusenu_$1 Wplusmunu_$1 Wminusmunu_$1 Wplustaunu_$1 Wminustaunu_$1 Zmumu_$1 llll_$1 lllv_$1 llvv_$1 lvvv_$1 ttbar_$1 st_schan_$1 sat_schan_$1 st_tchan_$1 sat_tchan_$1 st_wt_$1 sat_wt_$1'
-mc_signal='Ztautau_$1'
-data='data_$1'
+mc_bg=('Wplusenu_'$1 'Wminusenu_'$1 'Wplusmunu_'$1 'Wminusmunu_'$1 'Wplustaunu_'$1 'Wminustaunu_'$1 'Zmumu_'$1 'llll_'$1 'lllv_'$1 'llvv_'$1 'lvvv_'$1 'ttbar_'$1 'st_schan_'$1 'sat_schan_'$1 'st_tchan_'$1 'sat_tchan_'$1 'st_wt_'$1 'sat_wt_'$1)
+mc_signal='Ztautau_'$1
+data='data_'$1
 
 cd MC
 
 python3.7 RunAnalysis.py $mc_signal no
 
-for file in $mc_bg
+for file in ${mc_bg[@]}
 do
   python3.7 RunAnalysis.py $file no
 done
