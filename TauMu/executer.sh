@@ -1,9 +1,9 @@
 #!/bin/bash
 rm MC/out/*
 rm DATA/out/*
-mc_bg='Wplusenu_2018 Wminusenu_2018 Wplusmunu_2018 Wminusmunu_2018 Wplustaunu_2018 Wminustaunu_2018 Zmumu_2018 llll_2018 lllv_2018 llvv_2018 lvvv_2018 ttbar_2018 st_schan_2018 sat_schan_2018 st_tchan_2018 sat_tchan_2018 st_wt_2018 sat_wt_2018'
-mc_signal='Ztautau_2018'
-data='data_2018'
+mc_bg='Wplusenu_$1 Wminusenu_$1 Wplusmunu_$1 Wminusmunu_$1 Wplustaunu_$1 Wminustaunu_$1 Zmumu_$1 llll_$1 lllv_$1 llvv_$1 lvvv_$1 ttbar_$1 st_schan_$1 sat_schan_$1 st_tchan_$1 sat_tchan_$1 st_wt_$1 sat_wt_$1'
+mc_signal='Ztautau_$1'
+data='data_$1'
 
 cd MC
 
@@ -24,10 +24,9 @@ done
 
 cd ..
 
-hadd MC/out/VV.root MC/out/llll_2018.root MC/out/lllv_2018.root MC/out/llvv_2018.root MC/out/lvvv_2018.root
-hadd MC/out/Wjets.root MC/out/Wplusenu_2018.root MC/out/Wminusenu_2018.root MC/out/Wplusmunu_2018.root MC/out/Wminusmunu_2018.root MC/out/Wplustaunu_2018.root MC/out/Wminustaunu_2018.root
-hadd MC/out/singletop.root MC/out/st_schan_2018.root MC/out/sat_schan_2018.root MC/out/st_tchan_2018.root MC/out/sat_tchan_2018.root MC/out/st_wt_2018.root MC/out/sat_wt_2018.root
+hadd MC/out/VV.root MC/out/llll_$1.root MC/out/lllv_$1.root MC/out/llvv_$1.root MC/out/lvvv_$1.root
+hadd MC/out/Wjets.root MC/out/Wplusenu_$1.root MC/out/Wminusenu_$1.root MC/out/Wplusmunu_$1.root MC/out/Wminusmunu_$1.root MC/out/Wplustaunu_$1.root MC/out/Wminustaunu_$1.root
+hadd MC/out/singletop.root MC/out/st_schan_$1.root MC/out/sat_schan_$1.root MC/out/st_tchan_$1.root MC/out/sat_tchan_$1.root MC/out/st_wt_$1.root MC/out/sat_wt_$1.root
 
-hadd DATA/out/data_2018.root DATA/out/data_2018*
+hadd DATA/out/data_$1.root DATA/out/data_$1*
 
-#hadd DATA/out/Data.root MC/out/A_1tau1lep.root MC/out/B_1tau1lep.root MC/out/C_1tau1lep.root MC/out/D_1tau1lep.root

@@ -6,7 +6,6 @@ def DrawC(filename,lumStr,fast):
     """
     Function to load in the C++ code and run it for a given data set
     """
-
     # search through several directories to find where the input file is located
     for path in dirs:
         if filename in listdir(path):
