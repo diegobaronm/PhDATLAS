@@ -218,7 +218,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -285,7 +285,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0};
-        if (tau_0_ele_bdt_score_trans>=0.2) {
+        if (tau_0_ele_bdt_score_trans>=0.11) {
           cuts[0]=1;
         }
         if (n_bjets==0){
