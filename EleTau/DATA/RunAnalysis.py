@@ -11,6 +11,14 @@ from getInput import getInput
 from infofile import infos
 from dataSets import dataSets, totRealLum, realList, dataCombos
 
+def luminosity(key):
+    if "2018" in key:
+        return 57.6164
+    elif "2017" in key:
+        return 43.5873
+    else :
+        return 36.2369
+
 def fastStr(fMode):
     """
     Return "_fast" if fMode is true, ""  otherwise
@@ -26,6 +34,9 @@ def runAnalysis(key, fast):
     """
     # get filename
     filename = dataSets[key]
+
+    totRealLum=luminosity(key)
+    print(totRealLum)
 
     # get luminosity weight if data is MC
     if key in realList:

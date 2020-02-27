@@ -11,6 +11,14 @@ from getInput import getInput
 from infofile import infos
 from dataSets import dataSets, totRealLum, realList, dataCombos
 
+def luminosity(key):
+    if "2018" in key:
+        return 57.6164
+    elif "2017" in key:
+        return 43.5873
+    else :
+        return 36.2369
+
 def fastStr(fMode):
     """
     Return "_fast" if fMode is true, ""  otherwise
@@ -27,6 +35,9 @@ def runAnalysis(key, fast):
     # get filename
     filename = dataSets[key]
 
+    totRealLum=luminosity(key)
+    print(totRealLum)
+
     # get luminosity weight if data is MC
     if key in realList:
         lumStr = "1"
@@ -34,12 +45,12 @@ def runAnalysis(key, fast):
         # calculate luminosity weight
         # if it does not work try again without "_1lep" or "_2lep" suffix for key
         try:
-            lumWeight = totRealLum * 1000 * infos[key]["xsec"] * infos[key]["kfac"] * infos[key]["fil_eff"] / (infos[key]["sumw"] *
+            lumWeight = totRealLum * 1000 * infos[key]["xsec"] / (infos[key]["sumw"] *
                 infos[key]["red_eff"])
             print(lumWeight)
         except KeyError:
             shortKey = key[:-5]
-            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] * infos[shortKey]["kfac"] * infos[shortKey]["fil_eff"] /
+            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] /
                 (infos[shortKey]["sumw"] * infos[shortKey]["red_eff"]))
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)

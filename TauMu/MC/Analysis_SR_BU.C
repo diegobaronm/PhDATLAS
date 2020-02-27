@@ -178,7 +178,12 @@ void CLoop::Fill(double weight) {
         h_lep_type -> Fill(lep_type->at(ilep),weight);
         h_lep_eta ->Fill(lep_eta->at(ilep),weight);
     }*/
-    bool trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
+    bool trigger_decision= false;
+    if (run_number>= 276262 && run_number<=284484) {
+      trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
+    } else {
+      trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
+    }
     bool lepton_id=muon_0_id_medium;
     if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id) {
 
@@ -201,7 +206,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
