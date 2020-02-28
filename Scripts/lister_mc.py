@@ -4,7 +4,7 @@ import ROOT
 
 ## THIS SCRIPT MUST BE LAUNCHED AS
 
-## python lister.py 1.NAME_SAMPLES 2.DIRECTORY_WHERE 3.SAMPLE_DSID 4.CROSS_SECTION
+## python lister.py 1.NAME_SAMPLES 2.DIRECTORY_WHERE 3.SAMPLE_DSID 4.CROSS_SECTION 5.K-FACTOR 6.FILTER-EFF
 
 def list(name,directory):
     os.chdir(directory)
@@ -21,7 +21,7 @@ def data_combo(name):
             print("'"+name+"_"+str(j)+"'"+",", end = '')
             j=j+1
 
-def info_file(name,DSID,XSEC):
+def info_file(name,DSID,XSEC,KFAC,FIL_EFF):
     sumw=0
     for file in os.listdir():
         if file[-4:]=='root':
@@ -32,7 +32,7 @@ def info_file(name,DSID,XSEC):
     for file in os.listdir():
         if file[-4:]=='root':
             f = ROOT.TFile.Open(file, 'read')
-            a="'%s_%d': {'DSID'    : %d,'events'  : %f,'red_eff' :1,'sumw'    :%f,'xsec'    :%f},"%(name,k,int(DSID),sumw,sumw,float(XSEC))
+            a="'%s_%d': {'DSID'    : %d,'events'  : %f,'red_eff' :1,'sumw'    :%f,'xsec'    :%f,'kfac'    :%f,'fil_eff'    :%f},"%(name,k,int(DSID),sumw,sumw,float(XSEC),float(KFAC),float(FIL_EFF))
             print(a)
             k=k+1
 
@@ -62,4 +62,4 @@ while(not answer):
         answer=True
 print("\n")
 print("\n")
-info_file(sys.argv[1],sys.argv[3],sys.argv[4])
+info_file(sys.argv[1],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6])
