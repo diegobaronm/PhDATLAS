@@ -8,7 +8,8 @@
         "new": "cpp",
         "cmath": "cpp",
         "complex": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "Analysis_SR_BU.C": "cpp"
     },
     "python.pythonPath": "/home/diegol/anaconda3/bin/python"
 }

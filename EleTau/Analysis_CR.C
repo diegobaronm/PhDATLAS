@@ -130,7 +130,7 @@ void CLoop::Book() {
     h_bdt_e_score = new TH1F("bdt_e_score","BDT score electron",100,0,1);
     h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco","BDT score electron_btag_iso_rnn_pte_omega_mle_mreco",100,0,1);
 
-    /*
+
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
     h_tau_matched_after_90_to_120 = new TH1F("tau_matched_after_90_to_120","Tau truth matched after selection 90 to 120",2,0,2);
@@ -145,7 +145,7 @@ void CLoop::Book() {
     h_sf_e_vertex = new TH1F("sf_e_vertex","elec vertex matching scale factor",30,0.85,1.15);
     h_sf_e_isolation = new TH1F("sf_e_isolation","elec isolation scale factor",30,0.85,1.15);
     h_sf_e_total = new TH1F("sf_e_total","elec total scale factor",30,0.85,1.15);
-    */
+    
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Jet N",10,-1,9);
     h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("jet_n_rnne_btag_iso_rnn_pte_omega_mle_mreco","Jet N_rnne_btag_iso_rnn_pte_omega_mle_mreco",10,-1,9);
@@ -195,7 +195,12 @@ void CLoop::Fill(double weight) {
         h_lep_type -> Fill(lep_type->at(ilep),weight);
         h_lep_eta ->Fill(lep_eta->at(ilep),weight);
     }*/
-    bool trigger_decision= bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+    bool trigger_decision= false;
+    if (run_number>= 276262 && run_number<=284484){
+        trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0); 
+    } else {
+        trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+    }
     bool lepton_id=elec_0_id_tight;
     if (n_electrons==1 && n_taus==1 && trigger_decision && lepton_id) {
 
@@ -390,7 +395,7 @@ void CLoop::Fill(double weight) {
         //  Filling histos
 
         h_met_phi->Fill(met_reco_p4->Phi(),weight);
-        //h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
+        h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
         h_inva_mass_ltau->Fill(inv_taulep,weight);
         h_trans_mass->Fill(trans_mass,weight);
 
@@ -403,8 +408,8 @@ void CLoop::Fill(double weight) {
           h_b_tag->Fill(jet_MV2c10->at(0),weight);
         }*/
         h_omega->Fill(omega,weight);
-        //h_weight_total->Fill(weight,1);
-        //h_weight_mc->Fill(weight_total,1);
+        h_weight_total->Fill(weight,1);
+        h_weight_mc->Fill(weight_total,1);
 
 
         h_met->Fill(met_reco_p4->Pt(),weight);
@@ -447,7 +452,7 @@ void CLoop::Fill(double weight) {
             h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(lepmet_mass,weight);
             h_lep_pt0_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(elec_0_p4->Pt(),weight);
             h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(n_jets, weight);
-            /*
+            
             h_weight_total_cuts->Fill(weight,1);
             h_weight_mc_cuts->Fill(weight_total,1);
             h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight,1);
@@ -456,26 +461,26 @@ void CLoop::Fill(double weight) {
             h_sf_e_trigger->Fill(elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
             h_sf_e_total->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
                                 *elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
-            */
+
             if (inside90) {
               h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(reco_mass,weight);
               h_angle_cuts->Fill(angle,weight);
               h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_inside->Fill(tau_0_p4->Pt(),weight);
-              //h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
+              h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
             }
             if (outside90_lep) {
               h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(reco_mass_outside,weight);
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-              //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
             if (outside90_tau){
               h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco->Fill(reco_mass_outside,weight);
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-              //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
               }
         }      
@@ -510,7 +515,7 @@ void CLoop::Style() {
     h_trans_lepmet_mass->Write();
     //h_trans_lepmet_mass_bdte_btag_iso_rnn->Write();
     h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    /*
+
     h_tau_matched->Write();
     h_tau_matched_after_0_to_90->Write();
     h_tau_matched_after_90_to_120->Write();
@@ -525,7 +530,7 @@ void CLoop::Style() {
     h_weight_mc_cuts->Write();
     h_weight_total->Write();
     h_weight_total_cuts->Write();
-    */
+
     h_rnn_score->Write();
     h_rnn_score_bdte_btag_iso_pte_omega_mle_mreco->Write();
 

@@ -195,7 +195,12 @@ void CLoop::Fill(double weight) {
         h_lep_type -> Fill(lep_type->at(ilep),weight);
         h_lep_eta ->Fill(lep_eta->at(ilep),weight);
     }*/
-    bool trigger_decision= bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+    bool trigger_decision= false;
+    if (run_number>= 276262 && run_number<=284484){
+        trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0); 
+    } else {
+        trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+    }
     bool lepton_id=elec_0_id_tight;
     if (n_electrons==1 && n_taus==1 && trigger_decision && lepton_id) {
 
@@ -218,7 +223,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
