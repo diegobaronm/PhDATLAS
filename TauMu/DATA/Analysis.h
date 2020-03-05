@@ -13,6 +13,7 @@ TH1F * h_trans_mass;
 //TH1F * h_visible_mass_btag_iso_rnn_ptmu_mreco;
 
 TH1F * h_trans_lepmet_mass;
+//TH1F * h_trans_lepmet_mass_btag_iso_rnn;
 TH1F * h_trans_lepmet_mass_btag_iso_rnn_ptmu_omega_mreco;
 /*
 TH1F * h_tau_matched;
@@ -20,18 +21,17 @@ TH1F * h_tau_matched_after_0_to_90;
 TH1F * h_tau_matched_after_90_to_120;
 TH1F * h_tau_matched_after_outside;
 TH1F * h_tau_matched_after_outside_120;
-TH1F * h_weight_mc;
-TH1F * h_weight_mc_cuts;
-TH1F * h_weight_total;
-TH1F * h_weight_total_cuts;
+
 TH1F * h_sf_mu_trigger;
 TH1F * h_sf_mu_recoid;
 TH1F * h_sf_mu_vertex;
 TH1F * h_sf_mu_isolation;
 TH1F * h_sf_mu_total;
 */
-TH1F * h_rnn_score;
-TH1F * h_rnn_score_btag_iso_ptmu_omega_mreco;
+TH1F * h_rnn_score_1prong;
+TH1F * h_rnn_score_1prong_btag_iso_ptmu_omega_mreco;
+TH1F * h_rnn_score_3prong;
+TH1F * h_rnn_score_3prong_btag_iso_ptmu_omega_mreco;
 
 TH1F * h_lep_pt0;
 TH1F * h_lep_pt0_btag;
@@ -101,7 +101,12 @@ TH1F * h_b_tag_iso_rnn_ptmu_omega_mreco;
 
 TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad;
 TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_btag_iso2_rnn_ptmu_omega_mreco;
-
+/*
+TH1F * h_weight_mc;
+TH1F * h_weight_mc_cuts;
+TH1F * h_weight_total;
+TH1F * h_weight_total_cuts;
+*/
 TH1F * h_omega;
 TH1F * h_omega_btag_iso_rnn_ptmu_mreco;
 
@@ -114,5 +119,14 @@ TH1F * h_Z_pt_reco_inside;
 TH1F * h_Z_pt_reco_cuts_inside;
 TH1F * h_Z_pt_reco_outside;
 TH1F * h_Z_pt_reco_cuts_outside;
+
+TH1F * h_lep_phi;
+TH1F * h_tau_phi;
+TH1F * h_delta_phi;
+TH1F * h_tau_nprongs;
+TH1F * h_lep_phi_cuts;
+TH1F * h_tau_phi_cuts;
+TH1F * h_delta_phi_cuts;
+TH1F * h_tau_nprongs_cuts;
 
 #endif

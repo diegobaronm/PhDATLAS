@@ -50,7 +50,8 @@ void CLoop::Book() {
     h_lep_pt0_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
     h_lep_pt0_btag_iso_rnn_omega_mreco = new TH1F("lep_pt0_btag_iso_rnn_omega_mreco","Transverse momentum of lep_btag_iso_rnn_ptmu_omega_mreco",200,0,200);
 
-
+    h_lep_phi= new TH1F("lep_phi","Lepton phi angle",64,-3.2,3.2);
+    h_lep_phi_cuts= new TH1F("lep_phi_cuts","Lepton phi angle after cuts",64,-3.2,3.2);
     // Histograms for tau pT
     h_lep_pt1 = new TH1F("tau_pt","Transverse momentum of lep1",200,0,200);
     h_lep_pt1_btag = new TH1F("tau_pt_btag","Transverse momentum of tau_btag",200,0,200);
@@ -62,6 +63,10 @@ void CLoop::Book() {
     h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau_btag_iso_rnn_ptmu_omega_mreco_inside",200,0,200);
     h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau_btag_iso_rnn_omega_mreco_outside",200,0,200);
 
+    h_tau_phi= new TH1F("tau_phi","Tau phi angle",64,-3.2,3.2);
+    h_tau_phi_cuts= new TH1F("tau_phi_cuts","Tau phi angle after cuts",64,-3.2,3.2);
+    h_tau_nprongs=new TH1F("tau_nprongs","Number of charged tracks",4,0,4);
+    h_tau_nprongs_cuts=new TH1F("tau_nprongs_cuts","Number of charged tracks after cuts",4,0,4);
     // MET Histograms
     h_met = new TH1F("MET","Missing Transverse momentum",300,0,300);
     h_met_btag = new TH1F("MET_btag","Missing Transverse momentum_btag",300,0,300);
@@ -113,9 +118,11 @@ void CLoop::Book() {
     h_reco_mass_met_outside_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_mreco_120",300,0,300);
     */
     // rnn Score histograms
-    h_rnn_score = new TH1F("rnn_score","rnn score",60,0.4,1);
-    h_rnn_score_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco",60,0.4,1);
-
+    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
+    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",60,0.4,1);
+    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",60,0.4,1);
+    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",60,0.4,1);
+    
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
     h_tau_matched_after_90_to_120 = new TH1F("tau_matched_after_90_to_120","Tau truth matched after selection 90 to 120",2,0,2);
@@ -156,6 +163,9 @@ void CLoop::Book() {
     h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum _inside",300,0,300);
     h_Z_pt_reco_outside = new TH1F("Z_pt_outside","Z boson transverse momentum _outside",300,0,300);
     h_Z_pt_reco_cuts_outside = new TH1F("Z_pt_cuts_outside","Z boson transverse momentum _outside",300,0,300);
+
+    h_delta_phi= new TH1F("delta_phi","Delta phi lepton-tau",32,0,3.2);
+    h_delta_phi_cuts= new TH1F("delta_phi_cuts","Delta phi lepton-tau after cuts",32,0,3.2);
 
 }
 
@@ -206,7 +216,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -279,7 +289,7 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[1]=1;
         }
-        if (tau_0_jet_rnn_score_trans>=0.41) {
+        if (tau_0_jet_rnn_score_trans>0.4) {
           cuts[2]=1;
         }
         if (muon_0_p4->Pt()>=27) {
@@ -320,7 +330,12 @@ void CLoop::Fill(double weight) {
           h_muon_0_iso_FCTightTrackOnly_FixedRad_btag_iso2_rnn_ptmu_omega_mreco->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
         }
         if (cuts==c_rnn||cuts==c_all) {
-          h_rnn_score_btag_iso_ptmu_omega_mreco->Fill(tau_0_jet_rnn_score_trans,weight);
+          if (tau_0_n_charged_tracks==1){
+             h_rnn_score_1prong_btag_iso_ptmu_omega_mreco->Fill(tau_0_jet_rnn_score_trans,weight); 
+          }
+          if (tau_0_n_charged_tracks==3){
+             h_rnn_score_3prong_btag_iso_ptmu_omega_mreco->Fill(tau_0_jet_rnn_score_trans,weight); 
+          }
         }
         if (cuts==c_ptmu||cuts==c_all) {
           h_lep_pt0_btag_iso_rnn_omega_mreco->Fill(muon_0_p4->Pt(),weight);
@@ -352,7 +367,12 @@ void CLoop::Fill(double weight) {
         //h_visible_mass->Fill(visi_mass,weight);
 
         h_trans_lepmet_mass->Fill(lepmet_mass,weight);
-        h_rnn_score->Fill(tau_0_jet_rnn_score_trans,weight);
+        if (tau_0_n_charged_tracks==1){
+          h_rnn_score_1prong->Fill(tau_0_jet_rnn_score_trans,weight);
+        }
+        if (tau_0_n_charged_tracks==3){
+          h_rnn_score_3prong->Fill(tau_0_jet_rnn_score_trans,weight);
+        }
         h_jet_n->Fill(n_jets, weight);
         h_muon_0_iso_FCTightTrackOnly_FixedRad->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
         /*if (n_jets!=0) {
@@ -367,6 +387,10 @@ void CLoop::Fill(double weight) {
         h_met->Fill(met_reco_p4->Pt(),weight);
         h_lep_pt0->Fill(muon_0_p4->Pt(),weight);
         h_lep_pt1->Fill(tau_0_p4->Pt(),weight);
+        h_lep_phi->Fill(muon_0_p4->Phi(),weight);
+        h_tau_phi->Fill(tau_0_p4->Phi(),weight);
+        h_delta_phi->Fill(angle,weight);
+        h_tau_nprongs->Fill(tau_0_n_charged_tracks,weight);
         if (inside90) {
           h_reco_mass->Fill(reco_mass,weight);
           h_angle->Fill(angle,weight);
@@ -404,6 +428,10 @@ void CLoop::Fill(double weight) {
             h_inva_mass_ltau_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_taulep,weight);
             h_met_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_btag_iso_rnn_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+            h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
+            h_tau_phi_cuts->Fill(tau_0_p4->Phi(),weight);
+            h_delta_phi_cuts->Fill(angle,weight);
+            h_tau_nprongs_cuts->Fill(tau_0_n_charged_tracks,weight);
 
             h_weight_total_cuts->Fill(weight,1);
             h_weight_mc_cuts->Fill(weight_total,1);
@@ -492,8 +520,10 @@ void CLoop::Style() {
     h_weight_total->Write();
     h_weight_total_cuts->Write();
 
-    h_rnn_score->Write();
-    h_rnn_score_btag_iso_ptmu_omega_mreco->Write();
+    h_rnn_score_1prong->Write();
+    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco->Write();
+    h_rnn_score_3prong->Write();
+    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco->Write();
 
 
     //Writing lep pT
@@ -585,6 +615,15 @@ void CLoop::Style() {
     h_Z_pt_reco_cuts_inside->Write();
     h_Z_pt_reco_outside->Write();
     h_Z_pt_reco_cuts_outside->Write();
+
+    h_lep_phi->Write();
+    h_tau_phi->Write();
+    h_delta_phi->Write();
+    h_tau_nprongs->Write();
+    h_lep_phi_cuts->Write();
+    h_tau_phi_cuts->Write();
+    h_delta_phi_cuts->Write();
+    h_tau_nprongs_cuts->Write();
 
 }
 

@@ -28,8 +28,10 @@ TH1F * h_sf_e_vertex;
 TH1F * h_sf_e_isolation;
 TH1F * h_sf_e_total;
 
-TH1F * h_rnn_score;
-TH1F * h_rnn_score_bdte_btag_iso_pte_omega_mle_mreco;
+TH1F * h_rnn_score_1prong;
+TH1F * h_rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco;
+TH1F * h_rnn_score_3prong;
+TH1F * h_rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco;
 
 TH1F * h_bdt_e_score;
 TH1F * h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco;
@@ -131,5 +133,14 @@ TH1F * h_Z_pt_reco_inside;
 TH1F * h_Z_pt_reco_cuts_inside;
 TH1F * h_Z_pt_reco_outside;
 TH1F * h_Z_pt_reco_cuts_outside;
+
+TH1F * h_lep_phi;
+TH1F * h_tau_phi;
+TH1F * h_delta_phi;
+TH1F * h_tau_nprongs;
+TH1F * h_lep_phi_cuts;
+TH1F * h_tau_phi_cuts;
+TH1F * h_delta_phi_cuts;
+TH1F * h_tau_nprongs_cuts;
 
 #endif
