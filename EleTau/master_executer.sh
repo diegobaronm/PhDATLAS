@@ -1,4 +1,6 @@
 #!/bin/bash
+rm -r MC/out_previous
+rm -r DATA/out_previous
 mv MC/out/ MC/out_previous/
 mkdir MC/out/
 mv DATA/out/ DATA/out_previous/

@@ -216,7 +216,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -229,11 +229,11 @@ void CLoop::Fill(double weight) {
         double reco_mass_outside=0;
         if (outside90_lep || outside120_lep) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_l_MET);
-          reco_mass_outside=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+tau_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
+          reco_mass_outside=5+sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+tau_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
         }
         if (outside90_tau || outside120_tau) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_tau_MET);
-          reco_mass_outside=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
+          reco_mass_outside=5+sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
         }
 
 
@@ -364,7 +364,7 @@ void CLoop::Fill(double weight) {
         //h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
         h_inva_mass_ltau->Fill(inv_taulep,weight);
         h_trans_mass->Fill(trans_mass,weight);
-        //h_visible_mass->Fill(visi_mass,weight);
+
 
         h_trans_lepmet_mass->Fill(lepmet_mass,weight);
         if (tau_0_n_charged_tracks==1){
@@ -375,9 +375,7 @@ void CLoop::Fill(double weight) {
         }
         h_jet_n->Fill(n_jets, weight);
         h_muon_0_iso_FCTightTrackOnly_FixedRad->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
-        /*if (n_jets!=0) {
-          h_b_tag->Fill(jet_MV2c10->at(0),weight);
-        }*/
+
         h_omega->Fill(omega,weight);
 
         //h_weight_total->Fill(weight,1);
@@ -441,13 +439,12 @@ void CLoop::Fill(double weight) {
             h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
             h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                 *muon_0_NOMINAL_MuEffSF_TTVA,1);
-            */                              
+            */                               
             if (inside90) {
               h_reco_mass_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
               h_angle_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
               //h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
-              //h_visible_mass_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
               h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
             }
             if (outside90_lep) {
@@ -455,7 +452,6 @@ void CLoop::Fill(double weight) {
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
               //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-              //h_visible_mass_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
             if (outside90_tau){
@@ -463,7 +459,6 @@ void CLoop::Fill(double weight) {
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
               //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
-              //h_visible_mass_btag_iso_rnn_ptmu_mreco->Fill(visi_mass,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
           }
@@ -524,6 +519,7 @@ void CLoop::Style() {
     h_rnn_score_1prong_btag_iso_ptmu_omega_mreco->Write();
     h_rnn_score_3prong->Write();
     h_rnn_score_3prong_btag_iso_ptmu_omega_mreco->Write();
+
 
     //Writing lep pT
     h_lep_pt0->Write();

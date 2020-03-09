@@ -246,11 +246,11 @@ void CLoop::Fill(double weight) {
         double reco_mass_outside=0;
         if (outside90_lep || outside120_lep) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_l_MET);
-          reco_mass_outside=sqrt(2*(elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+tau_0_p4->Pt()*neutrino_pt*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))));
+          reco_mass_outside=5+sqrt(2*(elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+tau_0_p4->Pt()*neutrino_pt*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))));
         }
         if (outside90_tau || outside120_tau) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_tau_MET);
-          reco_mass_outside=sqrt(2*(elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+elec_0_p4->Pt()*neutrino_pt*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))));
+          reco_mass_outside=5+sqrt(2*(elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+elec_0_p4->Pt()*neutrino_pt*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))));
         }
 
 
@@ -424,9 +424,7 @@ void CLoop::Fill(double weight) {
         h_bdt_e_score->Fill(tau_0_ele_bdt_score_trans,weight);
         h_jet_n->Fill(n_jets, weight);
         h_elec_0_iso_FCTight->Fill(elec_0_iso_FCTight,weight);
-        /*if (n_jets!=0) {
-          h_b_tag->Fill(jet_MV2c10->at(0),weight);
-        }*/
+  
         h_omega->Fill(omega,weight);
         h_weight_total->Fill(weight,1);
         h_weight_mc->Fill(weight_total,1);
