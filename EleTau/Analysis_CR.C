@@ -152,7 +152,7 @@ void CLoop::Book() {
     h_sf_e_vertex = new TH1F("sf_e_vertex","elec vertex matching scale factor",30,0.85,1.15);
     h_sf_e_isolation = new TH1F("sf_e_isolation","elec isolation scale factor",30,0.85,1.15);
     h_sf_e_total = new TH1F("sf_e_total","elec total scale factor",30,0.85,1.15);
-    */
+    */ 
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Jet N",10,-1,9);
     h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("jet_n_rnne_btag_iso_rnn_pte_omega_mle_mreco","Jet N_rnne_btag_iso_rnn_pte_omega_mle_mreco",10,-1,9);
@@ -233,7 +233,7 @@ void CLoop::Fill(double weight) {
 
 
 
-      if (ql!=qtau && (inside90 || outside90_lep || outside90_tau)){
+      if (ql==qtau && (inside90 || outside90_lep || outside90_tau)){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -424,9 +424,7 @@ void CLoop::Fill(double weight) {
         h_bdt_e_score->Fill(tau_0_ele_bdt_score_trans,weight);
         h_jet_n->Fill(n_jets, weight);
         h_elec_0_iso_FCTight->Fill(elec_0_iso_FCTight,weight);
-        /*if (n_jets!=0) {
-          h_b_tag->Fill(jet_MV2c10->at(0),weight);
-        }*/
+  
         h_omega->Fill(omega,weight);
         //h_weight_total->Fill(weight,1);
         //h_weight_mc->Fill(weight_total,1);

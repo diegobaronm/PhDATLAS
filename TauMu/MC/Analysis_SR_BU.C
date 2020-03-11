@@ -15,7 +15,30 @@
 #include <utility>
 
 
+float del_phi(float phi_1, float phi_2){
+    float phi_1_norm, phi_2_norm;
+    if (phi_1<0.0){
+        phi_1_norm=3.1415*phi_1/180.0+2*3.1415;            
+    }else {
+        phi_1_norm=3.1415*phi_1/180.0;
+    }
+    
+    if (phi_2<0.0){
+        phi_2_norm=3.1415*phi_2/180.0+2*3.1415;            
+    }else {
+        phi_2_norm=3.1415*phi_2/180.0;
+    }
+    float delta=std::abs(phi_1_norm-phi_2_norm);
+    while (delta>3.1415){
+        delta=delta-3.1415;
+        delta=std::abs(delta);
+    }
+    
+    
 
+    
+    return delta*180./3.1415;
+}
 
 
 void CLoop::Book() {
@@ -203,9 +226,9 @@ void CLoop::Fill(double weight) {
       float pair_charge=ql*qtau;
 
       //angles
-      double angle_l_MET=abs(muon_0_p4->Phi()-met_reco_p4->Phi());
-      double angle_tau_MET=abs(tau_0_p4->Phi()-met_reco_p4->Phi());
-      double angle=abs(tau_0_p4->Phi()-muon_0_p4->Phi());
+      double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
+      double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
+      double angle=del_phi(tau_0_p4->Phi(),muon_0_p4->Phi());
 
       //topology
       bool inside90= angle<1.5707 && angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED 1.5707 AND 2.0943
