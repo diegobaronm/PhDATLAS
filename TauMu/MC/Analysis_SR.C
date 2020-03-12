@@ -16,21 +16,22 @@
 
 
 double del_phi(double phi_1, double phi_2){
+    double pi=TMath::Pi();
     double phi_1_norm, phi_2_norm;
     if (phi_1<0.0){
-        phi_1_norm=3.1415*phi_1/180.0+2*3.1415;            
+        phi_1_norm=phi_1+2*pi;            
     }else {
-        phi_1_norm=3.1415*phi_1/180.0;
+        phi_1_norm=phi_1;
     }
     
     if (phi_2<0.0){
-        phi_2_norm=3.1415*phi_2/180.0+2*3.1415;            
+        phi_2_norm=phi_2+2*pi;            
     }else {
-        phi_2_norm=3.1415*phi_2/180.0;
+        phi_2_norm=phi_2;
     }
     double delta=std::abs(phi_1_norm-phi_2_norm);
-    while (delta>3.1415){
-        delta=delta-3.1415;
+    if (delta>pi){
+        delta=2*pi-delta;
         delta=std::abs(delta);
     }
     
@@ -42,12 +43,7 @@ double del_phi(double phi_1, double phi_2){
 
 
 void CLoop::Book() {
-    // This function is where you "book" your histograms
-    // It is called once per data set
-    // You will need to do this for each histogram you want to plot
-    // The syntax is: histogram = new TH1F("histogram_name", "Title", number_of_bins, x_min, x_max);
-
-    // For example, booking a histogram to plot number of leptons per event:
+    double pi=TMath::Pi();
 
     // VARIABLES ONLY ONCE
 
@@ -175,13 +171,13 @@ void CLoop::Book() {
     
 
     // Angular variable
-    h_omega = new TH1F("omega","omega variable",30,-1.0,2.0);
-    h_omega_btag_iso_rnn_ptmu_mreco = new TH1F("omega_btag_iso_rnn_ptmu_mreco","omega variable_btag_iso_rnn_ptmu_mreco",30,-1.0,2.0);
+    h_omega = new TH1F("omega","omega variable",60,-3.0,3.0);
+    h_omega_btag_iso_rnn_ptmu_mreco = new TH1F("omega_btag_iso_rnn_ptmu_mreco","omega variable_btag_iso_rnn_ptmu_mreco",60,-3.0,3.0);
 
-    h_angle = new TH1F("angle","opening angle MET in between",30,0,3.141596);
-    h_angle_ouside = new TH1F("angle_outside","opening angle MET outside",30,0,3.141596);
-    h_angle_cuts = new TH1F("angle_cuts","opening angle MET in between after cuts",30,0,3.141596);
-    h_angle_ouside_cuts = new TH1F("angle_outside_cuts","opening angle MET outside after cuts",30,0,3.141596);
+    h_angle = new TH1F("angle","opening angle MET in between",30,0,pi);
+    h_angle_ouside = new TH1F("angle_outside","opening angle MET outside",30,0,pi);
+    h_angle_cuts = new TH1F("angle_cuts","opening angle MET in between after cuts",30,0,pi);
+    h_angle_ouside_cuts = new TH1F("angle_outside_cuts","opening angle MET outside after cuts",30,0,pi);
 
     h_Z_pt_reco_inside = new TH1F("Z_pt_inside","Z boson transverse momentum _inside",300,0,300);
     h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum _inside",300,0,300);
@@ -195,7 +191,7 @@ void CLoop::Book() {
 }
 
 void CLoop::Fill(double weight) {
-
+    double pi=TMath::Pi();
     bool trigger_decision= false;
     if (run_number>= 276262 && run_number<=284484) {
       trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
@@ -215,16 +211,14 @@ void CLoop::Fill(double weight) {
       double angle=del_phi(tau_0_p4->Phi(),muon_0_p4->Phi());
 
       //topology
-      bool inside90= angle<1.5707 && angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED 1.5707 AND 2.0943
-      bool inside120=  angle>1.5707 && angle<2.0943 && angle==(angle_l_MET+angle_tau_MET);
-      bool outside90_lep= angle<1.5707 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-      bool outside90_tau= angle<1.5707 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-      bool outside120_lep= angle>1.5707 && angle<2.0943 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-      bool outside120_tau= angle>1.5707 && angle<2.0943 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-
-
-
-      if (ql!=qtau && angle<(3.0/4.0)*3.1415){
+      bool inside= angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
+      bool outside_lep= angle_l_MET<angle_tau_MET &&  angle!=(angle_l_MET+angle_tau_MET) && cos(angle_l_MET)>0;
+      bool outside_tau= angle_l_MET>angle_tau_MET && angle!=(angle_l_MET+angle_tau_MET) && cos(angle_tau_MET)>0;
+      bool inside90= angle<pi/2 && angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
+      bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
+      bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
+      
+      if (ql==qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -235,11 +229,11 @@ void CLoop::Fill(double weight) {
 
         double neutrino_pt=0;
         double reco_mass_outside=0;
-        if (outside90_lep) {
+        if (outside_lep) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_l_MET);
           reco_mass_outside=5+sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+tau_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
         }
-        if (outside90_tau) {
+        if (outside_tau) {
           neutrino_pt=met_reco_p4->Pt()*cos(angle_tau_MET);
           reco_mass_outside=5+sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*neutrino_pt*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))));
         }
@@ -248,19 +242,19 @@ void CLoop::Fill(double weight) {
         double Z_pt_x=0;
         double Z_pt_y=0;
         double Z_pt=0;
-        if (inside90) {
+        if (inside) {
           Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(muon_0_p4->Phi());
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+pt_tau_nu*sin(tau_0_p4->Phi())+pt_lep_nu*sin(muon_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
           h_Z_pt_reco_inside->Fill(Z_pt,weight);
         }
-        if (outside90_tau) {
+        if (outside_tau) {
           Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(tau_0_p4->Phi());
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(tau_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
           h_Z_pt_reco_outside->Fill(Z_pt,weight);
         }
-        if (outside90_lep) {
+        if (outside_lep) {
           Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(muon_0_p4->Phi());
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(muon_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
@@ -276,22 +270,22 @@ void CLoop::Fill(double weight) {
 
         // ANGULAR VARIABLE DEFINITION
         double omega=0.0;
-        if (inside90 && (angle_l_MET<angle_tau_MET)) {
+        if (angle==(angle_l_MET+angle_tau_MET) && (angle_l_MET<angle_tau_MET)) {
           omega=1.0-(angle_l_MET)/(angle);
         }
-        if (inside90 && (angle_l_MET>angle_tau_MET)) {
+        if (angle==(angle_l_MET+angle_tau_MET) && (angle_l_MET>angle_tau_MET)) {
           omega=(angle_tau_MET)/(angle);
         }
-        if (outside90_lep) {
+        if (outside_lep) {
           omega=1.0+(angle_l_MET)/(angle);
         }
-        if (outside90_tau) {
+        if (outside_tau) {
           omega=-1.0*(angle_tau_MET)/(angle);
         }
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (inside90 || outside90_lep || outside90_tau){
+        if (angle<=pi/2){
           cuts[0]=1;
         }
         if (n_bjets==0){
@@ -309,17 +303,17 @@ void CLoop::Fill(double weight) {
         if (omega>0 && omega <1.4) {
           cuts[5]=1;
         }
-        if (inside90) {
+        if (inside) {
           if (reco_mass<110 && reco_mass>70) {
             cuts[6]=1;
           }
         }
-        if (outside90_lep) {
+        if (outside_lep) {
           if (reco_mass_outside<110 && reco_mass_outside>70) {
             cuts[6]=1;
           }
         }
-        if (outside90_tau) {
+        if (outside_tau) {
           if (reco_mass_outside<110 && reco_mass_outside>70) {
             cuts[6]=1;
         }
@@ -358,17 +352,17 @@ void CLoop::Fill(double weight) {
         if (cuts==c_omega||cuts==c_all) {
           h_omega_btag_iso_rnn_ptmu_mreco->Fill(omega,weight);
         }
-        if (inside90) {
+        if (inside) {
           if (cuts==c_mreco||cuts==c_all) {
             h_reco_mass_btag_iso_rnn_ptmu_omega->Fill(reco_mass,weight);
           }
         }
-        if (outside90_lep) {
+        if (outside_lep) {
           if (cuts==c_mreco||cuts==c_all) {
             h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
           }
         }
-        if (outside90_tau) {
+        if (outside_tau) {
           if (cuts==c_mreco||cuts==c_all) {
             h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
           }
@@ -401,15 +395,15 @@ void CLoop::Fill(double weight) {
         h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
 
         
-        if (inside90) {
+        if (inside) {
           h_reco_mass->Fill(reco_mass,weight);
           h_angle->Fill(angle,weight);
         }
-        if (outside90_lep) {
+        if (outside_lep) {
           h_reco_mass_met_outside->Fill(reco_mass_outside,weight);
           h_angle_ouside->Fill(angle,weight);
         }
-        if (outside90_tau){
+        if (outside_tau){
           h_reco_mass_met_outside->Fill(reco_mass_outside,weight);
           h_angle_ouside->Fill(angle,weight);
         }
@@ -424,13 +418,13 @@ void CLoop::Fill(double weight) {
             h_lep_pt0_btag->Fill(muon_0_p4->Pt(),weight);
             h_lep_pt1_btag->Fill(tau_0_p4->Pt(),weight);
 
-            if (inside90) {
+            if (inside) {
               h_reco_mass_btag->Fill(reco_mass,weight);
             }
-            if (outside90_lep) {
+            if (outside_lep) {
               h_reco_mass_met_outside_btag->Fill(reco_mass_outside,weight);
             }
-            if (outside90_tau){
+            if (outside_tau){
               h_reco_mass_met_outside_btag->Fill(reco_mass_outside,weight);
             }
 
@@ -440,13 +434,13 @@ void CLoop::Fill(double weight) {
               h_lep_pt0_btag_iso->Fill(muon_0_p4->Pt(),weight);
               h_lep_pt1_btag_iso->Fill(tau_0_p4->Pt(),weight);
 
-              if (inside90) {
+              if (inside) {
                 h_reco_mass_btag_iso->Fill(reco_mass,weight);
               }
-              if (outside90_lep) {
+              if (outside_lep) {
                 h_reco_mass_met_outside_btag_iso->Fill(reco_mass_outside,weight);
               }
-              if (outside90_tau){
+              if (outside_tau){
                 h_reco_mass_met_outside_btag_iso->Fill(reco_mass_outside,weight);
               }
 
@@ -456,13 +450,13 @@ void CLoop::Fill(double weight) {
                 h_lep_pt0_btag_iso_rnn->Fill(muon_0_p4->Pt(),weight);
                 h_lep_pt1_btag_iso_rnn->Fill(tau_0_p4->Pt(),weight);
 
-                if (inside90) {
+                if (inside) {
                   h_reco_mass_btag_iso_rnn->Fill(reco_mass,weight);
                 }
-                if (outside90_lep) {
+                if (outside_lep) {
                   h_reco_mass_met_outside_btag_iso_rnn->Fill(reco_mass_outside,weight);
                 }
-                if (outside90_tau){
+                if (outside_tau){
                   h_reco_mass_met_outside_btag_iso_rnn->Fill(reco_mass_outside,weight);
                 }
 
@@ -472,13 +466,13 @@ void CLoop::Fill(double weight) {
                   h_lep_pt0_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt(),weight);
                   h_lep_pt1_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt(),weight);
 
-                  if (inside90) {
+                  if (inside) {
                     h_reco_mass_btag_iso_rnn_ptmu->Fill(reco_mass,weight);
                   }
-                  if (outside90_lep) {
+                  if (outside_lep) {
                     h_reco_mass_met_outside_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
                   }
-                  if (outside90_tau){
+                  if (outside_tau){
                     h_reco_mass_met_outside_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
                   }
 
@@ -489,13 +483,13 @@ void CLoop::Fill(double weight) {
                     h_lep_pt0_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 
 
-                    if (inside90) {
+                    if (inside) {
                       h_lep_pt1_btag_iso_rnn_ptmu_omega_inside->Fill(tau_0_p4->Pt(),weight);
                     }
-                    if (outside90_lep) {
+                    if (outside_lep) {
                       h_lep_pt1_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
                     }
-                    if (outside90_tau){
+                    if (outside_tau){
                       h_lep_pt1_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
                     }
 
@@ -520,21 +514,21 @@ void CLoop::Fill(double weight) {
                       h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                           *muon_0_NOMINAL_MuEffSF_TTVA,1);
 
-                      if (inside90) {
+                      if (inside) {
                         h_reco_mass_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
                         h_angle_cuts->Fill(angle,weight);
                         h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
                         h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
                         h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
                       }
-                      if (outside90_lep) {
+                      if (outside_lep) {
                         h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
                         h_angle_ouside_cuts->Fill(angle,weight);
                         h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
                         h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                         h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
                       }
-                      if (outside90_tau){
+                      if (outside_tau){
                         h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
                         h_angle_ouside_cuts->Fill(angle,weight);
                         h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);

@@ -184,13 +184,13 @@ void CLoop::Book() {
     
 
     // Angular variable
-    h_omega = new TH1F("omega","omega variable",30,-1.0,2.0);
-    h_omega_bdte_btag_iso_rnn_pte_mle_mreco = new TH1F("omega_bdte_btag_iso_rnn_pte_mle_mreco","omega variable_bdte_btag_iso_rnn_pte_mle_mreco",30,-1.0,2.0);
+    h_omega = new TH1F("omega","omega variable",60,-3.0,3.0);
+    h_omega_bdte_btag_iso_rnn_pte_mle_mreco = new TH1F("omega_bdte_btag_iso_rnn_pte_mle_mreco","omega variable_bdte_btag_iso_rnn_pte_mle_mreco",60,-3.0,3.0);
 
-    h_angle = new TH1F("angle","opening angle MET in between",30,0,3.141596);
-    h_angle_ouside = new TH1F("angle_outside","opening angle MET outside",30,0,3.141596);
-    h_angle_cuts = new TH1F("angle_cuts","opening angle MET in between after cuts",30,0,3.141596);
-    h_angle_ouside_cuts = new TH1F("angle_outside_cuts","opening angle MET outside after cuts",30,0,3.141596);
+    h_angle = new TH1F("angle","opening angle MET in between",30,0,pi);
+    h_angle_ouside = new TH1F("angle_outside","opening angle MET outside",30,0,pi);
+    h_angle_cuts = new TH1F("angle_cuts","opening angle MET in between after cuts",30,0,pi);
+    h_angle_ouside_cuts = new TH1F("angle_outside_cuts","opening angle MET outside after cuts",30,0,pi);
 
     h_Z_pt_reco_inside = new TH1F("Z_pt_inside","Z boson transverse momentum _inside",300,0,300);
     h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum _inside",300,0,300);
@@ -231,7 +231,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
 
-      if (ql!=qtau && angle<3*pi/4){
+      if (ql==qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
