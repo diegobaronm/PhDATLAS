@@ -233,7 +233,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
 
-      if (ql!=qtau && angle<3*pi/4){
+      if (ql==qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -352,7 +352,7 @@ void CLoop::Fill(double weight) {
         vector<int> c_mreco={1,1,1,1,1,1,1,1,0};
         vector<int> c_all={1,1,1,1,1,1,1,1,1};
 
-        f (cuts==c_phi||cuts==c_all) {
+        if (cuts==c_phi||cuts==c_all) {
           h_delta_phi_cuts_butphi->Fill(angle,weight);
         }
         if (cuts==c_bdte||cuts==c_all) {
