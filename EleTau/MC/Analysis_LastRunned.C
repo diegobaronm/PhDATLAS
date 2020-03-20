@@ -191,13 +191,16 @@ void CLoop::Book() {
 void CLoop::Fill(double weight) {
     double pi=TMath::Pi();
     bool trigger_decision= false;
+    bool trigger_match=false;
     if (run_number>= 276262 && run_number<=284484){
         trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0); 
+        trigger_match=bool(eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0);
     } else {
         trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+        trigger_match=bool(eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0);
     }
     bool lepton_id=elec_0_id_tight;
-    if (n_electrons==1 && n_taus==1 && trigger_decision && lepton_id) {
+    if (n_electrons==1 && n_taus==1 && trigger_decision && lepton_id && trigger_match) {
 
       float ql=elec_0_q;
       float qtau=tau_0_q;
@@ -216,7 +219,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
 
-      if (ql!=qtau && angle<3*pi/4){
+      if (ql==qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -283,7 +286,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0,0};
-        if (angle>pi/2 && angle<=2*pi/3){
+        if (angle<=2*pi/3){
           cuts[0]=1;
         }
         if (tau_0_ele_bdt_score_trans>=0.1) {
