@@ -120,14 +120,7 @@ void CLoop::Book() {
     h_reco_mass_bdte_btag_iso_rnn_pte_omega = new TH1F("reco_mass_bdte_btag_iso_rnn_pte_omega","mass reconstructed with trick_bdte_btag_iso_rnn_pte_omega",300,0,300);
     h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle = new TH1F("reco_mass_bdte_btag_iso_rnn_pte_omega_mle","mass reconstructed with trick_bdte_btag_iso_rnn_pte_omega_mle",300,0,300);
     h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco","mass reconstructed with trick_bdte_btag_iso_rnn_pte_omega_mle_mreco",300,0,300);
-    /*
-    h_reco_mass_90_to_120 = new TH1F("reco_mass_90_to_120","mass reconstructed with trick from 90 to 120",300,0,300);
-    h_reco_mass_90_to_120_bdte = new TH1F("reco_mass_90_to_120+bdte","mass reconstructed with trick from 90 to 120 + bdte",300,0,300);
-    h_reco_mass_90_to_120_bdte_iso = new TH1F("reco_mass_90_to_120+bdte+iso","mass reconstructed with trick from 90 to 120 + bdte + iso",300,0,300);
-    h_reco_mass_90_to_120_bdte_iso_rnn = new TH1F("reco_mass_90_to_120+bdte+iso+rnn","mass reconstructed with trick from 90 to 120 + bdte + iso +rnn",300,0,300);
-    h_reco_mass_90_to_120_bdte_iso_rnn_pte = new TH1F("reco_mass_90_to_120_bdte_iso_rnn_pte","mass reconstructed with trick from 90 to 120_bdte_iso_rnn_pte",300,0,300);
-    h_reco_mass_90_to_120_bdte_iso_rnn_pte_mreco = new TH1F("reco_mass_90_to_120_bdte_iso_rnn_pte_mreco","mass reconstructed with trick from 90 to 120_bdte_iso_rnn_pte_mreco",300,0,300);
-    */
+
     h_reco_mass_met_outside = new TH1F("reco_mass_met_outside","mass reconstructed with trick MET outside",300,0,300);
     h_reco_mass_met_outside_bdte = new TH1F("reco_mass_met_outside_bdte","mass reconstructed with trick MET outside_bdte",300,0,300);
     h_reco_mass_met_outside_bdte_btag = new TH1F("reco_mass_met_outside_bdte_btag","mass reconstructed with trick MET outside_bdte_btag",300,0,300);
@@ -137,15 +130,7 @@ void CLoop::Book() {
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_omega",300,0,300);
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_omega_mle",300,0,300);
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_omega_mle_mreco",300,0,300);
-    /*
-    h_reco_mass_met_outside_120 = new TH1F("reco_mass_met_outside_120","mass reconstructed with trick MET outside_120",300,0,300);
-    h_reco_mass_met_outside_bdte_120 = new TH1F("reco_mass_met_outside_bdte_120","mass reconstructed with trick MET outside_bdte_120",300,0,300);
-    h_reco_mass_met_outside_bdte_btag_120 = new TH1F("reco_mass_met_outside_bdte_btag_120","mass reconstructed with trick MET outside_bdte_btag_120",300,0,300);
-    h_reco_mass_met_outside_bdte_btag_iso_120 = new TH1F("reco_mass_met_outside_bdte_btag_iso_120","mass reconstructed with trick MET outside_bdte_btag_iso_120",300,0,300);
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_120 = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_120","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_120",300,0,300);
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_120 = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_120","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_120",300,0,300);
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_mreco_120 = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_mreco_120","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_mreco_120",300,0,300);
-    */
+
     // rnn Score histograms
     h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
     h_rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco = new TH1F("rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco","rnn score_bdte_btag_iso_pte_omega_mle_mreco 1 track",60,0.4,1);
@@ -598,14 +583,7 @@ void CLoop::Style() {
     h_reco_mass_bdte_btag_iso_rnn_pte_omega->Write();
     h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle->Write();
     h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    /*
-    h_reco_mass_90_to_120->Write();
-    h_reco_mass_90_to_120_bdte->Write();
-    h_reco_mass_90_to_120_bdte_iso->Write();
-    h_reco_mass_90_to_120_bdte_iso_rnn->Write();
-    h_reco_mass_90_to_120_bdte_iso_rnn_pte->Write();
-    h_reco_mass_90_to_120_bdte_iso_rnn_pte_mreco->Write();
-    */
+
     h_reco_mass_met_outside->Write();
     h_reco_mass_met_outside_bdte->Write();
     h_reco_mass_met_outside_bdte_btag->Write();
@@ -615,15 +593,7 @@ void CLoop::Style() {
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega->Write();
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle->Write();
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    /*
-    h_reco_mass_met_outside_120->Write();
-    h_reco_mass_met_outside_bdte_120->Write();
-    h_reco_mass_met_outside_bdte_btag_120->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_120->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_120->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_120->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_mreco_120->Write();
-    */
+    
     //Writing jet number
     h_jet_n->Write();
     h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
