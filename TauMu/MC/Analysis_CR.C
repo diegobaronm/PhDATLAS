@@ -178,13 +178,16 @@ void CLoop::Book() {
 void CLoop::Fill(double weight) {
     double pi=TMath::Pi();
     bool trigger_decision= false;
+    bool trigger_match= false;
     if (run_number>= 276262 && run_number<=284484) {
       trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
+      trigger_match=bool(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50);
     } else {
       trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
+      trigger_match=bool(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50);
     }
     bool lepton_id=muon_0_id_medium;
-    if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id) {
+    if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id && trigger_match) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
@@ -270,7 +273,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (angle>pi/2 && angle<=2*pi/3){
+        if (angle<=2*pi/3){
           cuts[0]=1;
         }
         if (n_bjets==0){

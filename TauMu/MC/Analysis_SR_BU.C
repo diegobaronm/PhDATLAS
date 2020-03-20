@@ -112,13 +112,7 @@ void CLoop::Book() {
     h_reco_mass_btag_iso_rnn_ptmu = new TH1F("reco_mass_btag_iso_rnn_ptmu","mass reconstructed with trick_btag_iso_rnn_ptmu",300,0,300);
     h_reco_mass_btag_iso_rnn_ptmu_omega = new TH1F("reco_mass_btag_iso_rnn_ptmu_omega","mass reconstructed with trick_btag_iso_rnn_ptmu_omega",300,0,300);
     h_reco_mass_btag_iso_rnn_ptmu_omega_mreco = new TH1F("reco_mass_btag_iso_rnn_ptmu_omega_mreco","mass reconstructed with trick_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
-    /*
-    h_reco_mass_90_to_120 = new TH1F("reco_mass_90_to_120","mass reconstructed with trick from 90 to 120",300,0,300);
-    h_reco_mass_90_to_120_iso = new TH1F("reco_mass_90_to_120+jetn+iso","mass reconstructed with trick from 90 to 120 + jetn + iso",300,0,300);
-    h_reco_mass_90_to_120_iso_rnn = new TH1F("reco_mass_90_to_120+jetn+iso+rnn","mass reconstructed with trick from 90 to 120 + jetn + iso +rnn",300,0,300);
-    h_reco_mass_90_to_120_iso_rnn_ptmu = new TH1F("reco_mass_90_to_120_iso_rnn_ptmu","mass reconstructed with trick from 90 to 120_iso_rnn_ptmu",300,0,300);
-    h_reco_mass_90_to_120_iso_rnn_ptmu_mreco = new TH1F("reco_mass_90_to_120_iso_rnn_ptmu_mreco","mass reconstructed with trick from 90 to 120_iso_rnn_ptmu_mreco",300,0,300);
-    */
+
     h_reco_mass_met_outside = new TH1F("reco_mass_met_outside","mass reconstructed with trick MET outside",300,0,300);
     h_reco_mass_met_outside_btag = new TH1F("reco_mass_met_outside_btag","mass reconstructed with trick MET outside_btag",300,0,300);
     h_reco_mass_met_outside_btag_iso = new TH1F("reco_mass_met_outside_btag_iso","mass reconstructed with trick MET outside_btag_iso",300,0,300);
@@ -126,14 +120,7 @@ void CLoop::Book() {
     h_reco_mass_met_outside_btag_iso_rnn_ptmu = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu",300,0,300);
     h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_omega","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_omega",300,0,300);
     h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
-    /*
-    h_reco_mass_met_outside_120 = new TH1F("reco_mass_met_outside_120","mass reconstructed with trick MET outside_120",300,0,300);
-    h_reco_mass_met_outside_btag_120 = new TH1F("reco_mass_met_outside_btag_120","mass reconstructed with trick MET outside_btag_120",300,0,300);
-    h_reco_mass_met_outside_btag_iso_120 = new TH1F("reco_mass_met_outside_btag_iso_120","mass reconstructed with trick MET outside_btag_iso_120",300,0,300);
-    h_reco_mass_met_outside_btag_iso_rnn_120 = new TH1F("reco_mass_met_outside_btag_iso_rnn_120","mass reconstructed with trick MET outside_btag_iso_rnn_120",300,0,300);
-    h_reco_mass_met_outside_btag_iso_rnn_ptmu_120 = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_120","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_120",300,0,300);
-    h_reco_mass_met_outside_btag_iso_rnn_ptmu_mreco_120 = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_mreco_120","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_mreco_120",300,0,300);
-    */
+
     // rnn Score histograms
     h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
     h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",60,0.4,1);
@@ -193,13 +180,16 @@ void CLoop::Book() {
 void CLoop::Fill(double weight) {
     double pi=TMath::Pi();
     bool trigger_decision= false;
+    bool trigger_match= false;
     if (run_number>= 276262 && run_number<=284484) {
       trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
+      trigger_match=bool(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50);
     } else {
       trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
+      trigger_match=bool(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50);
     }
     bool lepton_id=muon_0_id_medium;
-    if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id) {
+    if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id && trigger_match) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
@@ -218,7 +208,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       
-      if (ql==qtau && angle<3*pi/4){
+      if (ql!=qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -285,7 +275,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        if (angle<=pi/2){
+        if (angle<=2*pi/3){
           cuts[0]=1;
         }
         if (n_bjets==0){
