@@ -2,7 +2,8 @@ import os
 import sys
 import ROOT
 
-mc={'Ztautau_2018':['Ztautau_2018','/media/diegol/Mobile/DATA/v19/mc/user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv1_Le',361108,1902.1,1,1.002]}
+mc={'Ztautau_2018':['/media/diegol/Mobile/DATA/v19/mc/user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv1_Le',361108,1902.1,1,1.002],
+'Ztautau_2015':['/media/diegol/Mobile/DATA/v19/mc/user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r9364_p3975.sv1_Le',361108,1902.1,1,1.002]}
 
 ## THIS SCRIPT MUST BE LAUNCHED AS
 
@@ -29,7 +30,7 @@ def data_combo(name,directory,home):
             string=string+"'"+name+"_"+str(j)+"'"+","
             j=j+1
     os.chdir(home)
-    return string
+    return '"'+name+'"'+':'+'['+string+'],\n'
 
 def info_file(name,directory,DSID,XSEC,KFAC,FIL_EFF,home):
     os.chdir(directory)
@@ -50,48 +51,19 @@ def info_file(name,directory,DSID,XSEC,KFAC,FIL_EFF,home):
     os.chdir(home)
     return strin
 
+for sample in mc:
+    
+    files=open('files.txt','a+')
+    files.write('#%s\n'%(sample))
+    files.write(list(sample,mc[sample][0],pwd))
+    files.close()
 
-files=open('files.txt','a+')
-files.write('#%s\n'%(mc['Ztautau_2018'][0]))
-files.write(list(mc['Ztautau_2018'][0],mc['Ztautau_2018'][1],pwd))
-files.close()
+    combos=open('combos.txt','a+')
+    combos.write('#%s\n'%(sample))
+    combos.write(data_combo(sample,mc[sample][0],pwd))
+    combos.close()
 
-combos=open('combos.txt','a+')
-combos.write('#%s\n'%(mc['Ztautau_2018'][0]))
-combos.write(data_combo(mc['Ztautau_2018'][0],mc['Ztautau_2018'][1],pwd))
-combos.close()
-
-f=open('info.txt','a+')
-f.write('#%s\n'%(mc['Ztautau_2018'][0]))
-f.write(info_file(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6],pwd))
-f.close()
-#combos.close()
-'''
-print(list(sys.argv[1],sys.argv[2]))
-print("\n")
-print("\n")
-print("IF YOU HAVE COPIED THE DATASET, TYPE ANY CHARACTER TO CONTINUE...")
-print("\n")
-print("\n")
-answer=False
-while(not answer):
-    a=input()
-    if a!="":
-        answer=True
-print("\n")
-print("\n")
-print(data_combo(sys.argv[1]))
-print("\n")
-print("\n")
-print("IF YOU HAVE COPIED THE DATASET, TYPE ANY CHARACTER TO CONTINUE...")
-print("\n")
-print("\n")
-answer=False
-while(not answer):
-    a=input()
-    if a!="":
-        answer=True
-print("\n")
-print("\n")
-print(info_file(sys.argv[1],sys.argv[3],sys.argv[4],sys.argv[5],sys.argv[6]))
-'''
+    f=open('info.txt','a+')
+    f.write('#%s\n'%(sample))
+    f.write(info_file(sample,mc[sample][0],mc[sample][1],mc[sample][2],mc[sample][3],mc[sample][4],pwd))
+    f.close()
