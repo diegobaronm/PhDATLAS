@@ -2,8 +2,41 @@ import os
 import sys
 import ROOT
 
-mc={'Ztautau_2018':['/media/diegol/Mobile/DATA/v19/mc/user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv1_Le',361108,1902.1,1,1.002],
-'Ztautau_2015':['/media/diegol/Mobile/DATA/v19/mc/user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r9364_p3975.sv1_Le',361108,1902.1,1,1.002]}
+base_path='/media/diegol/Mobile/DATA/v19/mc/'
+
+mc={'Ztautau_2018':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv1_Le',361108,1901.2,1.026,1],
+'Ztautau_2017':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10201_p3975.sv1_Le',361108,1901.2,1.026,1],
+'Ztautau_2015':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r9364_p3975.sv1_Le',361108,1901.2,1.026,1],
+'Zmumu_2018':[base_path+'user.sdysch.v19.mc.361107.PoPy8_Zmumu.M4.e3601_s3126_r10724_p3975.sv1_Le',361107,1901.2,1.026,1],
+'Zmumu_2017':[base_path+'user.sdysch.v19.mc.361107.PoPy8_Zmumu.M4.e3601_s3126_r10201_p3975.sv1_Le',361107,1901.2,1.026,1],
+'Zmumu_2015':[base_path+'user.sdysch.v19.mc.361107.PoPy8_Zmumu.M4.e3601_s3126_r9364_p3975.sv1_Le',361107,1901.2,1.026,1],
+'Zee_2018':[base_path+'user.sdysch.v19.mc.361106.PoPy8_Zee.M4.e3601_s3126_r10724_p3975.sv1_Le',361106,1901.2,1.026,1],
+'Zee_2017':[base_path+'user.sdysch.v19.mc.361106.PoPy8_Zee.M4.e3601_s3126_r10201_p3975.sv1_Le',361106,1901.2,1.026,1],
+'Zee_2015':[base_path+'user.sdysch.v19.mc.361106.PoPy8_Zee.M4.e3601_s3126_r9364_p3975.sv1_Le',361106,1901.2,1.026,1],
+'Wplustaunu_2018':[base_path+'user.sdysch.v19.mc.361102.PoPy8_Wplustaunu.M4.e3601_s3126_r10724_p3975.sv1_Le',361102,11306,1.0172,1],
+'Wplustaunu_2017':[base_path+'user.sdysch.v19.mc.361102.PoPy8_Wplustaunu.M4.e3601_s3126_r10201_p3975.sv1_Le',361102,11306,1.0172,1],
+'Wplustaunu_2015':[base_path+'user.sdysch.v19.mc.361102.PoPy8_Wplustaunu.M4.e3601_s3126_r9364_p3975.sv1_Le',361102,11306,1.0172,1],
+'Wplusmunu_2018':[base_path+'user.sdysch.v19.mc.361101.PoPy8_Wplusmunu.M4.e3601_s3126_r10724_p3972.sv1_Le',361101,11306,1.0172,1],
+'Wplusmunu_2017':[base_path+'user.sdysch.v19.mc.361101.PoPy8_Wplusmunu.M4.e3601_s3126_r10201_p3972.sv1_Le',361101,11306,1.0172,1],
+'Wplusmunu_2015':[base_path+'user.sdysch.v19.mc.361101.PoPy8_Wplusmunu.M4.e3601_s3126_r9364_p3972.sv1_Le',361101,11306,1.0172,1],
+'Wplusenu_2018':[base_path+'user.sdysch.v19.mc.361100.PoPy8_Wplusenu.M4.e3601_s3126_r10724_p3972.sv1_Le',361100,11306,1.0172,1],
+'Wplusenu_2017':[base_path+'user.sdysch.v19.mc.361100.PoPy8_Wplusenu.M4.e3601_s3126_r10201_p3975.sv1_Le',361100,11306,1.0172,1],
+'Wplusenu_2015':[base_path+'user.sdysch.v19.mc.361100.PoPy8_Wplusenu.M4.e3601_s3126_r9364_p3972.sv1_Le',361100,11306,1.0172,1],
+'Wminustaunu_2018':[base_path+'user.sdysch.v19.mc.361105.PoPy8_Wminustaunu.M4.e3601_s3126_r10724_p3975.sv1_Le',361105,8282.6,1.0358,1],
+'Wminustaunu_2017':[base_path+'user.sdysch.v19.mc.361105.PoPy8_Wminustaunu.M4.e3601_s3126_r10201_p3975.sv1_Le',361105,8282.6,1.0358,1],
+'Wminustaunu_2015':[base_path+'user.sdysch.v19.mc.361105.PoPy8_Wminustaunu.M4.e3601_s3126_r9364_p3975.sv1_Le',361105,8282.6,1.0358,1],
+'Wminusmunu_2018':[base_path+'user.sdysch.v19.mc.361104.PoPy8_Wminusmunu.M4.e3601_s3126_r10724_p3975.sv1_Le',361104,8282.6,1.0358,1],
+'Wminusmunu_2017':[base_path+'user.sdysch.v19.mc.361104.PoPy8_Wminusmunu.M4.e3601_s3126_r10201_p3972.sv1_Le',361104,8282.6,1.0358,1],
+'Wminusmunu_2015':[base_path+'user.sdysch.v19.mc.361104.PoPy8_Wminusmunu.M4.e3601_s3126_r9364_p3972.sv1_Le',361104,8282.6,1.0358,1],
+'Wminusenu_2018':[base_path+'user.sdysch.v19.mc.361103.PoPy8_Wminusenu.M4.e3601_s3126_r10724_p3972.sv1_Le',361103,8282.6,1.0358,1],
+'Wminusenu_2017':[base_path+'user.sdysch.v19.mc.361103.PoPy8_Wminusenu.M4.e3601_s3126_r10201_p3972.sv1_Le',361103,8282.6,1.0358,1],
+'Wminusenu_2015':[base_path+'user.sdysch.v19.mc.361103.PoPy8_Wminusenu.M4.e3601_s3126_r9364_p3972.sv1_Le',361103,8282.6,1.0358,1],
+'ttbar_2018':[base_path+'user.sdysch.v19.1.mc.410470.PhPy8_A14_ttb_nonallh.M4.e6337_s3126_r10724_p3972.sv1_Le',410470,729.77,1.13975636159,0.54383],
+'ttbar_2017':[base_path+'user.sdysch.v19.1.mc.410470.PhPy8_A14_ttb_nonallh.M4.e6337_s3126_r10201_p3972.sv1_Le',410470,729.77,1.13975636159,0.54383],
+'ttbar_2015':[base_path+'user.sdysch.v19.1.mc.410470.PhPy8_A14_ttb_nonallh.M4.e6337_s3126_r9364_p3972.sv1_Le',410470,729.77,1.13975636159,0.54383],
+
+
+}
 
 ## THIS SCRIPT MUST BE LAUNCHED AS
 
