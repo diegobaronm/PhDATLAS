@@ -132,10 +132,10 @@ void CLoop::Book() {
     h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco","mass reconstructed with trick MET outside_bdte_btag_iso_rnn_pte_omega_mle_mreco",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
-    h_rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco = new TH1F("rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco","rnn score_bdte_btag_iso_pte_omega_mle_mreco 1 track",60,0.4,1);
-    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",60,0.4,1);
-    h_rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco = new TH1F("rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco","rnn score_bdte_btag_iso_pte_omega_mle_mreco 3 track",60,0.4,1);
+    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",100,0,1);
+    h_rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco = new TH1F("rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco","rnn score_bdte_btag_iso_pte_omega_mle_mreco 1 track",100,0,1);
+    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",100,0,1);
+    h_rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco = new TH1F("rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco","rnn score_bdte_btag_iso_pte_omega_mle_mreco 3 track",100,0,1);
 
     h_bdt_e_score = new TH1F("bdt_e_score","BDT score electron",100,0,1);
     h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco","BDT score electron_btag_iso_rnn_pte_omega_mle_mreco",100,0,1);
@@ -300,7 +300,7 @@ void CLoop::Fill(double weight) {
         if (elec_0_iso_FCTight==0) {
           cuts[3]=1;
         }
-        if (tau_0_jet_rnn_score_trans>0.4) {
+        if (tau_0_jet_rnn_score_trans>0.2) {
           cuts[4]=1;
         }
         if (elec_0_p4->Pt()>=27) {
@@ -412,6 +412,7 @@ void CLoop::Fill(double weight) {
         h_weight_mc->Fill(weight_total,1);
         h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
         */
+
         if (inside) {
           h_reco_mass->Fill(reco_mass,weight);
           h_angle->Fill(angle,weight);
