@@ -39,106 +39,111 @@ public :
 
     // Declaration of leaf types
     UInt_t          HLT_e120_lhloose;
-    UInt_t          HLT_e140_lhloose_nod0;
-    UInt_t          HLT_e24_lhmedium_L1EM20VH;
-    UInt_t          HLT_e26_lhtight_nod0_ivarloose;
-    UInt_t          HLT_e60_lhmedium;
-    UInt_t          HLT_e60_lhmedium_nod0;
-    UInt_t          HLT_mu20_iloose_L1MU15;
-    UInt_t          HLT_mu26_ivarmedium;
-    UInt_t          HLT_mu50;
-    UInt_t          bjet_0;
-    Int_t           bjet_0_origin;
-    TLorentzVector  *bjet_0_p4;
-    Int_t           bjet_0_type;
-    UInt_t          bjet_1;
-    Int_t           bjet_1_origin;
-    TLorentzVector  *bjet_1_p4;
-    Int_t           bjet_1_type;
-    UInt_t          eleTrigMatch_0_HLT_e120_lhloose;
-    UInt_t          eleTrigMatch_0_HLT_e140_lhloose_nod0;
-    UInt_t          eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH;
-    UInt_t          eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose;
-    UInt_t          eleTrigMatch_0_HLT_e60_lhmedium;
-    UInt_t          eleTrigMatch_0_HLT_e60_lhmedium_nod0;
-    UInt_t          eleTrigMatch_0_trigger_matched;
-    UInt_t          elec_0;
-    Float_t         elec_0_cluster_eta;
-    Float_t         elec_0_cluster_eta_be2;
-    Int_t           elec_0_id_medium;
-    Int_t           elec_0_id_tight;
-    UInt_t          elec_0_iso_FCTight;
-    UInt_t          elec_0_iso_FCTightTrackOnly_FixedRad;
-    UInt_t          elec_0_iso_FixedCutLoose;
-    UInt_t          elec_0_iso_FixedCutTight;
-    UInt_t          elec_0_iso_FixedCutTightCaloOnly;
-    TLorentzVector  *elec_0_p4;
-    Float_t         elec_0_q;
-    Float_t         elec_0_trk_d0_sig;
-    Float_t         elec_0_trk_pvx_z0_sintheta;
-    Float_t         elec_0_trk_z0_sintheta;
-    Int_t           event_is_bad_batman;
-    ULong64_t       event_number;
-    UInt_t          lb_number;
-    UInt_t          ljet_0;
-    Int_t           ljet_0_origin;
-    TLorentzVector  *ljet_0_p4;
-    Int_t           ljet_0_type;
-    TLorentzVector  *met_reco_p4;
-    UInt_t          muTrigMatch_0_HLT_mu20_iloose_L1MU15;
-    UInt_t          muTrigMatch_0_HLT_mu26_ivarmedium;
-    UInt_t          muTrigMatch_0_HLT_mu50;
-    UInt_t          muTrigMatch_0_trigger_matched;
-    UInt_t          muon_0;
-    Int_t           muon_0_id_medium;
-    Int_t           muon_0_id_tight;
-    UInt_t          muon_0_iso_FCTight;
-    UInt_t          muon_0_iso_FCTightTrackOnly_FixedRad;
-    UInt_t          muon_0_iso_FixedCutLoose;
-    UInt_t          muon_0_iso_FixedCutTight;
-    UInt_t          muon_0_iso_FixedCutTightCaloOnly;
-    TLorentzVector  *muon_0_p4;
-    Float_t         muon_0_q;
-    Float_t         muon_0_trk_d0_sig;
-    Float_t         muon_0_trk_pvx_z0_sig;
-    Float_t         muon_0_trk_pvx_z0_sintheta;
-    Float_t         muon_0_trk_z0_sintheta;
-    Float_t         n_actual_int;
-    Float_t         n_actual_int_cor;
-    Float_t         n_avg_int;
-    Float_t         n_avg_int_cor;
-    Int_t           n_bjets;
-    Int_t           n_electrons;
-    Int_t           n_electrons_olr;
-    Int_t           n_jets;
-    Int_t           n_muons;
-    Int_t           n_pvx;
-    Int_t           n_taus;
-    Int_t           n_vx;
-    UInt_t          run_number;
-    UInt_t          tau_0;
-    UInt_t          tau_0_decay_mode;
-    UInt_t          tau_0_ele_bdt_loose;
-    Int_t           tau_0_ele_bdt_loose_retuned;
-    UInt_t          tau_0_ele_bdt_medium;
-    Int_t           tau_0_ele_bdt_medium_retuned;
-    Float_t         tau_0_ele_bdt_score;
-    Float_t         tau_0_ele_bdt_score_retuned;
-    Float_t         tau_0_ele_bdt_score_trans;
-    Float_t         tau_0_ele_bdt_score_trans_retuned;
-    UInt_t          tau_0_ele_bdt_tight;
-    Int_t           tau_0_ele_bdt_tight_retuned;
-    Float_t         tau_0_ele_match_lhscore;
-    UInt_t          tau_0_ele_olr_pass;
-    Float_t         tau_0_jet_bdt_score;
-    Float_t         tau_0_jet_bdt_score_trans;
-    UInt_t          tau_0_jet_bdt_tight;
-    Float_t         tau_0_jet_rnn_score;
-    Float_t         tau_0_jet_rnn_score_trans;
-    UInt_t          tau_0_jet_rnn_tight;
-    UInt_t          tau_0_n_charged_tracks;
-    TLorentzVector  *tau_0_p4;
-    Float_t         tau_0_q;
+   UInt_t          HLT_e140_lhloose_nod0;
+   UInt_t          HLT_e24_lhmedium_L1EM20VH;
+   UInt_t          HLT_e26_lhtight_nod0_ivarloose;
+   UInt_t          HLT_e60_lhmedium;
+   UInt_t          HLT_e60_lhmedium_nod0;
+   UInt_t          HLT_mu20_iloose_L1MU15;
+   UInt_t          HLT_mu26_ivarmedium;
+   UInt_t          HLT_mu50;
+   UInt_t          bjet_0;
+   Int_t           bjet_0_origin;
+   TLorentzVector  *bjet_0_p4;
+   Int_t           bjet_0_type;
+   UInt_t          bjet_1;
+   Int_t           bjet_1_origin;
+   TLorentzVector  *bjet_1_p4;
+   Int_t           bjet_1_type;
+   UInt_t          eleTrigMatch_0_HLT_e120_lhloose;
+   UInt_t          eleTrigMatch_0_HLT_e140_lhloose_nod0;
+   UInt_t          eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH;
+   UInt_t          eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose;
+   UInt_t          eleTrigMatch_0_HLT_e60_lhmedium;
+   UInt_t          eleTrigMatch_0_HLT_e60_lhmedium_nod0;
+   UInt_t          eleTrigMatch_0_trigger_matched;
+   UInt_t          elec_0;
+   Float_t         elec_0_cluster_eta;
+   Float_t         elec_0_cluster_eta_be2;
+   Int_t           elec_0_id_medium;
+   Int_t           elec_0_id_tight;
+   UInt_t          elec_0_iso_FCTight;
+   UInt_t          elec_0_iso_FCTightTrackOnly_FixedRad;
+   UInt_t          elec_0_iso_FixedCutLoose;
+   UInt_t          elec_0_iso_FixedCutTight;
+   UInt_t          elec_0_iso_FixedCutTightCaloOnly;
+   TLorentzVector  *elec_0_p4;
+   Float_t         elec_0_q;
+   Float_t         elec_0_trk_d0_sig;
+   Float_t         elec_0_trk_pvx_z0_sintheta;
+   Float_t         elec_0_trk_z0_sintheta;
+   Int_t           event_is_bad_batman;
+   ULong64_t       event_number;
+   UInt_t          lb_number;
+   UInt_t          ljet_0;
+   Int_t           ljet_0_origin;
+   TLorentzVector  *ljet_0_p4;
+   Int_t           ljet_0_type;
+   TLorentzVector  *met_reco_p4;
+   UInt_t          muTrigMatch_0_HLT_mu20_iloose_L1MU15;
+   UInt_t          muTrigMatch_0_HLT_mu26_ivarmedium;
+   UInt_t          muTrigMatch_0_HLT_mu50;
+   UInt_t          muTrigMatch_0_trigger_matched;
+   UInt_t          muon_0;
+   Int_t           muon_0_id_medium;
+   Int_t           muon_0_id_tight;
+   UInt_t          muon_0_iso_FCTight;
+   UInt_t          muon_0_iso_FCTightTrackOnly_FixedRad;
+   UInt_t          muon_0_iso_FixedCutLoose;
+   UInt_t          muon_0_iso_FixedCutTight;
+   UInt_t          muon_0_iso_FixedCutTightCaloOnly;
+   TLorentzVector  *muon_0_p4;
+   Float_t         muon_0_q;
+   Float_t         muon_0_trk_d0_sig;
+   Float_t         muon_0_trk_pvx_z0_sig;
+   Float_t         muon_0_trk_pvx_z0_sintheta;
+   Float_t         muon_0_trk_z0_sintheta;
+   Float_t         n_actual_int;
+   Float_t         n_actual_int_cor;
+   Float_t         n_avg_int;
+   Float_t         n_avg_int_cor;
+   Int_t           n_bjets;
+   Int_t           n_electrons;
+   Int_t           n_electrons_olr;
+   Int_t           n_jets;
+   Int_t           n_muons;
+   Int_t           n_pvx;
+   Int_t           n_taus;
+   Int_t           n_taus_bdt_loose;
+   Int_t           n_taus_bdt_medium;
+   Int_t           n_taus_bdt_tight;
+   Int_t           n_vx;
+   UInt_t          run_number;
+   UInt_t          tau_0;
+   UInt_t          tau_0_decay_mode;
+   UInt_t          tau_0_ele_bdt_loose;
+   Int_t           tau_0_ele_bdt_loose_retuned;
+   UInt_t          tau_0_ele_bdt_medium;
+   Int_t           tau_0_ele_bdt_medium_retuned;
+   Float_t         tau_0_ele_bdt_score;
+   Float_t         tau_0_ele_bdt_score_retuned;
+   Float_t         tau_0_ele_bdt_score_trans;
+   Float_t         tau_0_ele_bdt_score_trans_retuned;
+   UInt_t          tau_0_ele_bdt_tight;
+   Int_t           tau_0_ele_bdt_tight_retuned;
+   Float_t         tau_0_ele_match_lhscore;
+   UInt_t          tau_0_ele_olr_pass;
+   Float_t         tau_0_jet_bdt_score;
+   Float_t         tau_0_jet_bdt_score_trans;
+   UInt_t          tau_0_jet_bdt_tight;
+   UInt_t          tau_0_jet_rnn_loose;
+   UInt_t          tau_0_jet_rnn_medium;
+   Float_t         tau_0_jet_rnn_score;
+   Float_t         tau_0_jet_rnn_score_trans;
+   UInt_t          tau_0_jet_rnn_tight;
+   UInt_t          tau_0_n_charged_tracks;
+   TLorentzVector  *tau_0_p4;
+   Float_t         tau_0_q;
 
    // List of branches
    TBranch        *b_HLT_e120_lhloose;   //!
@@ -217,6 +222,9 @@ public :
    TBranch        *b_n_muons;   //!
    TBranch        *b_n_pvx;   //!
    TBranch        *b_n_taus;   //!
+   TBranch        *b_n_taus_bdt_loose;   //!
+   TBranch        *b_n_taus_bdt_medium;   //!
+   TBranch        *b_n_taus_bdt_tight;   //!
    TBranch        *b_n_vx;   //!
    TBranch        *b_run_number;   //!
    TBranch        *b_tau_0;   //!
@@ -236,6 +244,8 @@ public :
    TBranch        *b_tau_0_jet_bdt_score;   //!
    TBranch        *b_tau_0_jet_bdt_score_trans;   //!
    TBranch        *b_tau_0_jet_bdt_tight;   //!
+   TBranch        *b_tau_0_jet_rnn_loose;   //!
+   TBranch        *b_tau_0_jet_rnn_medium;   //!
    TBranch        *b_tau_0_jet_rnn_score;   //!
    TBranch        *b_tau_0_jet_rnn_score_trans;   //!
    TBranch        *b_tau_0_jet_rnn_tight;   //!
@@ -308,19 +318,13 @@ void CLoop::Init(TTree *tree)
    // (once per file to be processed).
 
    // Set object pointer
-
-   bjet_0_p4 = 0;
-
+bjet_0_p4 = 0;
    bjet_1_p4 = 0;
-
    elec_0_p4 = 0;
-
    ljet_0_p4 = 0;
    met_reco_p4 = 0;
-
    muon_0_p4 = 0;
    tau_0_p4 = 0;
-   
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
@@ -403,6 +407,9 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("n_muons", &n_muons, &b_n_muons);
    fChain->SetBranchAddress("n_pvx", &n_pvx, &b_n_pvx);
    fChain->SetBranchAddress("n_taus", &n_taus, &b_n_taus);
+   fChain->SetBranchAddress("n_taus_bdt_loose", &n_taus_bdt_loose, &b_n_taus_bdt_loose);
+   fChain->SetBranchAddress("n_taus_bdt_medium", &n_taus_bdt_medium, &b_n_taus_bdt_medium);
+   fChain->SetBranchAddress("n_taus_bdt_tight", &n_taus_bdt_tight, &b_n_taus_bdt_tight);
    fChain->SetBranchAddress("n_vx", &n_vx, &b_n_vx);
    fChain->SetBranchAddress("run_number", &run_number, &b_run_number);
    fChain->SetBranchAddress("tau_0", &tau_0, &b_tau_0);
@@ -422,6 +429,8 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("tau_0_jet_bdt_score", &tau_0_jet_bdt_score, &b_tau_0_jet_bdt_score);
    fChain->SetBranchAddress("tau_0_jet_bdt_score_trans", &tau_0_jet_bdt_score_trans, &b_tau_0_jet_bdt_score_trans);
    fChain->SetBranchAddress("tau_0_jet_bdt_tight", &tau_0_jet_bdt_tight, &b_tau_0_jet_bdt_tight);
+   fChain->SetBranchAddress("tau_0_jet_rnn_loose", &tau_0_jet_rnn_loose, &b_tau_0_jet_rnn_loose);
+   fChain->SetBranchAddress("tau_0_jet_rnn_medium", &tau_0_jet_rnn_medium, &b_tau_0_jet_rnn_medium);
    fChain->SetBranchAddress("tau_0_jet_rnn_score", &tau_0_jet_rnn_score, &b_tau_0_jet_rnn_score);
    fChain->SetBranchAddress("tau_0_jet_rnn_score_trans", &tau_0_jet_rnn_score_trans, &b_tau_0_jet_rnn_score_trans);
    fChain->SetBranchAddress("tau_0_jet_rnn_tight", &tau_0_jet_rnn_tight, &b_tau_0_jet_rnn_tight);

@@ -49,10 +49,6 @@ public :
    UInt_t          HLT_mu50;
    Float_t         NOMINAL_pileup_combined_weight;
    UInt_t          NOMINAL_pileup_random_run_number;
-   Float_t         PRW_DATASF_1down_pileup_combined_weight;
-   UInt_t          PRW_DATASF_1down_pileup_random_run_number;
-   Float_t         PRW_DATASF_1up_pileup_combined_weight;
-   UInt_t          PRW_DATASF_1up_pileup_random_run_number;
    UInt_t          bjet_0;
    UInt_t          bjet_0_matched;
    Int_t           bjet_0_matched_classifierParticleOrigin;
@@ -89,16 +85,6 @@ public :
    UInt_t          eleTrigMatch_0_HLT_e60_lhmedium_nod0;
    UInt_t          eleTrigMatch_0_trigger_matched;
    UInt_t          elec_0;
-   Float_t         elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
-   Float_t         elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
-   Float_t         elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-   Float_t         elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-   Float_t         elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;
-   Float_t         elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;
-   Float_t         elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1down_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-   Float_t         elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1up_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-   Float_t         elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-   Float_t         elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
    Float_t         elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
    Float_t         elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
    Float_t         elec_0_NOMINAL_EleEffSF_offline_RecoTrk;
@@ -128,66 +114,6 @@ public :
    Float_t         elec_0_trk_z0_sintheta;
    Int_t           event_is_bad_batman;
    ULong64_t       event_number;
-   Float_t         jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10;
-   Float_t         jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10;
-   Float_t         jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT;
-   Float_t         jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT;
-   Float_t         jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT;
-   Float_t         jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT;
-   Float_t         jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT;
-   Float_t         jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT;
-   Float_t         jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT;
-   Float_t         jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT;
    Float_t         jet_NOMINAL_central_jets_global_effSF_JVT;
    Float_t         jet_NOMINAL_central_jets_global_ineffSF_JVT;
    Float_t         jet_NOMINAL_forward_jets_global_effSF_JVT;
@@ -214,62 +140,6 @@ public :
    UInt_t          muTrigMatch_0_HLT_mu50;
    UInt_t          muTrigMatch_0_trigger_matched;
    UInt_t          muon_0;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowLoose;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowTight;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowLoose;
-   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowTight;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowLoose;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowTight;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowLoose;
-   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowTight;
-   Float_t         muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;
-   Float_t         muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;
-   Float_t         muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;
-   Float_t         muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;
-   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;
-   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;
    Float_t         muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;
    Float_t         muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;
    Float_t         muon_0_NOMINAL_MuEffSF_IsoFCLoose;
@@ -314,60 +184,18 @@ public :
    Int_t           n_muons;
    Int_t           n_pvx;
    Int_t           n_taus;
+   Int_t           n_taus_bdt_loose;
+   Int_t           n_taus_bdt_medium;
+   Int_t           n_taus_bdt_tight;
    Int_t           n_vx;
    UInt_t          run_number;
    UInt_t          tau_0;
+   Float_t         tau_0_NOMINAL_TauEffSF_JetRNNloose;
+   Float_t         tau_0_NOMINAL_TauEffSF_JetRNNmedium;
    Float_t         tau_0_NOMINAL_TauEffSF_JetRNNtight;
    Float_t         tau_0_NOMINAL_TauEffSF_LooseEleBDTPlusVeto_electron;
    Float_t         tau_0_NOMINAL_TauEffSF_MediumEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_LooseEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_MediumEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_LooseEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_MediumEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_LooseEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_MediumEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_LooseEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_MediumEleBDTPlusVeto_electron;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_selection;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight;
-   Float_t         tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection;
+   Float_t         tau_0_NOMINAL_TauEffSF_reco;
    UInt_t          tau_0_decay_mode;
    UInt_t          tau_0_ele_bdt_loose;
    Int_t           tau_0_ele_bdt_loose_retuned;
@@ -384,6 +212,8 @@ public :
    Float_t         tau_0_jet_bdt_score;
    Float_t         tau_0_jet_bdt_score_trans;
    UInt_t          tau_0_jet_bdt_tight;
+   UInt_t          tau_0_jet_rnn_loose;
+   UInt_t          tau_0_jet_rnn_medium;
    Float_t         tau_0_jet_rnn_score;
    Float_t         tau_0_jet_rnn_score_trans;
    UInt_t          tau_0_jet_rnn_tight;
@@ -406,12 +236,6 @@ public :
    TLorentzVector  *tau_0_truth_vis_neutral_others_p4;
    TLorentzVector  *tau_0_truth_vis_neutral_p4;
    TLorentzVector  *tau_0_truth_vis_neutral_pions_p4;
-   Float_t         triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down;
-   Float_t         triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up;
-   Float_t         triggerSF_em_MUON_EFF_TrigStatUncertainty__1down;
-   Float_t         triggerSF_em_MUON_EFF_TrigStatUncertainty__1up;
-   Float_t         triggerSF_em_MUON_EFF_TrigSystUncertainty__1down;
-   Float_t         triggerSF_em_MUON_EFF_TrigSystUncertainty__1up;
    Float_t         triggerSF_em_NOMINAL;
    Double_t        weight_mc;
    Double_t        weight_total;
@@ -428,10 +252,6 @@ public :
    TBranch        *b_HLT_mu50;   //!
    TBranch        *b_NOMINAL_pileup_combined_weight;   //!
    TBranch        *b_NOMINAL_pileup_random_run_number;   //!
-   TBranch        *b_PRW_DATASF_1down_pileup_combined_weight;   //!
-   TBranch        *b_PRW_DATASF_1down_pileup_random_run_number;   //!
-   TBranch        *b_PRW_DATASF_1up_pileup_combined_weight;   //!
-   TBranch        *b_PRW_DATASF_1up_pileup_random_run_number;   //!
    TBranch        *b_bjet_0;   //!
    TBranch        *b_bjet_0_matched;   //!
    TBranch        *b_bjet_0_matched_classifierParticleOrigin;   //!
@@ -468,16 +288,6 @@ public :
    TBranch        *b_eleTrigMatch_0_HLT_e60_lhmedium_nod0;   //!
    TBranch        *b_eleTrigMatch_0_trigger_matched;   //!
    TBranch        *b_elec_0;   //!
-   TBranch        *b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;   //!
-   TBranch        *b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;   //!
-   TBranch        *b_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
-   TBranch        *b_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
-   TBranch        *b_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;   //!
-   TBranch        *b_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;   //!
-   TBranch        *b_elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1down_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
-   TBranch        *b_elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1up_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
-   TBranch        *b_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
-   TBranch        *b_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk;   //!
@@ -507,66 +317,6 @@ public :
    TBranch        *b_elec_0_trk_z0_sintheta;   //!
    TBranch        *b_event_is_bad_batman;   //!
    TBranch        *b_event_number;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10;   //!
-   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10;   //!
-   TBranch        *b_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT;   //!
-   TBranch        *b_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT;   //!
-   TBranch        *b_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT;   //!
-   TBranch        *b_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT;   //!
-   TBranch        *b_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT;   //!
-   TBranch        *b_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT;   //!
-   TBranch        *b_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT;   //!
-   TBranch        *b_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT;   //!
    TBranch        *b_jet_NOMINAL_central_jets_global_effSF_JVT;   //!
    TBranch        *b_jet_NOMINAL_central_jets_global_ineffSF_JVT;   //!
    TBranch        *b_jet_NOMINAL_forward_jets_global_effSF_JVT;   //!
@@ -593,62 +343,6 @@ public :
    TBranch        *b_muTrigMatch_0_HLT_mu50;   //!
    TBranch        *b_muTrigMatch_0_trigger_matched;   //!
    TBranch        *b_muon_0;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowLoose;   //!
-   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowTight;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;   //!
-   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;   //!
    TBranch        *b_muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone;   //!
    TBranch        *b_muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone;   //!
    TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCLoose;   //!
@@ -693,60 +387,18 @@ public :
    TBranch        *b_n_muons;   //!
    TBranch        *b_n_pvx;   //!
    TBranch        *b_n_taus;   //!
+   TBranch        *b_n_taus_bdt_loose;   //!
+   TBranch        *b_n_taus_bdt_medium;   //!
+   TBranch        *b_n_taus_bdt_tight;   //!
    TBranch        *b_n_vx;   //!
    TBranch        *b_run_number;   //!
    TBranch        *b_tau_0;   //!
+   TBranch        *b_tau_0_NOMINAL_TauEffSF_JetRNNloose;   //!
+   TBranch        *b_tau_0_NOMINAL_TauEffSF_JetRNNmedium;   //!
    TBranch        *b_tau_0_NOMINAL_TauEffSF_JetRNNtight;   //!
    TBranch        *b_tau_0_NOMINAL_TauEffSF_LooseEleBDTPlusVeto_electron;   //!
    TBranch        *b_tau_0_NOMINAL_TauEffSF_MediumEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_LooseEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_MediumEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_LooseEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_MediumEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_LooseEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_MediumEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_LooseEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_MediumEleBDTPlusVeto_electron;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_selection;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight;   //!
-   TBranch        *b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection;   //!
+   TBranch        *b_tau_0_NOMINAL_TauEffSF_reco;   //!
    TBranch        *b_tau_0_decay_mode;   //!
    TBranch        *b_tau_0_ele_bdt_loose;   //!
    TBranch        *b_tau_0_ele_bdt_loose_retuned;   //!
@@ -763,6 +415,8 @@ public :
    TBranch        *b_tau_0_jet_bdt_score;   //!
    TBranch        *b_tau_0_jet_bdt_score_trans;   //!
    TBranch        *b_tau_0_jet_bdt_tight;   //!
+   TBranch        *b_tau_0_jet_rnn_loose;   //!
+   TBranch        *b_tau_0_jet_rnn_medium;   //!
    TBranch        *b_tau_0_jet_rnn_score;   //!
    TBranch        *b_tau_0_jet_rnn_score_trans;   //!
    TBranch        *b_tau_0_jet_rnn_tight;   //!
@@ -785,12 +439,6 @@ public :
    TBranch        *b_tau_0_truth_vis_neutral_others_p4;   //!
    TBranch        *b_tau_0_truth_vis_neutral_p4;   //!
    TBranch        *b_tau_0_truth_vis_neutral_pions_p4;   //!
-   TBranch        *b_triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down;   //!
-   TBranch        *b_triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up;   //!
-   TBranch        *b_triggerSF_em_MUON_EFF_TrigStatUncertainty__1down;   //!
-   TBranch        *b_triggerSF_em_MUON_EFF_TrigStatUncertainty__1up;   //!
-   TBranch        *b_triggerSF_em_MUON_EFF_TrigSystUncertainty__1down;   //!
-   TBranch        *b_triggerSF_em_MUON_EFF_TrigSystUncertainty__1up;   //!
    TBranch        *b_triggerSF_em_NOMINAL;   //!
    TBranch        *b_weight_mc;   //!
    TBranch        *b_weight_total;   //!
@@ -894,10 +542,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("HLT_mu50", &HLT_mu50, &b_HLT_mu50);
    fChain->SetBranchAddress("NOMINAL_pileup_combined_weight", &NOMINAL_pileup_combined_weight, &b_NOMINAL_pileup_combined_weight);
    fChain->SetBranchAddress("NOMINAL_pileup_random_run_number", &NOMINAL_pileup_random_run_number, &b_NOMINAL_pileup_random_run_number);
-   fChain->SetBranchAddress("PRW_DATASF_1down_pileup_combined_weight", &PRW_DATASF_1down_pileup_combined_weight, &b_PRW_DATASF_1down_pileup_combined_weight);
-   fChain->SetBranchAddress("PRW_DATASF_1down_pileup_random_run_number", &PRW_DATASF_1down_pileup_random_run_number, &b_PRW_DATASF_1down_pileup_random_run_number);
-   fChain->SetBranchAddress("PRW_DATASF_1up_pileup_combined_weight", &PRW_DATASF_1up_pileup_combined_weight, &b_PRW_DATASF_1up_pileup_combined_weight);
-   fChain->SetBranchAddress("PRW_DATASF_1up_pileup_random_run_number", &PRW_DATASF_1up_pileup_random_run_number, &b_PRW_DATASF_1up_pileup_random_run_number);
    fChain->SetBranchAddress("bjet_0", &bjet_0, &b_bjet_0);
    fChain->SetBranchAddress("bjet_0_matched", &bjet_0_matched, &b_bjet_0_matched);
    fChain->SetBranchAddress("bjet_0_matched_classifierParticleOrigin", &bjet_0_matched_classifierParticleOrigin, &b_bjet_0_matched_classifierParticleOrigin);
@@ -934,16 +578,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("eleTrigMatch_0_HLT_e60_lhmedium_nod0", &eleTrigMatch_0_HLT_e60_lhmedium_nod0, &b_eleTrigMatch_0_HLT_e60_lhmedium_nod0);
    fChain->SetBranchAddress("eleTrigMatch_0_trigger_matched", &eleTrigMatch_0_trigger_matched, &b_eleTrigMatch_0_trigger_matched);
    fChain->SetBranchAddress("elec_0", &elec_0, &b_elec_0);
-   fChain->SetBranchAddress("elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13", &elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13, &b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13);
-   fChain->SetBranchAddress("elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13", &elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13, &b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk", &elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk, &b_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk", &elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk, &b_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk);
-   fChain->SetBranchAddress("elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1down_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1down_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1down_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
-   fChain->SetBranchAddress("elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1up_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1up_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_EL_EFF_TriggerEff_TOTAL_1NPCOR_PLUS_UNCOR_1up_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
-   fChain->SetBranchAddress("elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_offline_RecoTrk", &elec_0_NOMINAL_EleEffSF_offline_RecoTrk, &b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk);
@@ -973,66 +607,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_0_trk_z0_sintheta", &elec_0_trk_z0_sintheta, &b_elec_0_trk_z0_sintheta);
    fChain->SetBranchAddress("event_is_bad_batman", &event_is_bad_batman, &b_event_is_bad_batman);
    fChain->SetBranchAddress("event_number", &event_number, &b_event_number);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10", &jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10", &jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10", &jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10, &b_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10", &jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10", &jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10, &b_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10", &jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10", &jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10, &b_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10", &jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10, &b_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10", &jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10, &b_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10);
-   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10", &jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10, &b_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10);
-   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT", &jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT, &b_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT);
-   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT", &jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT, &b_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT);
-   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT", &jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT, &b_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT);
-   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT", &jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT, &b_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT);
-   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT", &jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT, &b_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT);
-   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT", &jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT, &b_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT);
-   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT", &jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT, &b_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT);
-   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT", &jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT, &b_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT);
    fChain->SetBranchAddress("jet_NOMINAL_central_jets_global_effSF_JVT", &jet_NOMINAL_central_jets_global_effSF_JVT, &b_jet_NOMINAL_central_jets_global_effSF_JVT);
    fChain->SetBranchAddress("jet_NOMINAL_central_jets_global_ineffSF_JVT", &jet_NOMINAL_central_jets_global_ineffSF_JVT, &b_jet_NOMINAL_central_jets_global_ineffSF_JVT);
    fChain->SetBranchAddress("jet_NOMINAL_forward_jets_global_effSF_JVT", &jet_NOMINAL_forward_jets_global_effSF_JVT, &b_jet_NOMINAL_forward_jets_global_effSF_JVT);
@@ -1059,62 +633,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("muTrigMatch_0_HLT_mu50", &muTrigMatch_0_HLT_mu50, &b_muTrigMatch_0_HLT_mu50);
    fChain->SetBranchAddress("muTrigMatch_0_trigger_matched", &muTrigMatch_0_trigger_matched, &b_muTrigMatch_0_trigger_matched);
    fChain->SetBranchAddress("muon_0", &muon_0, &b_muon_0);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowLoose", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowLoose, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowTight", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowTight, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoFixedCutPflowTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowLoose", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowLoose, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowTight", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowTight, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoFixedCutPflowTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowLoose", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowLoose, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowTight", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowTight, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoFixedCutPflowTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowLoose", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowLoose, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowLoose);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowTight", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowTight, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoFixedCutPflowTight);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone);
-   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone);
    fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium_IsoNone);
    fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone", &muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone, &b_muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone);
    fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCLoose", &muon_0_NOMINAL_MuEffSF_IsoFCLoose, &b_muon_0_NOMINAL_MuEffSF_IsoFCLoose);
@@ -1159,60 +677,18 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("n_muons", &n_muons, &b_n_muons);
    fChain->SetBranchAddress("n_pvx", &n_pvx, &b_n_pvx);
    fChain->SetBranchAddress("n_taus", &n_taus, &b_n_taus);
+   fChain->SetBranchAddress("n_taus_bdt_loose", &n_taus_bdt_loose, &b_n_taus_bdt_loose);
+   fChain->SetBranchAddress("n_taus_bdt_medium", &n_taus_bdt_medium, &b_n_taus_bdt_medium);
+   fChain->SetBranchAddress("n_taus_bdt_tight", &n_taus_bdt_tight, &b_n_taus_bdt_tight);
    fChain->SetBranchAddress("n_vx", &n_vx, &b_n_vx);
    fChain->SetBranchAddress("run_number", &run_number, &b_run_number);
    fChain->SetBranchAddress("tau_0", &tau_0, &b_tau_0);
+   fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_JetRNNloose", &tau_0_NOMINAL_TauEffSF_JetRNNloose, &b_tau_0_NOMINAL_TauEffSF_JetRNNloose);
+   fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_JetRNNmedium", &tau_0_NOMINAL_TauEffSF_JetRNNmedium, &b_tau_0_NOMINAL_TauEffSF_JetRNNmedium);
    fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_JetRNNtight", &tau_0_NOMINAL_TauEffSF_JetRNNtight, &b_tau_0_NOMINAL_TauEffSF_JetRNNtight);
    fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_LooseEleBDTPlusVeto_electron", &tau_0_NOMINAL_TauEffSF_LooseEleBDTPlusVeto_electron, &b_tau_0_NOMINAL_TauEffSF_LooseEleBDTPlusVeto_electron);
    fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_MediumEleBDTPlusVeto_electron", &tau_0_NOMINAL_TauEffSF_MediumEleBDTPlusVeto_electron, &b_tau_0_NOMINAL_TauEffSF_MediumEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_LooseEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_LooseEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_LooseEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_MediumEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_MediumEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1down_TauEffSF_MediumEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_LooseEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_LooseEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_LooseEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_MediumEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_MediumEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_STAT_1up_TauEffSF_MediumEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_LooseEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_LooseEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_LooseEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_MediumEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_MediumEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1down_TauEffSF_MediumEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_LooseEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_LooseEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_LooseEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_MediumEleBDTPlusVeto_electron", &tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_MediumEleBDTPlusVeto_electron, &b_tau_0_TAUS_TRUEELECTRON_EFF_ELEOLR_SYST_1up_TauEffSF_MediumEleBDTPlusVeto_electron);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2025_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT2530_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPT3040_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_1PRONGSTATSYSTPTGE40_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2025_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT2530_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPT3040_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_3PRONGSTATSYSTPTGE40_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_HIGHPT_1up_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1down_TauEffSF_selection);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight);
-   fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection);
+   fChain->SetBranchAddress("tau_0_NOMINAL_TauEffSF_reco", &tau_0_NOMINAL_TauEffSF_reco, &b_tau_0_NOMINAL_TauEffSF_reco);
    fChain->SetBranchAddress("tau_0_decay_mode", &tau_0_decay_mode, &b_tau_0_decay_mode);
    fChain->SetBranchAddress("tau_0_ele_bdt_loose", &tau_0_ele_bdt_loose, &b_tau_0_ele_bdt_loose);
    fChain->SetBranchAddress("tau_0_ele_bdt_loose_retuned", &tau_0_ele_bdt_loose_retuned, &b_tau_0_ele_bdt_loose_retuned);
@@ -1229,6 +705,8 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("tau_0_jet_bdt_score", &tau_0_jet_bdt_score, &b_tau_0_jet_bdt_score);
    fChain->SetBranchAddress("tau_0_jet_bdt_score_trans", &tau_0_jet_bdt_score_trans, &b_tau_0_jet_bdt_score_trans);
    fChain->SetBranchAddress("tau_0_jet_bdt_tight", &tau_0_jet_bdt_tight, &b_tau_0_jet_bdt_tight);
+   fChain->SetBranchAddress("tau_0_jet_rnn_loose", &tau_0_jet_rnn_loose, &b_tau_0_jet_rnn_loose);
+   fChain->SetBranchAddress("tau_0_jet_rnn_medium", &tau_0_jet_rnn_medium, &b_tau_0_jet_rnn_medium);
    fChain->SetBranchAddress("tau_0_jet_rnn_score", &tau_0_jet_rnn_score, &b_tau_0_jet_rnn_score);
    fChain->SetBranchAddress("tau_0_jet_rnn_score_trans", &tau_0_jet_rnn_score_trans, &b_tau_0_jet_rnn_score_trans);
    fChain->SetBranchAddress("tau_0_jet_rnn_tight", &tau_0_jet_rnn_tight, &b_tau_0_jet_rnn_tight);
@@ -1251,12 +729,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("tau_0_truth_vis_neutral_others_p4", &tau_0_truth_vis_neutral_others_p4, &b_tau_0_truth_vis_neutral_others_p4);
    fChain->SetBranchAddress("tau_0_truth_vis_neutral_p4", &tau_0_truth_vis_neutral_p4, &b_tau_0_truth_vis_neutral_p4);
    fChain->SetBranchAddress("tau_0_truth_vis_neutral_pions_p4", &tau_0_truth_vis_neutral_pions_p4, &b_tau_0_truth_vis_neutral_pions_p4);
-   fChain->SetBranchAddress("triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down", &triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down, &b_triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1down);
-   fChain->SetBranchAddress("triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up", &triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up, &b_triggerSF_em_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR__1up);
-   fChain->SetBranchAddress("triggerSF_em_MUON_EFF_TrigStatUncertainty__1down", &triggerSF_em_MUON_EFF_TrigStatUncertainty__1down, &b_triggerSF_em_MUON_EFF_TrigStatUncertainty__1down);
-   fChain->SetBranchAddress("triggerSF_em_MUON_EFF_TrigStatUncertainty__1up", &triggerSF_em_MUON_EFF_TrigStatUncertainty__1up, &b_triggerSF_em_MUON_EFF_TrigStatUncertainty__1up);
-   fChain->SetBranchAddress("triggerSF_em_MUON_EFF_TrigSystUncertainty__1down", &triggerSF_em_MUON_EFF_TrigSystUncertainty__1down, &b_triggerSF_em_MUON_EFF_TrigSystUncertainty__1down);
-   fChain->SetBranchAddress("triggerSF_em_MUON_EFF_TrigSystUncertainty__1up", &triggerSF_em_MUON_EFF_TrigSystUncertainty__1up, &b_triggerSF_em_MUON_EFF_TrigSystUncertainty__1up);
    fChain->SetBranchAddress("triggerSF_em_NOMINAL", &triggerSF_em_NOMINAL, &b_triggerSF_em_NOMINAL);
    fChain->SetBranchAddress("weight_mc", &weight_mc, &b_weight_mc);
    fChain->SetBranchAddress("weight_total", &weight_total, &b_weight_total);
