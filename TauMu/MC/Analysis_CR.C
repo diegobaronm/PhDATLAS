@@ -282,7 +282,10 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
-        if (tau_0_jet_rnn_score_trans>0.2) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+          cuts[3]=1;
+        }
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {

@@ -11,7 +11,7 @@
 #include "backend/CLoop.h"
 #include <iostream>
 #include <vector>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <utility>
 
 
@@ -122,10 +122,10 @@ void CLoop::Book() {
     h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",100,0,1);
-    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",100,0,1);
-    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",100,0,1);
-    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",100,0,1);
+    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
+    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",60,0.4,1);
+    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",60,0.4,1);
+    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",60,0.4,1);
     
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
@@ -284,7 +284,10 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (tau_0_jet_rnn_score_trans>0.2) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+          cuts[3]=1;
+        }
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {

@@ -298,7 +298,10 @@ void CLoop::Fill(double weight) {
         if (elec_0_iso_FCTight==1) {
           cuts[3]=1;
         }
-        if (tau_0_jet_rnn_score_trans>0.2) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+          cuts[4]=1;
+        }
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
           cuts[4]=1;
         }
         if (elec_0_p4->Pt()>=27) {

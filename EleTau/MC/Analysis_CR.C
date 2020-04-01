@@ -288,7 +288,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0,0};
-        if (angle>pi/2 && angle<=2*pi/3){
+        if (angle<=2*pi/3){
           cuts[0]=1;
         }
         if (tau_0_ele_bdt_score_trans>=0.1) {
@@ -300,7 +300,10 @@ void CLoop::Fill(double weight) {
         if (elec_0_iso_FCTight==0) {
           cuts[3]=1;
         }
-        if (tau_0_jet_rnn_score_trans>0.2) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+          cuts[4]=1;
+        }
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
           cuts[4]=1;
         }
         if (elec_0_p4->Pt()>=27) {
