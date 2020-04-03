@@ -288,7 +288,7 @@ void CLoop::Fill(double weight) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0,0};
-        if (angle>pi/2 && angle<=2*pi/3){
+        if (angle<=2*pi/3){
           cuts[0]=1;
         }
         if (tau_0_ele_bdt_score_trans>=0.1) {

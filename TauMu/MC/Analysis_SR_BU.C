@@ -122,10 +122,10 @@ void CLoop::Book() {
     h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco = new TH1F("reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco","mass reconstructed with trick MET outside_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
 
     // rnn Score histograms
-    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",60,0.4,1);
-    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",60,0.4,1);
-    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",60,0.4,1);
-    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",60,0.4,1);
+    h_rnn_score_1prong = new TH1F("rnn_score_1prong","rnn score 1 track",100,0,1);
+    h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",100,0,1);
+    h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",100,0,1);
+    h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",100,0,1);
     
 
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
