@@ -45,16 +45,13 @@ def runAnalysis(key, fast):
         # calculate luminosity weight
         # if it does not work try again without "_1lep" or "_2lep" suffix for key
         try:
-            lumWeight = totRealLum * 1000 * infos[key]["xsec"] / (infos[key]["sumw"] *
-                infos[key]["red_eff"])
+            lumWeight = (totRealLum * 1000 * infos[key]["xsec"] * infos[key]["fil_eff"] * infos[key]["kfac"])/infos[key]["sumw"]
             print(lumWeight)
         except KeyError:
             shortKey = key[:-5]
-            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] /
-                (infos[shortKey]["sumw"] * infos[shortKey]["red_eff"]))
+            lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] * infos[shortKey]["fil_eff"] * infos[shortKey]["kfac"])/infos[shortKey]["sumw"]
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
-
     # launch the analysis script for the given data set
     DrawC(filename,lumStr,fast)
 
