@@ -169,8 +169,8 @@ void CLoop::Book() {
     
 
     // Angular variable
-    h_omega = new TH1F("omega","omega variable",60,-3.0,3.0);
-    h_omega_bdte_btag_iso_rnn_pte_mle_mreco = new TH1F("omega_bdte_btag_iso_rnn_pte_mle_mreco","omega variable_bdte_btag_iso_rnn_pte_mle_mreco",60,-3.0,3.0);
+    h_omega = new TH1F("omega","omega variable",50,-2.0,3.0);
+    h_omega_bdte_btag_iso_rnn_pte_mle_mreco = new TH1F("omega_bdte_btag_iso_rnn_pte_mle_mreco","omega variable_bdte_btag_iso_rnn_pte_mle_mreco",50,-2.0,3.0);
 
     h_angle = new TH1F("angle","opening angle MET in between",30,0,pi);
     h_angle_ouside = new TH1F("angle_outside","opening angle MET outside",30,0,pi);
@@ -289,7 +289,7 @@ void CLoop::Fill(double weight) {
         if (angle<=2*pi/3){
           cuts[0]=1;
         }
-        if (tau_0_ele_bdt_score_trans>=0.1) {
+        if (tau_0_ele_bdt_score_trans>=0.6) {
           cuts[1]=1;
         }
         if (n_bjets==0){
@@ -310,7 +310,7 @@ void CLoop::Fill(double weight) {
         if (omega>0 && omega <1.4) {
           cuts[6]=1;
         }
-        if (inv_taulep < 85) {
+        if (inv_taulep < 80) {
           cuts[7]=1;
         }
         if (inside) {
