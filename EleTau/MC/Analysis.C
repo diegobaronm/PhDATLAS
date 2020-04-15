@@ -291,7 +291,7 @@ void CLoop::Fill(double weight) {
         if (angle<=2*pi/3){
           cuts[0]=1;
         }
-        if (tau_0_ele_bdt_score_trans>=0.6) {
+        if (tau_0_ele_bdt_score_trans>=0.06) {
           cuts[1]=1;
         }
         if (n_bjets==0){
