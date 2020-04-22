@@ -282,10 +282,10 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
-        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans<0.4) {
           cuts[3]=1;
         }
-        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans<0.55) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {
@@ -401,7 +401,7 @@ void CLoop::Fill(double weight) {
 
 
         // ISO CUT ENRICHING MJ ZONE
-        if (cuts[0]==1 && cuts[1]==1 && cuts[2]==1 && cuts[3]==1 && cuts[4]==1 && cuts[5]==1) {
+        if (cuts[0]==1 && cuts[1]==1 && (cuts[2]==1 || cuts[3]==1) && cuts[4]==1 && cuts[5]==1) {
           h_met_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 

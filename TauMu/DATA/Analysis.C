@@ -127,7 +127,7 @@ void CLoop::Book() {
     h_rnn_score_1prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_1prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 1 track",100,0,1);
     h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",100,0,1);
     h_rnn_score_3prong_btag_iso_ptmu_omega_mreco = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco","rnn score_btag_iso_ptmu_omega_mreco 3 track",100,0,1);
-    
+    /*
     h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
     h_tau_matched_after_0_to_90 = new TH1F("tau_matched_after_0_to_90","Tau truth matched after selection 0 to 90",2,0,2);
     h_tau_matched_after_90_to_120 = new TH1F("tau_matched_after_90_to_120","Tau truth matched after selection 90 to 120",2,0,2);
@@ -142,7 +142,7 @@ void CLoop::Book() {
     h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
     h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
     h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
-
+    */
     // Jet Number Histograms
     h_jet_n = new TH1F("jet_n","Eta value for lepton",10,-1,9);
     h_jet_n_btag_iso_rnn_ptmu_omega_mreco = new TH1F("jet_n_btag_iso_rnn_ptmu_omega_mreco","Eta value for lepton_btag_iso_rnn_ptmu_omega_mreco",10,-1,9);
@@ -282,10 +282,10 @@ void CLoop::Fill(double weight) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
-        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+        if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans<0.4) {
           cuts[3]=1;
         }
-        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
+        if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans<0.55) {
           cuts[3]=1;
         }
         if (muon_0_p4->Pt()>=27) {
@@ -380,11 +380,11 @@ void CLoop::Fill(double weight) {
         h_tau_phi->Fill(tau_0_p4->Phi(),weight);
         h_delta_phi->Fill(angle,weight);
         h_tau_nprongs->Fill(tau_0_n_charged_tracks,weight);
-
+        /*
         h_weight_total->Fill(weight,1);
         h_weight_mc->Fill(weight_total,1);
         h_tau_matched->Fill(tau_0_truth_isHadTau,weight);
-
+        */
         
         if (inside) {
           h_reco_mass->Fill(reco_mass,weight);
@@ -401,7 +401,7 @@ void CLoop::Fill(double weight) {
 
 
         // ISO CUT ENRICHING MJ ZONE
-        if (cuts[0]==1 && cuts[1]==1 && cuts[2]==1 && cuts[3]==1 && cuts[4]==1 && cuts[5]==1) {
+        if (cuts[0]==1 && cuts[1]==1 && (cuts[2]==1 || cuts[3]==1) && cuts[4]==1 && cuts[5]==1) {
           h_met_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
 
@@ -424,7 +424,7 @@ void CLoop::Fill(double weight) {
             h_tau_phi_cuts->Fill(tau_0_p4->Phi(),weight);
             h_delta_phi_cuts->Fill(angle,weight);
             h_tau_nprongs_cuts->Fill(tau_0_n_charged_tracks,weight);
-
+            /*
             h_weight_total_cuts->Fill(weight,1);
             h_weight_mc_cuts->Fill(weight_total,1);
             h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
@@ -433,26 +433,26 @@ void CLoop::Fill(double weight) {
             h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
             h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                 *muon_0_NOMINAL_MuEffSF_TTVA,1);
-                                          
+            */                              
             if (inside) {
               h_reco_mass_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
               h_angle_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
-              h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
+              //h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
             }
             if (outside_lep) {
               h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
             if (outside_tau){
               h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
               h_angle_ouside_cuts->Fill(angle,weight);
               h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-              h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
+              //h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
               h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
             }
           }
@@ -493,7 +493,7 @@ void CLoop::Style() {
     h_trans_lepmet_mass->Write();
     //h_trans_lepmet_mass_btag_iso_rnn->Write();
     h_trans_lepmet_mass_btag_iso_rnn_ptmu_omega_mreco->Write();
-
+    /*
     h_tau_matched->Write();
     h_tau_matched_after_0_to_90->Write();
     h_tau_matched_after_90_to_120->Write();
@@ -508,7 +508,7 @@ void CLoop::Style() {
     h_weight_mc_cuts->Write();
     h_weight_total->Write();
     h_weight_total_cuts->Write();
-
+    */
     h_rnn_score_1prong->Write();
     h_rnn_score_1prong_btag_iso_ptmu_omega_mreco->Write();
     h_rnn_score_3prong->Write();
