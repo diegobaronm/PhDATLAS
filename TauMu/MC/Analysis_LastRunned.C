@@ -137,8 +137,8 @@ void CLoop::Book() {
     h_tau_matched_after_outside = new TH1F("tau_matched_after_outside","Tau truth matched after selection outside",2,0,2);
     h_tau_matched_after_outside_120 = new TH1F("tau_matched_after_outside_120","Tau truth matched after selection outside 120",2,0,2);
     h_weight_mc = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
-    h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
+    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",600,-1000,20);
+    h_weight_total = new TH1F("weight_total","weight total",600,-1000,20);
     h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
     h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
     h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
@@ -218,7 +218,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       
-      if (ql==qtau && angle<3*pi/4){
+      if (ql!=qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -271,7 +271,7 @@ void CLoop::Fill(double weight) {
         // non RECO mass
         double lepmet_mass=sqrt(2*muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi())));
         double inv_taulep=sqrt((2*muon_0_p4->Pt()*tau_0_p4->Pt())*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
-        double trans_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(1-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
+        //double trans_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(1-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
         //double visi_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_0_p4->Eta())-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(cosh(tau_0_p4->Eta())-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
 
 
@@ -314,7 +314,7 @@ void CLoop::Fill(double weight) {
           cuts[5]=1;
         }
         if (inside) {
-          if (reco_mass<110 && reco_mass>70) {
+          if (reco_mass<105 && reco_mass>100) {
             cuts[6]=1;
           }
         }
@@ -545,8 +545,8 @@ void CLoop::Fill(double weight) {
                         h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);                      
                         h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
                       }
-
-                      if (cuts[7]==1){
+                      //TAU PT CUT
+                      if (cuts[7]==1 && weight> -100){
                         h_met_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
                         h_jet_n_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_jets, weight);
                         h_trans_lepmet_mass_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
@@ -559,7 +559,7 @@ void CLoop::Fill(double weight) {
                         h_ratio_ptjet_zpt_cuts_tpt->Fill(r_jpt_zpt,weight);
                         h_ratio_lpt_tpt_cuts_tpt->Fill(r_lpt_tpt,weight);
 
-                        h_weight_total_cuts->Fill(weight,1);
+                        
                         h_weight_mc_cuts->Fill(weight_total,1);
                         h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
                         h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
@@ -579,12 +579,14 @@ void CLoop::Fill(double weight) {
                           h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
                           h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                           h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
+                          h_weight_total_cuts->Fill(weight,1);
                         }
                         if (outside_tau){
                           h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
                           h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);                       
                           h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                           h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
+                          h_weight_total_cuts->Fill(weight,1);
                         }                      
                       }    
                     }

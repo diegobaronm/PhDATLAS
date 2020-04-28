@@ -152,8 +152,8 @@ void CLoop::Book() {
     h_tau_matched_after_outside = new TH1F("tau_matched_after_outside","Tau truth matched after selection outside",2,0,2);
     h_tau_matched_after_outside_120 = new TH1F("tau_matched_after_outside_120","Tau truth matched after selection outside 120",2,0,2);
     h_weight_mc = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
-    h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
+    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",50000,-20,30);
+    h_weight_total = new TH1F("weight_total","weight total",50000,-20,30);
     h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
     h_sf_e_trigger = new TH1F("sf_e_trigger","elec trigger scale factor",30,0.85,1.15);
     h_sf_e_recoid = new TH1F("sf_e_recoid","elec reco and id scale factor",30,0.85,1.15);
@@ -227,7 +227,7 @@ void CLoop::Fill(double weight) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
 
-      if (ql==qtau && angle<3*pi/4){
+      if (ql!=qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
