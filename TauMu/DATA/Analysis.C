@@ -137,8 +137,8 @@ void CLoop::Book() {
     h_tau_matched_after_outside = new TH1F("tau_matched_after_outside","Tau truth matched after selection outside",2,0,2);
     h_tau_matched_after_outside_120 = new TH1F("tau_matched_after_outside_120","Tau truth matched after selection outside 120",2,0,2);
     h_weight_mc = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",600,-1000,20);
-    h_weight_total = new TH1F("weight_total","weight total",600,-1000,20);
+    h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",40000,-1,20);
+    h_weight_total = new TH1F("weight_total","weight total",40000,-1,20);
     h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
     h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
     h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
@@ -314,7 +314,7 @@ void CLoop::Fill(double weight) {
           cuts[5]=1;
         }
         if (inside) {
-          if (reco_mass<105 && reco_mass>100) {
+          if (reco_mass<110 && reco_mass>70) {
             cuts[6]=1;
           }
         }
