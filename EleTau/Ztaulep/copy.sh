@@ -5,6 +5,6 @@ cp ../MC/out/singletop.root .
 cp ../MC/out/Wjets.root .
 cp ../MC/out/Zjets.root Zjets.root
 cp ../MC/out/ttbar.root ttbar.root
-cp ../MC/out/Ztautau.root Signal.root
+cp ../MC/out/Signal.root .
 hadd BG.root VV.root singletop.root Wjets.root Zjets.root ttbar.root
 hadd MC.root BG.root Signal.root
