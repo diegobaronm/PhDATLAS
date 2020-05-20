@@ -2,8 +2,12 @@ import os
 import sys
 import ROOT
 
-base_path='/media/diegol/Mobile/DATA/v19/mc/'
-base_path_sherpa='/media/diegol/Mobile/DATA/v19/mc/mc_sherpa/'
+
+base_path=sys.argv[1]
+
+base_path_sherpa=base_path
+
+name_mc=os.listdir(base_path)
 
 mc={'Ztautau_2018':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv1_Le',361108,1901.2,1.026,1],
 'Ztautau_2017':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10201_p3975.sv1_Le',361108,1901.2,1.026,1],
@@ -126,6 +130,18 @@ mc={'Ztautau_2018':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s312
 
 
 }
+
+
+for x in mc:
+    for y in name_mc:
+        if str(mc[x][1]) in y :
+            if "r9364" in y and "2015" in x:
+                mc[x][0]=base_path+y
+            elif "r10201" in y and "2017" in x:
+                mc[x][0]=base_path+y
+            elif "r10724" in y and "2018" in x:
+                mc[x][0]=base_path+y
+
 
 ## THIS SCRIPT MUST BE LAUNCHED AS
 
