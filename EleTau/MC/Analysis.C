@@ -305,7 +305,7 @@ void CLoop::Fill(double weight) {
         if (tau_0_ele_bdt_score_trans>=0.06) {
           cuts[1]=1;
         }
-        if (n_bjets==0){
+        if (n_bjets_MV2c10_FixedCutBEff_85==0){
            cuts[2]=1;
         }
         if (elec_0_iso_FCTight==1) {
@@ -365,7 +365,7 @@ void CLoop::Fill(double weight) {
           h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(tau_0_ele_bdt_score_trans,weight);
         }
         if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
-          h_b_tag_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets,weight);
+          h_b_tag_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         }
         if (cuts==c_iso||cuts==c_all) {
           h_elec_0_iso_FCTight_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCTight,weight);
