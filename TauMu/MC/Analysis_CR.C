@@ -294,7 +294,7 @@ void CLoop::Fill(double weight) {
         if (angle<=2*pi/3){
           cuts[0]=1;
         }
-        if (n_bjets==0){
+        if (n_bjets_MV2c10_FixedCutBEff_85==0){
            cuts[1]=1;
         }
         if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
@@ -347,7 +347,7 @@ void CLoop::Fill(double weight) {
           h_delta_phi_cuts_butphi->Fill(angle,weight);
         }
         if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
-          h_b_tag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets,weight);
+          h_b_tag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         }
         if (cuts==c_iso||cuts==c_all) {
           h_muon_0_iso_FCTightTrackOnly_FixedRad_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
@@ -486,8 +486,8 @@ void CLoop::Fill(double weight) {
               h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
               h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
               h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
-              h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
-              h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+              h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium,1);
+              h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                   *muon_0_NOMINAL_MuEffSF_TTVA,1);
                                             
               if (inside) {

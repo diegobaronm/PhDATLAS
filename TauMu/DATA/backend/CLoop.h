@@ -48,10 +48,12 @@ public :
    UInt_t          HLT_mu26_ivarmedium;
    UInt_t          HLT_mu50;
    UInt_t          bjet_0;
+   Int_t           bjet_0_b_tagged_MV2c10_FixedCutBEff_85;
    Int_t           bjet_0_origin;
    TLorentzVector  *bjet_0_p4;
    Int_t           bjet_0_type;
    UInt_t          bjet_1;
+   Int_t           bjet_1_b_tagged_MV2c10_FixedCutBEff_85;
    Int_t           bjet_1_origin;
    TLorentzVector  *bjet_1_p4;
    Int_t           bjet_1_type;
@@ -81,9 +83,69 @@ public :
    ULong64_t       event_number;
    UInt_t          lb_number;
    UInt_t          ljet_0;
+   Int_t           ljet_0_b_tagged_MV2c10_FixedCutBEff_85;
+   Int_t           ljet_0_flavorlabel;
+   Int_t           ljet_0_flavorlabel_cone;
+   Int_t           ljet_0_flavorlabel_part;
    Int_t           ljet_0_origin;
    TLorentzVector  *ljet_0_p4;
    Int_t           ljet_0_type;
+   UInt_t          ljet_1;
+   Int_t           ljet_1_b_tagged_MV2c10_FixedCutBEff_85;
+   Int_t           ljet_1_flavorlabel;
+   Int_t           ljet_1_flavorlabel_cone;
+   Int_t           ljet_1_flavorlabel_part;
+   Int_t           ljet_1_origin;
+   TLorentzVector  *ljet_1_p4;
+   Int_t           ljet_1_type;
+   UInt_t          ljet_2;
+   Int_t           ljet_2_b_tag_quantile;
+   Float_t         ljet_2_b_tag_score;
+   Int_t           ljet_2_b_tagged_MV2c10_FixedCutBEff_85;
+   UInt_t          ljet_2_cleanJet_EC_LooseBad;
+   Float_t         ljet_2_fjvt;
+   Int_t           ljet_2_flavorlabel;
+   Int_t           ljet_2_flavorlabel_cone;
+   Int_t           ljet_2_flavorlabel_part;
+   Int_t           ljet_2_is_Jvt_HS;
+   Float_t         ljet_2_jvt;
+   Int_t           ljet_2_origin;
+   TLorentzVector  *ljet_2_p4;
+   Float_t         ljet_2_q;
+   Int_t           ljet_2_type;
+   Float_t         ljet_2_width;
+   UInt_t          ljet_3;
+   Int_t           ljet_3_b_tag_quantile;
+   Float_t         ljet_3_b_tag_score;
+   Int_t           ljet_3_b_tagged_MV2c10_FixedCutBEff_85;
+   UInt_t          ljet_3_cleanJet_EC_LooseBad;
+   Float_t         ljet_3_fjvt;
+   Int_t           ljet_3_flavorlabel;
+   Int_t           ljet_3_flavorlabel_cone;
+   Int_t           ljet_3_flavorlabel_part;
+   Int_t           ljet_3_is_Jvt_HS;
+   Float_t         ljet_3_jvt;
+   Int_t           ljet_3_origin;
+   TLorentzVector  *ljet_3_p4;
+   Float_t         ljet_3_q;
+   Int_t           ljet_3_type;
+   Float_t         ljet_3_width;
+   UInt_t          ljet_4;
+   Int_t           ljet_4_b_tag_quantile;
+   Float_t         ljet_4_b_tag_score;
+   Int_t           ljet_4_b_tagged_MV2c10_FixedCutBEff_85;
+   UInt_t          ljet_4_cleanJet_EC_LooseBad;
+   Float_t         ljet_4_fjvt;
+   Int_t           ljet_4_flavorlabel;
+   Int_t           ljet_4_flavorlabel_cone;
+   Int_t           ljet_4_flavorlabel_part;
+   Int_t           ljet_4_is_Jvt_HS;
+   Float_t         ljet_4_jvt;
+   Int_t           ljet_4_origin;
+   TLorentzVector  *ljet_4_p4;
+   Float_t         ljet_4_q;
+   Int_t           ljet_4_type;
+   Float_t         ljet_4_width;
    TLorentzVector  *met_reco_p4;
    UInt_t          muTrigMatch_0_HLT_mu20_iloose_L1MU15;
    UInt_t          muTrigMatch_0_HLT_mu26_ivarmedium;
@@ -107,20 +169,24 @@ public :
    Float_t         n_actual_int_cor;
    Float_t         n_avg_int;
    Float_t         n_avg_int_cor;
-   Int_t           n_bjets;
+   Int_t           n_bjets_MV2c10_FixedCutBEff_85;
    Int_t           n_electrons;
    Int_t           n_electrons_olr;
    Int_t           n_jets;
    Int_t           n_muons;
    Int_t           n_pvx;
    Int_t           n_taus;
-   Int_t           n_taus_bdt_loose;
-   Int_t           n_taus_bdt_medium;
-   Int_t           n_taus_bdt_tight;
+   Int_t           n_taus_met;
+   Int_t           n_taus_olr;
+   Int_t           n_taus_rnn_loose;
+   Int_t           n_taus_rnn_medium;
+   Int_t           n_taus_rnn_tight;
+   Int_t           n_taus_rnn_veryloose;
    Int_t           n_vx;
    UInt_t          run_number;
    UInt_t          tau_0;
    UInt_t          tau_0_decay_mode;
+   Float_t         tau_0_ele_bdt_eff_sf;
    UInt_t          tau_0_ele_bdt_loose;
    Int_t           tau_0_ele_bdt_loose_retuned;
    UInt_t          tau_0_ele_bdt_medium;
@@ -133,9 +199,12 @@ public :
    Int_t           tau_0_ele_bdt_tight_retuned;
    Float_t         tau_0_ele_match_lhscore;
    UInt_t          tau_0_ele_olr_pass;
+   UInt_t          tau_0_jet_bdt_loose;
+   UInt_t          tau_0_jet_bdt_medium;
    Float_t         tau_0_jet_bdt_score;
    Float_t         tau_0_jet_bdt_score_trans;
    UInt_t          tau_0_jet_bdt_tight;
+   UInt_t          tau_0_jet_bdt_veryloose;
    UInt_t          tau_0_jet_rnn_loose;
    UInt_t          tau_0_jet_rnn_medium;
    Float_t         tau_0_jet_rnn_score;
@@ -156,10 +225,12 @@ public :
    TBranch        *b_HLT_mu26_ivarmedium;   //!
    TBranch        *b_HLT_mu50;   //!
    TBranch        *b_bjet_0;   //!
+   TBranch        *b_bjet_0_b_tagged_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_bjet_0_origin;   //!
    TBranch        *b_bjet_0_p4;   //!
    TBranch        *b_bjet_0_type;   //!
    TBranch        *b_bjet_1;   //!
+   TBranch        *b_bjet_1_b_tagged_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_bjet_1_origin;   //!
    TBranch        *b_bjet_1_p4;   //!
    TBranch        *b_bjet_1_type;   //!
@@ -189,9 +260,69 @@ public :
    TBranch        *b_event_number;   //!
    TBranch        *b_lb_number;   //!
    TBranch        *b_ljet_0;   //!
+   TBranch        *b_ljet_0_b_tagged_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_ljet_0_flavorlabel;   //!
+   TBranch        *b_ljet_0_flavorlabel_cone;   //!
+   TBranch        *b_ljet_0_flavorlabel_part;   //!
    TBranch        *b_ljet_0_origin;   //!
    TBranch        *b_ljet_0_p4;   //!
    TBranch        *b_ljet_0_type;   //!
+   TBranch        *b_ljet_1;   //!
+   TBranch        *b_ljet_1_b_tagged_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_ljet_1_flavorlabel;   //!
+   TBranch        *b_ljet_1_flavorlabel_cone;   //!
+   TBranch        *b_ljet_1_flavorlabel_part;   //!
+   TBranch        *b_ljet_1_origin;   //!
+   TBranch        *b_ljet_1_p4;   //!
+   TBranch        *b_ljet_1_type;   //!
+   TBranch        *b_ljet_2;   //!
+   TBranch        *b_ljet_2_b_tag_quantile;   //!
+   TBranch        *b_ljet_2_b_tag_score;   //!
+   TBranch        *b_ljet_2_b_tagged_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_ljet_2_cleanJet_EC_LooseBad;   //!
+   TBranch        *b_ljet_2_fjvt;   //!
+   TBranch        *b_ljet_2_flavorlabel;   //!
+   TBranch        *b_ljet_2_flavorlabel_cone;   //!
+   TBranch        *b_ljet_2_flavorlabel_part;   //!
+   TBranch        *b_ljet_2_is_Jvt_HS;   //!
+   TBranch        *b_ljet_2_jvt;   //!
+   TBranch        *b_ljet_2_origin;   //!
+   TBranch        *b_ljet_2_p4;   //!
+   TBranch        *b_ljet_2_q;   //!
+   TBranch        *b_ljet_2_type;   //!
+   TBranch        *b_ljet_2_width;   //!
+   TBranch        *b_ljet_3;   //!
+   TBranch        *b_ljet_3_b_tag_quantile;   //!
+   TBranch        *b_ljet_3_b_tag_score;   //!
+   TBranch        *b_ljet_3_b_tagged_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_ljet_3_cleanJet_EC_LooseBad;   //!
+   TBranch        *b_ljet_3_fjvt;   //!
+   TBranch        *b_ljet_3_flavorlabel;   //!
+   TBranch        *b_ljet_3_flavorlabel_cone;   //!
+   TBranch        *b_ljet_3_flavorlabel_part;   //!
+   TBranch        *b_ljet_3_is_Jvt_HS;   //!
+   TBranch        *b_ljet_3_jvt;   //!
+   TBranch        *b_ljet_3_origin;   //!
+   TBranch        *b_ljet_3_p4;   //!
+   TBranch        *b_ljet_3_q;   //!
+   TBranch        *b_ljet_3_type;   //!
+   TBranch        *b_ljet_3_width;   //!
+   TBranch        *b_ljet_4;   //!
+   TBranch        *b_ljet_4_b_tag_quantile;   //!
+   TBranch        *b_ljet_4_b_tag_score;   //!
+   TBranch        *b_ljet_4_b_tagged_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_ljet_4_cleanJet_EC_LooseBad;   //!
+   TBranch        *b_ljet_4_fjvt;   //!
+   TBranch        *b_ljet_4_flavorlabel;   //!
+   TBranch        *b_ljet_4_flavorlabel_cone;   //!
+   TBranch        *b_ljet_4_flavorlabel_part;   //!
+   TBranch        *b_ljet_4_is_Jvt_HS;   //!
+   TBranch        *b_ljet_4_jvt;   //!
+   TBranch        *b_ljet_4_origin;   //!
+   TBranch        *b_ljet_4_p4;   //!
+   TBranch        *b_ljet_4_q;   //!
+   TBranch        *b_ljet_4_type;   //!
+   TBranch        *b_ljet_4_width;   //!
    TBranch        *b_met_reco_p4;   //!
    TBranch        *b_muTrigMatch_0_HLT_mu20_iloose_L1MU15;   //!
    TBranch        *b_muTrigMatch_0_HLT_mu26_ivarmedium;   //!
@@ -215,20 +346,24 @@ public :
    TBranch        *b_n_actual_int_cor;   //!
    TBranch        *b_n_avg_int;   //!
    TBranch        *b_n_avg_int_cor;   //!
-   TBranch        *b_n_bjets;   //!
+   TBranch        *b_n_bjets_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_n_electrons;   //!
    TBranch        *b_n_electrons_olr;   //!
    TBranch        *b_n_jets;   //!
    TBranch        *b_n_muons;   //!
    TBranch        *b_n_pvx;   //!
    TBranch        *b_n_taus;   //!
-   TBranch        *b_n_taus_bdt_loose;   //!
-   TBranch        *b_n_taus_bdt_medium;   //!
-   TBranch        *b_n_taus_bdt_tight;   //!
+   TBranch        *b_n_taus_met;   //!
+   TBranch        *b_n_taus_olr;   //!
+   TBranch        *b_n_taus_rnn_loose;   //!
+   TBranch        *b_n_taus_rnn_medium;   //!
+   TBranch        *b_n_taus_rnn_tight;   //!
+   TBranch        *b_n_taus_rnn_veryloose;   //!
    TBranch        *b_n_vx;   //!
    TBranch        *b_run_number;   //!
    TBranch        *b_tau_0;   //!
    TBranch        *b_tau_0_decay_mode;   //!
+   TBranch        *b_tau_0_ele_bdt_eff_sf;   //!
    TBranch        *b_tau_0_ele_bdt_loose;   //!
    TBranch        *b_tau_0_ele_bdt_loose_retuned;   //!
    TBranch        *b_tau_0_ele_bdt_medium;   //!
@@ -241,9 +376,12 @@ public :
    TBranch        *b_tau_0_ele_bdt_tight_retuned;   //!
    TBranch        *b_tau_0_ele_match_lhscore;   //!
    TBranch        *b_tau_0_ele_olr_pass;   //!
+   TBranch        *b_tau_0_jet_bdt_loose;   //!
+   TBranch        *b_tau_0_jet_bdt_medium;   //!
    TBranch        *b_tau_0_jet_bdt_score;   //!
    TBranch        *b_tau_0_jet_bdt_score_trans;   //!
    TBranch        *b_tau_0_jet_bdt_tight;   //!
+   TBranch        *b_tau_0_jet_bdt_veryloose;   //!
    TBranch        *b_tau_0_jet_rnn_loose;   //!
    TBranch        *b_tau_0_jet_rnn_medium;   //!
    TBranch        *b_tau_0_jet_rnn_score;   //!
@@ -322,6 +460,10 @@ bjet_0_p4 = 0;
    bjet_1_p4 = 0;
    elec_0_p4 = 0;
    ljet_0_p4 = 0;
+   ljet_1_p4 = 0;
+   ljet_2_p4 = 0;
+   ljet_3_p4 = 0;
+   ljet_4_p4 = 0;
    met_reco_p4 = 0;
    muon_0_p4 = 0;
    tau_0_p4 = 0;
@@ -341,10 +483,12 @@ bjet_0_p4 = 0;
    fChain->SetBranchAddress("HLT_mu26_ivarmedium", &HLT_mu26_ivarmedium, &b_HLT_mu26_ivarmedium);
    fChain->SetBranchAddress("HLT_mu50", &HLT_mu50, &b_HLT_mu50);
    fChain->SetBranchAddress("bjet_0", &bjet_0, &b_bjet_0);
+   fChain->SetBranchAddress("bjet_0_b_tagged_MV2c10_FixedCutBEff_85", &bjet_0_b_tagged_MV2c10_FixedCutBEff_85, &b_bjet_0_b_tagged_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("bjet_0_origin", &bjet_0_origin, &b_bjet_0_origin);
    fChain->SetBranchAddress("bjet_0_p4", &bjet_0_p4, &b_bjet_0_p4);
    fChain->SetBranchAddress("bjet_0_type", &bjet_0_type, &b_bjet_0_type);
    fChain->SetBranchAddress("bjet_1", &bjet_1, &b_bjet_1);
+   fChain->SetBranchAddress("bjet_1_b_tagged_MV2c10_FixedCutBEff_85", &bjet_1_b_tagged_MV2c10_FixedCutBEff_85, &b_bjet_1_b_tagged_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("bjet_1_origin", &bjet_1_origin, &b_bjet_1_origin);
    fChain->SetBranchAddress("bjet_1_p4", &bjet_1_p4, &b_bjet_1_p4);
    fChain->SetBranchAddress("bjet_1_type", &bjet_1_type, &b_bjet_1_type);
@@ -374,9 +518,69 @@ bjet_0_p4 = 0;
    fChain->SetBranchAddress("event_number", &event_number, &b_event_number);
    fChain->SetBranchAddress("lb_number", &lb_number, &b_lb_number);
    fChain->SetBranchAddress("ljet_0", &ljet_0, &b_ljet_0);
+   fChain->SetBranchAddress("ljet_0_b_tagged_MV2c10_FixedCutBEff_85", &ljet_0_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_0_b_tagged_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("ljet_0_flavorlabel", &ljet_0_flavorlabel, &b_ljet_0_flavorlabel);
+   fChain->SetBranchAddress("ljet_0_flavorlabel_cone", &ljet_0_flavorlabel_cone, &b_ljet_0_flavorlabel_cone);
+   fChain->SetBranchAddress("ljet_0_flavorlabel_part", &ljet_0_flavorlabel_part, &b_ljet_0_flavorlabel_part);
    fChain->SetBranchAddress("ljet_0_origin", &ljet_0_origin, &b_ljet_0_origin);
    fChain->SetBranchAddress("ljet_0_p4", &ljet_0_p4, &b_ljet_0_p4);
    fChain->SetBranchAddress("ljet_0_type", &ljet_0_type, &b_ljet_0_type);
+   fChain->SetBranchAddress("ljet_1", &ljet_1, &b_ljet_1);
+   fChain->SetBranchAddress("ljet_1_b_tagged_MV2c10_FixedCutBEff_85", &ljet_1_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_1_b_tagged_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("ljet_1_flavorlabel", &ljet_1_flavorlabel, &b_ljet_1_flavorlabel);
+   fChain->SetBranchAddress("ljet_1_flavorlabel_cone", &ljet_1_flavorlabel_cone, &b_ljet_1_flavorlabel_cone);
+   fChain->SetBranchAddress("ljet_1_flavorlabel_part", &ljet_1_flavorlabel_part, &b_ljet_1_flavorlabel_part);
+   fChain->SetBranchAddress("ljet_1_origin", &ljet_1_origin, &b_ljet_1_origin);
+   fChain->SetBranchAddress("ljet_1_p4", &ljet_1_p4, &b_ljet_1_p4);
+   fChain->SetBranchAddress("ljet_1_type", &ljet_1_type, &b_ljet_1_type);
+   fChain->SetBranchAddress("ljet_2", &ljet_2, &b_ljet_2);
+   fChain->SetBranchAddress("ljet_2_b_tag_quantile", &ljet_2_b_tag_quantile, &b_ljet_2_b_tag_quantile);
+   fChain->SetBranchAddress("ljet_2_b_tag_score", &ljet_2_b_tag_score, &b_ljet_2_b_tag_score);
+   fChain->SetBranchAddress("ljet_2_b_tagged_MV2c10_FixedCutBEff_85", &ljet_2_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_2_b_tagged_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("ljet_2_cleanJet_EC_LooseBad", &ljet_2_cleanJet_EC_LooseBad, &b_ljet_2_cleanJet_EC_LooseBad);
+   fChain->SetBranchAddress("ljet_2_fjvt", &ljet_2_fjvt, &b_ljet_2_fjvt);
+   fChain->SetBranchAddress("ljet_2_flavorlabel", &ljet_2_flavorlabel, &b_ljet_2_flavorlabel);
+   fChain->SetBranchAddress("ljet_2_flavorlabel_cone", &ljet_2_flavorlabel_cone, &b_ljet_2_flavorlabel_cone);
+   fChain->SetBranchAddress("ljet_2_flavorlabel_part", &ljet_2_flavorlabel_part, &b_ljet_2_flavorlabel_part);
+   fChain->SetBranchAddress("ljet_2_is_Jvt_HS", &ljet_2_is_Jvt_HS, &b_ljet_2_is_Jvt_HS);
+   fChain->SetBranchAddress("ljet_2_jvt", &ljet_2_jvt, &b_ljet_2_jvt);
+   fChain->SetBranchAddress("ljet_2_origin", &ljet_2_origin, &b_ljet_2_origin);
+   fChain->SetBranchAddress("ljet_2_p4", &ljet_2_p4, &b_ljet_2_p4);
+   fChain->SetBranchAddress("ljet_2_q", &ljet_2_q, &b_ljet_2_q);
+   fChain->SetBranchAddress("ljet_2_type", &ljet_2_type, &b_ljet_2_type);
+   fChain->SetBranchAddress("ljet_2_width", &ljet_2_width, &b_ljet_2_width);
+   fChain->SetBranchAddress("ljet_3", &ljet_3, &b_ljet_3);
+   fChain->SetBranchAddress("ljet_3_b_tag_quantile", &ljet_3_b_tag_quantile, &b_ljet_3_b_tag_quantile);
+   fChain->SetBranchAddress("ljet_3_b_tag_score", &ljet_3_b_tag_score, &b_ljet_3_b_tag_score);
+   fChain->SetBranchAddress("ljet_3_b_tagged_MV2c10_FixedCutBEff_85", &ljet_3_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_3_b_tagged_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("ljet_3_cleanJet_EC_LooseBad", &ljet_3_cleanJet_EC_LooseBad, &b_ljet_3_cleanJet_EC_LooseBad);
+   fChain->SetBranchAddress("ljet_3_fjvt", &ljet_3_fjvt, &b_ljet_3_fjvt);
+   fChain->SetBranchAddress("ljet_3_flavorlabel", &ljet_3_flavorlabel, &b_ljet_3_flavorlabel);
+   fChain->SetBranchAddress("ljet_3_flavorlabel_cone", &ljet_3_flavorlabel_cone, &b_ljet_3_flavorlabel_cone);
+   fChain->SetBranchAddress("ljet_3_flavorlabel_part", &ljet_3_flavorlabel_part, &b_ljet_3_flavorlabel_part);
+   fChain->SetBranchAddress("ljet_3_is_Jvt_HS", &ljet_3_is_Jvt_HS, &b_ljet_3_is_Jvt_HS);
+   fChain->SetBranchAddress("ljet_3_jvt", &ljet_3_jvt, &b_ljet_3_jvt);
+   fChain->SetBranchAddress("ljet_3_origin", &ljet_3_origin, &b_ljet_3_origin);
+   fChain->SetBranchAddress("ljet_3_p4", &ljet_3_p4, &b_ljet_3_p4);
+   fChain->SetBranchAddress("ljet_3_q", &ljet_3_q, &b_ljet_3_q);
+   fChain->SetBranchAddress("ljet_3_type", &ljet_3_type, &b_ljet_3_type);
+   fChain->SetBranchAddress("ljet_3_width", &ljet_3_width, &b_ljet_3_width);
+   fChain->SetBranchAddress("ljet_4", &ljet_4, &b_ljet_4);
+   fChain->SetBranchAddress("ljet_4_b_tag_quantile", &ljet_4_b_tag_quantile, &b_ljet_4_b_tag_quantile);
+   fChain->SetBranchAddress("ljet_4_b_tag_score", &ljet_4_b_tag_score, &b_ljet_4_b_tag_score);
+   fChain->SetBranchAddress("ljet_4_b_tagged_MV2c10_FixedCutBEff_85", &ljet_4_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_4_b_tagged_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("ljet_4_cleanJet_EC_LooseBad", &ljet_4_cleanJet_EC_LooseBad, &b_ljet_4_cleanJet_EC_LooseBad);
+   fChain->SetBranchAddress("ljet_4_fjvt", &ljet_4_fjvt, &b_ljet_4_fjvt);
+   fChain->SetBranchAddress("ljet_4_flavorlabel", &ljet_4_flavorlabel, &b_ljet_4_flavorlabel);
+   fChain->SetBranchAddress("ljet_4_flavorlabel_cone", &ljet_4_flavorlabel_cone, &b_ljet_4_flavorlabel_cone);
+   fChain->SetBranchAddress("ljet_4_flavorlabel_part", &ljet_4_flavorlabel_part, &b_ljet_4_flavorlabel_part);
+   fChain->SetBranchAddress("ljet_4_is_Jvt_HS", &ljet_4_is_Jvt_HS, &b_ljet_4_is_Jvt_HS);
+   fChain->SetBranchAddress("ljet_4_jvt", &ljet_4_jvt, &b_ljet_4_jvt);
+   fChain->SetBranchAddress("ljet_4_origin", &ljet_4_origin, &b_ljet_4_origin);
+   fChain->SetBranchAddress("ljet_4_p4", &ljet_4_p4, &b_ljet_4_p4);
+   fChain->SetBranchAddress("ljet_4_q", &ljet_4_q, &b_ljet_4_q);
+   fChain->SetBranchAddress("ljet_4_type", &ljet_4_type, &b_ljet_4_type);
+   fChain->SetBranchAddress("ljet_4_width", &ljet_4_width, &b_ljet_4_width);
    fChain->SetBranchAddress("met_reco_p4", &met_reco_p4, &b_met_reco_p4);
    fChain->SetBranchAddress("muTrigMatch_0_HLT_mu20_iloose_L1MU15", &muTrigMatch_0_HLT_mu20_iloose_L1MU15, &b_muTrigMatch_0_HLT_mu20_iloose_L1MU15);
    fChain->SetBranchAddress("muTrigMatch_0_HLT_mu26_ivarmedium", &muTrigMatch_0_HLT_mu26_ivarmedium, &b_muTrigMatch_0_HLT_mu26_ivarmedium);
@@ -400,20 +604,24 @@ bjet_0_p4 = 0;
    fChain->SetBranchAddress("n_actual_int_cor", &n_actual_int_cor, &b_n_actual_int_cor);
    fChain->SetBranchAddress("n_avg_int", &n_avg_int, &b_n_avg_int);
    fChain->SetBranchAddress("n_avg_int_cor", &n_avg_int_cor, &b_n_avg_int_cor);
-   fChain->SetBranchAddress("n_bjets", &n_bjets, &b_n_bjets);
+   fChain->SetBranchAddress("n_bjets_MV2c10_FixedCutBEff_85", &n_bjets_MV2c10_FixedCutBEff_85, &b_n_bjets_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("n_electrons", &n_electrons, &b_n_electrons);
    fChain->SetBranchAddress("n_electrons_olr", &n_electrons_olr, &b_n_electrons_olr);
    fChain->SetBranchAddress("n_jets", &n_jets, &b_n_jets);
    fChain->SetBranchAddress("n_muons", &n_muons, &b_n_muons);
    fChain->SetBranchAddress("n_pvx", &n_pvx, &b_n_pvx);
    fChain->SetBranchAddress("n_taus", &n_taus, &b_n_taus);
-   fChain->SetBranchAddress("n_taus_bdt_loose", &n_taus_bdt_loose, &b_n_taus_bdt_loose);
-   fChain->SetBranchAddress("n_taus_bdt_medium", &n_taus_bdt_medium, &b_n_taus_bdt_medium);
-   fChain->SetBranchAddress("n_taus_bdt_tight", &n_taus_bdt_tight, &b_n_taus_bdt_tight);
+   fChain->SetBranchAddress("n_taus_met", &n_taus_met, &b_n_taus_met);
+   fChain->SetBranchAddress("n_taus_olr", &n_taus_olr, &b_n_taus_olr);
+   fChain->SetBranchAddress("n_taus_rnn_loose", &n_taus_rnn_loose, &b_n_taus_rnn_loose);
+   fChain->SetBranchAddress("n_taus_rnn_medium", &n_taus_rnn_medium, &b_n_taus_rnn_medium);
+   fChain->SetBranchAddress("n_taus_rnn_tight", &n_taus_rnn_tight, &b_n_taus_rnn_tight);
+   fChain->SetBranchAddress("n_taus_rnn_veryloose", &n_taus_rnn_veryloose, &b_n_taus_rnn_veryloose);
    fChain->SetBranchAddress("n_vx", &n_vx, &b_n_vx);
    fChain->SetBranchAddress("run_number", &run_number, &b_run_number);
    fChain->SetBranchAddress("tau_0", &tau_0, &b_tau_0);
    fChain->SetBranchAddress("tau_0_decay_mode", &tau_0_decay_mode, &b_tau_0_decay_mode);
+   fChain->SetBranchAddress("tau_0_ele_bdt_eff_sf", &tau_0_ele_bdt_eff_sf, &b_tau_0_ele_bdt_eff_sf);
    fChain->SetBranchAddress("tau_0_ele_bdt_loose", &tau_0_ele_bdt_loose, &b_tau_0_ele_bdt_loose);
    fChain->SetBranchAddress("tau_0_ele_bdt_loose_retuned", &tau_0_ele_bdt_loose_retuned, &b_tau_0_ele_bdt_loose_retuned);
    fChain->SetBranchAddress("tau_0_ele_bdt_medium", &tau_0_ele_bdt_medium, &b_tau_0_ele_bdt_medium);
@@ -426,9 +634,12 @@ bjet_0_p4 = 0;
    fChain->SetBranchAddress("tau_0_ele_bdt_tight_retuned", &tau_0_ele_bdt_tight_retuned, &b_tau_0_ele_bdt_tight_retuned);
    fChain->SetBranchAddress("tau_0_ele_match_lhscore", &tau_0_ele_match_lhscore, &b_tau_0_ele_match_lhscore);
    fChain->SetBranchAddress("tau_0_ele_olr_pass", &tau_0_ele_olr_pass, &b_tau_0_ele_olr_pass);
+   fChain->SetBranchAddress("tau_0_jet_bdt_loose", &tau_0_jet_bdt_loose, &b_tau_0_jet_bdt_loose);
+   fChain->SetBranchAddress("tau_0_jet_bdt_medium", &tau_0_jet_bdt_medium, &b_tau_0_jet_bdt_medium);
    fChain->SetBranchAddress("tau_0_jet_bdt_score", &tau_0_jet_bdt_score, &b_tau_0_jet_bdt_score);
    fChain->SetBranchAddress("tau_0_jet_bdt_score_trans", &tau_0_jet_bdt_score_trans, &b_tau_0_jet_bdt_score_trans);
    fChain->SetBranchAddress("tau_0_jet_bdt_tight", &tau_0_jet_bdt_tight, &b_tau_0_jet_bdt_tight);
+   fChain->SetBranchAddress("tau_0_jet_bdt_veryloose", &tau_0_jet_bdt_veryloose, &b_tau_0_jet_bdt_veryloose);
    fChain->SetBranchAddress("tau_0_jet_rnn_loose", &tau_0_jet_rnn_loose, &b_tau_0_jet_rnn_loose);
    fChain->SetBranchAddress("tau_0_jet_rnn_medium", &tau_0_jet_rnn_medium, &b_tau_0_jet_rnn_medium);
    fChain->SetBranchAddress("tau_0_jet_rnn_score", &tau_0_jet_rnn_score, &b_tau_0_jet_rnn_score);
