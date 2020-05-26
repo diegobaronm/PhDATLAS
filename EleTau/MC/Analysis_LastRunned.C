@@ -199,7 +199,7 @@ void CLoop::Book() {
     h_ratio_lpt_tpt_cuts_tpt = new TH1F("ratio_lpt_tpt_cuts_tpt","ratio_lpt_tpt_cuts_tpt",40,0,4);
 }
 
-void CLoop::Fill(double weight) {
+void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
     bool trigger_decision= false;
     if (run_number>= 276262 && run_number<=284484){
@@ -253,6 +253,11 @@ void CLoop::Fill(double weight) {
         double Z_pt=0;
         double r_jpt_zpt=0;
         double r_lpt_tpt=elec_0_p4->Pt()/tau_0_p4->Pt();
+        double truth_z_pt=0.0;
+        if (z_sample==1)
+        {
+          truth_z_pt=truth_Z_p4->Pt();
+        }
         if (inside) {
           Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+elec_0_p4->Pt()*cos(elec_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(elec_0_p4->Phi());
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+elec_0_p4->Pt()*sin(elec_0_p4->Phi())+pt_tau_nu*sin(tau_0_p4->Phi())+pt_lep_nu*sin(elec_0_p4->Phi());
@@ -305,7 +310,7 @@ void CLoop::Fill(double weight) {
         if (tau_0_ele_bdt_score_trans>=0.06) {
           cuts[1]=1;
         }
-        if (n_bjets==0){
+        if (n_bjets_MV2c10_FixedCutBEff_85==0){
            cuts[2]=1;
         }
         if (elec_0_iso_FCTight==1) {
@@ -365,7 +370,7 @@ void CLoop::Fill(double weight) {
           h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(tau_0_ele_bdt_score_trans,weight);
         }
         if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
-          h_b_tag_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets,weight);
+          h_b_tag_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         }
         if (cuts==c_iso||cuts==c_all) {
           h_elec_0_iso_FCTight_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCTight,weight);

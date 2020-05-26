@@ -164,12 +164,19 @@ void CLoop::Book() {
     h_omega = new TH1F("omega","omega variable",60,-3.0,3.0);
     h_omega_btag_iso_rnn_ptmu_mreco_tpt = new TH1F("omega_btag_iso_rnn_ptmu_mreco_tpt","omega variable_btag_iso_rnn_ptmu_mreco_tpt",60,-3.0,3.0);
 
-    h_Z_pt_reco_inside = new TH1F("Z_pt_inside","Z boson transverse momentum _inside",300,0,300);
-    h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum _inside",300,0,300);
-    h_Z_pt_reco_cuts_tpt_inside = new TH1F("Z_pt_cuts_tpt_inside","Z boson transverse momentum _inside_tpt",300,0,300);
-    h_Z_pt_reco_outside = new TH1F("Z_pt_outside","Z boson transverse momentum _outside",300,0,300);
-    h_Z_pt_reco_cuts_outside = new TH1F("Z_pt_cuts_outside","Z boson transverse momentum _outside",300,0,300);
-    h_Z_pt_reco_cuts_tpt_outside = new TH1F("Z_pt_cuts_tpt_outside","Z boson transverse momentum _outside_tpt",300,0,300);
+    h_Z_pt_reco_inside = new TH1F("Z_pt_inside","Z boson transverse momentum _inside",400,0,400);
+    h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum _inside",400,0,400);
+    h_Z_pt_reco_cuts_tpt_inside = new TH1F("Z_pt_cuts_tpt_inside","Z boson transverse momentum _inside_tpt",400,0,400);
+    h_Z_pt_reco_outside = new TH1F("Z_pt_outside","Z boson transverse momentum _outside",400,0,400);
+    h_Z_pt_reco_cuts_outside = new TH1F("Z_pt_cuts_outside","Z boson transverse momentum _outside",400,0,400);
+    h_Z_pt_reco_cuts_tpt_outside = new TH1F("Z_pt_cuts_tpt_outside","Z boson transverse momentum _outside_tpt",400,0,400);
+
+    h_Z_pt_truth_inside = new TH1F("Z_pt_truth_inside","Z_truth boson transverse momentum _inside",400,0,400);
+    h_Z_pt_truth_cuts_inside = new TH1F("Z_pt_truth_cuts_inside","Z_truth boson transverse momentum _inside",400,0,400);
+    h_Z_pt_truth_cuts_tpt_inside = new TH1F("Z_pt_truth_cuts_tpt_inside","Z_truth boson transverse momentum _inside_tpt",400,0,400);
+    h_Z_pt_truth_outside = new TH1F("Z_pt_truth_outside","Z_truth boson transverse momentum _outside",400,0,400);
+    h_Z_pt_truth_cuts_outside = new TH1F("Z_pt_truth_cuts_outside","Z_truth boson transverse momentum _outside",400,0,400);
+    h_Z_pt_truth_cuts_tpt_outside = new TH1F("Z_pt_truth_cuts_tpt_outside","Z_truth boson transverse momentum _outside_tpt",400,0,400);
 
     h_delta_phi= new TH1F("delta_phi","Delta phi lepton-tau",32,0,3.2);
     h_delta_phi_cuts_butphi= new TH1F("delta_phi_cuts_butphi","Delta phi lepton-tau after all cuts but delta phi",32,0,3.2);
@@ -187,7 +194,7 @@ void CLoop::Book() {
 
 }
 
-void CLoop::Fill(double weight) {
+void CLoop::Fill(double weight, int z_sample) {   
     double pi=TMath::Pi();
     bool trigger_decision= false;
     bool trigger_match= false;
@@ -245,12 +252,19 @@ void CLoop::Fill(double weight) {
         double r_jpt_zpt=0;
         double r_lpt_tpt=muon_0_p4->Pt()/tau_0_p4->Pt();
 
+        double truth_z_pt=0.0;
+        if (z_sample==1)
+        {
+          truth_z_pt=truth_Z_p4->Pt();
+        }
+
 
         if (inside) {
           Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(muon_0_p4->Phi());
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+pt_tau_nu*sin(tau_0_p4->Phi())+pt_lep_nu*sin(muon_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
           h_Z_pt_reco_inside->Fill(Z_pt,weight);
+          h_Z_pt_truth_inside->Fill(truth_z_pt/1000,weight);
           r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
         }
         if (outside_tau) {
@@ -258,6 +272,7 @@ void CLoop::Fill(double weight) {
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(tau_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
           h_Z_pt_reco_outside->Fill(Z_pt,weight);
+          h_Z_pt_truth_outside->Fill(truth_z_pt/1000,weight);
           r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
         }
         if (outside_lep) {
@@ -265,6 +280,7 @@ void CLoop::Fill(double weight) {
           Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(muon_0_p4->Phi());
           Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
           h_Z_pt_reco_outside->Fill(Z_pt,weight);
+          h_Z_pt_truth_outside->Fill(truth_z_pt/1000,weight);
           r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
         }
 
@@ -536,14 +552,17 @@ void CLoop::Fill(double weight) {
                       if (inside) {
                         h_reco_mass_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);                 
                         h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
+                        h_Z_pt_truth_cuts_inside->Fill(truth_z_pt/1000,weight);
                       }
                       if (outside_lep) {
                         h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
                         h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+                        h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
                       }
                       if (outside_tau){
                         h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);                      
                         h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+                        h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
                       }
                       //TAU PT CUT
                       if (cuts[7]==1){
@@ -574,19 +593,21 @@ void CLoop::Fill(double weight) {
                           h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Fill(tau_0_p4->Pt(),weight);               
                           h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
                           h_Z_pt_reco_cuts_tpt_inside->Fill(Z_pt,weight);
+                          h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt/1000,weight);
                         }
                         if (outside_lep) {
                           h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
                           h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
                           h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                           h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
-                          
+                          h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
                         }
                         if (outside_tau){
                           h_reco_mass_met_outside_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
                           h_lep_pt1_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);                       
                           h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                           h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
+                          h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
                         }                      
                       }    
                     }
@@ -636,6 +657,12 @@ void CLoop::Style() {
     h_weight_mc_cuts->Write();
     h_weight_total->Write();
     h_weight_total_cuts->Write();
+    h_Z_pt_truth_inside->Write();
+    h_Z_pt_truth_cuts_inside->Write();
+    h_Z_pt_truth_cuts_tpt_inside->Write();
+    h_Z_pt_truth_outside->Write();
+    h_Z_pt_truth_cuts_outside->Write();
+    h_Z_pt_truth_cuts_tpt_outside->Write();
 
     h_rnn_score_1prong->Write();
     h_rnn_score_1prong_btag_iso_ptmu_omega_mreco_tpt->Write();
@@ -718,6 +745,8 @@ void CLoop::Style() {
     h_Z_pt_reco_outside->Write();
     h_Z_pt_reco_cuts_outside->Write();
     h_Z_pt_reco_cuts_tpt_outside->Write();
+
+    
 
     h_lep_phi->Write();
     h_tau_phi->Write();

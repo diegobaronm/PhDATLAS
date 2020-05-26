@@ -30,6 +30,12 @@ def fastStr(fMode):
 
 def runAnalysis(key, fast):
     """
+    Function to know if Z boson process
+    """
+    z_sample=0
+    if ("Zee" in key) or ("Zmumu" in key) or ("Ztautau" in key):
+        z_sample=1
+    """
     Function to run the analysis for a given decay chain labelled 'key'
     """
     # get filename
@@ -53,7 +59,7 @@ def runAnalysis(key, fast):
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast)
+    DrawC(filename,lumStr,fast,z_sample)
 
     # move the output to a different directory
     os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")

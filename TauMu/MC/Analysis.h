@@ -108,6 +108,13 @@ TH1F * h_Z_pt_reco_outside;
 TH1F * h_Z_pt_reco_cuts_outside;
 TH1F * h_Z_pt_reco_cuts_tpt_outside;
 
+TH1F * h_Z_pt_truth_inside;
+TH1F * h_Z_pt_truth_cuts_inside;
+TH1F * h_Z_pt_truth_cuts_tpt_inside;
+TH1F * h_Z_pt_truth_outside;
+TH1F * h_Z_pt_truth_cuts_outside;
+TH1F * h_Z_pt_truth_cuts_tpt_outside;
+
 TH1F * h_lep_phi;
 TH1F * h_tau_phi;
 TH1F * h_delta_phi;

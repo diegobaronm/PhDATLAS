@@ -3,7 +3,7 @@
 
 #include "../Analysis.C"
 
-void CLoop::Loop(double lumFactor, bool fastMode)
+void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 {
 //    In a ROOT session, you can do:
 //        root> .L CLoop.C
@@ -67,7 +67,7 @@ void CLoop::Loop(double lumFactor, bool fastMode)
 
         // fill histograms
         //cout << eventWeight;
-        Fill(eventWeight);
+        Fill(eventWeight, z_sample);
         // end filling
     }
 
