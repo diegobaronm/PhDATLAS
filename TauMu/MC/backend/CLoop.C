@@ -35,7 +35,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 
 
     // book histograms
-    Book();
+    Book(lumFactor);
     // end booking
 
     Long64_t nentries = fChain->GetEntriesFast();
@@ -74,7 +74,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
     // set style of histograms and write to output file
     // open output file
     TFile outfile("outfile.root","recreate");
-    Style();
+    Style(lumFactor);
     // end style and writing
     //
     outfile.Close();

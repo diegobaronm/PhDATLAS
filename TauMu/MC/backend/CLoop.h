@@ -25,8 +25,8 @@
 #include "TLorentzVector.h"
 
 class CLoop {
-  void Style();
-  void Book();
+  void Style(double lumFactor);
+  void Book(double lumFactor);
   void Fill(double weight, int z_sample);
 
   #include "../Analysis.h"
