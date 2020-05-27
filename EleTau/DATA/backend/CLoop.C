@@ -3,7 +3,7 @@
 
 #include "../Analysis.C"
 
-void CLoop::Loop(double lumFactor, bool fastMode)
+void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 {
 //    In a ROOT session, you can do:
 //        root> .L CLoop.C
@@ -35,7 +35,7 @@ void CLoop::Loop(double lumFactor, bool fastMode)
 
 
     // book histograms
-    Book();
+    Book(lumFactor);
     // end booking
 
     Long64_t nentries = fChain->GetEntriesFast();
@@ -57,17 +57,17 @@ void CLoop::Loop(double lumFactor, bool fastMode)
         double eventWeight = 1;
 
         // check if event is from real data
-    
 
         // fill histograms
-        Fill(eventWeight);
+        //cout << eventWeight;
+        Fill(eventWeight, z_sample);
         // end filling
     }
 
     // set style of histograms and write to output file
     // open output file
     TFile outfile("outfile.root","recreate");
-    Style();
+    Style(lumFactor);
     // end style and writing
     //
     outfile.Close();

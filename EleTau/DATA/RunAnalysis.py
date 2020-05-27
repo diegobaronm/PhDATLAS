@@ -13,7 +13,7 @@ from dataSets import dataSets, totRealLum, realList, dataCombos
 
 def luminosity(key):
     if "2018" in key:
-        return 57.6164
+        return 58.4501
     elif "2017" in key:
         return 43.5873
     else :
@@ -29,6 +29,12 @@ def fastStr(fMode):
         return ""
 
 def runAnalysis(key, fast):
+    """
+    Function to know if Z boson process
+    """
+    z_sample=0
+    if ("Zee" in key) or ("Zmumu" in key) or ("Ztautau" in key):
+        z_sample=1
     """
     Function to run the analysis for a given decay chain labelled 'key'
     """
@@ -52,9 +58,8 @@ def runAnalysis(key, fast):
             lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] * infos[shortKey]["fil_eff"] * infos[shortKey]["kfac"])/infos[shortKey]["sumw"]
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
-
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast)
+    DrawC(filename,lumStr,fast,z_sample)
 
     # move the output to a different directory
     os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
@@ -134,12 +139,12 @@ for i in range(len(chains)):
             for subChain in dataCombos[chain]:
                 print(subChain)
                 runAnalysis(subChain, fastMode)
-            #combine(dataCombos[chain], fastMode)
+            combine(dataCombos[chain], fastMode)
 
             # rename the outputted file to use the input key
-            #oldName = sys.argv[2]+fastStr(fastMode)+".root"
-            #os.system("mv out/"+oldName+" out/"+chain+
-                    #fastStr(fastMode)+".root")
+            oldName = sys.argv[2]+fastStr(fastMode)+".root"
+            os.system("mv out/"+oldName+" out/"+chain+
+                    fastStr(fastMode)+".root")
 
         # otherwise run the analysis for the single file
         else:

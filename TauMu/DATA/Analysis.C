@@ -130,9 +130,6 @@ void CLoop::Book(double lumFactor) {
     h_rnn_score_3prong = new TH1F("rnn_score_3prong","rnn score 3 track",100,0,1);
     h_rnn_score_3prong_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_3prong_btag_iso_ptmu_omega_mreco_tpt","rnn score_btag_iso_ptmu_omega_mreco_tpt 3 track",100,0,1);
     
-    cout << "HOLA ESTE VA A SER LUMFACTOR LUMFACTOR LUMFACTOR";
-    cout << lumFactor;
-
     if (lumFactor!=1)
     {
       h_tau_matched = new TH1F("tau_matched","Tau truth matched",2,0,2);
