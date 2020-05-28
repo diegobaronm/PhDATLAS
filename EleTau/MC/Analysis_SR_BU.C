@@ -110,7 +110,6 @@ void CLoop::Book(double lumFactor) {
     h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("transverse_lepton_met_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco","transverse mass lepton MET system _bdte_btag_iso_rnn_pte_omega_mle_mreco",300,0,300);
     h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt = new TH1F("transverse_lepton_met_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt","transverse mass lepton MET system _bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt",300,0,300);
 
-
     // reco histos
     h_reco_mass = new TH1F("reco_mass","mass reconstructed with trick",300,0,300);
     h_reco_mass_bdte = new TH1F("reco_mass_bdte","mass reconstructed with trick_bdte",300,0,300);
@@ -234,7 +233,7 @@ void CLoop::Fill(double weight, int z_sample) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
 
-      if (ql!=qtau && angle<3*pi/4){
+      if (ql==qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(elec_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
