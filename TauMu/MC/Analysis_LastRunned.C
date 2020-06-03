@@ -257,7 +257,7 @@ void CLoop::Fill(double weight, int z_sample) {
         double r_jpt_zpt=0;
         double r_lpt_tpt=muon_0_p4->Pt()/tau_0_p4->Pt();
         double truth_z_pt=0.0;
-        if (z_sample==1)
+        if (z_sample==1 || z_sample==2)
         {
           truth_z_pt=truth_Z_p4->Pt();
         }

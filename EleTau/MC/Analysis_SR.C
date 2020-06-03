@@ -214,7 +214,7 @@ void CLoop::Fill(double weight, int z_sample) {
         trigger_decision=bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
     }
     bool lepton_id=elec_0_id_tight;
-    if (n_electrons==1 && n_taus==1 && trigger_decision && lepton_id) {
+    if (n_electrons==1 && n_taus_rnn_tight==1 && trigger_decision && lepton_id) {
 
       float ql=elec_0_q;
       float qtau=tau_0_q;
@@ -260,7 +260,7 @@ void CLoop::Fill(double weight, int z_sample) {
         double r_jpt_zpt=0;
         double r_lpt_tpt=elec_0_p4->Pt()/tau_0_p4->Pt();
         double truth_z_pt=0.0;
-        if (z_sample==1)
+        if (z_sample==1 || z_sample==2)
         {
           truth_z_pt=truth_Z_p4->Pt();
         }
