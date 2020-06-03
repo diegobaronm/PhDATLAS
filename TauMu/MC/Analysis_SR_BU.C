@@ -93,7 +93,7 @@ void CLoop::Book(double lumFactor) {
     h_met_btag_iso = new TH1F("MET_btag_iso","Missing Transverse momentum_btag_iso",300,0,300);
     h_met_btag_iso_rnn = new TH1F("MET_btag_iso_rnn","Missing Transverse momentum_btag_iso_rnn",300,0,300);
     h_met_btag_iso_rnn_ptmu = new TH1F("MET_btag_iso_rnn_ptmu","Missing Transverse momentum_btag_iso_rnn_ptmu",300,0,300);
-    h_met_btag_iso_rnn_ptmu_omega = new TH1F("MET_btag_iso_rnn_ptmu_mreco","Missing Transverse momentum_btag_iso_rnn_ptmu_mreco",300,0,300);
+    h_met_btag_iso_rnn_ptmu_omega = new TH1F("MET_btag_iso_rnn_ptmu_omega","Missing Transverse momentum_btag_iso_rnn_ptmu_mreco",300,0,300);
     h_met_btag_iso_rnn_ptmu_omega_mreco = new TH1F("MET_btag_iso_rnn_ptmu_omega_mreco","Missing Transverse momentum_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
     h_met_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("MET_btag_iso_rnn_ptmu_omega_mreco_tpt","Missing Transverse momentum_btag_iso_rnn_ptmu_omega_mreco_tpt",300,0,300);
 
@@ -211,7 +211,7 @@ void CLoop::Fill(double weight, int z_sample) {
       trigger_match=bool(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50);
     }
     bool lepton_id=muon_0_id_medium;
-    if (n_muons==1 && n_taus==1 && trigger_decision && lepton_id && trigger_match && weight > -190) {
+    if (n_muons==1 && n_taus_rnn_tight==1 && trigger_decision && lepton_id && trigger_match && weight > -190) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
@@ -230,7 +230,7 @@ void CLoop::Fill(double weight, int z_sample) {
       bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
       
-      if (ql==qtau && angle<3*pi/4){
+      if (ql!=qtau && angle<3*pi/4){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -257,7 +257,7 @@ void CLoop::Fill(double weight, int z_sample) {
         double r_jpt_zpt=0;
         double r_lpt_tpt=muon_0_p4->Pt()/tau_0_p4->Pt();
         double truth_z_pt=0.0;
-        if (z_sample==1)
+        if (z_sample==1 || z_sample==2)
         {
           truth_z_pt=truth_Z_p4->Pt();
         }

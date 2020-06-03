@@ -35,6 +35,8 @@ def runAnalysis(key, fast):
     z_sample=0
     if ("Zee" in key) or ("Zmumu" in key) or ("Ztautau" in key):
         z_sample=1
+        if "sherpa" in key:
+            z_sample=2
     """
     Function to run the analysis for a given decay chain labelled 'key'
     """

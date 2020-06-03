@@ -94,7 +94,7 @@ void CLoop::Book(double lumFactor) {
     h_met_btag_iso = new TH1F("MET_btag_iso","Missing Transverse momentum_btag_iso",300,0,300);
     h_met_btag_iso_rnn = new TH1F("MET_btag_iso_rnn","Missing Transverse momentum_btag_iso_rnn",300,0,300);
     h_met_btag_iso_rnn_ptmu = new TH1F("MET_btag_iso_rnn_ptmu","Missing Transverse momentum_btag_iso_rnn_ptmu",300,0,300);
-    h_met_btag_iso_rnn_ptmu_omega = new TH1F("MET_btag_iso_rnn_ptmu_mreco","Missing Transverse momentum_btag_iso_rnn_ptmu_mreco",300,0,300);
+    h_met_btag_iso_rnn_ptmu_omega = new TH1F("MET_btag_iso_rnn_ptmu_omega","Missing Transverse momentum_btag_iso_rnn_ptmu_mreco",300,0,300);
     h_met_btag_iso_rnn_ptmu_omega_mreco = new TH1F("MET_btag_iso_rnn_ptmu_omega_mreco","Missing Transverse momentum_btag_iso_rnn_ptmu_omega_mreco",300,0,300);
     h_met_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("MET_btag_iso_rnn_ptmu_omega_mreco_tpt","Missing Transverse momentum_btag_iso_rnn_ptmu_omega_mreco_tpt",300,0,300);
 

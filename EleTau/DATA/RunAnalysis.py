@@ -139,7 +139,7 @@ for i in range(len(chains)):
             for subChain in dataCombos[chain]:
                 print(subChain)
                 runAnalysis(subChain, fastMode)
-            combine(dataCombos[chain], fastMode)
+            #combine(dataCombos[chain], fastMode)
 
             # rename the outputted file to use the input key
             oldName = sys.argv[2]+fastStr(fastMode)+".root"
