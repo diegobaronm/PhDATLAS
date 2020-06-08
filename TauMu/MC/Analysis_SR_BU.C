@@ -211,7 +211,7 @@ void CLoop::Fill(double weight, int z_sample) {
       trigger_match=bool(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50);
     }
     bool lepton_id=muon_0_id_medium;
-    if (n_muons==1 && n_taus_rnn_tight==1 && trigger_decision && lepton_id && trigger_match && weight > -190) {
+    if (n_muons==1 && n_taus_rnn_tight<2 && trigger_decision && lepton_id && trigger_match && weight > -190) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
