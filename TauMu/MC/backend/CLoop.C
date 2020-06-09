@@ -59,7 +59,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 
         double z_w=1;
         // SHERPA REWEIGHTING
-        if (z_sample==2){
+        /*if (z_sample==2){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>30 & zpt<80){
                 z_w=((0.95-0.98)/(log10(80)-log10(30)))*(log10(zpt)-log10(30))+0.98;
@@ -77,7 +77,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             if (zpt>160){
                 z_w=0.80;
             }
-        }
+        }*/
         double zpt_weight=1/z_w;
         
 
