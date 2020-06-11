@@ -99,6 +99,13 @@ TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad;
 TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_btag_iso2_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_omega;
+TH1F * h_omega_btag;
+TH1F * h_omega_btag_iso;
+TH1F * h_omega_btag_iso_rnn;
+TH1F * h_omega_btag_iso_rnn_ptmu;
+TH1F * h_omega_btag_iso_rnn_ptmu_omega;
+TH1F * h_omega_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_omega_btag_iso_rnn_ptmu_omega_mreco_tpt;
 TH1F * h_omega_btag_iso_rnn_ptmu_mreco_tpt;
 
 TH1F * h_Z_pt_reco_inside;
