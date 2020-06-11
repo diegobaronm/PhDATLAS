@@ -174,6 +174,13 @@ void CLoop::Book(double lumFactor) {
 
     // Angular variable
     h_omega = new TH1F("omega","omega variable",60,-3.0,3.0);
+    h_omega_btag = new TH1F("omega_btag","omega variable_btag",60,-3.0,3.0);
+    h_omega_btag_iso = new TH1F("omega_btag_iso","omega variable_btag_iso",60,-3.0,3.0);
+    h_omega_btag_iso_rnn = new TH1F("omega_btag_iso_rnn","omega variable_btag_iso_rnn",60,-3.0,3.0);
+    h_omega_btag_iso_rnn_ptmu = new TH1F("omega_btag_iso_rnn_ptmu","omega variable_btag_iso_rnn_ptmu",60,-3.0,3.0);
+    h_omega_btag_iso_rnn_ptmu_omega = new TH1F("omega_btag_iso_rnn_ptmu_omega","omega variable_btag_iso_rnn_ptmu_omega",60,-3.0,3.0);
+    h_omega_btag_iso_rnn_ptmu_omega_mreco = new TH1F("omega_btag_iso_rnn_ptmu_omega_mreco","omega variable_btag_iso_rnn_ptmu_omega_mreco",60,-3.0,3.0);
+    h_omega_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("omega_btag_iso_rnn_ptmu_omega_mreco_tpt","omega variable_btag_iso_rnn_ptmu_omega_mreco_tpt",60,-3.0,3.0);
     h_omega_btag_iso_rnn_ptmu_mreco_tpt = new TH1F("omega_btag_iso_rnn_ptmu_mreco_tpt","omega variable_btag_iso_rnn_ptmu_mreco_tpt",60,-3.0,3.0);
 
     h_Z_pt_reco_inside = new TH1F("Z_pt_inside","Z boson transverse momentum _inside",400,0,400);
@@ -464,6 +471,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_met_btag->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_btag->Fill(muon_0_p4->Pt(),weight);
             h_lep_pt1_btag->Fill(tau_0_p4->Pt(),weight);
+            h_omega_btag->Fill(omega,weight);
 
             if (inside) {
               h_reco_mass_btag->Fill(reco_mass,weight);
@@ -480,6 +488,7 @@ void CLoop::Fill(double weight, int z_sample) {
               h_met_btag_iso->Fill(met_reco_p4->Pt(),weight);
               h_lep_pt0_btag_iso->Fill(muon_0_p4->Pt(),weight);
               h_lep_pt1_btag_iso->Fill(tau_0_p4->Pt(),weight);
+              h_omega_btag_iso->Fill(omega,weight);
 
               if (inside) {
                 h_reco_mass_btag_iso->Fill(reco_mass,weight);
@@ -496,6 +505,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_met_btag_iso_rnn->Fill(met_reco_p4->Pt(),weight);
                 h_lep_pt0_btag_iso_rnn->Fill(muon_0_p4->Pt(),weight);
                 h_lep_pt1_btag_iso_rnn->Fill(tau_0_p4->Pt(),weight);
+                h_omega_btag_iso_rnn->Fill(omega,weight);
 
                 if (inside) {
                   h_reco_mass_btag_iso_rnn->Fill(reco_mass,weight);
@@ -512,6 +522,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_met_btag_iso_rnn_ptmu->Fill(met_reco_p4->Pt(),weight);
                   h_lep_pt0_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt(),weight);
                   h_lep_pt1_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt(),weight);
+                  h_omega_btag_iso_rnn_ptmu->Fill(omega,weight);
 
                   if (inside) {
                     h_reco_mass_btag_iso_rnn_ptmu->Fill(reco_mass,weight);
@@ -528,6 +539,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   if (cuts[5]==1) {
                     h_met_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
                     h_lep_pt0_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
+                    h_omega_btag_iso_rnn_ptmu_omega->Fill(omega,weight);
 
 
                     if (inside) {
@@ -550,6 +562,7 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_jet_n_btag_iso_rnn_ptmu_omega_mreco->Fill(n_jets, weight);
                       h_trans_lepmet_mass_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
                       h_lep_pt0_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+                      h_omega_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
                       h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
                       h_tau_phi_cuts->Fill(tau_0_p4->Phi(),weight);
                       h_delta_phi_cuts->Fill(angle,weight);
@@ -585,6 +598,7 @@ void CLoop::Fill(double weight, int z_sample) {
                         h_jet_n_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_jets, weight);
                         h_trans_lepmet_mass_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
                         h_lep_pt0_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
+                        h_omega_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(omega,weight);
                         h_lep_phi_cuts_tpt->Fill(muon_0_p4->Phi(),weight);
                         h_tau_phi_cuts_tpt->Fill(tau_0_p4->Phi(),weight);
                         h_delta_phi_cuts_tpt->Fill(angle,weight);
@@ -758,6 +772,13 @@ void CLoop::Style(double lumFactor) {
     h_muon_0_iso_FCTightTrackOnly_FixedRad_btag_iso2_rnn_ptmu_omega_mreco_tpt->Write();
 
     h_omega->Write();
+    h_omega_btag->Write();
+    h_omega_btag_iso->Write();
+    h_omega_btag_iso_rnn->Write();
+    h_omega_btag_iso_rnn_ptmu->Write();
+    h_omega_btag_iso_rnn_ptmu_omega->Write();
+    h_omega_btag_iso_rnn_ptmu_omega_mreco->Write();
+    h_omega_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
     h_omega_btag_iso_rnn_ptmu_mreco_tpt->Write();
 
     h_Z_pt_reco_inside->Write();
