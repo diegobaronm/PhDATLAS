@@ -11,7 +11,8 @@
         "vector": "cpp",
         "Analysis_SR_BU.C": "cpp",
         "Analysis_CR_BU.C": "cpp",
-        "Mycode.C": "cpp"
+        "Mycode.C": "cpp",
+        "Analysis_LastRunned.C": "cpp"
     },
     "python.pythonPath": "/home/diegol/anaconda3/bin/python",
     "C_Cpp.dimInactiveRegions": false
