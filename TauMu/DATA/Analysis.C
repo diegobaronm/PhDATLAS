@@ -233,11 +233,10 @@ void CLoop::Fill(double weight, int z_sample) {
       bool inside= angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
       bool outside_lep= angle_l_MET<angle_tau_MET &&  angle!=(angle_l_MET+angle_tau_MET) && cos(angle_l_MET)>0;
       bool outside_tau= angle_l_MET>angle_tau_MET && angle!=(angle_l_MET+angle_tau_MET) && cos(angle_tau_MET)>0;
-      bool inside90= angle<pi/2 && angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
-      bool outside90_lep= angle<pi/2 && angle_l_MET<angle_tau_MET && cos(angle_l_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-      bool outside90_tau= angle<pi/2 && angle_l_MET>angle_tau_MET && cos(angle_tau_MET)>0 && angle!=(angle_l_MET+angle_tau_MET);
-      
-      if (ql!=qtau && angle<3*pi/4){
+    
+      bool signal_events = inside || outside_lep || outside_tau;
+
+      if (ql!=qtau && angle<3*pi/4 && signal_events){
         // RECO mass
         double cot_lep=1.0/tan(muon_0_p4->Phi());
         double cot_tau=1.0/tan(tau_0_p4->Phi());
