@@ -797,9 +797,7 @@ void CLoop::Style(double lumFactor) {
     h_Z_pt_reco_cuts_tpt_inside->Write();
     h_Z_pt_reco_outside_topo->Write();
     h_Z_pt_reco_cuts_outside->Write();
-    h_Z_pt_reco_cuts_tpt_outside->Write();
-
-    
+    h_Z_pt_reco_cuts_tpt_outside->Write();    
 
     h_lep_phi_topo->Write();
     h_tau_phi_topo->Write();
