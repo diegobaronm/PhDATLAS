@@ -131,6 +131,9 @@ void CLoop::Book(double lumFactor) {
     h_rnn_score_3prong_topo = new TH1F("rnn_score_3prong_topo","rnn score 3 track",100,0,1);
     h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt","rnn score 3 track",100,0,1);
     
+    h_rnn_score_1prong_topo_match = new TH1F("rnn_score_1prong_topo_match","rnn score 1 track",100,0,1);
+    h_rnn_score_3prong_topo_match = new TH1F("rnn_score_3prong_topo_match","rnn score 3 track",100,0,1);
+
     if (lumFactor!=1)
     {
       h_tau_matched_topo = new TH1F("tau_matched","Tau truth matched",2,0,2);
@@ -206,7 +209,7 @@ void CLoop::Book(double lumFactor) {
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
 
-    if (n_muons==1 && n_taus_rnn_loose==1 && weight > -190){
+    if (n_muons==1 /*&& n_taus_rnn_loose==1*/ && weight > -190){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
@@ -227,6 +230,15 @@ void CLoop::Fill(double weight, int z_sample) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
+
+      if (tau_0_truth_isHadTau==1){
+        if (tau_0_n_charged_tracks==1){
+            h_rnn_score_1prong_topo_match->Fill(tau_0_jet_rnn_score_trans,weight);
+        }
+        if (tau_0_n_charged_tracks==3){
+            h_rnn_score_3prong_topo_match->Fill(tau_0_jet_rnn_score_trans,weight);
+        }
+      }
 
       if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
  
@@ -710,6 +722,9 @@ void CLoop::Style(double lumFactor) {
     h_rnn_score_3prong_topo->Write();
     h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Write();
 
+    h_rnn_score_1prong_topo_match->Write();
+    h_rnn_score_3prong_topo_match->Write();
+
     //Writing lep pT
     h_lep_pt0_topo->Write();
     h_lep_pt0_topo_dphi->Write();
@@ -797,9 +812,7 @@ void CLoop::Style(double lumFactor) {
     h_Z_pt_reco_cuts_tpt_inside->Write();
     h_Z_pt_reco_outside_topo->Write();
     h_Z_pt_reco_cuts_outside->Write();
-    h_Z_pt_reco_cuts_tpt_outside->Write();
-
-    
+    h_Z_pt_reco_cuts_tpt_outside->Write();    
 
     h_lep_phi_topo->Write();
     h_tau_phi_topo->Write();

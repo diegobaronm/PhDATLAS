@@ -141,5 +141,8 @@ TH1F * h_ratio_lpt_tpt_cuts;
 TH1F * h_ratio_ptjet_zpt_cuts_tpt;
 TH1F * h_ratio_lpt_tpt_cuts_tpt;
 
+TH1F * h_rnn_score_1prong_topo_match;
+TH1F * h_rnn_score_3prong_topo_match;
+
 
 #endif
