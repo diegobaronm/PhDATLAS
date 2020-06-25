@@ -35,12 +35,36 @@ double del_phi(double phi_1, double phi_2){
         delta=std::abs(delta);
     }
     
-    
-
-    
     return delta;
 }
 
+string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+  string str1="NOPASS";
+  string str2="NOPASS";
+  string str3="NOPASS";
+  string str4="NOPASS";
+  string str5="NOPASS";
+  string str6="NOPASS";
+  if (cond1){
+    str1="Passed";
+  }
+  if (cond2){
+    str2="Passed";
+  }
+  if (cond3){
+    str3="Passed";
+  }
+  if (cond4){
+    str4="Passed";
+  }
+  if (cond5){
+    str5="Passed";
+  }
+  if (cond6){
+    str6="Passed";
+  }
+  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
+}
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -130,10 +154,10 @@ void CLoop::Book(double lumFactor) {
     h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt","rnn score 1 track",100,0,1);
     h_rnn_score_3prong_topo = new TH1F("rnn_score_3prong_topo","rnn score 3 track",100,0,1);
     h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt","rnn score 3 track",100,0,1);
-    
+    /*
     h_rnn_score_1prong_topo_match = new TH1F("rnn_score_1prong_topo_match","rnn score 1 track",100,0,1);
     h_rnn_score_3prong_topo_match = new TH1F("rnn_score_3prong_topo_match","rnn score 3 track",100,0,1);
-
+    */
     if (lumFactor!=1)
     {
       h_tau_matched_topo = new TH1F("tau_matched","Tau truth matched",2,0,2);
@@ -209,11 +233,17 @@ void CLoop::Book(double lumFactor) {
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
 
-    if (n_muons==1 /*&& n_taus_rnn_loose==1*/ && weight > -190){
+    if (n_muons==1 && n_taus_rnn_loose==1 && weight > -190){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
       double angle=del_phi(tau_0_p4->Phi(),muon_0_p4->Phi());
+
+      bool inside= angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
+      bool outside_lep= angle_l_MET<angle_tau_MET &&  angle!=(angle_l_MET+angle_tau_MET) && cos(angle_l_MET)>0;
+      bool outside_tau= angle_l_MET>angle_tau_MET && angle!=(angle_l_MET+angle_tau_MET) && cos(angle_tau_MET)>0;
+      
+      bool signal_events = inside || outside_lep || outside_tau;
       
       h_delta_phi->Fill(angle,weight);
       
@@ -230,7 +260,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
       float ql=muon_0_q;
       float qtau=tau_0_q;
-
+      /*
       if (tau_0_truth_isHadTau==1){
         if (tau_0_n_charged_tracks==1){
             h_rnn_score_1prong_topo_match->Fill(tau_0_jet_rnn_score_trans,weight);
@@ -239,16 +269,26 @@ void CLoop::Fill(double weight, int z_sample) {
             h_rnn_score_3prong_topo_match->Fill(tau_0_jet_rnn_score_trans,weight);
         }
       }
+      */
+      ofstream outfile;
+      if (run_number==351160){
+        if (!(ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match && signal_events)){
+          //cout << event_rejected(trigger_decision,trigger_match,lepton_id,angle<3*pi/4,ql!=qtau,signal_events);
+          outfile.open("Failed_events.txt", ios::out | ios::app);
+          outfile << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", ";
+          outfile << to_string(muon_0_p4->Pt())+", "+to_string(muon_0_p4->Eta())+", "+to_string(muon_0_p4->Phi())+", "+to_string(ql)+", ";
+          outfile << to_string(met_reco_p4->Pt())+", "+to_string(met_reco_p4->Phi())+", ";
+          outfile << to_string(angle)+", "+to_string(angle_tau_MET)+", "+to_string(angle_l_MET)+", "+to_string(n_bjets_MV2c10_FixedCutBEff_85);
+          outfile << event_rejected(trigger_decision,trigger_match,lepton_id,ql!=qtau,angle<3*pi/4,signal_events);
 
+        }
+      }
+      outfile.close();
       if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
  
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
-        bool inside= angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
-        bool outside_lep= angle_l_MET<angle_tau_MET &&  angle!=(angle_l_MET+angle_tau_MET) && cos(angle_l_MET)>0;
-        bool outside_tau= angle_l_MET>angle_tau_MET && angle!=(angle_l_MET+angle_tau_MET) && cos(angle_tau_MET)>0;
-      
-        bool signal_events = inside || outside_lep || outside_tau;
+        
 
         if ( signal_events){
           // RECO mass
@@ -721,10 +761,10 @@ void CLoop::Style(double lumFactor) {
     h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Write();
     h_rnn_score_3prong_topo->Write();
     h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Write();
-
+    /*
     h_rnn_score_1prong_topo_match->Write();
     h_rnn_score_3prong_topo_match->Write();
-
+    */
     //Writing lep pT
     h_lep_pt0_topo->Write();
     h_lep_pt0_topo_dphi->Write();
