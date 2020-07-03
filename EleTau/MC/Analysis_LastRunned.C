@@ -96,7 +96,7 @@ void CLoop::Book(double lumFactor) {
     h_met_topo_dphi_bdte_btag_iso = new TH1F("MET_topo_dphi_bdte_btag_iso","Missing Transverse momentum",300,0,300);
     h_met_topo_dphi_bdte_btag_iso_rnn = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn","Missing Transverse momentum",300,0,300);
     h_met_topo_dphi_bdte_btag_iso_rnn_pte = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte_mreco","Missing Transverse momentum",300,0,300);
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte_omega","Missing Transverse momentum",300,0,300);
     h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle","Missing Transverse momentum",300,0,300);
     h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco","Missing Transverse momentum",300,0,300);
     h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt = new TH1F("MET_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt","Missing Transverse momentum",300,0,300);
@@ -616,12 +616,15 @@ void CLoop::Fill(double weight, int z_sample) {
 
                         if (inside) {
                         h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(reco_mass,weight);
+                        h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_inside->Fill(tau_0_p4->Pt(),weight);
                         }
                         if (outside_lep) {
                         h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(reco_mass_outside,weight);
+                        h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_outside->Fill(tau_0_p4->Pt(),weight);
                         }
                         if (outside_tau){
                         h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(reco_mass_outside,weight);
+                        h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_outside->Fill(tau_0_p4->Pt(),weight);
                         }
 
                         // RECO MASS CUT

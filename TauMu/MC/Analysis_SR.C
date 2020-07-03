@@ -11,6 +11,7 @@
 #include "backend/CLoop.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 //#include <bits/stdc++.h>
 #include <utility>
 
@@ -270,15 +271,22 @@ void CLoop::Fill(double weight, int z_sample) {
         }
       }
       */
+      // run_number==351160 | run_number==351832 | run_number==355877
+      //2018={625604344,626232310,626008879,626722580,626450893,624588822,624597227,627166550,624576213,625166887,624918813,624905100,623803415,623927490,624037196,624000168,623737423,629931934,629863982,629976159}
+      //2017={1375590014,1375814985,1376849034,1374660833,1376638366,1375032749,1375401204,1375525084,1375804607,1375352332,1376210680,1378710426,1379614088,1378129913,1378121206,1377101599,1376953054,1377236717,1378914387,1378114405}
+      //2015={1693590404,1693795330,1694075939,1696848811,1705101838,1710092352,1724360628,1732516934,1733848321,1733446518,1732281166,1734444786,1737861557,1737584687,1743667603,1741725300,1743797175,1740899942,1740158364}
+
+      cout << event_number << "\n";
+      vector<double> eventos={1693590404,1693795330,1694075939,1696848811,1705101838,1710092352,1724360628,1732516934,1733848321,1733446518,1732281166,1734444786,1737861557,1737584687,1743667603,1741725300,1743797175,1740899942,1740158364};
       ofstream outfile;
-      if (run_number==351160){
+      if (std::count(eventos.begin(),eventos.end(),event_number)){
         if (!(ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match && signal_events)){
           //cout << event_rejected(trigger_decision,trigger_match,lepton_id,angle<3*pi/4,ql!=qtau,signal_events);
-          outfile.open("Failed_events.txt", ios::out | ios::app);
-          outfile << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", ";
-          outfile << to_string(muon_0_p4->Pt())+", "+to_string(muon_0_p4->Eta())+", "+to_string(muon_0_p4->Phi())+", "+to_string(ql)+", ";
+          outfile.open("Failed_events.csv", ios::out | ios::app);
+          outfile << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", "+to_string(n_taus)+", ";
+          outfile << to_string(muon_0_p4->Pt())+", "+to_string(muon_0_p4->Eta())+", "+to_string(muon_0_p4->Phi())+", "+to_string(ql)+", "+to_string(muon_0_iso_FCTightTrackOnly_FixedRad)+", ";
           outfile << to_string(met_reco_p4->Pt())+", "+to_string(met_reco_p4->Phi())+", ";
-          outfile << to_string(angle)+", "+to_string(angle_tau_MET)+", "+to_string(angle_l_MET)+", "+to_string(n_bjets_MV2c10_FixedCutBEff_85);
+          outfile << to_string(angle)+", "+to_string(angle_tau_MET)+", "+to_string(angle_l_MET)+", "+to_string(n_bjets_MV2c10_FixedCutBEff_85)+", "+to_string(event_number);
           outfile << event_rejected(trigger_decision,trigger_match,lepton_id,ql!=qtau,angle<3*pi/4,signal_events);
 
         }
