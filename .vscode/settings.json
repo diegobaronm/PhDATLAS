@@ -65,5 +65,6 @@
         "typeinfo": "cpp"
     },
     "python.pythonPath": "/home/diegol/anaconda3/bin/python",
-    "C_Cpp.dimInactiveRegions": false
+    "C_Cpp.dimInactiveRegions": false,
+    "git.ignoreLimitWarning": true
 }
