@@ -10,7 +10,7 @@ cd MC
 
 mc_signal_sherpa='Ztautau_sherpa'
 samples=('1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14')
-year=('2018')
+year=('2018' '2017' '2015')
 for n in ${samples[@]}
 do
     for y in ${year[@]}
@@ -23,7 +23,7 @@ hadd out/Signal.root out/*
 
 cd ..
 
-years=('2018')
+years=('2018' '2017' '2015')
 for i in ${years[@]}
 do
     ./executer.sh $i

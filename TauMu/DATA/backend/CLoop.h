@@ -32,12 +32,12 @@ class CLoop {
   #include "../Analysis.h"
 
 public :
-   TTree          *fChain;   //!pointer to the analyzed TTree or TChain
-   Int_t           fCurrent; //!current Tree number in a TChain
+    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
+    Int_t           fCurrent; //!current Tree number in a TChain
 
-// Fixed size dimensions of array or collections stored in the TTree if any.
+    // Fixed size dimensions of array or collections stored in the TTree if any.
 
-   // Declaration of leaf types
+    // Declaration of leaf types
    UInt_t          HLT_e120_lhloose;
    UInt_t          HLT_e140_lhloose_nod0;
    UInt_t          HLT_e24_lhmedium_L1EM20VH;
@@ -87,6 +87,7 @@ public :
    UInt_t          eleTrigMatch_0_HLT_e60_lhmedium_nod0;
    UInt_t          eleTrigMatch_0_trigger_matched;
    UInt_t          elec_0;
+   Float_t         elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
    Float_t         elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
    Float_t         elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
    Float_t         elec_0_NOMINAL_EleEffSF_offline_RecoTrk;
@@ -96,6 +97,8 @@ public :
    Float_t         elec_0_cluster_eta_be2;
    Int_t           elec_0_id_medium;
    Int_t           elec_0_id_tight;
+   UInt_t          elec_0_iso_FCLoose;
+   UInt_t          elec_0_iso_FCLoose_FixedRad;
    UInt_t          elec_0_iso_FCTight;
    UInt_t          elec_0_iso_FCTightTrackOnly_FixedRad;
    UInt_t          elec_0_iso_FixedCutLoose;
@@ -261,6 +264,8 @@ public :
    Float_t         muon_0_NOMINAL_MuEffSF_TTVA;
    Int_t           muon_0_id_medium;
    Int_t           muon_0_id_tight;
+   UInt_t          muon_0_iso_FCLoose;
+   UInt_t          muon_0_iso_FCLoose_FixedRad;
    UInt_t          muon_0_iso_FCTight;
    UInt_t          muon_0_iso_FCTightTrackOnly_FixedRad;
    UInt_t          muon_0_iso_FixedCutLoose;
@@ -406,6 +411,7 @@ public :
    TBranch        *b_eleTrigMatch_0_HLT_e60_lhmedium_nod0;   //!
    TBranch        *b_eleTrigMatch_0_trigger_matched;   //!
    TBranch        *b_elec_0;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
    TBranch        *b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk;   //!
@@ -415,6 +421,8 @@ public :
    TBranch        *b_elec_0_cluster_eta_be2;   //!
    TBranch        *b_elec_0_id_medium;   //!
    TBranch        *b_elec_0_id_tight;   //!
+   TBranch        *b_elec_0_iso_FCLoose;   //!
+   TBranch        *b_elec_0_iso_FCLoose_FixedRad;   //!
    TBranch        *b_elec_0_iso_FCTight;   //!
    TBranch        *b_elec_0_iso_FCTightTrackOnly_FixedRad;   //!
    TBranch        *b_elec_0_iso_FixedCutLoose;   //!
@@ -580,6 +588,8 @@ public :
    TBranch        *b_muon_0_NOMINAL_MuEffSF_TTVA;   //!
    TBranch        *b_muon_0_id_medium;   //!
    TBranch        *b_muon_0_id_tight;   //!
+   TBranch        *b_muon_0_iso_FCLoose;   //!
+   TBranch        *b_muon_0_iso_FCLoose_FixedRad;   //!
    TBranch        *b_muon_0_iso_FCTight;   //!
    TBranch        *b_muon_0_iso_FCTightTrackOnly_FixedRad;   //!
    TBranch        *b_muon_0_iso_FixedCutLoose;   //!
@@ -674,6 +684,7 @@ public :
    TBranch        *b_weight_mc;   //!
    TBranch        *b_weight_mc_v;   //!
    TBranch        *b_weight_total;   //!
+    
 
    CLoop(TTree *tree=0);
    virtual ~CLoop();
@@ -822,6 +833,7 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("eleTrigMatch_0_HLT_e60_lhmedium_nod0", &eleTrigMatch_0_HLT_e60_lhmedium_nod0, &b_eleTrigMatch_0_HLT_e60_lhmedium_nod0);
    fChain->SetBranchAddress("eleTrigMatch_0_trigger_matched", &eleTrigMatch_0_trigger_matched, &b_eleTrigMatch_0_trigger_matched);
    fChain->SetBranchAddress("elec_0", &elec_0, &b_elec_0);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose", &elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose, &b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
    fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_offline_RecoTrk", &elec_0_NOMINAL_EleEffSF_offline_RecoTrk, &b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk);
@@ -831,6 +843,8 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_0_cluster_eta_be2", &elec_0_cluster_eta_be2, &b_elec_0_cluster_eta_be2);
    fChain->SetBranchAddress("elec_0_id_medium", &elec_0_id_medium, &b_elec_0_id_medium);
    fChain->SetBranchAddress("elec_0_id_tight", &elec_0_id_tight, &b_elec_0_id_tight);
+   fChain->SetBranchAddress("elec_0_iso_FCLoose", &elec_0_iso_FCLoose, &b_elec_0_iso_FCLoose);
+   fChain->SetBranchAddress("elec_0_iso_FCLoose_FixedRad", &elec_0_iso_FCLoose_FixedRad, &b_elec_0_iso_FCLoose_FixedRad);
    fChain->SetBranchAddress("elec_0_iso_FCTight", &elec_0_iso_FCTight, &b_elec_0_iso_FCTight);
    fChain->SetBranchAddress("elec_0_iso_FCTightTrackOnly_FixedRad", &elec_0_iso_FCTightTrackOnly_FixedRad, &b_elec_0_iso_FCTightTrackOnly_FixedRad);
    fChain->SetBranchAddress("elec_0_iso_FixedCutLoose", &elec_0_iso_FixedCutLoose, &b_elec_0_iso_FixedCutLoose);
@@ -996,6 +1010,8 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_TTVA", &muon_0_NOMINAL_MuEffSF_TTVA, &b_muon_0_NOMINAL_MuEffSF_TTVA);
    fChain->SetBranchAddress("muon_0_id_medium", &muon_0_id_medium, &b_muon_0_id_medium);
    fChain->SetBranchAddress("muon_0_id_tight", &muon_0_id_tight, &b_muon_0_id_tight);
+   fChain->SetBranchAddress("muon_0_iso_FCLoose", &muon_0_iso_FCLoose, &b_muon_0_iso_FCLoose);
+   fChain->SetBranchAddress("muon_0_iso_FCLoose_FixedRad", &muon_0_iso_FCLoose_FixedRad, &b_muon_0_iso_FCLoose_FixedRad);
    fChain->SetBranchAddress("muon_0_iso_FCTight", &muon_0_iso_FCTight, &b_muon_0_iso_FCTight);
    fChain->SetBranchAddress("muon_0_iso_FCTightTrackOnly_FixedRad", &muon_0_iso_FCTightTrackOnly_FixedRad, &b_muon_0_iso_FCTightTrackOnly_FixedRad);
    fChain->SetBranchAddress("muon_0_iso_FixedCutLoose", &muon_0_iso_FixedCutLoose, &b_muon_0_iso_FixedCutLoose);
