@@ -233,7 +233,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float qtau=tau_0_q;
       float pair_charge=ql*qtau;
 
-      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
+      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -608,152 +608,163 @@ void CLoop::Style(double lumFactor) {
 
     // Write histograms to a file
     // This needs to be done for each histogram
-    h_lep_n->Write();
-    h_met_phi->Write();
-    h_lep_eta->Write();
-    h_inva_mass_ltau->Write();
-    h_inva_mass_ltau_bdte_btag_iso_rnn_pte_omega_mreco_tpt->Write();
+    h_inva_mass_ltau_topo->Write();
+    h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt->Write();
 
-    h_trans_lepmet_mass->Write();
-    h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_trans_lepmet_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_trans_lepmet_mass_topo->Write();
+    h_trans_lepmet_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
 
     if (lumFactor!=1){
-      h_tau_matched->Write();
+      h_tau_matched_topo->Write();
       h_tau_matched_after_0_to_90->Write();
-      h_tau_matched_after_90_to_120->Write();
       h_tau_matched_after_outside->Write();
-      h_tau_matched_after_outside_120->Write();
       h_sf_e_recoid->Write();
       h_sf_e_vertex->Write();
       h_sf_e_trigger->Write();
       h_sf_e_isolation->Write();
       h_sf_e_total->Write();
-      h_weight_mc->Write();
+      h_weight_mc_topo->Write();
       h_weight_mc_cuts->Write();
-      h_weight_total->Write();
+      h_weight_total_topo->Write();
       h_weight_total_cuts->Write();
-      h_Z_pt_truth_inside->Write();
+      h_Z_pt_truth_inside_topo->Write();
       h_Z_pt_truth_cuts_inside->Write();
       h_Z_pt_truth_cuts_tpt_inside->Write();
-      h_Z_pt_truth_outside->Write();
+      h_Z_pt_truth_outside_topo->Write();
       h_Z_pt_truth_cuts_outside->Write();
       h_Z_pt_truth_cuts_tpt_outside->Write();
     }
 
-    h_rnn_score_1prong->Write();
-    h_rnn_score_1prong_bdte_btag_iso_pte_omega_mle_mreco_tpt->Write();
-    h_rnn_score_3prong->Write();
-    h_rnn_score_3prong_bdte_btag_iso_pte_omega_mle_mreco_tpt->Write();
+    h_rnn_score_1prong_topo->Write();
+    h_rnn_score_1prong_topo_dphi_bdte_btag_iso_pte_omega_mle_mreco_tpt->Write();
+    h_rnn_score_3prong_topo->Write();
+    h_rnn_score_3prong_topo_dphi_bdte_btag_iso_pte_omega_mle_mreco_tpt->Write();
 
-    h_bdt_e_score->Write();
-    h_bdt_e_score_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_bdt_e_score_topo->Write();
+    h_bdt_e_score_topo_dphi_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
 
 
     //Writing lep pT
-    h_lep_pt0->Write();
-    h_lep_pt0_bdte->Write();
-    h_lep_pt0_bdte_btag->Write();
-    h_lep_pt0_bdte_btag_iso->Write();
-    h_lep_pt0_bdte_btag_iso_rnn->Write();
-    h_lep_pt0_bdte_btag_iso_rnn_pte->Write();
-    h_lep_pt0_bdte_btag_iso_rnn_pte_omega_mle->Write();
-    h_lep_pt0_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_lep_pt0_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
-    h_lep_pt0_bdte_btag_iso_rnn_omega_mle_mreco_tpt->Write();
+    h_lep_pt0_topo->Write();
+    h_lep_pt0_topo_dphi->Write();
+    h_lep_pt0_topo_dphi_bdte->Write();
+    h_lep_pt0_topo_dphi_bdte_btag->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_omega_mle_mreco_tpt->Write();
 
     //Writing tau pT
-    h_lep_pt1->Write();
-    h_lep_pt1_bdte->Write();
-    h_lep_pt1_bdte_btag->Write();
-    h_lep_pt1_bdte_btag_iso->Write();
-    h_lep_pt1_bdte_btag_iso_rnn->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_inside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_inside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_inside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt_inside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_outside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_outside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_outside->Write();
-    h_lep_pt1_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt_outside->Write();
+    h_lep_pt1_topo->Write();
+    h_lep_pt1_topo_dphi->Write();
+    h_lep_pt1_topo_dphi_bdte->Write();
+    h_lep_pt1_topo_dphi_bdte_btag->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_inside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_inside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_inside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt_inside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_outside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_outside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_outside->Write();
+    h_lep_pt1_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt_outside->Write();
 
 
     //Writing MET
-    h_met->Write();
-    h_met_bdte->Write();
-    h_met_bdte_btag->Write();
-    h_met_bdte_btag_iso->Write();
-    h_met_bdte_btag_iso_rnn->Write();
-    h_met_bdte_btag_iso_rnn_pte->Write();
-    h_met_bdte_btag_iso_rnn_pte_omega->Write();
-    h_met_bdte_btag_iso_rnn_pte_omega_mle->Write();
-    h_met_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_met_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_met_topo->Write();
+    h_met_topo_dphi->Write();
+    h_met_topo_dphi_bdte->Write();
+    h_met_topo_dphi_bdte_btag->Write();
+    h_met_topo_dphi_bdte_btag_iso->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
+    h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
 
     //Writing reco
-    h_reco_mass->Write();
-    h_reco_mass_bdte->Write();
-    h_reco_mass_bdte_btag->Write();
-    h_reco_mass_bdte_btag_iso->Write();
-    h_reco_mass_bdte_btag_iso_rnn->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte_omega->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
-    h_reco_mass_bdte_btag_iso_rnn_pte_omega_mle_tpt->Write();
+    h_reco_mass_topo->Write();
+    h_reco_mass_topo_dphi->Write();
+    h_reco_mass_topo_dphi_bdte->Write();
+    h_reco_mass_topo_dphi_bdte_btag->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_reco_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_tpt->Write();
 
-    h_reco_mass_met_outside->Write();
-    h_reco_mass_met_outside_bdte->Write();
-    h_reco_mass_met_outside_bdte_btag->Write();
-    h_reco_mass_met_outside_bdte_btag_iso->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
-    h_reco_mass_met_outside_bdte_btag_iso_rnn_pte_omega_mle_tpt->Write();
+    h_reco_mass_met_outside_topo->Write();
+    h_reco_mass_met_outside_topo_dphi->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_tpt->Write();
 
     //Writing jet number
-    h_jet_n->Write();
-    h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
-    h_jet_n_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_jet_n_topo->Write();
+    h_jet_n_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
     //Writing b-tag
-    h_b_tag->Write();
-    h_b_tag_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_b_tag_topo->Write();
+    h_b_tag_topo_dphi_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Write();
 
     //Writing isolation variables
-    h_elec_0_iso_FCTight->Write();
-    h_elec_0_iso_FCTight_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_elec_0_iso_FCTight_topo->Write();
+    h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Write();
 
-    h_omega->Write();
-    h_omega_bdte_btag_iso_rnn_pte_mle_mreco_tpt->Write();
+    h_omega_topo->Write();
+    h_omega_topo_dphi->Write();
+    h_omega_topo_dphi_bdte->Write();
+    h_omega_topo_dphi_bdte_btag->Write();
+    h_omega_topo_dphi_bdte_btag_iso->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte_omega->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Write();
+    h_omega_topo_dphi_bdte_btag_iso_rnn_pte_mle_mreco_tpt->Write();
 
-    h_Z_pt_reco_inside->Write();
+    h_Z_pt_reco_inside_topo->Write();
     h_Z_pt_reco_cuts_inside->Write();
     h_Z_pt_reco_cuts_tpt_inside->Write();
-    h_Z_pt_reco_outside->Write();
+    h_Z_pt_reco_outside_topo->Write();
     h_Z_pt_reco_cuts_outside->Write();
-    h_Z_pt_reco_cuts_tpt_outside->Write();
+    h_Z_pt_reco_cuts_tpt_outside->Write();    
 
-    h_lep_phi->Write();
-    h_tau_phi->Write();
+    h_lep_phi_topo->Write();
+    h_tau_phi_topo->Write();
     h_delta_phi->Write();
-    h_tau_nprongs->Write();
+    h_delta_phi_second_stage->Write();
+    h_delta_phi_topo->Write();
+    h_tau_nprongs_topo->Write();
     h_lep_phi_cuts->Write();
+    h_lep_phi_cuts_tpt->Write();
     h_tau_phi_cuts->Write();
+    h_tau_phi_cuts_tpt->Write();
     h_delta_phi_cuts->Write();
+    h_delta_phi_cuts_tpt->Write();
     h_delta_phi_cuts_butphi->Write();
     h_tau_nprongs_cuts->Write();
-    h_lep_phi_cuts_tpt->Write();
-    h_tau_phi_cuts_tpt->Write();
-    h_delta_phi_cuts_tpt->Write();
     h_tau_nprongs_cuts_tpt->Write();
 
-    h_ratio_ptjet_zpt->Write();
-    h_ratio_lpt_tpt->Write();
+    h_ratio_ptjet_zpt_topo->Write();
+    h_ratio_lpt_tpt_topo->Write();
     h_ratio_ptjet_zpt_cuts->Write();
     h_ratio_lpt_tpt_cuts->Write();
     h_ratio_ptjet_zpt_cuts_tpt->Write();
