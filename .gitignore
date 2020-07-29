@@ -1,0 +1,10 @@
+# IGNORE THE OUTPUT DIRECTORIES
+TauMu/MC/out/*
+TauMu/DATA/out/*
+TauMu/MC/out_previous/*
+TauMu/DATA/out_previous/*
+
+EleTau/MC/out/*
+EleTau/DATA/out/*
+EleTau/MC/out_previous/*
+EleTau/DATA/out_previous/*

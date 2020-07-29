@@ -34,10 +34,35 @@ double del_phi(double phi_1, double phi_2){
         delta=std::abs(delta);
     }
     
-    
-
-    
     return delta;
+}
+
+string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+  string str1="NOPASS";
+  string str2="NOPASS";
+  string str3="NOPASS";
+  string str4="NOPASS";
+  string str5="NOPASS";
+  string str6="NOPASS";
+  if (cond1){
+    str1="Passed";
+  }
+  if (cond2){
+    str2="Passed";
+  }
+  if (cond3){
+    str3="Passed";
+  }
+  if (cond4){
+    str4="Passed";
+  }
+  if (cond5){
+    str5="Passed";
+  }
+  if (cond6){
+    str6="Passed";
+  }
+  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
 }
 
 void CLoop::Book(double lumFactor) {
@@ -216,7 +241,7 @@ void CLoop::Book(double lumFactor) {
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
 
-    if (n_electrons==1 && n_taus_rnn_loose==1){
+    if (n_electrons==1 && n_taus_rnn_loose>=1){
       //angles
       double angle_l_MET=del_phi(elec_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
@@ -242,10 +267,9 @@ void CLoop::Fill(double weight, int z_sample) {
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
-        bool inside= angle==(angle_l_MET+angle_tau_MET); //ANGLE BEING USED pi/2 AND 2.0943
-        bool outside_lep= angle_l_MET<angle_tau_MET &&  angle!=(angle_l_MET+angle_tau_MET) && cos(angle_l_MET)>0;
-        bool outside_tau= angle_l_MET>angle_tau_MET && angle!=(angle_l_MET+angle_tau_MET) && cos(angle_tau_MET)>0;
-
+        bool inside= abs(angle-(angle_l_MET+angle_tau_MET))< 0.00001; //ANGLE BEING USED pi/2 AND 2.0943
+        bool outside_lep= angle_l_MET<angle_tau_MET && abs(angle-(angle_l_MET+angle_tau_MET)) > 0.00001 && cos(angle_l_MET)>0;
+        bool outside_tau= angle_l_MET>angle_tau_MET && abs(angle-(angle_l_MET+angle_tau_MET)) > 0.00001 && cos(angle_tau_MET)>0;
         bool signal_events = inside || outside_lep || outside_tau;
 
         if (signal_events){
@@ -255,8 +279,11 @@ void CLoop::Fill(double weight, int z_sample) {
           double pt_tau_nu=(met_reco_p4->Pt()*cos(met_reco_p4->Phi())-met_reco_p4->Pt()*sin(met_reco_p4->Phi())*cot_lep)/(cos(tau_0_p4->Phi())-sin(tau_0_p4->Phi())*cot_lep);
           double pt_lep_nu=(met_reco_p4->Pt()*cos(met_reco_p4->Phi())-met_reco_p4->Pt()*sin(met_reco_p4->Phi())*cot_tau)/(cos(elec_0_p4->Phi())-sin(elec_0_p4->Phi())*cot_tau);
 
-          double reco_mass=sqrt(2*elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+2*elec_0_p4->Pt()*pt_tau_nu*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+2*tau_0_p4->Pt()*pt_lep_nu*(cosh(tau_0_p4->Eta()-elec_0_p4->Eta())-cos(tau_0_p4->Phi()-elec_0_p4->Phi()))+2*pt_lep_nu*pt_tau_nu*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi())));
-
+          double reco_mass{};
+          if(inside){
+            reco_mass=sqrt(2*elec_0_p4->Pt()*tau_0_p4->Pt()*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+2*elec_0_p4->Pt()*pt_tau_nu*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+2*tau_0_p4->Pt()*pt_lep_nu*(cosh(tau_0_p4->Eta()-elec_0_p4->Eta())-cos(tau_0_p4->Phi()-elec_0_p4->Phi()))+2*pt_lep_nu*pt_tau_nu*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi())));
+          }
+          
           double neutrino_pt=0;
           double reco_mass_outside=0;
           if (outside_lep) {
@@ -319,10 +346,10 @@ void CLoop::Fill(double weight, int z_sample) {
 
           // ANGULAR VARIABLE DEFINITION
           double omega=0.0;
-          if (angle==(angle_l_MET+angle_tau_MET) && (angle_l_MET<angle_tau_MET)) {
+          if (inside && (angle_l_MET<angle_tau_MET)) {
             omega=1.0-(angle_l_MET)/(angle);
           }
-          if (angle==(angle_l_MET+angle_tau_MET) && (angle_l_MET>angle_tau_MET)) {
+          if (inside && (angle_l_MET>angle_tau_MET)) {
             omega=(angle_tau_MET)/(angle);
           }
           if (outside_lep) {
