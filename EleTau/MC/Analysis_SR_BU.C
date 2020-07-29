@@ -263,7 +263,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float ql=elec_0_q;
       float qtau=tau_0_q;
 
-      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match) {
+      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match) {
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -689,7 +689,6 @@ void CLoop::Fill(double weight, int z_sample) {
                             }  
                           }
 
-                          
                           //TAU PT CUT
                           if (cuts[9]==1) {
                             h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
