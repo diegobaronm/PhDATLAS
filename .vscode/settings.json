@@ -64,7 +64,7 @@
         "thread": "cpp",
         "typeinfo": "cpp"
     },
-    "python.pythonPath": "/home/diegol/anaconda3/bin/python",
+    "python.pythonPath": "/bin/python3",
     "C_Cpp.dimInactiveRegions": false,
     "git.ignoreLimitWarning": true
 }
