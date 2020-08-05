@@ -15,7 +15,7 @@ for n in ${samples[@]}
 do
     for y in ${year[@]}
     do
-        python RunAnalysis.py $mc_signal_sherpa$n'_'$y no
+        python3 RunAnalysis.py $mc_signal_sherpa$n'_'$y no
     done
 done
 rm out/Ztautau_sherpa*_*_*.root

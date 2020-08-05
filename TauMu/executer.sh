@@ -10,7 +10,7 @@ cd MC
 
 for file in ${mc_bg[@]}
 do
-  python RunAnalysis.py $file no
+  python3 RunAnalysis.py $file no
 done
 
 cd ..
@@ -18,7 +18,7 @@ cd DATA
 
 for file in $data
 do
-  python RunAnalysis.py $file no
+  python3 RunAnalysis.py $file no
 done
 
 cd ..
