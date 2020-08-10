@@ -1139,7 +1139,9 @@
 'st_tchan_top_2017_17':'user.dbaronmo.21943403._000019.LepUniv_ttbar.root',
 'st_tchan_top_2017_18':'user.dbaronmo.21943403._000020.LepUniv_ttbar.root',
 'st_tchan_top_2017_19':'user.dbaronmo.21943403._000021.LepUniv_ttbar.root',
-'st_tchan_top_2017_20':'user.dbaronmo.21943403._000010.LepUniv_ttbar.root',
+'st_tchan_top_2017_20':'user.dbaronmo.21943403._000022.LepUniv_ttbar.root',
+'st_tchan_top_2017_21':'user.dbaronmo.21943403._000023.LepUniv_ttbar.root',
+'st_tchan_top_2017_22':'user.dbaronmo.21943403._000010.LepUniv_ttbar.root',
 #st_tchan_top_2015
 'st_tchan_top_2015_0':'user.dbaronmo.21943357._000001.LepUniv_ttbar.root',
 'st_tchan_top_2015_1':'user.dbaronmo.21943357._000002.LepUniv_ttbar.root',

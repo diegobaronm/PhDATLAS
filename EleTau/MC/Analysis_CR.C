@@ -233,7 +233,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float qtau=tau_0_q;
       float pair_charge=ql*qtau;
 
-      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
+      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -341,7 +341,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if (elec_0_iso_FCLoose==0) {
+          if (elec_0_iso_FCTight==0) {
             cuts[3]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -353,7 +353,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (elec_0_p4->Pt()>=27) {
             cuts[5]=1;
           }
-          if (omega!=10) {
+          if (omega<1.4 && omega>0) {
             cuts[6]=1;
           }
           if (inv_taulep < 80) {
@@ -374,7 +374,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[8]=1;
             }
           }
-          if (tau_0_p4->Pt()>=25){
+          if (tau_0_p4->Pt()>=45){
               cuts[9]=1;
           }
 
@@ -401,7 +401,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCLoose,weight);
+            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCTight,weight);
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){

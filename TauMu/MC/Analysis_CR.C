@@ -198,7 +198,7 @@ void CLoop::Book(double lumFactor) {
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==1 && n_taus/*_rnn_loose*/>=1 && weight > -70) {
+    if (n_muons==1 && n_taus_rnn_loose>=1 && weight > -70) {
       bool trigger_decision= false;
       bool trigger_match= false;
       if (run_number>= 276262 && run_number<=284484) {
@@ -221,7 +221,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
       h_delta_phi->Fill(angle,weight);
 
-      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
+      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -259,10 +259,10 @@ void CLoop::Fill(double weight, int z_sample) {
           double r_jpt_zpt=0;
           double r_lpt_tpt=muon_0_p4->Pt()/tau_0_p4->Pt();
           double truth_z_pt=0.0;
-          /*if (z_sample==1 || z_sample==2)
+          if (z_sample==1 || z_sample==2)
           {
             truth_z_pt=truth_Z_p4->Pt();
-          }*/
+          }
 
           if (inside) {
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(muon_0_p4->Phi());

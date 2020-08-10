@@ -152,7 +152,7 @@ dataCombos = {
 #st_tchan_top_2018
 "st_tchan_top_2018":['st_tchan_top_2018_0','st_tchan_top_2018_1',],
 #st_tchan_top_2017
-"st_tchan_top_2017":['st_tchan_top_2017_0','st_tchan_top_2017_1','st_tchan_top_2017_2','st_tchan_top_2017_3','st_tchan_top_2017_4','st_tchan_top_2017_5','st_tchan_top_2017_6','st_tchan_top_2017_7','st_tchan_top_2017_8','st_tchan_top_2017_9','st_tchan_top_2017_10','st_tchan_top_2017_11','st_tchan_top_2017_12','st_tchan_top_2017_13','st_tchan_top_2017_14','st_tchan_top_2017_15','st_tchan_top_2017_16','st_tchan_top_2017_17','st_tchan_top_2017_18','st_tchan_top_2017_19','st_tchan_top_2017_20',],
+"st_tchan_top_2017":['st_tchan_top_2017_0','st_tchan_top_2017_1','st_tchan_top_2017_2','st_tchan_top_2017_3','st_tchan_top_2017_4','st_tchan_top_2017_5','st_tchan_top_2017_6','st_tchan_top_2017_7','st_tchan_top_2017_8','st_tchan_top_2017_9','st_tchan_top_2017_10','st_tchan_top_2017_11','st_tchan_top_2017_12','st_tchan_top_2017_13','st_tchan_top_2017_14','st_tchan_top_2017_15','st_tchan_top_2017_16','st_tchan_top_2017_17','st_tchan_top_2017_18','st_tchan_top_2017_19','st_tchan_top_2017_20','st_tchan_top_2017_21','st_tchan_top_2017_22',],
 #st_tchan_top_2015
 "st_tchan_top_2015":['st_tchan_top_2015_0','st_tchan_top_2015_1','st_tchan_top_2015_2','st_tchan_top_2015_3',],
 #st_tchan_atop_2018
@@ -1391,7 +1391,9 @@ dataSets = {
 'st_tchan_top_2017_17':'user.dbaronmo.21943403._000019.LepUniv_ttbar.root',
 'st_tchan_top_2017_18':'user.dbaronmo.21943403._000020.LepUniv_ttbar.root',
 'st_tchan_top_2017_19':'user.dbaronmo.21943403._000021.LepUniv_ttbar.root',
-'st_tchan_top_2017_20':'user.dbaronmo.21943403._000010.LepUniv_ttbar.root',
+'st_tchan_top_2017_20':'user.dbaronmo.21943403._000022.LepUniv_ttbar.root',
+'st_tchan_top_2017_21':'user.dbaronmo.21943403._000023.LepUniv_ttbar.root',
+'st_tchan_top_2017_22':'user.dbaronmo.21943403._000010.LepUniv_ttbar.root',
 #st_tchan_top_2015
 'st_tchan_top_2015_0':'user.dbaronmo.21943357._000001.LepUniv_ttbar.root',
 'st_tchan_top_2015_1':'user.dbaronmo.21943357._000002.LepUniv_ttbar.root',

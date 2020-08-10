@@ -14,11 +14,11 @@ from dataSets import dataSets, totRealLum, realList, dataCombos
 def luminosity(key):
     if "2018" in key:
         print("Working with less data")
-        return 58.4501*0.993
+        return 58.4501
     elif "2017" in key:
-        return 43.5873*0.98
+        return 43.5873
     else :
-        return 36.2369*0.98125
+        return 36.2369
 
 def fastStr(fMode):
     """
