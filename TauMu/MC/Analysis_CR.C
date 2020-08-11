@@ -221,7 +221,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
       h_delta_phi->Fill(angle,weight);
 
-      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
+      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -321,16 +321,16 @@ void CLoop::Fill(double weight, int z_sample) {
           if (angle<=2*pi/3){
             cuts[0]=1;
           }
-          if (n_bjets/*_MV2c10_FixedCutBEff_85*/==0){
+          if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[1]=1;
           }
           if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
             cuts[2]=1;
           }
-          if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans<0.4) {
+          if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
             cuts[3]=1;
           }
-          if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans<0.55) {
+          if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
             cuts[3]=1;
           }
           if (muon_0_p4->Pt()>=27) {
@@ -354,7 +354,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[6]=1;
           }
           }
-          if (tau_0_p4->Pt()>=45){
+          if (tau_0_p4->Pt()>=25){
             cuts[7]=1;
           }
         
@@ -373,7 +373,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_delta_phi_cuts_butphi->Fill(angle,weight);
           }
           if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
-            h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets/*_MV2c10_FixedCutBEff_85*/,weight);
+            h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
             h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
@@ -454,7 +454,7 @@ void CLoop::Fill(double weight, int z_sample) {
           h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
           h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
           // ISO CUT ENRICHING MJ ZONE
-          if (cuts[0]==1 && cuts[1]==1 && (cuts[2]==1 || cuts[3]==1) && cuts[4]==1 && cuts[5]==1) {
+          if (cuts[0]==1 && cuts[1]==1 && cuts[2]==1 && cuts[3]==1 && cuts[4]==1 && cuts[5]==1) {
             h_met_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
             h_omega_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(omega,weight);
@@ -526,8 +526,8 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
                   h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
                   h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
-                  h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone,1);
-                  h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium_IsoNone*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+                  h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium,1);
+                  h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                       *muon_0_NOMINAL_MuEffSF_TTVA,1);
                 }  
                 if (inside) {
