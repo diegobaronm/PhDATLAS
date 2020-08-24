@@ -274,7 +274,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
         double lepmet_mass=sqrt(2*elec_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(elec_0_p4->Phi()-met_reco_p4->Phi())));
 
-        if (signal_events && lepmet_mass<50){
+        if (signal_events){
           // RECO mass
           double cot_lep=1.0/tan(elec_0_p4->Phi());
           double cot_tau=1.0/tan(tau_0_p4->Phi());
@@ -405,7 +405,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[8]=1;
             }
           }
-          if (tau_0_p4->Pt()>=45){
+          if (tau_0_p4->Pt()<45){
               cuts[9]=1;
           }
 

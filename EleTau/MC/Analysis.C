@@ -244,7 +244,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
         double lepmet_mass=sqrt(2*elec_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(elec_0_p4->Phi()-met_reco_p4->Phi())));
 
-        if(signal_events && lepmet_mass<50){
+        if(signal_events){
 
           // RECO mass
           double cot_lep=1.0/tan(elec_0_p4->Phi());
@@ -343,7 +343,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if (elec_0_iso_FCLoose==0) {
+          if (elec_0_iso_FCTight==0) {
             cuts[3]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -355,24 +355,24 @@ void CLoop::Fill(double weight, int z_sample) {
           if (elec_0_p4->Pt()>=27) {
             cuts[5]=1;
           }
-          if (omega>0) {
+          if (omega>0 && omega <1.4) {
             cuts[6]=1;
           }
-          if (inv_taulep < 80 || inv_taulep > 105) {
+          if (inv_taulep < 80 ) {
             cuts[7]=1;
           }
           if (inside) {
-            if ((reco_mass<85 || reco_mass>115) && reco_mass>50) {
+            if (reco_mass<110 && reco_mass>70) {
               cuts[8]=1;
             }
           }
           if (outside_lep) {
-            if ((reco_mass_outside<85 || reco_mass_outside>115) && reco_mass_outside>50) {
+            if (reco_mass_outside<110 && reco_mass_outside>70) {
               cuts[8]=1;
             }
           }
           if (outside_tau) {
-            if ((reco_mass_outside<85 || reco_mass_outside>115) && reco_mass_outside>50) {
+            if (reco_mass_outside<110 && reco_mass_outside>70) {
               cuts[8]=1;
             }
           }
@@ -403,7 +403,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCLoose,weight);
+            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCTight,weight);
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){
@@ -457,7 +457,7 @@ void CLoop::Fill(double weight, int z_sample) {
           }
           h_bdt_e_score_topo->Fill(tau_0_ele_bdt_score_trans,weight);
           h_jet_n_topo->Fill(n_jets, weight);
-          h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCLoose,weight);
+          h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCTight,weight);
           h_omega_topo->Fill(omega,weight);
           h_met_topo->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_topo->Fill(elec_0_p4->Pt(),weight);
@@ -555,11 +555,11 @@ void CLoop::Fill(double weight, int z_sample) {
                 if (weight!=1){
                   h_weight_total_cuts->Fill(weight,1);
                   h_weight_mc_cuts->Fill(weight_total,1);
-                  h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose,1);
+                  h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight,1);
                   h_sf_e_recoid->Fill(elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13,1);
                   h_sf_e_vertex->Fill(elec_0_NOMINAL_EleEffSF_offline_RecoTrk,1);
                   h_sf_e_trigger->Fill(elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
-                  h_sf_e_total->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
+                  h_sf_e_total->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
                                       *elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
                 }
                 if (inside) {
