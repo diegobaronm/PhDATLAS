@@ -415,7 +415,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[6]=1;
           }
           }
-          if (tau_0_p4->Pt()<45){
+          if (tau_0_p4->Pt()>=45){
             cuts[7]=1;
           }
           

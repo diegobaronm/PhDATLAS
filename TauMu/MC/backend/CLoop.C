@@ -67,17 +67,20 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             if (zpt>80){
                 z_w=((1-0.95)/(log10(400)-log10(80)))*(log10(zpt)-log10(80))+0.95;
             }
-        }
+        }*/
         // PYTHIA REWEIGHTING
         if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
-            if (zpt>40 & zpt<160){
-                z_w=((0.8-1)/(log10(160)-log10(40)))*(log10(zpt)-log10(40))+1;
+            if (zpt>40 & zpt<80){
+                z_w=((0.93-1)/(log10(80)-log10(40)))*(log10(zpt)-log10(40))+1;
             }
-            if (zpt>160){
+            if (zpt>=80 & zpt<151){
+                z_w=((0.8-0.93)/(log10(151)-log10(80)))*(log10(zpt)-log10(80))+0.93;
+            }
+            if (zpt>=151){
                 z_w=0.80;
             }
-        }*/
+        }
         double zpt_weight=1/z_w;
         
 
