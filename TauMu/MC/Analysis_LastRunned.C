@@ -120,9 +120,9 @@ void CLoop::Book(double lumFactor) {
     h_lep_pt1nu_topo_dphi_btag_iso = new TH1F("tau+nu_pt_topo_dphi_btag_iso","Transverse momentum of tau+nu",200,0,200);
     h_lep_pt1nu_topo_dphi_btag_iso_rnn = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn","Transverse momentum of tau+nu",200,0,200);
     h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of tau+nu",200,0,200);
     
 
     h_tau_phi_topo= new TH1F("tau_phi_topo","Tau phi",64,-3.2,3.2);

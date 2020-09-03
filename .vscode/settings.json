@@ -62,7 +62,9 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "CLoop_SR.C": "cpp",
+        "CLoop_CR.C": "cpp"
     },
     "python.pythonPath": "/bin/python3",
     "C_Cpp.dimInactiveRegions": false,
