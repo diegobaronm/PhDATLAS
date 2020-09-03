@@ -55,6 +55,19 @@ TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside;
 TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside;
 TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside;
 
+//Writing tau pT
+TH1F * h_lep_pt1nu_topo;
+TH1F * h_lep_pt1nu_topo_dphi;
+TH1F * h_lep_pt1nu_topo_dphi_btag;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+
+
+
 //Writing MET
 TH1F * h_met_topo;
 TH1F * h_met_topo_dphi;

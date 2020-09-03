@@ -72,6 +72,17 @@ void CLoop::Book(double lumFactor) {
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside","Transverse momentum of tau",200,0,200);
 
+    // Histograms for tau+nu 
+    h_lep_pt1nu_topo = new TH1F("tau+nu_pt_topo","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi = new TH1F("tau+nu_pt_topo_dphi","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag = new TH1F("tau+nu_pt_topo_dphi_btag","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso = new TH1F("tau+nu_pt_topo_dphi_btag_iso","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of tau+nu",200,0,200);
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of tau+nu",200,0,200);
+
     h_tau_phi_topo= new TH1F("tau_phi_topo","Tau phi",64,-3.2,3.2);
     h_tau_phi_cuts= new TH1F("tau_phi_cuts","Tau phi",64,-3.2,3.2);
     h_tau_phi_cuts_tpt= new TH1F("tau_phi_cuts_tpt","Tau phi",64,-3.2,3.2);
@@ -443,12 +454,15 @@ void CLoop::Fill(double weight, int z_sample) {
           
           if (inside) {
             h_reco_mass_topo->Fill(reco_mass,weight);
+            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
           }
           if (outside_lep) {
             h_reco_mass_met_outside_topo->Fill(reco_mass_outside,weight);
+            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt(),weight);
           }
           if (outside_tau){
             h_reco_mass_met_outside_topo->Fill(reco_mass_outside,weight);
+            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
           }
 
           h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
@@ -463,14 +477,17 @@ void CLoop::Fill(double weight, int z_sample) {
             if (inside) {
               h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside->Fill(tau_0_p4->Pt(),weight);
               h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass,weight);
+              h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
             }
             if (outside_lep) {
               h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
               h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
+              h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt(),weight);
             }
             if (outside_tau){
               h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
               h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
+              h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
             }
 
             if (cuts[6]==1){
@@ -488,6 +505,7 @@ void CLoop::Fill(double weight, int z_sample) {
               if (inside) {
                 h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);                 
                 h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
+                h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
                 if (weight!=1){
                   h_Z_pt_truth_cuts_inside->Fill(truth_z_pt/1000,weight);
                 }
@@ -495,6 +513,7 @@ void CLoop::Fill(double weight, int z_sample) {
               if (outside_lep) {
                 h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
                 h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+                h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt(),weight);
                 if (weight!=1){
                   h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
                 }  
@@ -502,6 +521,7 @@ void CLoop::Fill(double weight, int z_sample) {
               if (outside_tau){
                 h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);                      
                 h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
+                h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
                 if (weight!=1){
                   h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
                 }
@@ -534,6 +554,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass,weight);
                   h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Fill(tau_0_p4->Pt(),weight);
                   h_Z_pt_reco_cuts_tpt_inside->Fill(Z_pt,weight);
+                  h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
                   if (weight!=1){               
                     h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
                     h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt/1000,weight);
@@ -543,6 +564,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
                   h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
                   h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
+                  h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt(),weight);
                   if (weight!=1){
                     h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);           
                     h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
@@ -552,6 +574,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
                   h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
                   h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
+                  h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
                   if (weight!=1){                       
                     h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);              
                     h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
@@ -634,6 +657,17 @@ void CLoop::Style(double lumFactor) {
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Write();
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Write();
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Write();
+
+    //Writing tau pT+nu
+    h_lep_pt1nu_topo->Write();
+    h_lep_pt1nu_topo_dphi->Write();
+    h_lep_pt1nu_topo_dphi_btag->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
+    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
     //Writing MET
     h_met_topo->Write();
