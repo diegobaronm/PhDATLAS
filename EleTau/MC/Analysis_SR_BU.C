@@ -379,7 +379,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (angle<=2*pi/3){
             cuts[0]=1;
           }
-          if (tau_0_ele_bdt_score_trans>=0.06) {
+          if (tau_0_ele_bdt_score_trans>=0.05) {
             cuts[1]=1;
           }
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -533,7 +533,7 @@ void CLoop::Fill(double weight, int z_sample) {
           h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
           h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
           // ANGLE CUT
-          if (cuts[0]==1){   
+          if (cuts[0]==1 && Z_pt>=100){   
             h_met_topo_dphi->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_topo_dphi->Fill(elec_0_p4->Pt(),weight);
             h_omega_topo_dphi->Fill(omega,weight);

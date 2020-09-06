@@ -350,7 +350,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (angle<=2*pi/3){
             cuts[0]=1;
           }
-          if (tau_0_ele_bdt_score_trans>=0.06) {
+          if (tau_0_ele_bdt_score_trans>=0.05) {
             cuts[1]=1;
           }
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -503,7 +503,7 @@ void CLoop::Fill(double weight, int z_sample) {
           h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
           h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
             // INVA MASS LEPTON TAU CUT
-          if (cuts[0]==1 && cuts[1]==1 && cuts[2]==1 && cuts[3]==1 && cuts[4]==1 && cuts[5]==1 && cuts[6]==1 && cuts[7]==1) {
+          if (cuts[0]==1 && cuts[1]==1 && cuts[2]==1 && cuts[3]==1 && cuts[4]==1 && cuts[5]==1 && cuts[6]==1 && cuts[7]==1 && Z_pt>=100) {
             h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(elec_0_p4->Pt(),weight);
             h_omega_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle->Fill(omega,weight);
