@@ -368,6 +368,9 @@ void CLoop::Fill(double weight, int z_sample) {
             }
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
+
+          if (Z_pt<100){
+          
           // non RECO mass
           double lepmet_mass=sqrt(2*muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi())));
           double inv_taulep=sqrt((2*muon_0_p4->Pt()*tau_0_p4->Pt())*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
@@ -536,7 +539,7 @@ void CLoop::Fill(double weight, int z_sample) {
           h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
           h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
           // ANGLE CUT
-          if (cuts[0]==1 && Z_pt>=100){
+          if (cuts[0]==1){
             h_met_topo_dphi->Fill(met_reco_p4->Pt(),weight);
             h_lep_pt0_topo_dphi->Fill(muon_0_p4->Pt(),weight);
             h_lep_pt1_topo_dphi->Fill(tau_0_p4->Pt(),weight);
@@ -768,6 +771,7 @@ void CLoop::Fill(double weight, int z_sample) {
               }
             }
           }  
+        }
         }
       }
     }
