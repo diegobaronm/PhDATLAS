@@ -352,8 +352,6 @@ void CLoop::Fill(double weight, int z_sample) {
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
 
-          if (Z_pt<100){
-
           // non RECO mass          
           double inv_taulep=sqrt((2*elec_0_p4->Pt()*tau_0_p4->Pt())*(cosh(elec_0_p4->Eta()-tau_0_p4->Eta())-cos(elec_0_p4->Phi()-tau_0_p4->Phi())));
           //double trans_mass=sqrt(2*(elec_0_p4->Pt()*tau_0_p4->Pt()*(1-cos(elec_0_p4->Phi()-tau_0_p4->Phi()))+elec_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(elec_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
@@ -799,7 +797,6 @@ void CLoop::Fill(double weight, int z_sample) {
             }
           }
         }
-      }
       }
     }
   } 

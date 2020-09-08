@@ -368,8 +368,6 @@ void CLoop::Fill(double weight, int z_sample) {
             }
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
-
-          if (Z_pt<100){
           
           // non RECO mass
           double lepmet_mass=sqrt(2*muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi())));
@@ -771,7 +769,6 @@ void CLoop::Fill(double weight, int z_sample) {
               }
             }
           }  
-        }
         }
       }
     }
