@@ -1,23 +1,25 @@
- Analysis0to120_LooseRNNID/-----> 
- Analysis0to120TightRNNid/-----> 
- Analysis0to120TightRNNid_Sherpa/-----> 
- Analysis_139fb/-----> Version of the Analysis used for first year report
- Analysis_taupTcut_Sherpa/-----> 
- Analysis_taupTcut_Sherpa_noHighW/----->
- Combination_18_17_16_15_90to120/----->
- Comparison_LastOneBeforeModifyingCode/----->
- V19/-----> Analysis with the same cuts to compare between V19 and V24
- V24/-----> Analysis with the same cuts to compare between V19 and V24
- V24-0/-----> 
- V24-LowpT/-----> Analysis for the events with pT<45 GeV
- V24-PowHeg/-----> Analysis with the same cuts to compare between V19 and V24 + PowHeg+Pythia for the signal.
- V24-pTG45/-----> Calculation of SF for pT>45 GeV
- V24-TauPlusNupT/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT)
- V24-TauPlusNupT-AlternativeCR/-----> Analysis with CR=Fail Tight+pT>45
- V24-TauPlusNupT-AlternativeCR-PowHeg/-----> Analysis with CR=Fail Tight+pT>45 + PowHeg+Pythia for signal with reweighting
- V24-TauPlusNupT-AlternativeCR-PowHeg-NoWeight/-----> Analysis with CR=Fail Tight+pT>45 + PowHeg+Pythia for signal but no reweight.
- V24-TauPlusNupT-MediumpTCR/-----> Analysis with CR=Fail Tight+pT>35
- V24-TauPlusNupT-PowHeg/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT) + PowHeg+Pythia for signal with ZpT reweighting
- V24-TauPlusNupT-PowHeg-NoWeight/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT) + PowHeg+Pythia for signal without ZpT reweighting
- V24-ZpT-less100/-----> Analysis for the events with ZpT<100 GeV
- V24-ZpT-more100/-----> Analysis for the events with ZpT>100 GeV
+Analysis0to120_LooseRNNID/-----> 
+Analysis0to120TightRNNid/-----> 
+Analysis0to120TightRNNid_Sherpa/-----> 
+Analysis_139fb/-----> Version of the Analysis used for first year report
+Analysis_taupTcut_Sherpa/-----> 
+Analysis_taupTcut_Sherpa_noHighW/----->
+Combination_18_17_16_15_90to120/----->
+Comparison_LastOneBeforeModifyingCode/----->
+V19/-----> Analysis with the same cuts to compare between V19 and V24
+V24/-----> Analysis with the same cuts to compare between V19 and V24
+V24-0/-----> 
+V24-LowpT/-----> Analysis for the events with pT<45 GeV
+V24-PowHeg/-----> Analysis with the same cuts to compare between V19 and V24 + PowHeg+Pythia for the signal.
+V24-pTG45/-----> Calculation of SF for pT>45 GeV
+V24-TauPlusNupT/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT)
+V24-TauPlusNupT-AlternativeCR/-----> Analysis with CR=Fail Tight+pT>45
+V24-TauPlusNupT-AlternativeCR-PowHeg/-----> Analysis with CR=Fail Tight+pT>45 + PowHeg+Pythia for signal with reweighting
+V24-TauPlusNupT-AlternativeCR-PowHeg-NoWeight/-----> Analysis with CR=Fail Tight+pT>45 + PowHeg+Pythia for signal but no reweight.
+V24-TauPlusNupT-MediumpTCR/-----> Analysis with CR=Fail Tight+pT>35
+V24-TauPlusNupT-PowHeg/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT) + PowHeg+Pythia for signal with ZpT reweighting
+V24-TauPlusNupT-PowHeg-NoWeight/-----> Analysis with CR=Fail Loose+pT>25, also added histogram of tau+nu(pT) + PowHeg+Pythia for signal without ZpT reweighting
+V24-ZpT-less100/-----> Analysis for the events with ZpT<100 GeV
+V24-ZpT-more100/-----> Analysis for the events with ZpT>100 GeV
+V24-pTG45/-----> Analysis for calculating SFs after the first recommendations of the TauCP group. pT>=45 GeV.
+V24-pTG65/-----> Analysis for calculating SFs after the first recommendations of the TauCP group. pT>=65 GeV.
