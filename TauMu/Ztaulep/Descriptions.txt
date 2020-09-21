@@ -23,3 +23,7 @@ V24-ZpT-less100/-----> Analysis for the events with ZpT<100 GeV
 V24-ZpT-more100/-----> Analysis for the events with ZpT>100 GeV
 V24-pTG45/-----> Analysis for calculating SFs after the first recommendations of the TauCP group. pT>=45 GeV.
 V24-pTG65/-----> Analysis for calculating SFs after the first recommendations of the TauCP group. pT>=65 GeV.
+V24-pT45to65/-----> Analysis for calculating SFs after the first recommendations of the TauCP group. 45<pT<=65 GeV.
+V24-pTG45-CR-InvMass/-----> Same as above with different CR=Loose reco_mass cut (70-110 GeV)--->(50-130 GeV).
+V24-pTG65-CR-InvMass/-----> Same as above.
+V24-pT45to65-CR-InvMass/-----> Same as above.
