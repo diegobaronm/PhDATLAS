@@ -18,13 +18,13 @@ double del_phi(double phi_1, double phi_2){
     double pi=TMath::Pi();
     double phi_1_norm, phi_2_norm;
     if (phi_1<0.0){
-        phi_1_norm=phi_1+2*pi;            
+        phi_1_norm=phi_1+2*pi;
     }else {
         phi_1_norm=phi_1;
     }
-    
+
     if (phi_2<0.0){
-        phi_2_norm=phi_2+2*pi;            
+        phi_2_norm=phi_2+2*pi;
     }else {
         phi_2_norm=phi_2;
     }
@@ -43,7 +43,7 @@ void CLoop::Book(double lumFactor) {
 
     //VARIABLES FOLLOWED AFTER EACH CUT
 
-    // Histograms for lepton 
+    // Histograms for lepton
     h_lep_pt0_topo = new TH1F("lep_pt0_topo","Transverse momentum of lep1",200,0,200);
     h_lep_pt0_topo_dphi = new TH1F("lep_pt0_topo_dphi","Transverse momentum of lep1",200,0,200);
     h_lep_pt0_topo_dphi_btag = new TH1F("lep_pt0_topo_dphi_btag","Transverse momentum of lep1",200,0,200);
@@ -58,7 +58,7 @@ void CLoop::Book(double lumFactor) {
     h_lep_phi_topo= new TH1F("lep_phi_topo","Lepton phi angle",64,-3.2,3.2);
     h_lep_phi_cuts= new TH1F("lep_phi_cuts","Lepton phi angle",64,-3.2,3.2);
     h_lep_phi_cuts_tpt= new TH1F("lep_phi_cuts_tpt","Lepton phi angle",64,-3.2,3.2);
-    // Histograms for tau 
+    // Histograms for tau
     h_lep_pt1_topo = new TH1F("tau_pt_topo","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi = new TH1F("tau_pt_topo_dphi","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi_btag = new TH1F("tau_pt_topo_dphi_btag","Transverse momentum of tau",200,0,200);
@@ -72,7 +72,7 @@ void CLoop::Book(double lumFactor) {
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside","Transverse momentum of tau",200,0,200);
 
-    // Histograms for tau+nu 
+    // Histograms for tau+nu
     h_lep_pt1nu_topo = new TH1F("tau+nu_pt_topo","Transverse momentum of tau+nu",200,0,200);
     h_lep_pt1nu_topo_dphi = new TH1F("tau+nu_pt_topo_dphi","Transverse momentum of tau+nu",200,0,200);
     h_lep_pt1nu_topo_dphi_btag = new TH1F("tau+nu_pt_topo_dphi_btag","Transverse momentum of tau+nu",200,0,200);
@@ -159,7 +159,7 @@ void CLoop::Book(double lumFactor) {
       h_Z_pt_truth_cuts_outside = new TH1F("Z_pt_truth_cuts_outside","Z_truth boson transverse momentum outside",400,0,400);
       h_Z_pt_truth_cuts_tpt_outside = new TH1F("Z_pt_truth_cuts_tpt_outside","Z_truth boson transverse momentum outside",400,0,400);
     }
-    
+
     // Jet Number Histograms
     h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Number of jets",10,-1,9);
@@ -250,7 +250,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
           double reco_mass{};
           if(inside){
-             reco_mass=sqrt(2*muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+2*muon_0_p4->Pt()*pt_tau_nu*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+2*tau_0_p4->Pt()*pt_lep_nu*(cosh(tau_0_p4->Eta()-muon_0_p4->Eta())-cos(tau_0_p4->Phi()-muon_0_p4->Phi()))+2*pt_lep_nu*pt_tau_nu*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))); 
+             reco_mass=sqrt(2*muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+2*muon_0_p4->Pt()*pt_tau_nu*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+2*tau_0_p4->Pt()*pt_lep_nu*(cosh(tau_0_p4->Eta()-muon_0_p4->Eta())-cos(tau_0_p4->Phi()-muon_0_p4->Phi()))+2*pt_lep_nu*pt_tau_nu*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
           }
 
           double neutrino_pt=0;
@@ -335,7 +335,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[1]=1;
           }
-          if (muon_0_iso_FCLoose_FixedRad==0/*muon_0_iso_FCLoose_FixedRad*/) {
+          if (/*muon_0_iso_FCLoose_FixedRad==0*/muon_0_iso_FCTightTrackOnly_FixedRad==0) {
             cuts[2]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -365,10 +365,10 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[6]=1;
           }
           }
-          if (tau_0_p4->Pt()>=25){
+          if (tau_0_p4->Pt()>=45){
             cuts[7]=1;
           }
-        
+
           // Cuts relative to otherwise
           vector<int> c_phi={0,1,1,1,1,1,1,1};
           vector<int> c_btag={1,0,1,1,1,1,1,1};
@@ -387,14 +387,14 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCLoose_FixedRad,weight);
+            h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){
-              h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight); 
+              h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight);
             }
             if (tau_0_n_charged_tracks==3){
-              h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight); 
+              h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight);
             }
           }
           if (cuts==c_ptmu||cuts==c_all) {
@@ -418,7 +418,7 @@ void CLoop::Fill(double weight, int z_sample) {
             if (cuts==c_tpt||cuts==c_all) {
               h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
             }
-          }  
+          }
           if (outside_tau) {
             if (cuts==c_mreco||cuts==c_all) {
               h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Fill(reco_mass_outside,weight);
@@ -437,7 +437,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_rnn_score_3prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
           h_jet_n_topo->Fill(n_jets, weight);
-          h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Fill(muon_0_iso_FCLoose_FixedRad,weight);
+          h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
           h_omega_topo->Fill(omega,weight);
           h_met_topo->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_topo->Fill(muon_0_p4->Pt(),weight);
@@ -451,7 +451,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_weight_mc_topo->Fill(weight_total,1);
             h_tau_matched_topo->Fill(tau_0_truth_isHadTau,weight);
           }
-          
+
           if (inside) {
             h_reco_mass_topo->Fill(reco_mass,weight);
             h_lep_pt1nu_topo->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
@@ -503,7 +503,7 @@ void CLoop::Fill(double weight, int z_sample) {
               h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
 
               if (inside) {
-                h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);                 
+                h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
                 h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
                 h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
                 if (weight!=1){
@@ -516,10 +516,10 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt(),weight);
                 if (weight!=1){
                   h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
-                }  
+                }
               }
               if (outside_tau){
-                h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);                      
+                h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
                 h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
                 h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
                 if (weight!=1){
@@ -543,19 +543,19 @@ void CLoop::Fill(double weight, int z_sample) {
                 if (weight!=1){
                   h_weight_mc_cuts->Fill(weight_total,1);
                   h_weight_total_cuts->Fill(weight,1);
-                  h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad,1);
+                  h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad/*muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad*/,1);
                   h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
                   h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
                   h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium,1);
-                  h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
+                  h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
                                       *muon_0_NOMINAL_MuEffSF_TTVA,1);
-                }  
+                }
                 if (inside) {
                   h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass,weight);
                   h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Fill(tau_0_p4->Pt(),weight);
                   h_Z_pt_reco_cuts_tpt_inside->Fill(Z_pt,weight);
                   h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                  if (weight!=1){               
+                  if (weight!=1){
                     h_tau_matched_after_0_to_90->Fill(tau_0_truth_isHadTau,weight);
                     h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt/1000,weight);
                   }
@@ -566,7 +566,7 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
                   h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt(),weight);
                   if (weight!=1){
-                    h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);           
+                    h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                     h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
                   }
                 }
@@ -575,12 +575,12 @@ void CLoop::Fill(double weight, int z_sample) {
                   h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
                   h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
                   h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                  if (weight!=1){                       
-                    h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);              
+                  if (weight!=1){
+                    h_tau_matched_after_outside->Fill(tau_0_truth_isHadTau,weight);
                     h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
                   }
-                } 
-              }        
+                }
+              }
             }
           }
         }
@@ -730,7 +730,7 @@ void CLoop::Style(double lumFactor) {
     h_Z_pt_reco_cuts_tpt_inside->Write();
     h_Z_pt_reco_outside_topo->Write();
     h_Z_pt_reco_cuts_outside->Write();
-    h_Z_pt_reco_cuts_tpt_outside->Write();    
+    h_Z_pt_reco_cuts_tpt_outside->Write();
 
     h_lep_phi_topo->Write();
     h_tau_phi_topo->Write();
