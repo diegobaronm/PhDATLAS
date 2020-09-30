@@ -355,7 +355,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if (/*elec_0_iso_FCLoose==0*/elec_0_iso_FCTight==0) {
+          if (elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
             cuts[3]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -388,7 +388,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[8]=1;
             }
           }
-          if (tau_0_p4->Pt()>=45){
+          if (tau_0_p4->Pt()>=25){
               cuts[9]=1;
           }
 
@@ -415,7 +415,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_bdte_iso_rnn_pte_omega_mle_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCTight,weight);
+            h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_iso_FCLoose,weight);
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){
@@ -469,7 +469,7 @@ void CLoop::Fill(double weight, int z_sample) {
           }
           h_bdt_e_score_topo->Fill(tau_0_ele_bdt_score_trans,weight);
           h_jet_n_topo->Fill(n_jets, weight);
-          h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCTight,weight);
+          h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCLoose,weight);
           h_omega_topo->Fill(omega,weight);
           h_met_topo->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_topo->Fill(elec_0_p4->Pt(),weight);

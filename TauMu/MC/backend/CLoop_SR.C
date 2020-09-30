@@ -53,7 +53,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         if (ientry < 0) break;
         nb = fChain->GetEntry(jentry);    nbytes += nb;
         // if (Cut(ientry) < 0) continue;
-        
+
         // ZpT reweighting
 
         double z_w=1;
@@ -68,7 +68,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }
         }*/
         // PYTHIA REWEIGHTING
-        if (z_sample==1){
+        /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
                 z_w=((0.93-1)/(log10(80)-log10(40)))*(log10(zpt)-log10(40))+1;
@@ -79,9 +79,9 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             if (zpt>=151){
                 z_w=0.80;
             }
-        }
+        }*/
         double zpt_weight=1/z_w;
-        
+
 
         // calculate event weight
         double eventWeight = 1;
