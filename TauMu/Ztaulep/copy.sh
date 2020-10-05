@@ -6,5 +6,6 @@ cp ../MC/out/Wjets.root .
 cp ../MC/out/Zmumu.root Zjet.root
 cp ../MC/out/ttbar.root ttbar.root
 cp ../MC/out/Signal.root .
+cp ../MC/out/Signal_PoPy.root .
 hadd BG.root VV.root singletop.root Wjets.root Zjet.root ttbar.root
 hadd MC.root BG.root Signal.root

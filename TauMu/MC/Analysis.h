@@ -157,5 +157,12 @@ TH1F * h_ratio_lpt_tpt_cuts_tpt;
 TH1F * h_rnn_score_1prong_topo_match;
 TH1F * h_rnn_score_3prong_topo_match;
 
+TH1F * h_n_conversion_tracks;
+TH1F * h_n_core_tracks;
+TH1F * h_n_isolation_tracks;
+TH1F * h_n_conversion_tracks_cuts;
+TH1F * h_n_core_tracks_cuts;
+TH1F * h_n_isolation_tracks_cuts;
+
 
 #endif

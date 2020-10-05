@@ -217,34 +217,6 @@ public :
    Float_t         ljet_3_q;
    Int_t           ljet_3_type;
    Float_t         ljet_3_width;
-   UInt_t          ljet_4;
-   Int_t           ljet_4_b_tag_quantile;
-   Float_t         ljet_4_b_tag_score;
-   Int_t           ljet_4_b_tagged_MV2c10_FixedCutBEff_85;
-   UInt_t          ljet_4_cleanJet_EC_LooseBad;
-   Float_t         ljet_4_fjvt;
-   Int_t           ljet_4_flavorlabel;
-   Int_t           ljet_4_flavorlabel_cone;
-   Int_t           ljet_4_flavorlabel_part;
-   Int_t           ljet_4_is_Jvt_HS;
-   Float_t         ljet_4_jvt;
-   UInt_t          ljet_4_matched;
-   Int_t           ljet_4_matched_classifierParticleOrigin;
-   Int_t           ljet_4_matched_classifierParticleType;
-   Int_t           ljet_4_matched_mother_pdgId;
-   Int_t           ljet_4_matched_mother_status;
-   Int_t           ljet_4_matched_origin;
-   TLorentzVector  *ljet_4_matched_p4;
-   Int_t           ljet_4_matched_pdgId;
-   Float_t         ljet_4_matched_pz;
-   Float_t         ljet_4_matched_q;
-   Int_t           ljet_4_matched_status;
-   Int_t           ljet_4_matched_type;
-   Int_t           ljet_4_origin;
-   TLorentzVector  *ljet_4_p4;
-   Float_t         ljet_4_q;
-   Int_t           ljet_4_type;
-   Float_t         ljet_4_width;
    TLorentzVector  *met_reco_p4;
    UInt_t          muTrigMatch_0_HLT_mu20_iloose_L1MU15;
    UInt_t          muTrigMatch_0_HLT_mu26_ivarmedium;
@@ -337,6 +309,9 @@ public :
    Float_t         tau_0_jet_rnn_score_trans;
    UInt_t          tau_0_jet_rnn_tight;
    UInt_t          tau_0_n_charged_tracks;
+   UInt_t          tau_0_n_conversion_tracks;
+   UInt_t          tau_0_n_core_tracks;
+   UInt_t          tau_0_n_isolation_tracks;
    TLorentzVector  *tau_0_p4;
    Float_t         tau_0_q;
    UInt_t          tau_0_truth;
@@ -541,34 +516,6 @@ public :
    TBranch        *b_ljet_3_q;   //!
    TBranch        *b_ljet_3_type;   //!
    TBranch        *b_ljet_3_width;   //!
-   TBranch        *b_ljet_4;   //!
-   TBranch        *b_ljet_4_b_tag_quantile;   //!
-   TBranch        *b_ljet_4_b_tag_score;   //!
-   TBranch        *b_ljet_4_b_tagged_MV2c10_FixedCutBEff_85;   //!
-   TBranch        *b_ljet_4_cleanJet_EC_LooseBad;   //!
-   TBranch        *b_ljet_4_fjvt;   //!
-   TBranch        *b_ljet_4_flavorlabel;   //!
-   TBranch        *b_ljet_4_flavorlabel_cone;   //!
-   TBranch        *b_ljet_4_flavorlabel_part;   //!
-   TBranch        *b_ljet_4_is_Jvt_HS;   //!
-   TBranch        *b_ljet_4_jvt;   //!
-   TBranch        *b_ljet_4_matched;   //!
-   TBranch        *b_ljet_4_matched_classifierParticleOrigin;   //!
-   TBranch        *b_ljet_4_matched_classifierParticleType;   //!
-   TBranch        *b_ljet_4_matched_mother_pdgId;   //!
-   TBranch        *b_ljet_4_matched_mother_status;   //!
-   TBranch        *b_ljet_4_matched_origin;   //!
-   TBranch        *b_ljet_4_matched_p4;   //!
-   TBranch        *b_ljet_4_matched_pdgId;   //!
-   TBranch        *b_ljet_4_matched_pz;   //!
-   TBranch        *b_ljet_4_matched_q;   //!
-   TBranch        *b_ljet_4_matched_status;   //!
-   TBranch        *b_ljet_4_matched_type;   //!
-   TBranch        *b_ljet_4_origin;   //!
-   TBranch        *b_ljet_4_p4;   //!
-   TBranch        *b_ljet_4_q;   //!
-   TBranch        *b_ljet_4_type;   //!
-   TBranch        *b_ljet_4_width;   //!
    TBranch        *b_met_reco_p4;   //!
    TBranch        *b_muTrigMatch_0_HLT_mu20_iloose_L1MU15;   //!
    TBranch        *b_muTrigMatch_0_HLT_mu26_ivarmedium;   //!
@@ -661,6 +608,9 @@ public :
    TBranch        *b_tau_0_jet_rnn_score_trans;   //!
    TBranch        *b_tau_0_jet_rnn_tight;   //!
    TBranch        *b_tau_0_n_charged_tracks;   //!
+   TBranch        *b_tau_0_n_conversion_tracks;   //!
+   TBranch        *b_tau_0_n_core_tracks;   //!
+   TBranch        *b_tau_0_n_isolation_tracks;   //!
    TBranch        *b_tau_0_p4;   //!
    TBranch        *b_tau_0_q;   //!
    TBranch        *b_tau_0_truth;   //!
@@ -764,8 +714,6 @@ void CLoop::Init(TTree *tree)
    ljet_2_p4 = 0;
    ljet_3_matched_p4 = 0;
    ljet_3_p4 = 0;
-   ljet_4_matched_p4 = 0;
-   ljet_4_p4 = 0;
    met_reco_p4 = 0;
    muon_0_matched_p4 = 0;
    muon_0_p4 = 0;
@@ -962,34 +910,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("ljet_3_q", &ljet_3_q, &b_ljet_3_q);
    fChain->SetBranchAddress("ljet_3_type", &ljet_3_type, &b_ljet_3_type);
    fChain->SetBranchAddress("ljet_3_width", &ljet_3_width, &b_ljet_3_width);
-   fChain->SetBranchAddress("ljet_4", &ljet_4, &b_ljet_4);
-   fChain->SetBranchAddress("ljet_4_b_tag_quantile", &ljet_4_b_tag_quantile, &b_ljet_4_b_tag_quantile);
-   fChain->SetBranchAddress("ljet_4_b_tag_score", &ljet_4_b_tag_score, &b_ljet_4_b_tag_score);
-   fChain->SetBranchAddress("ljet_4_b_tagged_MV2c10_FixedCutBEff_85", &ljet_4_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_4_b_tagged_MV2c10_FixedCutBEff_85);
-   fChain->SetBranchAddress("ljet_4_cleanJet_EC_LooseBad", &ljet_4_cleanJet_EC_LooseBad, &b_ljet_4_cleanJet_EC_LooseBad);
-   fChain->SetBranchAddress("ljet_4_fjvt", &ljet_4_fjvt, &b_ljet_4_fjvt);
-   fChain->SetBranchAddress("ljet_4_flavorlabel", &ljet_4_flavorlabel, &b_ljet_4_flavorlabel);
-   fChain->SetBranchAddress("ljet_4_flavorlabel_cone", &ljet_4_flavorlabel_cone, &b_ljet_4_flavorlabel_cone);
-   fChain->SetBranchAddress("ljet_4_flavorlabel_part", &ljet_4_flavorlabel_part, &b_ljet_4_flavorlabel_part);
-   fChain->SetBranchAddress("ljet_4_is_Jvt_HS", &ljet_4_is_Jvt_HS, &b_ljet_4_is_Jvt_HS);
-   fChain->SetBranchAddress("ljet_4_jvt", &ljet_4_jvt, &b_ljet_4_jvt);
-   fChain->SetBranchAddress("ljet_4_matched", &ljet_4_matched, &b_ljet_4_matched);
-   fChain->SetBranchAddress("ljet_4_matched_classifierParticleOrigin", &ljet_4_matched_classifierParticleOrigin, &b_ljet_4_matched_classifierParticleOrigin);
-   fChain->SetBranchAddress("ljet_4_matched_classifierParticleType", &ljet_4_matched_classifierParticleType, &b_ljet_4_matched_classifierParticleType);
-   fChain->SetBranchAddress("ljet_4_matched_mother_pdgId", &ljet_4_matched_mother_pdgId, &b_ljet_4_matched_mother_pdgId);
-   fChain->SetBranchAddress("ljet_4_matched_mother_status", &ljet_4_matched_mother_status, &b_ljet_4_matched_mother_status);
-   fChain->SetBranchAddress("ljet_4_matched_origin", &ljet_4_matched_origin, &b_ljet_4_matched_origin);
-   fChain->SetBranchAddress("ljet_4_matched_p4", &ljet_4_matched_p4, &b_ljet_4_matched_p4);
-   fChain->SetBranchAddress("ljet_4_matched_pdgId", &ljet_4_matched_pdgId, &b_ljet_4_matched_pdgId);
-   fChain->SetBranchAddress("ljet_4_matched_pz", &ljet_4_matched_pz, &b_ljet_4_matched_pz);
-   fChain->SetBranchAddress("ljet_4_matched_q", &ljet_4_matched_q, &b_ljet_4_matched_q);
-   fChain->SetBranchAddress("ljet_4_matched_status", &ljet_4_matched_status, &b_ljet_4_matched_status);
-   fChain->SetBranchAddress("ljet_4_matched_type", &ljet_4_matched_type, &b_ljet_4_matched_type);
-   fChain->SetBranchAddress("ljet_4_origin", &ljet_4_origin, &b_ljet_4_origin);
-   fChain->SetBranchAddress("ljet_4_p4", &ljet_4_p4, &b_ljet_4_p4);
-   fChain->SetBranchAddress("ljet_4_q", &ljet_4_q, &b_ljet_4_q);
-   fChain->SetBranchAddress("ljet_4_type", &ljet_4_type, &b_ljet_4_type);
-   fChain->SetBranchAddress("ljet_4_width", &ljet_4_width, &b_ljet_4_width);
    fChain->SetBranchAddress("met_reco_p4", &met_reco_p4, &b_met_reco_p4);
    fChain->SetBranchAddress("muTrigMatch_0_HLT_mu20_iloose_L1MU15", &muTrigMatch_0_HLT_mu20_iloose_L1MU15, &b_muTrigMatch_0_HLT_mu20_iloose_L1MU15);
    fChain->SetBranchAddress("muTrigMatch_0_HLT_mu26_ivarmedium", &muTrigMatch_0_HLT_mu26_ivarmedium, &b_muTrigMatch_0_HLT_mu26_ivarmedium);
@@ -1082,6 +1002,9 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("tau_0_jet_rnn_score_trans", &tau_0_jet_rnn_score_trans, &b_tau_0_jet_rnn_score_trans);
    fChain->SetBranchAddress("tau_0_jet_rnn_tight", &tau_0_jet_rnn_tight, &b_tau_0_jet_rnn_tight);
    fChain->SetBranchAddress("tau_0_n_charged_tracks", &tau_0_n_charged_tracks, &b_tau_0_n_charged_tracks);
+   fChain->SetBranchAddress("tau_0_n_conversion_tracks", &tau_0_n_conversion_tracks, &b_tau_0_n_conversion_tracks);
+   fChain->SetBranchAddress("tau_0_n_core_tracks", &tau_0_n_core_tracks, &b_tau_0_n_core_tracks);
+   fChain->SetBranchAddress("tau_0_n_isolation_tracks", &tau_0_n_isolation_tracks, &b_tau_0_n_isolation_tracks);
    fChain->SetBranchAddress("tau_0_p4", &tau_0_p4, &b_tau_0_p4);
    fChain->SetBranchAddress("tau_0_q", &tau_0_q, &b_tau_0_q);
    fChain->SetBranchAddress("tau_0_truth", &tau_0_truth, &b_tau_0_truth);

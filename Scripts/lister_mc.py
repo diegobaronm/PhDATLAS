@@ -203,5 +203,6 @@ for sample in mc:
 
     f=open('info.txt','a+')
     f.write('#%s\n'%(sample))
+    print(sample)
     f.write(info_file(sample,mc[sample][0],mc[sample][1],mc[sample][2],mc[sample][3],mc[sample][4],pwd))
     f.close()
