@@ -5,7 +5,7 @@ mv MC/out/ MC/out_previous/
 mkdir MC/out/
 mv DATA/out/ DATA/out_previous/
 mkdir DATA/out/
-
+cp MC/Analysis.h DATA/Analysis.h
 cd MC
 
 mc_signal_sherpa='Ztautau_sherpa'

@@ -107,9 +107,9 @@ def combine(files, fast):
 # keep asking until answered
 chainsValid = False
 while (not chainsValid):
-    print("Please enter a comma-seperated list of decay chains.")
-    print("Use '+' to add data sets together.")
-    print("Write 'text' if you would prefer to read a list from 'input.txt':")
+    #print("Please enter a comma-seperated list of decay chains.")
+    #print("Use '+' to add data sets together.")
+    #print("Write 'text' if you would prefer to read a list from 'input.txt':")
     chains, chainsValid = getInput()
     print()
 
@@ -117,7 +117,7 @@ while (not chainsValid):
 # detect whether the user wants to run in 'fast' mode for only 1% of data
 answered = False
 while (not answered):
-    print("Would you like to run in fast mode to only analyse 1% of data? (yes/no)")
+    #print("Would you like to run in fast mode to only analyse 1% of data? (yes/no)")
     useFast = sys.argv[2]
     if useFast in "yes":
         answered = True

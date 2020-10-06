@@ -180,5 +180,11 @@ TH1F * h_n_isolation_tracks;
 TH1F * h_n_conversion_tracks_cuts;
 TH1F * h_n_core_tracks_cuts;
 TH1F * h_n_isolation_tracks_cuts;
+TH1F * h_n_conversion_tracks_cuts_tpt;
+TH1F * h_n_core_tracks_cuts_tpt;
+TH1F * h_n_isolation_tracks_cuts_tpt;
+TH1F * h_n_tracks;
+TH1F * h_n_tracks_cuts;
+TH1F * h_n_tracks_cuts_tpt;
 
 #endif
