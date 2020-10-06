@@ -149,7 +149,7 @@ TH1F * h_Z_pt_reco_cuts_inside;
 TH1F * h_Z_pt_reco_cuts_tpt_inside;
 TH1F * h_Z_pt_reco_outside_topo;
 TH1F * h_Z_pt_reco_cuts_outside;
-TH1F * h_Z_pt_reco_cuts_tpt_outside;    
+TH1F * h_Z_pt_reco_cuts_tpt_outside;
 
 TH1F * h_lep_phi_topo;
 TH1F * h_tau_phi_topo;
@@ -173,5 +173,12 @@ TH1F * h_ratio_ptjet_zpt_cuts;
 TH1F * h_ratio_lpt_tpt_cuts;
 TH1F * h_ratio_ptjet_zpt_cuts_tpt;
 TH1F * h_ratio_lpt_tpt_cuts_tpt;
+
+TH1F * h_n_conversion_tracks;
+TH1F * h_n_core_tracks;
+TH1F * h_n_isolation_tracks;
+TH1F * h_n_conversion_tracks_cuts;
+TH1F * h_n_core_tracks_cuts;
+TH1F * h_n_isolation_tracks_cuts;
 
 #endif
