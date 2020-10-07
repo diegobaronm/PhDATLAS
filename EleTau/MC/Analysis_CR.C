@@ -260,7 +260,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float qtau=tau_0_q;
       float pair_charge=ql*qtau;
 
-      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
+      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match){
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -369,7 +369,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if (elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
+          if ((tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks)>15 || elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
             cuts[3]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {

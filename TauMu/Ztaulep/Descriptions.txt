@@ -27,3 +27,4 @@ V24-pT45to65/-----> Analysis for calculating SFs after the first recommendations
 V24-pTG45-CR-InvMass/-----> Same as above with different CR=Loose reco_mass cut (70-110 GeV)--->(50-130 GeV).
 V24-pTG65-CR-InvMass/-----> Same as above.
 V24-pT45to65-CR-InvMass/-----> Same as above.
+V25-pTG45/-----> Analysis with V25 Ntuples + CR=Fail loose isolation + NTracks>15

@@ -349,7 +349,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[1]=1;
           }
-          if (muon_0_iso_FCLoose_FixedRad==0/*muon_0_iso_FCTightTrackOnly_FixedRad==0*/) {
+          if ((tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks)>15 || muon_0_iso_FCLoose_FixedRad==0/*muon_0_iso_FCTightTrackOnly_FixedRad==0*/) {
             cuts[2]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {

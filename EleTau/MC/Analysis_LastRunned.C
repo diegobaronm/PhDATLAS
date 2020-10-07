@@ -227,8 +227,12 @@ void CLoop::Book(double lumFactor) {
     h_n_conversion_tracks_cuts = new TH1F("n_conversion_tracks_cuts","n_conversion_tracks_cuts",15,0,15);
     h_n_core_tracks_cuts = new TH1F("n_core_tracks_cuts","n_core_tracks_cuts",30,0,30);
     h_n_isolation_tracks_cuts = new TH1F("n_isolation_tracks_cuts","n_isolation_tracks_cuts",15,0,15);
+    h_n_conversion_tracks_cuts_tpt = new TH1F("n_conversion_tracks_cuts_tpt","n_conversion_tracks_cuts_tpt",15,0,15);
+    h_n_core_tracks_cuts_tpt = new TH1F("n_core_tracks_cuts_tpt","n_core_tracks_cuts_tpt",30,0,30);
+    h_n_isolation_tracks_cuts_tpt = new TH1F("n_isolation_tracks_cuts_tpt","n_isolation_tracks_cuts_tpt",15,0,15);
     h_n_tracks = new TH1F("n_tracks","n_tracks",30,0,30);
     h_n_tracks_cuts = new TH1F("n_tracks_cuts","n_tracks_cuts",30,0,30);
+    h_n_tracks_cuts_tpt = new TH1F("n_tracks_cuts_tpt","n_tracks_cuts_tpt",30,0,30);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
@@ -365,7 +369,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if (elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
+          if ((tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks)>15 || elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
             cuts[3]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -546,6 +550,10 @@ void CLoop::Fill(double weight, int z_sample) {
               h_tau_phi_cuts->Fill(tau_0_p4->Phi(),weight);
               h_delta_phi_cuts->Fill(angle,weight);
               h_tau_nprongs_cuts->Fill(tau_0_n_charged_tracks,weight);
+              h_n_conversion_tracks_cuts->Fill(tau_0_n_conversion_tracks,weight);
+              h_n_core_tracks_cuts->Fill(tau_0_n_core_tracks,weight);
+              h_n_isolation_tracks_cuts->Fill(tau_0_n_isolation_tracks,weight);
+              h_n_tracks_cuts->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
 
               h_ratio_ptjet_zpt_cuts->Fill(r_jpt_zpt,weight);
               h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
@@ -584,10 +592,10 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_tau_phi_cuts_tpt->Fill(tau_0_p4->Phi(),weight);
                 h_delta_phi_cuts_tpt->Fill(angle,weight);
                 h_tau_nprongs_cuts_tpt->Fill(tau_0_n_charged_tracks,weight);
-                h_n_conversion_tracks_cuts->Fill(tau_0_n_conversion_tracks,weight);
-                h_n_core_tracks_cuts->Fill(tau_0_n_core_tracks,weight);
-                h_n_isolation_tracks_cuts->Fill(tau_0_n_isolation_tracks,weight);
-                h_n_tracks_cuts->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
+                h_n_conversion_tracks_cuts_tpt->Fill(tau_0_n_conversion_tracks,weight);
+                h_n_core_tracks_cuts_tpt->Fill(tau_0_n_core_tracks,weight);
+                h_n_isolation_tracks_cuts_tpt->Fill(tau_0_n_isolation_tracks,weight);
+                h_n_tracks_cuts_tpt->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
 
                 h_ratio_ptjet_zpt_cuts_tpt->Fill(r_jpt_zpt,weight);
                 h_ratio_lpt_tpt_cuts_tpt->Fill(r_lpt_tpt,weight);
@@ -832,8 +840,12 @@ void CLoop::Style(double lumFactor) {
     h_n_conversion_tracks_cuts->Write();
     h_n_core_tracks_cuts->Write();
     h_n_isolation_tracks_cuts->Write();
+    h_n_conversion_tracks_cuts_tpt->Write();
+    h_n_core_tracks_cuts_tpt->Write();
+    h_n_isolation_tracks_cuts_tpt->Write();
     h_n_tracks->Write();
     h_n_tracks_cuts->Write();
+    h_n_tracks_cuts_tpt->Write();
 }
 
 
