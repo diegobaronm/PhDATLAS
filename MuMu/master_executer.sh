@@ -10,18 +10,18 @@ cp MC/Analysis.h DATA/Analysis.h
 
 cd MC
 
-mc_signal_sherpa='Ztautau_sherpa'
+mc_Ztautau_sherpa='Ztautau_sherpa'
 samples=('1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14')
 year=('2018' '2017' '2015')
 for n in ${samples[@]}
 do
     for y in ${year[@]}
     do
-        python3 RunAnalysis.py $mc_signal_sherpa$n'_'$y no
+        python3 RunAnalysis.py $mc_Ztautau_sherpa$n'_'$y no
     done
 done
 rm out/Ztautau_sherpa*_*_*.root
-hadd out/Signal.root out/*
+hadd out/Ztautau_Sherpa.root out/*
 
 cd ..
 
@@ -31,7 +31,7 @@ do
     ./executer.sh $i
 done
 
-hadd MC/out/Signal_PoPy.root MC/out/Ztautau_2018.root MC/out/Ztautau_2017.root MC/out/Ztautau_2015.root
+hadd MC/out/Ztautau_PoPy.root MC/out/Ztautau_2018.root MC/out/Ztautau_2017.root MC/out/Ztautau_2015.root
 hadd MC/out/Zmumu.root MC/out/Zmumu_2018.root MC/out/Zmumu_2017.root MC/out/Zmumu_2015.root
 hadd MC/out/VV.root MC/out/VV_2018.root MC/out/VV_2017.root MC/out/VV_2015.root
 hadd MC/out/Wjets.root MC/out/Wjets_2018.root MC/out/Wjets_2017.root MC/out/Wjets_2015.root

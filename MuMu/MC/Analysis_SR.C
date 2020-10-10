@@ -328,20 +328,7 @@ void CLoop::Fill(double weight, int z_sample) {
         //double trans_mass=sqrt(2*(muon_0_p4->Pt()*muon_1_p4->Pt()*(1-cos(muon_0_p4->Phi()-muon_1_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+muon_1_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_1_p4->Phi()-met_reco_p4->Phi()))));
         //double visi_mass=sqrt(2*(muon_0_p4->Pt()*muon_1_p4->Pt()*(cosh(muon_0_p4->Eta()-muon_1_p4->Eta())-cos(muon_0_p4->Phi()-muon_1_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_0_p4->Eta())-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+muon_1_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_1_p4->Eta())-cos(muon_1_p4->Phi()-met_reco_p4->Phi()))));
 
-        // ANGULAR VARIABLE DEFINITION
-        /*double omega=0.0;
-        if (inside && (angle_l_MET<angle_tau_MET)) {
-          omega=1.0-(angle_l_MET)/(angle);
-        }
-        if (inside && (angle_l_MET>angle_tau_MET)) {
-          omega=(angle_tau_MET)/(angle);
-        }
-        if (outside_lep) {
-          omega=1.0+(angle_l_MET)/(angle);
-        }
-        if (outside_tau) {
-          omega=-1.0*(angle_tau_MET)/(angle);
-        }*/
+
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0};

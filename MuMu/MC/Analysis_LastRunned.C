@@ -328,20 +328,7 @@ void CLoop::Fill(double weight, int z_sample) {
         //double trans_mass=sqrt(2*(muon_0_p4->Pt()*muon_1_p4->Pt()*(1-cos(muon_0_p4->Phi()-muon_1_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+muon_1_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_1_p4->Phi()-met_reco_p4->Phi()))));
         //double visi_mass=sqrt(2*(muon_0_p4->Pt()*muon_1_p4->Pt()*(cosh(muon_0_p4->Eta()-muon_1_p4->Eta())-cos(muon_0_p4->Phi()-muon_1_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_0_p4->Eta())-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+muon_1_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_1_p4->Eta())-cos(muon_1_p4->Phi()-met_reco_p4->Phi()))));
 
-        // ANGULAR VARIABLE DEFINITION
-        /*double omega=0.0;
-        if (inside && (angle_l_MET<angle_tau_MET)) {
-          omega=1.0-(angle_l_MET)/(angle);
-        }
-        if (inside && (angle_l_MET>angle_tau_MET)) {
-          omega=(angle_tau_MET)/(angle);
-        }
-        if (outside_lep) {
-          omega=1.0+(angle_l_MET)/(angle);
-        }
-        if (outside_tau) {
-          omega=-1.0*(angle_tau_MET)/(angle);
-        }*/
+
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0,0};
@@ -420,7 +407,6 @@ void CLoop::Fill(double weight, int z_sample) {
         }
 
         h_reco_mass_topo->Fill(inv_mass,weight);
-        h_lep_pt1nu_topo->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
         h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
         h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
         // ANGLE CUT
@@ -432,7 +418,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
 
           h_reco_mass_topo_dphi->Fill(inv_mass,weight);
-          h_lep_pt1nu_topo_dphi->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
 
           // B TAGGING CUT
           if (cuts[1]==1 || n_jets==0) {
@@ -443,7 +428,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
 
             h_reco_mass_topo_dphi_btag->Fill(inv_mass,weight);
-            h_lep_pt1nu_topo_dphi_btag->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
+
 
 
             // ISOLATION CUT
@@ -455,7 +440,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
 
               h_reco_mass_topo_dphi_btag_iso->Fill(inv_mass,weight);
-              h_lep_pt1nu_topo_dphi_btag_iso->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
 
 
               // RNN SCORE
@@ -467,7 +451,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
 
                 h_reco_mass_topo_dphi_btag_iso_rnn->Fill(inv_mass,weight);
-                h_lep_pt1nu_topo_dphi_btag_iso_rnn->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
 
 
                 // TRANSVERSE MASS LEPTON CUT
@@ -479,7 +462,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
 
                   h_reco_mass_topo_dphi_btag_iso_rnn_ptmu->Fill(inv_mass,weight);
-                  h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
 
 
 
@@ -492,7 +474,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
                     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside->Fill(muon_1_p4->Pt(),weight);
                     h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(inv_mass,weight);
-                    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
 
                       // RECO MASS CUT
                     if (cuts[6]==1) {
@@ -508,7 +489,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
                       h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(inv_mass,weight);
                       h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
-                      h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
                       if (weight!=1){
                         h_Z_pt_truth_cuts_inside->Fill(truth_z_pt/1000,weight);
                       }
@@ -540,7 +520,6 @@ void CLoop::Fill(double weight, int z_sample) {
                         h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(inv_mass,weight);
                         h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Fill(muon_1_p4->Pt(),weight);
                         h_Z_pt_reco_cuts_tpt_inside->Fill(Z_pt,weight);
-                        h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_1_p4->Pt()+pt_tau_nu,weight);
                         if (weight!=1){
                           h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt/1000,weight);
                         }
