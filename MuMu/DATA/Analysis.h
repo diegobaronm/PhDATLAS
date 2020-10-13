@@ -2,172 +2,98 @@
 #define Header
 
 // declare histograms here
-TH1F * h_trans_lepmet_mass_topo;
-TH1F * h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
-TH1F * h_tau_matched_topo;
-TH1F * h_tau_matched_after_0_to_90;
-TH1F * h_tau_matched_after_outside;
-TH1F * h_sf_mu_recoid;
-TH1F * h_sf_mu_vertex;
-TH1F * h_sf_mu_trigger;
-TH1F * h_sf_mu_isolation;
-TH1F * h_sf_mu_total;
-TH1F * h_weight_mc_topo;
-TH1F * h_weight_mc_cuts;
-TH1F * h_weight_total_topo;
-TH1F * h_weight_total_cuts;
-TH1F * h_Z_pt_truth_inside_topo;
-TH1F * h_Z_pt_truth_cuts_inside;
-TH1F * h_Z_pt_truth_cuts_tpt_inside;
-TH1F * h_Z_pt_truth_outside_topo;
-TH1F * h_Z_pt_truth_cuts_outside;
-TH1F * h_Z_pt_truth_cuts_tpt_outside;
+TH1F * h_lep1_pt_topo;
+TH1F * h_lep1_pt_topo_dphi;
+TH1F * h_lep1_pt_topo_dphi_btag;
+TH1F * h_lep1_pt_topo_dphi_btag_iso;
+TH1F * h_lep1_pt_topo_dphi_btag_iso_pt1;
+TH1F * h_lep1_pt_topo_dphi_btag_iso_pt1_pt2;
+TH1F * h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass;
+TH1F * h_lep1_pt_topo_dphi_btag_iso_pt2_mass;
 
-TH1F * h_rnn_score_1prong_topo;
-TH1F * h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
-TH1F * h_rnn_score_3prong_topo;
-TH1F * h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
+//phi
+TH1F * h_lep1_phi_topo;
+TH1F * h_lep1_phi_cuts;
 
-//Writing lep pT
-TH1F * h_lep_pt0_topo;
-TH1F * h_lep_pt0_topo_dphi;
-TH1F * h_lep_pt0_topo_dphi_btag;
-TH1F * h_lep_pt0_topo_dphi_btag_iso;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt;
-
-//Writing tau pT
-TH1F * h_lep_pt1_topo;
-TH1F * h_lep_pt1_topo_dphi;
-TH1F * h_lep_pt1_topo_dphi_btag;
-TH1F * h_lep_pt1_topo_dphi_btag_iso;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside;
-
-//Writing tau pT
-TH1F * h_lep_pt1nu_topo;
-TH1F * h_lep_pt1nu_topo_dphi;
-TH1F * h_lep_pt1nu_topo_dphi_btag;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+// Histograms for lepton 2
+TH1F * h_lep2_pt_topo;
+TH1F * h_lep2_pt_topo_dphi;
+TH1F * h_lep2_pt_topo_dphi_btag;
+TH1F * h_lep2_pt_topo_dphi_btag_iso;
+TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1;
+TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_pt2;
+TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_pt2_mass;
+TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_mass;
 
 
+TH1F * h_lep2_phi_topo;
+TH1F * h_lep2_phi_cuts;
 
-//Writing MET
+// MET Histograms
 TH1F * h_met_topo;
 TH1F * h_met_topo_dphi;
 TH1F * h_met_topo_dphi_btag;
 TH1F * h_met_topo_dphi_btag_iso;
-TH1F * h_met_topo_dphi_btag_iso_rnn;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_met_topo_dphi_btag_iso_pt1;
+TH1F * h_met_topo_dphi_btag_iso_pt1_pt2;
+TH1F * h_met_topo_dphi_btag_iso_pt1_pt2_mass;
 
-//Writing reco
-TH1F * h_reco_mass_topo;
-TH1F * h_reco_mass_topo_dphi;
-TH1F * h_reco_mass_topo_dphi_btag;
-TH1F * h_reco_mass_topo_dphi_btag_iso;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt;
+// Invariant mass histograms
+// Non reco histos
+//Transeverse lepton mass
+TH1F * h_trans_lepmet_mass_topo;
+TH1F * h_trans_lepmet_mass_topo_dphi_btag_iso_pt1_pt2_mass;
 
-TH1F * h_reco_mass_met_outside_topo;
-TH1F * h_reco_mass_met_outside_topo_dphi;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt;
+// inv histos
+TH1F * h_inv_mass_topo;
+TH1F * h_inv_mass_topo_dphi;
+TH1F * h_inv_mass_topo_dphi_btag;
+TH1F * h_inv_mass_topo_dphi_btag_iso;
+TH1F * h_inv_mass_topo_dphi_btag_iso_pt1;
+TH1F * h_inv_mass_topo_dphi_btag_iso_pt1_pt2;
+TH1F * h_inv_mass_topo_dphi_btag_iso_pt1_pt2_mass;
 
-//Writing jet number
+TH1F * h_weight_mc_topo;
+TH1F * h_weight_total_cuts;
+TH1F * h_weight_total_topo;
+TH1F * h_weight_mc_cuts;
+TH1F * h_sf_mu_trigger;
+TH1F * h_sf_mu_recoid;
+TH1F * h_sf_mu_vertex;
+TH1F * h_sf_mu_isolation;
+TH1F * h_sf_mu_total;
+TH1F * h_Z_pt_truth_topo;
+TH1F * h_Z_pt_truth_cuts;
+
+// Jet Number Histograms
 TH1F * h_jet_n_topo;
-TH1F * h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-//Writing b-tag
+TH1F * h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass;
+
+
 TH1F * h_b_tag_topo;
-TH1F * h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_b_tag_topo_dphi_iso_pt1_pt2_mass;
 
-//Writing isolation variables
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo;
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
 
-TH1F * h_omega_topo;
-TH1F * h_omega_topo_dphi;
-TH1F * h_omega_topo_dphi_btag;
-TH1F * h_omega_topo_dphi_btag_iso;
-TH1F * h_omega_topo_dphi_btag_iso_rnn;
-TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt;
+// Isolation variables Histograms
+TH1F * h_muon_0_isolation_topo;
+TH1F * h_muon_0_isolation_topo_dphi_btag_pt1_pt2_mass;
 
-TH1F * h_Z_pt_reco_inside_topo;
-TH1F * h_Z_pt_reco_cuts_inside;
-TH1F * h_Z_pt_reco_cuts_tpt_inside;
-TH1F * h_Z_pt_reco_outside_topo;
-TH1F * h_Z_pt_reco_cuts_outside;
-TH1F * h_Z_pt_reco_cuts_tpt_outside;
+TH1F * h_muon_1_isolation_topo;
+TH1F * h_muon_1_isolation_topo_dphi_btag_pt1_pt2_mass;
 
-TH1F * h_lep_phi_topo;
-TH1F * h_tau_phi_topo;
+TH1F * h_Z_pt_reco_topo;
+TH1F * h_Z_pt_reco_cuts;
+
 TH1F * h_delta_phi;
-TH1F * h_delta_phi_second_stage;
 TH1F * h_delta_phi_topo;
-TH1F * h_tau_nprongs_topo;
-TH1F * h_lep_phi_cuts;
-TH1F * h_lep_phi_cuts_tpt;
-TH1F * h_tau_phi_cuts;
-TH1F * h_tau_phi_cuts_tpt;
 TH1F * h_delta_phi_cuts;
-TH1F * h_delta_phi_cuts_tpt;
 TH1F * h_delta_phi_cuts_butphi;
-TH1F * h_tau_nprongs_cuts;
-TH1F * h_tau_nprongs_cuts_tpt;
 
+//MJ BG DISCRIMINATION VARIABLES
 TH1F * h_ratio_ptjet_zpt_topo;
 TH1F * h_ratio_lpt_tpt_topo;
 TH1F * h_ratio_ptjet_zpt_cuts;
 TH1F * h_ratio_lpt_tpt_cuts;
-TH1F * h_ratio_ptjet_zpt_cuts_tpt;
-TH1F * h_ratio_lpt_tpt_cuts_tpt;
-
-TH1F * h_rnn_score_1prong_topo_match;
-TH1F * h_rnn_score_3prong_topo_match;
-
-TH1F * h_n_conversion_tracks;
-TH1F * h_n_core_tracks;
-TH1F * h_n_isolation_tracks;
-TH1F * h_n_conversion_tracks_cuts;
-TH1F * h_n_core_tracks_cuts;
-TH1F * h_n_isolation_tracks_cuts;
-TH1F * h_n_conversion_tracks_cuts_tpt;
-TH1F * h_n_core_tracks_cuts_tpt;
-TH1F * h_n_isolation_tracks_cuts_tpt;
-TH1F * h_n_tracks;
-TH1F * h_n_tracks_cuts;
-TH1F * h_n_tracks_cuts_tpt;
 
 #endif
