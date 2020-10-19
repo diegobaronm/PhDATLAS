@@ -26,6 +26,14 @@ TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_pt2;
 TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_pt2_mass;
 TH1F * h_lep2_pt_topo_dphi_btag_iso_pt1_mass;
 
+TH1F * h_sumlep_pt_topo;
+TH1F * h_sumlep_pt_topo_dphi;
+TH1F * h_sumlep_pt_topo_dphi_btag;
+TH1F * h_sumlep_pt_topo_dphi_btag_iso;
+TH1F * h_sumlep_pt_topo_dphi_btag_iso_pt1;
+TH1F * h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2;
+TH1F * h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass;
+TH1F * h_sumlep_pt_topo_dphi_btag_iso_pt1_mass;
 
 TH1F * h_lep2_phi_topo;
 TH1F * h_lep2_phi_cuts;
