@@ -80,6 +80,19 @@ TH1F * h_lep_pt1nu_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle;
 TH1F * h_lep_pt1nu_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco;
 TH1F * h_lep_pt1nu_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
 
+//Writing sum pT
+TH1F * h_sum_pt_topo;
+TH1F * h_sum_pt_topo_dphi;
+TH1F * h_sum_pt_topo_dphi_bdte;
+TH1F * h_sum_pt_topo_dphi_bdte_btag;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco;
+TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
+
 //Writing MET
 TH1F * h_met_topo;
 TH1F * h_met_topo_dphi;
