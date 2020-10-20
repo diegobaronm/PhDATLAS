@@ -120,8 +120,8 @@ void CLoop::Book(double lumFactor) {
     h_sumlep_pt_topo_dphi_btag_iso_pt1_mass = new TH1F("sumlep_pt_topo_dphi_btag_iso_pt1_mass","Sum pT",400,0,400);
 
 
-    h_lep2_phi_topo= new TH1F("h_lep2_phi_topo","Lepton 2 phi",64,-3.2,3.2);
-    h_lep2_phi_cuts= new TH1F("h_lep2_phi_cuts","Lepton 2 phi",64,-3.2,3.2);
+    h_lep2_phi_topo= new TH1F("lep2_phi_topo","Lepton 2 phi",64,-3.2,3.2);
+    h_lep2_phi_cuts= new TH1F("lep2_phi_cuts","Lepton 2 phi",64,-3.2,3.2);
 
     // MET Histograms
     h_met_topo = new TH1F("MET_topo","Missing Transverse momentum",300,0,300);
@@ -254,10 +254,10 @@ void CLoop::Fill(double weight, int z_sample) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (muon_0_p4->Pt()>=27) {
+        if (muon_0_p4->Pt()>=45) {
           cuts[3]=1;
         }
-        if (muon_1_p4->Pt()>=27) {
+        if (muon_1_p4->Pt()>=45) {
           cuts[4]=1;
         }
         if (inv_mass<110 && inv_mass>70) {
