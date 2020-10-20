@@ -49,6 +49,102 @@ public :
    UInt_t          HLT_mu50;
    Float_t         NOMINAL_pileup_combined_weight;
    UInt_t          NOMINAL_pileup_random_run_number;
+   UInt_t          eleTrigMatch_0_HLT_e120_lhloose;
+   UInt_t          eleTrigMatch_0_HLT_e140_lhloose_nod0;
+   UInt_t          eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH;
+   UInt_t          eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose;
+   UInt_t          eleTrigMatch_0_HLT_e60_lhmedium;
+   UInt_t          eleTrigMatch_0_HLT_e60_lhmedium_nod0;
+   UInt_t          eleTrigMatch_0_trigger_matched;
+   UInt_t          eleTrigMatch_1_HLT_e120_lhloose;
+   UInt_t          eleTrigMatch_1_HLT_e140_lhloose_nod0;
+   UInt_t          eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH;
+   UInt_t          eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose;
+   UInt_t          eleTrigMatch_1_HLT_e60_lhmedium;
+   UInt_t          eleTrigMatch_1_HLT_e60_lhmedium_nod0;
+   UInt_t          eleTrigMatch_1_trigger_matched;
+   UInt_t          elec_0;
+   Float_t         elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
+   Float_t         elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
+   Float_t         elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
+   Float_t         elec_0_NOMINAL_EleEffSF_offline_RecoTrk;
+   Float_t         elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13;
+   Float_t         elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
+   Float_t         elec_0_cluster_eta;
+   Float_t         elec_0_cluster_eta_be2;
+   Int_t           elec_0_id_medium;
+   Int_t           elec_0_id_tight;
+   UInt_t          elec_0_iso_FCLoose;
+   UInt_t          elec_0_iso_FCLoose_FixedRad;
+   UInt_t          elec_0_iso_FCTight;
+   UInt_t          elec_0_iso_FCTightTrackOnly_FixedRad;
+   UInt_t          elec_0_iso_FixedCutLoose;
+   UInt_t          elec_0_iso_FixedCutTight;
+   UInt_t          elec_0_iso_FixedCutTightCaloOnly;
+   Int_t           elec_0_matched_classifierParticleOrigin;
+   Int_t           elec_0_matched_classifierParticleType;
+   Int_t           elec_0_matched_origin;
+   TLorentzVector  *elec_0_matched_p4;
+   Int_t           elec_0_matched_pdgId;
+   Float_t         elec_0_matched_pz;
+   Float_t         elec_0_matched_q;
+   Int_t           elec_0_matched_type;
+   TLorentzVector  *elec_0_p4;
+   Float_t         elec_0_q;
+   Float_t         elec_0_trk_d0_sig;
+   Float_t         elec_0_trk_pvx_z0_sintheta;
+   Float_t         elec_0_trk_z0_sintheta;
+   UInt_t          elec_1;
+   Float_t         elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
+   Float_t         elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
+   Float_t         elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
+   Float_t         elec_1_NOMINAL_EleEffSF_offline_RecoTrk;
+   Float_t         elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13;
+   Float_t         elec_1_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
+   Float_t         elec_1_cluster_eta;
+   Float_t         elec_1_cluster_eta_be2;
+   Int_t           elec_1_id_bad;
+   Int_t           elec_1_id_charge;
+   Int_t           elec_1_id_loose;
+   Int_t           elec_1_id_medium;
+   Int_t           elec_1_id_tight;
+   Int_t           elec_1_id_veryloose;
+   UInt_t          elec_1_iso_FCLoose;
+   UInt_t          elec_1_iso_FCLoose_FixedRad;
+   UInt_t          elec_1_iso_FCTight;
+   UInt_t          elec_1_iso_FCTightTrackOnly_FixedRad;
+   UInt_t          elec_1_iso_FixedCutLoose;
+   UInt_t          elec_1_iso_FixedCutTight;
+   UInt_t          elec_1_iso_FixedCutTightCaloOnly;
+   UInt_t          elec_1_matched;
+   Int_t           elec_1_matched_classifierParticleOrigin;
+   Int_t           elec_1_matched_classifierParticleType;
+   Int_t           elec_1_matched_mother_pdgId;
+   Int_t           elec_1_matched_mother_status;
+   Int_t           elec_1_matched_origin;
+   TLorentzVector  *elec_1_matched_p4;
+   Int_t           elec_1_matched_pdgId;
+   Float_t         elec_1_matched_pz;
+   Float_t         elec_1_matched_q;
+   Int_t           elec_1_matched_status;
+   Int_t           elec_1_matched_type;
+   Int_t           elec_1_muonAuthor;
+   Int_t           elec_1_muonType;
+   Int_t           elec_1_origin;
+   TLorentzVector  *elec_1_p4;
+   Float_t         elec_1_q;
+   Float_t         elec_1_trk_d0;
+   Float_t         elec_1_trk_d0_sig;
+   Float_t         elec_1_trk_pt_error;
+   Float_t         elec_1_trk_pvx_z0;
+   Float_t         elec_1_trk_pvx_z0_sig;
+   Float_t         elec_1_trk_pvx_z0_sintheta;
+   Int_t           elec_1_trk_vx;
+   TVector3        *elec_1_trk_vx_v;
+   Float_t         elec_1_trk_z0;
+   Float_t         elec_1_trk_z0_sig;
+   Float_t         elec_1_trk_z0_sintheta;
+   Int_t           elec_1_type;
    Int_t           event_is_bad_batman;
    ULong64_t       event_number;
    Float_t         jet_NOMINAL_central_jets_global_effSF_JVT;
@@ -122,104 +218,6 @@ public :
    Int_t           ljet_2_type;
    Float_t         ljet_2_width;
    TLorentzVector  *met_reco_p4;
-   UInt_t          muTrigMatch_0_HLT_mu20_iloose_L1MU15;
-   UInt_t          muTrigMatch_0_HLT_mu26_ivarmedium;
-   UInt_t          muTrigMatch_0_HLT_mu50;
-   UInt_t          muTrigMatch_0_trigger_matched;
-   UInt_t          muTrigMatch_1_HLT_mu20_iloose_L1MU15;
-   UInt_t          muTrigMatch_1_HLT_mu26_ivarmedium;
-   UInt_t          muTrigMatch_1_HLT_mu50;
-   UInt_t          muTrigMatch_1_trigger_matched;
-   UInt_t          muon_0;
-   Float_t         muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
-   Float_t         muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCLoose;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCTight;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_0_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_0_NOMINAL_MuEffSF_Reco_QualMedium;
-   Float_t         muon_0_NOMINAL_MuEffSF_TTVA;
-   Int_t           muon_0_id_medium;
-   Int_t           muon_0_id_tight;
-   UInt_t          muon_0_iso_FCLoose;
-   UInt_t          muon_0_iso_FCLoose_FixedRad;
-   UInt_t          muon_0_iso_FCTight;
-   UInt_t          muon_0_iso_FCTightTrackOnly_FixedRad;
-   UInt_t          muon_0_iso_FixedCutLoose;
-   UInt_t          muon_0_iso_FixedCutTight;
-   UInt_t          muon_0_iso_FixedCutTightCaloOnly;
-   Int_t           muon_0_matched_classifierParticleOrigin;
-   Int_t           muon_0_matched_classifierParticleType;
-   TLorentzVector  *muon_0_matched_p4;
-   Int_t           muon_0_matched_pdgId;
-   Float_t         muon_0_matched_pz;
-   Float_t         muon_0_matched_q;
-   Int_t           muon_0_matched_type;
-   TLorentzVector  *muon_0_p4;
-   Float_t         muon_0_q;
-   Float_t         muon_0_trk_d0_sig;
-   Float_t         muon_0_trk_pvx_z0_sig;
-   Float_t         muon_0_trk_pvx_z0_sintheta;
-   Float_t         muon_0_trk_z0_sintheta;
-   UInt_t          muon_1;
-   Float_t         muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
-   Float_t         muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCLoose;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCLoose_FixedRad;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCTight;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFCTight_FixedRad;
-   Float_t         muon_1_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly;
-   Float_t         muon_1_NOMINAL_MuEffSF_Reco_QualMedium;
-   Float_t         muon_1_NOMINAL_MuEffSF_TTVA;
-   Float_t         muon_1_cluster_eta;
-   Float_t         muon_1_cluster_eta_be2;
-   Int_t           muon_1_id_bad;
-   Int_t           muon_1_id_charge;
-   Int_t           muon_1_id_loose;
-   Int_t           muon_1_id_medium;
-   Int_t           muon_1_id_tight;
-   Int_t           muon_1_id_veryloose;
-   UInt_t          muon_1_iso_FCLoose;
-   UInt_t          muon_1_iso_FCLoose_FixedRad;
-   UInt_t          muon_1_iso_FCTight;
-   UInt_t          muon_1_iso_FCTightTrackOnly_FixedRad;
-   UInt_t          muon_1_iso_FixedCutLoose;
-   UInt_t          muon_1_iso_FixedCutTight;
-   UInt_t          muon_1_iso_FixedCutTightCaloOnly;
-   UInt_t          muon_1_matched;
-   Int_t           muon_1_matched_classifierParticleOrigin;
-   Int_t           muon_1_matched_classifierParticleType;
-   Int_t           muon_1_matched_mother_pdgId;
-   Int_t           muon_1_matched_mother_status;
-   Int_t           muon_1_matched_origin;
-   TLorentzVector  *muon_1_matched_p4;
-   Int_t           muon_1_matched_pdgId;
-   Float_t         muon_1_matched_pz;
-   Float_t         muon_1_matched_q;
-   Int_t           muon_1_matched_status;
-   Int_t           muon_1_matched_type;
-   Int_t           muon_1_muonAuthor;
-   Int_t           muon_1_muonType;
-   Int_t           muon_1_origin;
-   TLorentzVector  *muon_1_p4;
-   Float_t         muon_1_q;
-   Float_t         muon_1_trk_d0;
-   Float_t         muon_1_trk_d0_sig;
-   Float_t         muon_1_trk_pt_error;
-   Float_t         muon_1_trk_pvx_z0;
-   Float_t         muon_1_trk_pvx_z0_sig;
-   Float_t         muon_1_trk_pvx_z0_sintheta;
-   Int_t           muon_1_trk_vx;
-   TVector3        *muon_1_trk_vx_v;
-   Float_t         muon_1_trk_z0;
-   Float_t         muon_1_trk_z0_sig;
-   Float_t         muon_1_trk_z0_sintheta;
-   Int_t           muon_1_type;
    Float_t         n_actual_int;
    Float_t         n_actual_int_cor;
    Float_t         n_avg_int;
@@ -257,6 +255,102 @@ public :
    TBranch        *b_HLT_mu50;   //!
    TBranch        *b_NOMINAL_pileup_combined_weight;   //!
    TBranch        *b_NOMINAL_pileup_random_run_number;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e120_lhloose;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e140_lhloose_nod0;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e60_lhmedium;   //!
+   TBranch        *b_eleTrigMatch_0_HLT_e60_lhmedium_nod0;   //!
+   TBranch        *b_eleTrigMatch_0_trigger_matched;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e120_lhloose;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e140_lhloose_nod0;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e60_lhmedium;   //!
+   TBranch        *b_eleTrigMatch_1_HLT_e60_lhmedium_nod0;   //!
+   TBranch        *b_eleTrigMatch_1_trigger_matched;   //!
+   TBranch        *b_elec_0;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk;   //!
+   TBranch        *b_elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13;   //!
+   TBranch        *b_elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
+   TBranch        *b_elec_0_cluster_eta;   //!
+   TBranch        *b_elec_0_cluster_eta_be2;   //!
+   TBranch        *b_elec_0_id_medium;   //!
+   TBranch        *b_elec_0_id_tight;   //!
+   TBranch        *b_elec_0_iso_FCLoose;   //!
+   TBranch        *b_elec_0_iso_FCLoose_FixedRad;   //!
+   TBranch        *b_elec_0_iso_FCTight;   //!
+   TBranch        *b_elec_0_iso_FCTightTrackOnly_FixedRad;   //!
+   TBranch        *b_elec_0_iso_FixedCutLoose;   //!
+   TBranch        *b_elec_0_iso_FixedCutTight;   //!
+   TBranch        *b_elec_0_iso_FixedCutTightCaloOnly;   //!
+   TBranch        *b_elec_0_matched_classifierParticleOrigin;   //!
+   TBranch        *b_elec_0_matched_classifierParticleType;   //!
+   TBranch        *b_elec_0_matched_origin;   //!
+   TBranch        *b_elec_0_matched_p4;   //!
+   TBranch        *b_elec_0_matched_pdgId;   //!
+   TBranch        *b_elec_0_matched_pz;   //!
+   TBranch        *b_elec_0_matched_q;   //!
+   TBranch        *b_elec_0_matched_type;   //!
+   TBranch        *b_elec_0_p4;   //!
+   TBranch        *b_elec_0_q;   //!
+   TBranch        *b_elec_0_trk_d0_sig;   //!
+   TBranch        *b_elec_0_trk_pvx_z0_sintheta;   //!
+   TBranch        *b_elec_0_trk_z0_sintheta;   //!
+   TBranch        *b_elec_1;   //!
+   TBranch        *b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;   //!
+   TBranch        *b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
+   TBranch        *b_elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
+   TBranch        *b_elec_1_NOMINAL_EleEffSF_offline_RecoTrk;   //!
+   TBranch        *b_elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13;   //!
+   TBranch        *b_elec_1_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
+   TBranch        *b_elec_1_cluster_eta;   //!
+   TBranch        *b_elec_1_cluster_eta_be2;   //!
+   TBranch        *b_elec_1_id_bad;   //!
+   TBranch        *b_elec_1_id_charge;   //!
+   TBranch        *b_elec_1_id_loose;   //!
+   TBranch        *b_elec_1_id_medium;   //!
+   TBranch        *b_elec_1_id_tight;   //!
+   TBranch        *b_elec_1_id_veryloose;   //!
+   TBranch        *b_elec_1_iso_FCLoose;   //!
+   TBranch        *b_elec_1_iso_FCLoose_FixedRad;   //!
+   TBranch        *b_elec_1_iso_FCTight;   //!
+   TBranch        *b_elec_1_iso_FCTightTrackOnly_FixedRad;   //!
+   TBranch        *b_elec_1_iso_FixedCutLoose;   //!
+   TBranch        *b_elec_1_iso_FixedCutTight;   //!
+   TBranch        *b_elec_1_iso_FixedCutTightCaloOnly;   //!
+   TBranch        *b_elec_1_matched;   //!
+   TBranch        *b_elec_1_matched_classifierParticleOrigin;   //!
+   TBranch        *b_elec_1_matched_classifierParticleType;   //!
+   TBranch        *b_elec_1_matched_mother_pdgId;   //!
+   TBranch        *b_elec_1_matched_mother_status;   //!
+   TBranch        *b_elec_1_matched_origin;   //!
+   TBranch        *b_elec_1_matched_p4;   //!
+   TBranch        *b_elec_1_matched_pdgId;   //!
+   TBranch        *b_elec_1_matched_pz;   //!
+   TBranch        *b_elec_1_matched_q;   //!
+   TBranch        *b_elec_1_matched_status;   //!
+   TBranch        *b_elec_1_matched_type;   //!
+   TBranch        *b_elec_1_muonAuthor;   //!
+   TBranch        *b_elec_1_muonType;   //!
+   TBranch        *b_elec_1_origin;   //!
+   TBranch        *b_elec_1_p4;   //!
+   TBranch        *b_elec_1_q;   //!
+   TBranch        *b_elec_1_trk_d0;   //!
+   TBranch        *b_elec_1_trk_d0_sig;   //!
+   TBranch        *b_elec_1_trk_pt_error;   //!
+   TBranch        *b_elec_1_trk_pvx_z0;   //!
+   TBranch        *b_elec_1_trk_pvx_z0_sig;   //!
+   TBranch        *b_elec_1_trk_pvx_z0_sintheta;   //!
+   TBranch        *b_elec_1_trk_vx;   //!
+   TBranch        *b_elec_1_trk_vx_v;   //!
+   TBranch        *b_elec_1_trk_z0;   //!
+   TBranch        *b_elec_1_trk_z0_sig;   //!
+   TBranch        *b_elec_1_trk_z0_sintheta;   //!
+   TBranch        *b_elec_1_type;   //!
    TBranch        *b_event_is_bad_batman;   //!
    TBranch        *b_event_number;   //!
    TBranch        *b_jet_NOMINAL_central_jets_global_effSF_JVT;   //!
@@ -330,104 +424,6 @@ public :
    TBranch        *b_ljet_2_type;   //!
    TBranch        *b_ljet_2_width;   //!
    TBranch        *b_met_reco_p4;   //!
-   TBranch        *b_muTrigMatch_0_HLT_mu20_iloose_L1MU15;   //!
-   TBranch        *b_muTrigMatch_0_HLT_mu26_ivarmedium;   //!
-   TBranch        *b_muTrigMatch_0_HLT_mu50;   //!
-   TBranch        *b_muTrigMatch_0_trigger_matched;   //!
-   TBranch        *b_muTrigMatch_1_HLT_mu20_iloose_L1MU15;   //!
-   TBranch        *b_muTrigMatch_1_HLT_mu26_ivarmedium;   //!
-   TBranch        *b_muTrigMatch_1_HLT_mu50;   //!
-   TBranch        *b_muTrigMatch_1_trigger_matched;   //!
-   TBranch        *b_muon_0;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_0_NOMINAL_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_0_id_medium;   //!
-   TBranch        *b_muon_0_id_tight;   //!
-   TBranch        *b_muon_0_iso_FCLoose;   //!
-   TBranch        *b_muon_0_iso_FCLoose_FixedRad;   //!
-   TBranch        *b_muon_0_iso_FCTight;   //!
-   TBranch        *b_muon_0_iso_FCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_0_iso_FixedCutLoose;   //!
-   TBranch        *b_muon_0_iso_FixedCutTight;   //!
-   TBranch        *b_muon_0_iso_FixedCutTightCaloOnly;   //!
-   TBranch        *b_muon_0_matched_classifierParticleOrigin;   //!
-   TBranch        *b_muon_0_matched_classifierParticleType;   //!
-   TBranch        *b_muon_0_matched_p4;   //!
-   TBranch        *b_muon_0_matched_pdgId;   //!
-   TBranch        *b_muon_0_matched_pz;   //!
-   TBranch        *b_muon_0_matched_q;   //!
-   TBranch        *b_muon_0_matched_type;   //!
-   TBranch        *b_muon_0_p4;   //!
-   TBranch        *b_muon_0_q;   //!
-   TBranch        *b_muon_0_trk_d0_sig;   //!
-   TBranch        *b_muon_0_trk_pvx_z0_sig;   //!
-   TBranch        *b_muon_0_trk_pvx_z0_sintheta;   //!
-   TBranch        *b_muon_0_trk_z0_sintheta;   //!
-   TBranch        *b_muon_1;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCLoose;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCLoose_FixedRad;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCTight;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFCTight_FixedRad;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_Reco_QualMedium;   //!
-   TBranch        *b_muon_1_NOMINAL_MuEffSF_TTVA;   //!
-   TBranch        *b_muon_1_cluster_eta;   //!
-   TBranch        *b_muon_1_cluster_eta_be2;   //!
-   TBranch        *b_muon_1_id_bad;   //!
-   TBranch        *b_muon_1_id_charge;   //!
-   TBranch        *b_muon_1_id_loose;   //!
-   TBranch        *b_muon_1_id_medium;   //!
-   TBranch        *b_muon_1_id_tight;   //!
-   TBranch        *b_muon_1_id_veryloose;   //!
-   TBranch        *b_muon_1_iso_FCLoose;   //!
-   TBranch        *b_muon_1_iso_FCLoose_FixedRad;   //!
-   TBranch        *b_muon_1_iso_FCTight;   //!
-   TBranch        *b_muon_1_iso_FCTightTrackOnly_FixedRad;   //!
-   TBranch        *b_muon_1_iso_FixedCutLoose;   //!
-   TBranch        *b_muon_1_iso_FixedCutTight;   //!
-   TBranch        *b_muon_1_iso_FixedCutTightCaloOnly;   //!
-   TBranch        *b_muon_1_matched;   //!
-   TBranch        *b_muon_1_matched_classifierParticleOrigin;   //!
-   TBranch        *b_muon_1_matched_classifierParticleType;   //!
-   TBranch        *b_muon_1_matched_mother_pdgId;   //!
-   TBranch        *b_muon_1_matched_mother_status;   //!
-   TBranch        *b_muon_1_matched_origin;   //!
-   TBranch        *b_muon_1_matched_p4;   //!
-   TBranch        *b_muon_1_matched_pdgId;   //!
-   TBranch        *b_muon_1_matched_pz;   //!
-   TBranch        *b_muon_1_matched_q;   //!
-   TBranch        *b_muon_1_matched_status;   //!
-   TBranch        *b_muon_1_matched_type;   //!
-   TBranch        *b_muon_1_muonAuthor;   //!
-   TBranch        *b_muon_1_muonType;   //!
-   TBranch        *b_muon_1_origin;   //!
-   TBranch        *b_muon_1_p4;   //!
-   TBranch        *b_muon_1_q;   //!
-   TBranch        *b_muon_1_trk_d0;   //!
-   TBranch        *b_muon_1_trk_d0_sig;   //!
-   TBranch        *b_muon_1_trk_pt_error;   //!
-   TBranch        *b_muon_1_trk_pvx_z0;   //!
-   TBranch        *b_muon_1_trk_pvx_z0_sig;   //!
-   TBranch        *b_muon_1_trk_pvx_z0_sintheta;   //!
-   TBranch        *b_muon_1_trk_vx;   //!
-   TBranch        *b_muon_1_trk_vx_v;   //!
-   TBranch        *b_muon_1_trk_z0;   //!
-   TBranch        *b_muon_1_trk_z0_sig;   //!
-   TBranch        *b_muon_1_trk_z0_sintheta;   //!
-   TBranch        *b_muon_1_type;   //!
    TBranch        *b_n_actual_int;   //!
    TBranch        *b_n_actual_int_cor;   //!
    TBranch        *b_n_avg_int;   //!
@@ -518,6 +514,11 @@ void CLoop::Init(TTree *tree)
    // (once per file to be processed).
 
    // Set object pointer
+   elec_0_matched_p4 = 0;
+   elec_0_p4 = 0;
+   elec_1_matched_p4 = 0;
+   elec_1_p4 = 0;
+   elec_1_trk_vx_v = 0;
    ljet_0_matched_p4 = 0;
    ljet_0_p4 = 0;
    ljet_1_matched_p4 = 0;
@@ -525,11 +526,6 @@ void CLoop::Init(TTree *tree)
    ljet_2_matched_p4 = 0;
    ljet_2_p4 = 0;
    met_reco_p4 = 0;
-   muon_0_matched_p4 = 0;
-   muon_0_p4 = 0;
-   muon_1_matched_p4 = 0;
-   muon_1_p4 = 0;
-   muon_1_trk_vx_v = 0;
    truth_Z_p4 = 0;
    weight_mc_v = 0;
    // Set branch addresses and branch pointers
@@ -549,6 +545,102 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("HLT_mu50", &HLT_mu50, &b_HLT_mu50);
    fChain->SetBranchAddress("NOMINAL_pileup_combined_weight", &NOMINAL_pileup_combined_weight, &b_NOMINAL_pileup_combined_weight);
    fChain->SetBranchAddress("NOMINAL_pileup_random_run_number", &NOMINAL_pileup_random_run_number, &b_NOMINAL_pileup_random_run_number);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e120_lhloose", &eleTrigMatch_0_HLT_e120_lhloose, &b_eleTrigMatch_0_HLT_e120_lhloose);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e140_lhloose_nod0", &eleTrigMatch_0_HLT_e140_lhloose_nod0, &b_eleTrigMatch_0_HLT_e140_lhloose_nod0);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH", &eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH, &b_eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose", &eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose, &b_eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e60_lhmedium", &eleTrigMatch_0_HLT_e60_lhmedium, &b_eleTrigMatch_0_HLT_e60_lhmedium);
+   fChain->SetBranchAddress("eleTrigMatch_0_HLT_e60_lhmedium_nod0", &eleTrigMatch_0_HLT_e60_lhmedium_nod0, &b_eleTrigMatch_0_HLT_e60_lhmedium_nod0);
+   fChain->SetBranchAddress("eleTrigMatch_0_trigger_matched", &eleTrigMatch_0_trigger_matched, &b_eleTrigMatch_0_trigger_matched);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e120_lhloose", &eleTrigMatch_1_HLT_e120_lhloose, &b_eleTrigMatch_1_HLT_e120_lhloose);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e140_lhloose_nod0", &eleTrigMatch_1_HLT_e140_lhloose_nod0, &b_eleTrigMatch_1_HLT_e140_lhloose_nod0);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH", &eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH, &b_eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose", &eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose, &b_eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e60_lhmedium", &eleTrigMatch_1_HLT_e60_lhmedium, &b_eleTrigMatch_1_HLT_e60_lhmedium);
+   fChain->SetBranchAddress("eleTrigMatch_1_HLT_e60_lhmedium_nod0", &eleTrigMatch_1_HLT_e60_lhmedium_nod0, &b_eleTrigMatch_1_HLT_e60_lhmedium_nod0);
+   fChain->SetBranchAddress("eleTrigMatch_1_trigger_matched", &eleTrigMatch_1_trigger_matched, &b_eleTrigMatch_1_trigger_matched);
+   fChain->SetBranchAddress("elec_0", &elec_0, &b_elec_0);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose", &elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose, &b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_offline_RecoTrk", &elec_0_NOMINAL_EleEffSF_offline_RecoTrk, &b_elec_0_NOMINAL_EleEffSF_offline_RecoTrk);
+   fChain->SetBranchAddress("elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13", &elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13, &b_elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13);
+   fChain->SetBranchAddress("elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
+   fChain->SetBranchAddress("elec_0_cluster_eta", &elec_0_cluster_eta, &b_elec_0_cluster_eta);
+   fChain->SetBranchAddress("elec_0_cluster_eta_be2", &elec_0_cluster_eta_be2, &b_elec_0_cluster_eta_be2);
+   fChain->SetBranchAddress("elec_0_id_medium", &elec_0_id_medium, &b_elec_0_id_medium);
+   fChain->SetBranchAddress("elec_0_id_tight", &elec_0_id_tight, &b_elec_0_id_tight);
+   fChain->SetBranchAddress("elec_0_iso_FCLoose", &elec_0_iso_FCLoose, &b_elec_0_iso_FCLoose);
+   fChain->SetBranchAddress("elec_0_iso_FCLoose_FixedRad", &elec_0_iso_FCLoose_FixedRad, &b_elec_0_iso_FCLoose_FixedRad);
+   fChain->SetBranchAddress("elec_0_iso_FCTight", &elec_0_iso_FCTight, &b_elec_0_iso_FCTight);
+   fChain->SetBranchAddress("elec_0_iso_FCTightTrackOnly_FixedRad", &elec_0_iso_FCTightTrackOnly_FixedRad, &b_elec_0_iso_FCTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("elec_0_iso_FixedCutLoose", &elec_0_iso_FixedCutLoose, &b_elec_0_iso_FixedCutLoose);
+   fChain->SetBranchAddress("elec_0_iso_FixedCutTight", &elec_0_iso_FixedCutTight, &b_elec_0_iso_FixedCutTight);
+   fChain->SetBranchAddress("elec_0_iso_FixedCutTightCaloOnly", &elec_0_iso_FixedCutTightCaloOnly, &b_elec_0_iso_FixedCutTightCaloOnly);
+   fChain->SetBranchAddress("elec_0_matched_classifierParticleOrigin", &elec_0_matched_classifierParticleOrigin, &b_elec_0_matched_classifierParticleOrigin);
+   fChain->SetBranchAddress("elec_0_matched_classifierParticleType", &elec_0_matched_classifierParticleType, &b_elec_0_matched_classifierParticleType);
+   fChain->SetBranchAddress("elec_0_matched_origin", &elec_0_matched_origin, &b_elec_0_matched_origin);
+   fChain->SetBranchAddress("elec_0_matched_p4", &elec_0_matched_p4, &b_elec_0_matched_p4);
+   fChain->SetBranchAddress("elec_0_matched_pdgId", &elec_0_matched_pdgId, &b_elec_0_matched_pdgId);
+   fChain->SetBranchAddress("elec_0_matched_pz", &elec_0_matched_pz, &b_elec_0_matched_pz);
+   fChain->SetBranchAddress("elec_0_matched_q", &elec_0_matched_q, &b_elec_0_matched_q);
+   fChain->SetBranchAddress("elec_0_matched_type", &elec_0_matched_type, &b_elec_0_matched_type);
+   fChain->SetBranchAddress("elec_0_p4", &elec_0_p4, &b_elec_0_p4);
+   fChain->SetBranchAddress("elec_0_q", &elec_0_q, &b_elec_0_q);
+   fChain->SetBranchAddress("elec_0_trk_d0_sig", &elec_0_trk_d0_sig, &b_elec_0_trk_d0_sig);
+   fChain->SetBranchAddress("elec_0_trk_pvx_z0_sintheta", &elec_0_trk_pvx_z0_sintheta, &b_elec_0_trk_pvx_z0_sintheta);
+   fChain->SetBranchAddress("elec_0_trk_z0_sintheta", &elec_0_trk_z0_sintheta, &b_elec_0_trk_z0_sintheta);
+   fChain->SetBranchAddress("elec_1", &elec_1, &b_elec_1);
+   fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose", &elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose, &b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose);
+   fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
+   fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
+   fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_offline_RecoTrk", &elec_1_NOMINAL_EleEffSF_offline_RecoTrk, &b_elec_1_NOMINAL_EleEffSF_offline_RecoTrk);
+   fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13", &elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13, &b_elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13);
+   fChain->SetBranchAddress("elec_1_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_1_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_1_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
+   fChain->SetBranchAddress("elec_1_cluster_eta", &elec_1_cluster_eta, &b_elec_1_cluster_eta);
+   fChain->SetBranchAddress("elec_1_cluster_eta_be2", &elec_1_cluster_eta_be2, &b_elec_1_cluster_eta_be2);
+   fChain->SetBranchAddress("elec_1_id_bad", &elec_1_id_bad, &b_elec_1_id_bad);
+   fChain->SetBranchAddress("elec_1_id_charge", &elec_1_id_charge, &b_elec_1_id_charge);
+   fChain->SetBranchAddress("elec_1_id_loose", &elec_1_id_loose, &b_elec_1_id_loose);
+   fChain->SetBranchAddress("elec_1_id_medium", &elec_1_id_medium, &b_elec_1_id_medium);
+   fChain->SetBranchAddress("elec_1_id_tight", &elec_1_id_tight, &b_elec_1_id_tight);
+   fChain->SetBranchAddress("elec_1_id_veryloose", &elec_1_id_veryloose, &b_elec_1_id_veryloose);
+   fChain->SetBranchAddress("elec_1_iso_FCLoose", &elec_1_iso_FCLoose, &b_elec_1_iso_FCLoose);
+   fChain->SetBranchAddress("elec_1_iso_FCLoose_FixedRad", &elec_1_iso_FCLoose_FixedRad, &b_elec_1_iso_FCLoose_FixedRad);
+   fChain->SetBranchAddress("elec_1_iso_FCTight", &elec_1_iso_FCTight, &b_elec_1_iso_FCTight);
+   fChain->SetBranchAddress("elec_1_iso_FCTightTrackOnly_FixedRad", &elec_1_iso_FCTightTrackOnly_FixedRad, &b_elec_1_iso_FCTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("elec_1_iso_FixedCutLoose", &elec_1_iso_FixedCutLoose, &b_elec_1_iso_FixedCutLoose);
+   fChain->SetBranchAddress("elec_1_iso_FixedCutTight", &elec_1_iso_FixedCutTight, &b_elec_1_iso_FixedCutTight);
+   fChain->SetBranchAddress("elec_1_iso_FixedCutTightCaloOnly", &elec_1_iso_FixedCutTightCaloOnly, &b_elec_1_iso_FixedCutTightCaloOnly);
+   fChain->SetBranchAddress("elec_1_matched", &elec_1_matched, &b_elec_1_matched);
+   fChain->SetBranchAddress("elec_1_matched_classifierParticleOrigin", &elec_1_matched_classifierParticleOrigin, &b_elec_1_matched_classifierParticleOrigin);
+   fChain->SetBranchAddress("elec_1_matched_classifierParticleType", &elec_1_matched_classifierParticleType, &b_elec_1_matched_classifierParticleType);
+   fChain->SetBranchAddress("elec_1_matched_mother_pdgId", &elec_1_matched_mother_pdgId, &b_elec_1_matched_mother_pdgId);
+   fChain->SetBranchAddress("elec_1_matched_mother_status", &elec_1_matched_mother_status, &b_elec_1_matched_mother_status);
+   fChain->SetBranchAddress("elec_1_matched_origin", &elec_1_matched_origin, &b_elec_1_matched_origin);
+   fChain->SetBranchAddress("elec_1_matched_p4", &elec_1_matched_p4, &b_elec_1_matched_p4);
+   fChain->SetBranchAddress("elec_1_matched_pdgId", &elec_1_matched_pdgId, &b_elec_1_matched_pdgId);
+   fChain->SetBranchAddress("elec_1_matched_pz", &elec_1_matched_pz, &b_elec_1_matched_pz);
+   fChain->SetBranchAddress("elec_1_matched_q", &elec_1_matched_q, &b_elec_1_matched_q);
+   fChain->SetBranchAddress("elec_1_matched_status", &elec_1_matched_status, &b_elec_1_matched_status);
+   fChain->SetBranchAddress("elec_1_matched_type", &elec_1_matched_type, &b_elec_1_matched_type);
+   fChain->SetBranchAddress("elec_1_muonAuthor", &elec_1_muonAuthor, &b_elec_1_muonAuthor);
+   fChain->SetBranchAddress("elec_1_muonType", &elec_1_muonType, &b_elec_1_muonType);
+   fChain->SetBranchAddress("elec_1_origin", &elec_1_origin, &b_elec_1_origin);
+   fChain->SetBranchAddress("elec_1_p4", &elec_1_p4, &b_elec_1_p4);
+   fChain->SetBranchAddress("elec_1_q", &elec_1_q, &b_elec_1_q);
+   fChain->SetBranchAddress("elec_1_trk_d0", &elec_1_trk_d0, &b_elec_1_trk_d0);
+   fChain->SetBranchAddress("elec_1_trk_d0_sig", &elec_1_trk_d0_sig, &b_elec_1_trk_d0_sig);
+   fChain->SetBranchAddress("elec_1_trk_pt_error", &elec_1_trk_pt_error, &b_elec_1_trk_pt_error);
+   fChain->SetBranchAddress("elec_1_trk_pvx_z0", &elec_1_trk_pvx_z0, &b_elec_1_trk_pvx_z0);
+   fChain->SetBranchAddress("elec_1_trk_pvx_z0_sig", &elec_1_trk_pvx_z0_sig, &b_elec_1_trk_pvx_z0_sig);
+   fChain->SetBranchAddress("elec_1_trk_pvx_z0_sintheta", &elec_1_trk_pvx_z0_sintheta, &b_elec_1_trk_pvx_z0_sintheta);
+   fChain->SetBranchAddress("elec_1_trk_vx", &elec_1_trk_vx, &b_elec_1_trk_vx);
+   fChain->SetBranchAddress("elec_1_trk_vx_v", &elec_1_trk_vx_v, &b_elec_1_trk_vx_v);
+   fChain->SetBranchAddress("elec_1_trk_z0", &elec_1_trk_z0, &b_elec_1_trk_z0);
+   fChain->SetBranchAddress("elec_1_trk_z0_sig", &elec_1_trk_z0_sig, &b_elec_1_trk_z0_sig);
+   fChain->SetBranchAddress("elec_1_trk_z0_sintheta", &elec_1_trk_z0_sintheta, &b_elec_1_trk_z0_sintheta);
+   fChain->SetBranchAddress("elec_1_type", &elec_1_type, &b_elec_1_type);
    fChain->SetBranchAddress("event_is_bad_batman", &event_is_bad_batman, &b_event_is_bad_batman);
    fChain->SetBranchAddress("event_number", &event_number, &b_event_number);
    fChain->SetBranchAddress("jet_NOMINAL_central_jets_global_effSF_JVT", &jet_NOMINAL_central_jets_global_effSF_JVT, &b_jet_NOMINAL_central_jets_global_effSF_JVT);
@@ -622,104 +714,6 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("ljet_2_type", &ljet_2_type, &b_ljet_2_type);
    fChain->SetBranchAddress("ljet_2_width", &ljet_2_width, &b_ljet_2_width);
    fChain->SetBranchAddress("met_reco_p4", &met_reco_p4, &b_met_reco_p4);
-   fChain->SetBranchAddress("muTrigMatch_0_HLT_mu20_iloose_L1MU15", &muTrigMatch_0_HLT_mu20_iloose_L1MU15, &b_muTrigMatch_0_HLT_mu20_iloose_L1MU15);
-   fChain->SetBranchAddress("muTrigMatch_0_HLT_mu26_ivarmedium", &muTrigMatch_0_HLT_mu26_ivarmedium, &b_muTrigMatch_0_HLT_mu26_ivarmedium);
-   fChain->SetBranchAddress("muTrigMatch_0_HLT_mu50", &muTrigMatch_0_HLT_mu50, &b_muTrigMatch_0_HLT_mu50);
-   fChain->SetBranchAddress("muTrigMatch_0_trigger_matched", &muTrigMatch_0_trigger_matched, &b_muTrigMatch_0_trigger_matched);
-   fChain->SetBranchAddress("muTrigMatch_1_HLT_mu20_iloose_L1MU15", &muTrigMatch_1_HLT_mu20_iloose_L1MU15, &b_muTrigMatch_1_HLT_mu20_iloose_L1MU15);
-   fChain->SetBranchAddress("muTrigMatch_1_HLT_mu26_ivarmedium", &muTrigMatch_1_HLT_mu26_ivarmedium, &b_muTrigMatch_1_HLT_mu26_ivarmedium);
-   fChain->SetBranchAddress("muTrigMatch_1_HLT_mu50", &muTrigMatch_1_HLT_mu50, &b_muTrigMatch_1_HLT_mu50);
-   fChain->SetBranchAddress("muTrigMatch_1_trigger_matched", &muTrigMatch_1_trigger_matched, &b_muTrigMatch_1_trigger_matched);
-   fChain->SetBranchAddress("muon_0", &muon_0, &b_muon_0);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCLoose", &muon_0_NOMINAL_MuEffSF_IsoFCLoose, &b_muon_0_NOMINAL_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad", &muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad, &b_muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCTight", &muon_0_NOMINAL_MuEffSF_IsoFCTight, &b_muon_0_NOMINAL_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly", &muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly, &b_muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFCTight_FixedRad", &muon_0_NOMINAL_MuEffSF_IsoFCTight_FixedRad, &b_muon_0_NOMINAL_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_0_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_0_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_Reco_QualMedium", &muon_0_NOMINAL_MuEffSF_Reco_QualMedium, &b_muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_0_NOMINAL_MuEffSF_TTVA", &muon_0_NOMINAL_MuEffSF_TTVA, &b_muon_0_NOMINAL_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_0_id_medium", &muon_0_id_medium, &b_muon_0_id_medium);
-   fChain->SetBranchAddress("muon_0_id_tight", &muon_0_id_tight, &b_muon_0_id_tight);
-   fChain->SetBranchAddress("muon_0_iso_FCLoose", &muon_0_iso_FCLoose, &b_muon_0_iso_FCLoose);
-   fChain->SetBranchAddress("muon_0_iso_FCLoose_FixedRad", &muon_0_iso_FCLoose_FixedRad, &b_muon_0_iso_FCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_0_iso_FCTight", &muon_0_iso_FCTight, &b_muon_0_iso_FCTight);
-   fChain->SetBranchAddress("muon_0_iso_FCTightTrackOnly_FixedRad", &muon_0_iso_FCTightTrackOnly_FixedRad, &b_muon_0_iso_FCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_0_iso_FixedCutLoose", &muon_0_iso_FixedCutLoose, &b_muon_0_iso_FixedCutLoose);
-   fChain->SetBranchAddress("muon_0_iso_FixedCutTight", &muon_0_iso_FixedCutTight, &b_muon_0_iso_FixedCutTight);
-   fChain->SetBranchAddress("muon_0_iso_FixedCutTightCaloOnly", &muon_0_iso_FixedCutTightCaloOnly, &b_muon_0_iso_FixedCutTightCaloOnly);
-   fChain->SetBranchAddress("muon_0_matched_classifierParticleOrigin", &muon_0_matched_classifierParticleOrigin, &b_muon_0_matched_classifierParticleOrigin);
-   fChain->SetBranchAddress("muon_0_matched_classifierParticleType", &muon_0_matched_classifierParticleType, &b_muon_0_matched_classifierParticleType);
-   fChain->SetBranchAddress("muon_0_matched_p4", &muon_0_matched_p4, &b_muon_0_matched_p4);
-   fChain->SetBranchAddress("muon_0_matched_pdgId", &muon_0_matched_pdgId, &b_muon_0_matched_pdgId);
-   fChain->SetBranchAddress("muon_0_matched_pz", &muon_0_matched_pz, &b_muon_0_matched_pz);
-   fChain->SetBranchAddress("muon_0_matched_q", &muon_0_matched_q, &b_muon_0_matched_q);
-   fChain->SetBranchAddress("muon_0_matched_type", &muon_0_matched_type, &b_muon_0_matched_type);
-   fChain->SetBranchAddress("muon_0_p4", &muon_0_p4, &b_muon_0_p4);
-   fChain->SetBranchAddress("muon_0_q", &muon_0_q, &b_muon_0_q);
-   fChain->SetBranchAddress("muon_0_trk_d0_sig", &muon_0_trk_d0_sig, &b_muon_0_trk_d0_sig);
-   fChain->SetBranchAddress("muon_0_trk_pvx_z0_sig", &muon_0_trk_pvx_z0_sig, &b_muon_0_trk_pvx_z0_sig);
-   fChain->SetBranchAddress("muon_0_trk_pvx_z0_sintheta", &muon_0_trk_pvx_z0_sintheta, &b_muon_0_trk_pvx_z0_sintheta);
-   fChain->SetBranchAddress("muon_0_trk_z0_sintheta", &muon_0_trk_z0_sintheta, &b_muon_0_trk_z0_sintheta);
-   fChain->SetBranchAddress("muon_1", &muon_1, &b_muon_1);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCLoose", &muon_1_NOMINAL_MuEffSF_IsoFCLoose, &b_muon_1_NOMINAL_MuEffSF_IsoFCLoose);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCLoose_FixedRad", &muon_1_NOMINAL_MuEffSF_IsoFCLoose_FixedRad, &b_muon_1_NOMINAL_MuEffSF_IsoFCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCTight", &muon_1_NOMINAL_MuEffSF_IsoFCTight, &b_muon_1_NOMINAL_MuEffSF_IsoFCTight);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly", &muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly, &b_muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad", &muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad, &b_muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFCTight_FixedRad", &muon_1_NOMINAL_MuEffSF_IsoFCTight_FixedRad, &b_muon_1_NOMINAL_MuEffSF_IsoFCTight_FixedRad);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly", &muon_1_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly, &b_muon_1_NOMINAL_MuEffSF_IsoFixedCutHighPtTrackOnly);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_Reco_QualMedium", &muon_1_NOMINAL_MuEffSF_Reco_QualMedium, &b_muon_1_NOMINAL_MuEffSF_Reco_QualMedium);
-   fChain->SetBranchAddress("muon_1_NOMINAL_MuEffSF_TTVA", &muon_1_NOMINAL_MuEffSF_TTVA, &b_muon_1_NOMINAL_MuEffSF_TTVA);
-   fChain->SetBranchAddress("muon_1_cluster_eta", &muon_1_cluster_eta, &b_muon_1_cluster_eta);
-   fChain->SetBranchAddress("muon_1_cluster_eta_be2", &muon_1_cluster_eta_be2, &b_muon_1_cluster_eta_be2);
-   fChain->SetBranchAddress("muon_1_id_bad", &muon_1_id_bad, &b_muon_1_id_bad);
-   fChain->SetBranchAddress("muon_1_id_charge", &muon_1_id_charge, &b_muon_1_id_charge);
-   fChain->SetBranchAddress("muon_1_id_loose", &muon_1_id_loose, &b_muon_1_id_loose);
-   fChain->SetBranchAddress("muon_1_id_medium", &muon_1_id_medium, &b_muon_1_id_medium);
-   fChain->SetBranchAddress("muon_1_id_tight", &muon_1_id_tight, &b_muon_1_id_tight);
-   fChain->SetBranchAddress("muon_1_id_veryloose", &muon_1_id_veryloose, &b_muon_1_id_veryloose);
-   fChain->SetBranchAddress("muon_1_iso_FCLoose", &muon_1_iso_FCLoose, &b_muon_1_iso_FCLoose);
-   fChain->SetBranchAddress("muon_1_iso_FCLoose_FixedRad", &muon_1_iso_FCLoose_FixedRad, &b_muon_1_iso_FCLoose_FixedRad);
-   fChain->SetBranchAddress("muon_1_iso_FCTight", &muon_1_iso_FCTight, &b_muon_1_iso_FCTight);
-   fChain->SetBranchAddress("muon_1_iso_FCTightTrackOnly_FixedRad", &muon_1_iso_FCTightTrackOnly_FixedRad, &b_muon_1_iso_FCTightTrackOnly_FixedRad);
-   fChain->SetBranchAddress("muon_1_iso_FixedCutLoose", &muon_1_iso_FixedCutLoose, &b_muon_1_iso_FixedCutLoose);
-   fChain->SetBranchAddress("muon_1_iso_FixedCutTight", &muon_1_iso_FixedCutTight, &b_muon_1_iso_FixedCutTight);
-   fChain->SetBranchAddress("muon_1_iso_FixedCutTightCaloOnly", &muon_1_iso_FixedCutTightCaloOnly, &b_muon_1_iso_FixedCutTightCaloOnly);
-   fChain->SetBranchAddress("muon_1_matched", &muon_1_matched, &b_muon_1_matched);
-   fChain->SetBranchAddress("muon_1_matched_classifierParticleOrigin", &muon_1_matched_classifierParticleOrigin, &b_muon_1_matched_classifierParticleOrigin);
-   fChain->SetBranchAddress("muon_1_matched_classifierParticleType", &muon_1_matched_classifierParticleType, &b_muon_1_matched_classifierParticleType);
-   fChain->SetBranchAddress("muon_1_matched_mother_pdgId", &muon_1_matched_mother_pdgId, &b_muon_1_matched_mother_pdgId);
-   fChain->SetBranchAddress("muon_1_matched_mother_status", &muon_1_matched_mother_status, &b_muon_1_matched_mother_status);
-   fChain->SetBranchAddress("muon_1_matched_origin", &muon_1_matched_origin, &b_muon_1_matched_origin);
-   fChain->SetBranchAddress("muon_1_matched_p4", &muon_1_matched_p4, &b_muon_1_matched_p4);
-   fChain->SetBranchAddress("muon_1_matched_pdgId", &muon_1_matched_pdgId, &b_muon_1_matched_pdgId);
-   fChain->SetBranchAddress("muon_1_matched_pz", &muon_1_matched_pz, &b_muon_1_matched_pz);
-   fChain->SetBranchAddress("muon_1_matched_q", &muon_1_matched_q, &b_muon_1_matched_q);
-   fChain->SetBranchAddress("muon_1_matched_status", &muon_1_matched_status, &b_muon_1_matched_status);
-   fChain->SetBranchAddress("muon_1_matched_type", &muon_1_matched_type, &b_muon_1_matched_type);
-   fChain->SetBranchAddress("muon_1_muonAuthor", &muon_1_muonAuthor, &b_muon_1_muonAuthor);
-   fChain->SetBranchAddress("muon_1_muonType", &muon_1_muonType, &b_muon_1_muonType);
-   fChain->SetBranchAddress("muon_1_origin", &muon_1_origin, &b_muon_1_origin);
-   fChain->SetBranchAddress("muon_1_p4", &muon_1_p4, &b_muon_1_p4);
-   fChain->SetBranchAddress("muon_1_q", &muon_1_q, &b_muon_1_q);
-   fChain->SetBranchAddress("muon_1_trk_d0", &muon_1_trk_d0, &b_muon_1_trk_d0);
-   fChain->SetBranchAddress("muon_1_trk_d0_sig", &muon_1_trk_d0_sig, &b_muon_1_trk_d0_sig);
-   fChain->SetBranchAddress("muon_1_trk_pt_error", &muon_1_trk_pt_error, &b_muon_1_trk_pt_error);
-   fChain->SetBranchAddress("muon_1_trk_pvx_z0", &muon_1_trk_pvx_z0, &b_muon_1_trk_pvx_z0);
-   fChain->SetBranchAddress("muon_1_trk_pvx_z0_sig", &muon_1_trk_pvx_z0_sig, &b_muon_1_trk_pvx_z0_sig);
-   fChain->SetBranchAddress("muon_1_trk_pvx_z0_sintheta", &muon_1_trk_pvx_z0_sintheta, &b_muon_1_trk_pvx_z0_sintheta);
-   fChain->SetBranchAddress("muon_1_trk_vx", &muon_1_trk_vx, &b_muon_1_trk_vx);
-   fChain->SetBranchAddress("muon_1_trk_vx_v", &muon_1_trk_vx_v, &b_muon_1_trk_vx_v);
-   fChain->SetBranchAddress("muon_1_trk_z0", &muon_1_trk_z0, &b_muon_1_trk_z0);
-   fChain->SetBranchAddress("muon_1_trk_z0_sig", &muon_1_trk_z0_sig, &b_muon_1_trk_z0_sig);
-   fChain->SetBranchAddress("muon_1_trk_z0_sintheta", &muon_1_trk_z0_sintheta, &b_muon_1_trk_z0_sintheta);
-   fChain->SetBranchAddress("muon_1_type", &muon_1_type, &b_muon_1_type);
    fChain->SetBranchAddress("n_actual_int", &n_actual_int, &b_n_actual_int);
    fChain->SetBranchAddress("n_actual_int_cor", &n_actual_int_cor, &b_n_actual_int_cor);
    fChain->SetBranchAddress("n_avg_int", &n_avg_int, &b_n_avg_int);

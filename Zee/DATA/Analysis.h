@@ -66,11 +66,11 @@ TH1F * h_weight_mc_topo;
 TH1F * h_weight_total_cuts;
 TH1F * h_weight_total_topo;
 TH1F * h_weight_mc_cuts;
-TH1F * h_sf_mu_trigger;
-TH1F * h_sf_mu_recoid;
-TH1F * h_sf_mu_vertex;
-TH1F * h_sf_mu_isolation;
-TH1F * h_sf_mu_total;
+TH1F * h_sf_e_recoid;
+TH1F * h_sf_e_vertex;
+TH1F * h_sf_e_trigger;
+TH1F * h_sf_e_isolation;
+TH1F * h_sf_e_total;
 TH1F * h_Z_pt_truth_topo;
 TH1F * h_Z_pt_truth_cuts;
 
@@ -84,11 +84,11 @@ TH1F * h_b_tag_topo_dphi_iso_pt1_pt2_mass;
 
 
 // Isolation variables Histograms
-TH1F * h_muon_0_isolation_topo;
-TH1F * h_muon_0_isolation_topo_dphi_btag_pt1_pt2_mass;
+TH1F * h_elec_0_isolation_topo;
+TH1F * h_elec_0_isolation_topo_dphi_btag_pt1_pt2_mass;
 
-TH1F * h_muon_1_isolation_topo;
-TH1F * h_muon_1_isolation_topo_dphi_btag_pt1_pt2_mass;
+TH1F * h_elec_1_isolation_topo;
+TH1F * h_elec_1_isolation_topo_dphi_btag_pt1_pt2_mass;
 
 TH1F * h_Z_pt_reco_topo;
 TH1F * h_Z_pt_reco_cuts;
