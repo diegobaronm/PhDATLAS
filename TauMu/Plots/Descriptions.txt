@@ -28,3 +28,4 @@ V24-pTG45-CR-InvMass/-----> Same as above with different CR=Loose reco_mass cut 
 V24-pTG65-CR-InvMass/-----> Same as above.
 V24-pT45to65-CR-InvMass/-----> Same as above.
 V25-pTG45/-----> Analysis with V25 Ntuples + CR=Fail loose isolation + NTracks>15
+V25-SumpT------> Same as above but adding Sum pT histograms (scalar sum of the pT of all the objects)

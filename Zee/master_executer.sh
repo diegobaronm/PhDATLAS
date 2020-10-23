@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -r MC/out_previous
+"""rm -r MC/out_previous
 rm -r DATA/out_previous
 mv MC/out/ MC/out_previous/
 mkdir MC/out/
@@ -20,12 +20,12 @@ do
         python3 RunAnalysis.py $mc_Ztautau_sherpa$n'_'$y no
     done
 done
-rm out/Ztautau_sherpa*_*_*.root
+
 hadd out/Ztautau_Sherpa.root out/*
 
 cd ..
-
-years=('2018' '2017' '2015')
+"""
+years=('2017' '2015')
 for i in ${years[@]}
 do
     ./executer.sh $i
@@ -33,6 +33,7 @@ done
 
 hadd MC/out/Ztautau_PoPy.root MC/out/Ztautau_2018.root MC/out/Ztautau_2017.root MC/out/Ztautau_2015.root
 hadd MC/out/Zmumu.root MC/out/Zmumu_2018.root MC/out/Zmumu_2017.root MC/out/Zmumu_2015.root
+hadd MC/out/Zee.root MC/out/Zee_2018.root MC/out/Zee_2017.root MC/out/Zee_2015.root
 hadd MC/out/VV.root MC/out/VV_2018.root MC/out/VV_2017.root MC/out/VV_2015.root
 hadd MC/out/Wjets.root MC/out/Wjets_2018.root MC/out/Wjets_2017.root MC/out/Wjets_2015.root
 hadd MC/out/singletop.root MC/out/singletop_2018.root MC/out/singletop_2017.root MC/out/singletop_2015.root

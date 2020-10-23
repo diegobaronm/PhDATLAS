@@ -153,11 +153,11 @@ void CLoop::Book(double lumFactor) {
       h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",10000,-500,500);
       h_weight_total_topo = new TH1F("weight_total","weight total",10000,-500,500);
       h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
-      h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
-      h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
-      h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
-      h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
-      h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
+      h_sf_e_trigger = new TH1F("sf_e_trigger","elec trigger scale factor",30,0.85,1.15);
+      h_sf_e_recoid = new TH1F("sf_e_recoid","elec reco and id scale factor",30,0.85,1.15);
+      h_sf_e_vertex = new TH1F("sf_e_vertex","elec vertex matching scale factor",30,0.85,1.15);
+      h_sf_e_isolation = new TH1F("sf_e_isolation","elec isolation scale factor",30,0.85,1.15);
+      h_sf_e_total = new TH1F("sf_e_total","elec total scale factor",30,0.85,1.15);
       h_Z_pt_truth_topo = new TH1F("Z_pt_truth_topo","Z_truth boson transverse momentum inside",400,0,400);
       h_Z_pt_truth_cuts = new TH1F("Z_pt_truth_cuts","Z_truth boson transverse momentum inside",400,0,400);
     }
@@ -172,11 +172,11 @@ void CLoop::Book(double lumFactor) {
 
 
     // Isolation variables Histograms
-    h_muon_0_isolation_topo = new TH1F("muon_0_isolation_topo","lepton 1 isolation",2,0,2);
-    h_muon_0_isolation_topo_dphi_btag_pt1_pt2_mass = new TH1F("muon_0_isolation_topo_dphi_btag_pt1_pt2_mass","lepton 1 isolation",2,0,2);
+    h_elec_0_isolation_topo = new TH1F("elec_0_isolation_topo","lepton 1 isolation",2,0,2);
+    h_elec_0_isolation_topo_dphi_btag_pt1_pt2_mass = new TH1F("elec_0_isolation_topo_dphi_btag_pt1_pt2_mass","lepton 1 isolation",2,0,2);
 
-    h_muon_1_isolation_topo = new TH1F("muon_1_isolation_topo","lepton 2 isolation",2,0,2);
-    h_muon_1_isolation_topo_dphi_btag_pt1_pt2_mass = new TH1F("muon_1_isolation_topo_dphi_btag_pt1_pt2_mass","lepton 2 isolation",2,0,2);
+    h_elec_1_isolation_topo = new TH1F("elec_1_isolation_topo","lepton 2 isolation",2,0,2);
+    h_elec_1_isolation_topo_dphi_btag_pt1_pt2_mass = new TH1F("elec_1_isolation_topo_dphi_btag_pt1_pt2_mass","lepton 2 isolation",2,0,2);
 
     h_Z_pt_reco_topo = new TH1F("Z_pt_topo","Z boson transverse momentum",400,0,400);
     h_Z_pt_reco_cuts = new TH1F("Z_pt_cuts","Z boson transverse momentum",400,0,400);
@@ -195,38 +195,50 @@ void CLoop::Book(double lumFactor) {
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==2){
+    if (n_electrons==2){
       //angles
-      double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
-      double angle_tau_MET=del_phi(muon_1_p4->Phi(),met_reco_p4->Phi());
-      double angle=del_phi(muon_1_p4->Phi(),muon_0_p4->Phi());
+      double angle_l_MET=del_phi(elec_0_p4->Phi(),met_reco_p4->Phi());
+      double angle_tau_MET=del_phi(elec_1_p4->Phi(),met_reco_p4->Phi());
+      double angle=del_phi(elec_1_p4->Phi(),elec_0_p4->Phi());
 
       h_delta_phi->Fill(angle,weight);
 
       bool trigger_decision= false;
       bool trigger_match= false;
       if (run_number>= 276262 && run_number<=284484) {
-        trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
-        trigger_match=bool(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50 | muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50);
+        trigger_decision= bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e24_lhmedium_L1EM20VH | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+        bool trigger_match_1=bool((eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0) && !(eleTrigMatch_1_HLT_e120_lhloose | eleTrigMatch_1_HLT_e140_lhloose_nod0 | eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH | eleTrigMatch_1_HLT_e60_lhmedium | eleTrigMatch_1_HLT_e60_lhmedium_nod0));
+        bool trigger_match_2=bool(!(eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e24_lhmedium_L1EM20VH | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0) && (eleTrigMatch_1_HLT_e120_lhloose | eleTrigMatch_1_HLT_e140_lhloose_nod0 | eleTrigMatch_1_HLT_e24_lhmedium_L1EM20VH | eleTrigMatch_1_HLT_e60_lhmedium | eleTrigMatch_1_HLT_e60_lhmedium_nod0));
+        if(weight!=1){
+          if (trigger_match_1){weight=weight*elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;}
+          if (trigger_match_2){weight=weight*elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;}
+        }
+        trigger_match= trigger_match_1 | trigger_match_2;
       } else {
-        trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
-        trigger_match=bool(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50 | muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50);
+        trigger_decision= bool(HLT_e120_lhloose | HLT_e140_lhloose_nod0 | HLT_e26_lhtight_nod0_ivarloose | HLT_e60_lhmedium | HLT_e60_lhmedium_nod0);
+        bool trigger_match_1=bool((eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0) && !(eleTrigMatch_1_HLT_e120_lhloose | eleTrigMatch_1_HLT_e140_lhloose_nod0 | eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose | eleTrigMatch_1_HLT_e60_lhmedium | eleTrigMatch_1_HLT_e60_lhmedium_nod0));
+        bool trigger_match_2=bool(!(eleTrigMatch_0_HLT_e120_lhloose | eleTrigMatch_0_HLT_e140_lhloose_nod0 | eleTrigMatch_0_HLT_e26_lhtight_nod0_ivarloose | eleTrigMatch_0_HLT_e60_lhmedium | eleTrigMatch_0_HLT_e60_lhmedium_nod0) && (eleTrigMatch_1_HLT_e120_lhloose | eleTrigMatch_1_HLT_e140_lhloose_nod0 | eleTrigMatch_1_HLT_e26_lhtight_nod0_ivarloose | eleTrigMatch_1_HLT_e60_lhmedium | eleTrigMatch_1_HLT_e60_lhmedium_nod0));
+        if(weight!=1){
+          if (trigger_match_1){weight=weight*elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;}
+          if (trigger_match_2){weight=weight*elec_1_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;}
+        }
+        trigger_match= trigger_match_1 | trigger_match_2;
       }
-      bool muon_id=muon_0_id_medium && muon_1_id_medium;
+      bool elec_id= elec_0_id_tight && elec_1_id_tight;
 
-      float q_mu0=muon_0_q;
-      float q_mu1=muon_1_q;
+      float q_mu0=elec_0_q;
+      float q_mu1=elec_1_q;
 
-      if (q_mu0!=q_mu1 && angle<3*pi/4 && trigger_decision && muon_id && trigger_match ) {
+      if (q_mu0!=q_mu1 && angle<3*pi/4 && trigger_decision && elec_id && trigger_match ) {
 
         double inv_mass{};
-        inv_mass=sqrt(2*muon_0_p4->Pt()*muon_1_p4->Pt()*(cosh(muon_0_p4->Eta()-muon_1_p4->Eta())-cos(muon_0_p4->Phi()-muon_1_p4->Phi())));
+        inv_mass=sqrt(2*elec_0_p4->Pt()*elec_1_p4->Pt()*(cosh(elec_0_p4->Eta()-elec_1_p4->Eta())-cos(elec_0_p4->Phi()-elec_1_p4->Phi())));
 
         double Z_pt_x=0;
         double Z_pt_y=0;
         double Z_pt=0;
         double r_jpt_zpt=0;
-        double r_lpt_tpt=muon_0_p4->Pt()/muon_1_p4->Pt();
+        double r_lpt_tpt=elec_0_p4->Pt()/elec_1_p4->Pt();
         double truth_z_pt=0.0;
 
         if (z_sample==1 || z_sample==2)
@@ -234,8 +246,8 @@ void CLoop::Fill(double weight, int z_sample) {
           truth_z_pt=truth_Z_p4->Pt();
         }
 
-        Z_pt_x=muon_1_p4->Pt()*cos(muon_1_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi());
-        Z_pt_y=muon_1_p4->Pt()*sin(muon_1_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi());
+        Z_pt_x=elec_1_p4->Pt()*cos(elec_1_p4->Phi())+elec_0_p4->Pt()*cos(elec_0_p4->Phi());
+        Z_pt_y=elec_1_p4->Pt()*sin(elec_1_p4->Phi())+elec_0_p4->Pt()*sin(elec_0_p4->Phi());
         Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
         h_Z_pt_reco_topo->Fill(Z_pt,weight);
         if (weight!=1){
@@ -251,13 +263,13 @@ void CLoop::Fill(double weight, int z_sample) {
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
+        if (elec_0_iso_FCTight==1 && elec_1_iso_FCTight==1) {
           cuts[2]=1;
         }
-        if (muon_0_p4->Pt()>=45) {
+        if (elec_0_p4->Pt()>=35) {
           cuts[3]=1;
         }
-        if (muon_1_p4->Pt()>=45) {
+        if (elec_1_p4->Pt()>=35) {
           cuts[4]=1;
         }
         if (inv_mass<110 && inv_mass>70) {
@@ -279,14 +291,14 @@ void CLoop::Fill(double weight, int z_sample) {
           h_b_tag_topo_dphi_iso_pt1_pt2_mass->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         }
         if (cuts==c_iso||cuts==c_all) {
-          h_muon_0_isolation_topo_dphi_btag_pt1_pt2_mass->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
-          h_muon_1_isolation_topo_dphi_btag_pt1_pt2_mass->Fill(muon_1_iso_FCTightTrackOnly_FixedRad,weight);
+          h_elec_0_isolation_topo_dphi_btag_pt1_pt2_mass->Fill(elec_0_iso_FCTight,weight);
+          h_elec_1_isolation_topo_dphi_btag_pt1_pt2_mass->Fill(elec_1_iso_FCTight,weight);
         }
         if (cuts==c_pt1||cuts==c_all) {
-          h_lep1_pt_topo_dphi_btag_iso_pt2_mass->Fill(muon_0_p4->Pt(),weight);
+          h_lep1_pt_topo_dphi_btag_iso_pt2_mass->Fill(elec_0_p4->Pt(),weight);
         }
         if (cuts==c_pt2||cuts==c_all) {
-          h_lep2_pt_topo_dphi_btag_iso_pt1_mass->Fill(muon_1_p4->Pt(),weight);
+          h_lep2_pt_topo_dphi_btag_iso_pt1_mass->Fill(elec_1_p4->Pt(),weight);
         }
         if (cuts==c_mass||cuts==c_all) {
           h_inv_mass_topo_dphi_btag_iso_pt1_pt2->Fill(inv_mass,weight);
@@ -295,14 +307,14 @@ void CLoop::Fill(double weight, int z_sample) {
         //  Filling histos
         h_jet_n_topo->Fill(n_jets, weight);
         h_b_tag_topo->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
-        h_muon_0_isolation_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
-        h_muon_1_isolation_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
+        h_elec_0_isolation_topo->Fill(elec_0_iso_FCTight,weight);
+        h_elec_1_isolation_topo->Fill(elec_1_iso_FCTight,weight);
         h_met_topo->Fill(met_reco_p4->Pt(),weight);
-        h_lep1_pt_topo->Fill(muon_0_p4->Pt(),weight);
-        h_lep2_pt_topo->Fill(muon_1_p4->Pt(),weight);
-        h_sumlep_pt_topo->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-        h_lep1_phi_topo->Fill(muon_0_p4->Phi(),weight);
-        h_lep2_phi_topo->Fill(muon_1_p4->Phi(),weight);
+        h_lep1_pt_topo->Fill(elec_0_p4->Pt(),weight);
+        h_lep2_pt_topo->Fill(elec_1_p4->Pt(),weight);
+        h_sumlep_pt_topo->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+        h_lep1_phi_topo->Fill(elec_0_p4->Phi(),weight);
+        h_lep2_phi_topo->Fill(elec_1_p4->Phi(),weight);
         h_delta_phi_topo->Fill(angle,weight);
         if (weight!=1){
           h_weight_total_topo->Fill(weight,1);
@@ -315,66 +327,66 @@ void CLoop::Fill(double weight, int z_sample) {
         // ANGLE CUT
         if (cuts[0]==1){
           h_met_topo_dphi->Fill(met_reco_p4->Pt(),weight);
-          h_lep1_pt_topo_dphi->Fill(muon_0_p4->Pt(),weight);
-          h_lep2_pt_topo_dphi->Fill(muon_1_p4->Pt(),weight);
-          h_sumlep_pt_topo_dphi->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+          h_lep1_pt_topo_dphi->Fill(elec_0_p4->Pt(),weight);
+          h_lep2_pt_topo_dphi->Fill(elec_1_p4->Pt(),weight);
+          h_sumlep_pt_topo_dphi->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
           h_inv_mass_topo_dphi->Fill(inv_mass,weight);
 
           // B TAGGING CUT
           if (cuts[1]==1 || n_jets==0) {
             h_met_topo_dphi_btag->Fill(met_reco_p4->Pt(),weight);
-            h_lep1_pt_topo_dphi_btag->Fill(muon_0_p4->Pt(),weight);
-            h_lep2_pt_topo_dphi_btag->Fill(muon_1_p4->Pt(),weight);
-            h_sumlep_pt_topo_dphi_btag->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+            h_lep1_pt_topo_dphi_btag->Fill(elec_0_p4->Pt(),weight);
+            h_lep2_pt_topo_dphi_btag->Fill(elec_1_p4->Pt(),weight);
+            h_sumlep_pt_topo_dphi_btag->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
             h_inv_mass_topo_dphi_btag->Fill(inv_mass,weight);
 
             // ISOLATION CUT
             if (cuts[2]==1) {
               h_met_topo_dphi_btag_iso->Fill(met_reco_p4->Pt(),weight);
-              h_lep1_pt_topo_dphi_btag_iso->Fill(muon_0_p4->Pt(),weight);
-              h_lep2_pt_topo_dphi_btag_iso->Fill(muon_1_p4->Pt(),weight);
-              h_sumlep_pt_topo_dphi_btag_iso->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+              h_lep1_pt_topo_dphi_btag_iso->Fill(elec_0_p4->Pt(),weight);
+              h_lep2_pt_topo_dphi_btag_iso->Fill(elec_1_p4->Pt(),weight);
+              h_sumlep_pt_topo_dphi_btag_iso->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
               h_inv_mass_topo_dphi_btag_iso->Fill(inv_mass,weight);
 
               // pT 1 CUT
               if (cuts[3]==1) {
                 h_met_topo_dphi_btag_iso_pt1->Fill(met_reco_p4->Pt(),weight);
-                h_lep1_pt_topo_dphi_btag_iso_pt1->Fill(muon_0_p4->Pt(),weight);
-                h_lep2_pt_topo_dphi_btag_iso_pt1->Fill(muon_1_p4->Pt(),weight);
-                h_sumlep_pt_topo_dphi_btag_iso_pt1->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+                h_lep1_pt_topo_dphi_btag_iso_pt1->Fill(elec_0_p4->Pt(),weight);
+                h_lep2_pt_topo_dphi_btag_iso_pt1->Fill(elec_1_p4->Pt(),weight);
+                h_sumlep_pt_topo_dphi_btag_iso_pt1->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
                 h_inv_mass_topo_dphi_btag_iso_pt1->Fill(inv_mass,weight);
 
                 // pT 2 CUT
                 if (cuts[4]==1) {
                   h_met_topo_dphi_btag_iso_pt1_pt2->Fill(met_reco_p4->Pt(),weight);
-                  h_lep1_pt_topo_dphi_btag_iso_pt1_pt2->Fill(muon_0_p4->Pt(),weight);
-                  h_lep2_pt_topo_dphi_btag_iso_pt1_pt2->Fill(muon_1_p4->Pt(),weight);
-                  h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+                  h_lep1_pt_topo_dphi_btag_iso_pt1_pt2->Fill(elec_0_p4->Pt(),weight);
+                  h_lep2_pt_topo_dphi_btag_iso_pt1_pt2->Fill(elec_1_p4->Pt(),weight);
+                  h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
 
                     // INV MASS CUT
                   if (cuts[5]==1) {
                     h_met_topo_dphi_btag_iso_pt1_pt2_mass->Fill(met_reco_p4->Pt(),weight);
-                    h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(muon_0_p4->Pt(),weight);
-                    h_lep2_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(muon_1_p4->Pt(),weight);
-                    h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
+                    h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(elec_0_p4->Pt(),weight);
+                    h_lep2_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(elec_1_p4->Pt(),weight);
+                    h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
                     h_inv_mass_topo_dphi_btag_iso_pt1_pt2_mass->Fill(inv_mass,weight);
 
                     h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
                     h_ratio_ptjet_zpt_cuts->Fill(r_jpt_zpt,weight);
-                    h_lep1_phi_cuts->Fill(muon_0_p4->Phi(),weight);
-                    h_lep2_phi_cuts->Fill(muon_1_p4->Phi(),weight);
+                    h_lep1_phi_cuts->Fill(elec_0_p4->Phi(),weight);
+                    h_lep2_phi_cuts->Fill(elec_1_p4->Phi(),weight);
                     h_Z_pt_reco_cuts->Fill(Z_pt,weight);
 
                     if (weight!=1){
                       h_Z_pt_truth_cuts->Fill(truth_z_pt/1000,weight);
                       h_weight_mc_cuts->Fill(weight_total,1);
                       h_weight_total_cuts->Fill(weight,1);
-                      h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
-                      h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
-                      h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
-                      h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium,1);
-                      h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
-                                          *muon_0_NOMINAL_MuEffSF_TTVA,1);
+                      h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight,1);
+                      h_sf_e_recoid->Fill(elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13,1);
+                      h_sf_e_vertex->Fill(elec_0_NOMINAL_EleEffSF_offline_RecoTrk,1);
+                      h_sf_e_trigger->Fill(elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
+                      h_sf_e_total->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
+                                          *elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
                     }
                   }
                 }
@@ -464,11 +476,11 @@ void CLoop::Style(double lumFactor) {
       h_weight_total_cuts->Write();
       h_weight_total_topo->Write();
       h_weight_mc_cuts->Write();
-      h_sf_mu_trigger->Write();
-      h_sf_mu_recoid->Write();
-      h_sf_mu_vertex->Write();
-      h_sf_mu_isolation->Write();
-      h_sf_mu_total->Write();
+      h_sf_e_recoid->Write();
+      h_sf_e_vertex->Write();
+      h_sf_e_trigger->Write();
+      h_sf_e_isolation->Write();
+      h_sf_e_total->Write();
       h_Z_pt_truth_topo->Write();
       h_Z_pt_truth_cuts->Write();
     }
@@ -483,11 +495,11 @@ void CLoop::Style(double lumFactor) {
 
 
     // Isolation variables Histograms
-    h_muon_0_isolation_topo->Write();
-    h_muon_0_isolation_topo_dphi_btag_pt1_pt2_mass->Write();
+    h_elec_0_isolation_topo->Write();
+    h_elec_0_isolation_topo_dphi_btag_pt1_pt2_mass->Write();
 
-    h_muon_1_isolation_topo->Write();
-    h_muon_1_isolation_topo_dphi_btag_pt1_pt2_mass->Write();
+    h_elec_1_isolation_topo->Write();
+    h_elec_1_isolation_topo_dphi_btag_pt1_pt2_mass->Write();
 
     h_Z_pt_reco_topo->Write();
     h_Z_pt_reco_cuts->Write();
