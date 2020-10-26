@@ -209,19 +209,19 @@ void CLoop::Fill(double weight, int z_sample) {
         trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
         bool trigger_match_1 = bool((muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
         bool trigger_match_2 = bool(!(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
-        if(weight!=1){
+        /*if(weight!=1){
           if (trigger_match_1){weight=weight*muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;}
           if (trigger_match_2){weight=weight*muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;}
-        }
+        }*/
         trigger_match= trigger_match_1 | trigger_match_2;
       } else {
         trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
         bool trigger_match_1=bool((muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
         bool trigger_match_2=bool(!(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
-        if(weight!=1){
+        /*if(weight!=1){
           if (trigger_match_1){weight=weight*muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;}
           if (trigger_match_2){weight=weight*muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;}
-        }
+        }*/
         trigger_match= trigger_match_1 | trigger_match_2;
       }
       bool muon_id=muon_0_id_medium && muon_1_id_medium;

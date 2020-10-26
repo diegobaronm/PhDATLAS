@@ -1,12 +1,11 @@
 #!/bin/bash
-"""rm -r MC/out_previous
+rm -r MC/out_previous
 rm -r DATA/out_previous
 mv MC/out/ MC/out_previous/
 mkdir MC/out/
 mv DATA/out/ DATA/out_previous/
 mkdir DATA/out/
 cp MC/Analysis.h DATA/Analysis.h
-
 
 cd MC
 
@@ -24,8 +23,8 @@ done
 hadd out/Ztautau_Sherpa.root out/*
 
 cd ..
-"""
-years=('2017' '2015')
+
+years=('2018' '2017' '2015')
 for i in ${years[@]}
 do
     ./executer.sh $i

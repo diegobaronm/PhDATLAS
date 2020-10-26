@@ -68,7 +68,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }
         }*/
         // PYTHIA REWEIGHTING
-        /*if (z_sample==1){
+        if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
                 z_w=((0.93-1)/(log10(80)-log10(40)))*(log10(zpt)-log10(40))+1;
@@ -79,7 +79,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             if (zpt>=151){
                 z_w=0.80;
             }
-        }*/
+        }
         double zpt_weight=1/z_w;
 
 
@@ -89,11 +89,11 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         // check if event is from real data
         if (weight_total != 0) {
             // take product of all scale factors
-            eventWeight = weight_total*lumFactor*zpt_weight
-            *muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA
+            eventWeight = weight_total*lumFactor*zpt_weight;
+            /**muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA
             *jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT
             *jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85
-            *muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_1_NOMINAL_MuEffSF_Reco_QualMedium*muon_1_NOMINAL_MuEffSF_TTVA;
+            *muon_1_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_1_NOMINAL_MuEffSF_Reco_QualMedium*muon_1_NOMINAL_MuEffSF_TTVA;*/
         }
 
         // fill histograms
