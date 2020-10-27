@@ -191,6 +191,11 @@ void CLoop::Book(double lumFactor) {
     h_ratio_lpt_tpt_topo = new TH1F("ratio_lpt_tpt_topo","ratio_lpt_tpt",40,0,4);
     h_ratio_ptjet_zpt_cuts = new TH1F("ratio_ptjet_zpt_cuts","ratio_ptjet_zpt",40,0,4);
     h_ratio_lpt_tpt_cuts = new TH1F("ratio_lpt_tpt_cuts","ratio_lpt_tpt",40,0,4);
+    // TRIGGER STATISTICS
+    h_trigger_1_pass = new TH1F("trigger_1_pass","Events where 1 muon fires the trigger",2,0,2);
+    h_trigger_1_pass_cuts = new TH1F("trigger_1_pass_cuts","Events where 1 muon fires the trigger",2,0,2);
+    h_trigger_2_pass = new TH1F("trigger_2_pass","Events where 2 muons fire the trigger",2,0,2);
+    h_trigger_2_pass_cuts = new TH1F("trigger_2_pass_cuts","Events where 2 muons fire the trigger",2,0,2);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
@@ -203,27 +208,36 @@ void CLoop::Fill(double weight, int z_sample) {
 
       h_delta_phi->Fill(angle,weight);
 
-      bool trigger_decision= false;
-      bool trigger_match= false;
+      bool trigger_decision = false;
+      bool trigger_match = false;
+      bool trigger_match_1 = false;
+      bool trigger_match_2 = false;
+      bool trigger_match_12 = false;
       if (run_number>= 276262 && run_number<=284484) {
-        trigger_decision= bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
-        bool trigger_match_1 = bool((muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
-        bool trigger_match_2 = bool(!(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
-        /*if(weight!=1){
+        trigger_decision = bool(HLT_mu20_iloose_L1MU15 | HLT_mu50);
+        trigger_match_1 = bool((muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
+        trigger_match_2 = bool(!(muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
+        trigger_match_12 = bool((muTrigMatch_0_HLT_mu20_iloose_L1MU15 | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu20_iloose_L1MU15 | muTrigMatch_1_HLT_mu50));
+        if(weight!=1){
           if (trigger_match_1){weight=weight*muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;}
           if (trigger_match_2){weight=weight*muon_1_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;}
-        }*/
-        trigger_match= trigger_match_1 | trigger_match_2;
+        }
+        trigger_match= trigger_match_1 | trigger_match_2 | trigger_match_12;
       } else {
-        trigger_decision= bool(HLT_mu26_ivarmedium | HLT_mu50);
-        bool trigger_match_1=bool((muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
-        bool trigger_match_2=bool(!(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
-        /*if(weight!=1){
+        trigger_decision = bool(HLT_mu26_ivarmedium | HLT_mu50);
+        trigger_match_1 = bool((muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && !(muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
+        trigger_match_2 = bool(!(muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
+        trigger_match_12 = bool((muTrigMatch_0_HLT_mu26_ivarmedium | muTrigMatch_0_HLT_mu50) && (muTrigMatch_1_HLT_mu26_ivarmedium | muTrigMatch_1_HLT_mu50));
+        if(weight!=1){
           if (trigger_match_1){weight=weight*muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;}
           if (trigger_match_2){weight=weight*muon_1_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;}
-        }*/
-        trigger_match= trigger_match_1 | trigger_match_2;
+        }
+        trigger_match= trigger_match_1 | trigger_match_2 | trigger_match_12;
       }
+
+      h_trigger_1_pass->Fill((trigger_match_1 | trigger_match_2),weight);
+      h_trigger_2_pass->Fill(trigger_match_12,weight);
+
       bool muon_id=muon_0_id_medium && muon_1_id_medium;
 
       float q_mu0=muon_0_q;
@@ -378,6 +392,9 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_lep2_phi_cuts->Fill(muon_1_p4->Phi(),weight);
                     h_Z_pt_reco_cuts->Fill(Z_pt,weight);
 
+                    h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
+                    h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
+
                     if (weight!=1){
                       h_Z_pt_truth_cuts->Fill(truth_z_pt/1000,weight);
                       h_weight_mc_cuts->Fill(weight_total,1);
@@ -515,6 +532,12 @@ void CLoop::Style(double lumFactor) {
     h_ratio_lpt_tpt_topo->Write();
     h_ratio_ptjet_zpt_cuts->Write();
     h_ratio_lpt_tpt_cuts->Write();
+
+    // TRIGGER STATISTICS
+    h_trigger_1_pass->Write();
+    h_trigger_1_pass_cuts->Write();
+    h_trigger_2_pass->Write();
+    h_trigger_2_pass_cuts->Write();
 }
 
 #endif // End header guard

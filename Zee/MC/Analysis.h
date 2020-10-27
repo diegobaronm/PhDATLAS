@@ -104,4 +104,9 @@ TH1F * h_ratio_lpt_tpt_topo;
 TH1F * h_ratio_ptjet_zpt_cuts;
 TH1F * h_ratio_lpt_tpt_cuts;
 
+// TRIGGER STATISTICS
+TH1F * h_trigger_1_pass;
+TH1F * h_trigger_1_pass_cuts;
+TH1F * h_trigger_2_pass;
+TH1F * h_trigger_2_pass_cuts;
 #endif
