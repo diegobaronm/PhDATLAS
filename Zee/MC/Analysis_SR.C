@@ -238,7 +238,7 @@ void CLoop::Fill(double weight, int z_sample) {
       h_trigger_1_pass->Fill((trigger_match_1 | trigger_match_2),weight);
       h_trigger_2_pass->Fill(trigger_match_12,weight);
 
-      bool elec_id= elec_0_id_tight && elec_1_id_tight;
+      bool elec_id = elec_0_id_tight && elec_1_id_tight;
 
       float q_mu0=elec_0_q;
       float q_mu1=elec_1_q;
@@ -286,7 +286,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (elec_1_p4->Pt()>=35) {
           cuts[4]=1;
         }
-        if (inv_mass<110 && inv_mass>70) {
+        if (inv_mass<100 && inv_mass>80) {
           cuts[5]=1;
         }
 

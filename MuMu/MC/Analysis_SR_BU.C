@@ -280,10 +280,10 @@ void CLoop::Fill(double weight, int z_sample) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (muon_0_p4->Pt()>=45) {
+        if (muon_0_p4->Pt()>=35) {
           cuts[3]=1;
         }
-        if (muon_1_p4->Pt()>=45) {
+        if (muon_1_p4->Pt()>=35) {
           cuts[4]=1;
         }
         if (inv_mass<100 && inv_mass>80) {

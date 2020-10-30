@@ -286,7 +286,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (elec_1_p4->Pt()>=35) {
           cuts[4]=1;
         }
-        if (inv_mass<110 && inv_mass>70) {
+        if (inv_mass<100 && inv_mass>80) {
           cuts[5]=1;
         }
 
