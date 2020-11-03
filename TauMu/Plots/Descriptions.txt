@@ -29,3 +29,4 @@ V24-pTG65-CR-InvMass/-----> Same as above.
 V24-pT45to65-CR-InvMass/-----> Same as above.
 V25-pTG45/-----> Analysis with V25 Ntuples + CR=Fail loose isolation + NTracks>15
 V25-SumpT------> Same as above but adding Sum pT histograms (scalar sum of the pT of all the objects)
+V25-NoTauSFs(Sherpa/PoPy)---> Analysis without applying the Tau-ID SFs and with (Sherpa/PoPy) as generator for the signal. In this case only PoPy samples are ZpT reweighted.
