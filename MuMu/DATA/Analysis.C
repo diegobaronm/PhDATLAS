@@ -271,7 +271,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0};
-        if (angle<=2*pi/3){
+        if (angle<=11*pi/18){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -280,7 +280,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
           cuts[2]=1;
         }
-        if (muon_0_p4->Pt()>=35) {
+        if (muon_0_p4->Pt()>=55) {
           cuts[3]=1;
         }
         if (muon_1_p4->Pt()>=35) {

@@ -68,6 +68,42 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }
         }*/
         // PYTHIA REWEIGHTING
+        if(z_sample==1){
+            double zpt=truth_Z_p4->Pt()/1000;
+            if(zpt>=40 & zpt<46){
+                z_w=0.995;
+            }else if(zpt>=46 & zpt<48){
+                z_w=0.99;
+            }else if(zpt>=48 & zpt<51){
+                z_w=0.983;
+            }else if(zpt>=51 & zpt<54){
+                z_w=0.974;
+            }else if(zpt>=54 & zpt<58){
+                z_w=0.978;
+            }else if(zpt>=58 & zpt<60){
+                z_w=0.969;
+            }else if(zpt>=60 & zpt<65){
+                z_w=0.95;
+            }else if(zpt>=65 & zpt<70){
+                z_w=0.949;
+            }else if(zpt>=70 & zpt<75){
+                z_w=0.942;
+            }else if(zpt>=75 & zpt<80){
+                z_w=0.937;
+            }else if(zpt>=80 & zpt<85){
+                z_w=0.92;
+            }else if(zpt>=85 & zpt<95){
+                z_w=0.9;
+            }else if(zpt>=95 & zpt<108){
+                z_w=0.891;
+            }else if(zpt>=108 & zpt<130){
+                z_w=0.863;
+            }else if(zpt>=130 & zpt<151){
+                z_w=0.84;
+            }else if(zpt>=151){
+                z_w=0.8;
+            }
+        }
         /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
