@@ -280,7 +280,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (elec_0_iso_FCTight==1 && elec_1_iso_FCTight==1) {
           cuts[2]=1;
         }
-        if (elec_0_p4->Pt()>=55) {
+        if (elec_0_p4->Pt()>=65) {
           cuts[3]=1;
         }
         if (elec_1_p4->Pt()>=35) {

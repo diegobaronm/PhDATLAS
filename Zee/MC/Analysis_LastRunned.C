@@ -271,7 +271,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0};
-        if (angle<=2*pi/3){
+        if (angle<=11*pi/18){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
