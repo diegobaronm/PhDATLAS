@@ -280,10 +280,10 @@ void CLoop::Fill(double weight, int z_sample) {
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{60},b{35};
+        double a{55},b{35};
         if(random){
           a=35;
-          b=60;
+          b=55;
         }
         if (angle<=11.5*pi/18){
           cuts[0]=1;
@@ -304,15 +304,14 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(muon_1_p4->Pt()>=(b+15)){
+          if(muon_1_p4->Pt()>=(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(muon_0_p4->Pt()>=(a+15)){
+          if(muon_0_p4->Pt()>=(a+20)){
             cuts[6]=1;
           }
         }
-
 
         vector<int> c_phi={0,1,1,1,1,1,1};
         vector<int> c_btag={1,0,1,1,1,1,1};
