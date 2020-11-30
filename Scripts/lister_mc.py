@@ -128,6 +128,48 @@ mc={'Ztautau_2018':[base_path+'user.sdysch.v19.mc.361108.PoPy8_Ztt.M4.e3601_s312
 'Ztautau_sherpa14_2017':[base_path_sherpa+'user.dbaronmo.v19.mc.364141.Sh221_PDF30_Ztt_MV1000_E_CMS.M4.e5307_s3126_r10201_p3972.sv2_Le',364141,0.14823,0.9751,1],
 'Ztautau_sherpa14_2015':[base_path_sherpa+'user.dbaronmo.v19.mc.364141.Sh221_PDF30_Ztt_MV1000_E_CMS.M4.e5307_s3126_r9364_p3972.sv2_Le',364141,0.14823,0.9751,1],
 
+'Zmumu_sherpa1_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364100.Sh221_PDF30_Zmumu_MV0_70_CVBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364100', 1981.7, 0.9751, 0.82152] ,
+'Zmumu_sherpa1_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364100.Sh221_PDF30_Zmumu_MV0_70_CVBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364100', 1981.7, 0.9751, 0.82152] ,
+'Zmumu_sherpa1_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364100.Sh221_PDF30_Zmumu_MV0_70_CVBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364100', 1981.7, 0.9751, 0.82152] ,
+'Zmumu_sherpa2_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364101.Sh221_PDF30_Zmumu_MV0_70_CFBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364101', 1982.6, 0.9751, 0.11357] ,
+'Zmumu_sherpa2_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364101.Sh221_PDF30_Zmumu_MV0_70_CFBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364101', 1982.6, 0.9751, 0.11357] ,
+'Zmumu_sherpa2_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364101.Sh221_PDF30_Zmumu_MV0_70_CFBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364101', 1982.6, 0.9751, 0.11357] ,
+'Zmumu_sherpa3_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364102.Sh221_PDF30_Zmumu_MV0_70_BF.M4.e5271_s3126_r10201_p4097.sv1_Le', '364102', 1981.5, 0.9751, 0.065853] ,
+'Zmumu_sherpa3_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364102.Sh221_PDF30_Zmumu_MV0_70_BF.M4.e5271_s3126_r10724_p4097.sv1_Le', '364102', 1981.5, 0.9751, 0.065853] ,
+'Zmumu_sherpa3_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364102.Sh221_PDF30_Zmumu_MV0_70_BF.M4.e5271_s3126_r9364_p4097.sv1_Le', '364102', 1981.5, 0.9751, 0.065853] ,
+'Zmumu_sherpa4_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364103.Sh221_PDF30_Zmumu_MV70_140_CVBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364103', 109.07, 0.9751, 0.68831] ,
+'Zmumu_sherpa4_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364103.Sh221_PDF30_Zmumu_MV70_140_CVBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364103', 109.07, 0.9751, 0.68831] ,
+'Zmumu_sherpa4_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364103.Sh221_PDF30_Zmumu_MV70_140_CVBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364103', 109.07, 0.9751, 0.68831] ,
+'Zmumu_sherpa5_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364104.Sh221_PDF30_Zmumu_MV70_140_CFBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364104', 108.98, 0.9751, 0.19027] ,
+'Zmumu_sherpa5_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364104.Sh221_PDF30_Zmumu_MV70_140_CFBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364104', 108.98, 0.9751, 0.19027] ,
+'Zmumu_sherpa5_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364104.Sh221_PDF30_Zmumu_MV70_140_CFBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364104', 108.98, 0.9751, 0.19027] ,
+'Zmumu_sherpa6_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364105.Sh221_PDF30_Zmumu_MV70_140_BF.M4.e5271_s3126_r10724_p4097.sv1_Le', '364105', 109.05, 0.9751, 0.11374] ,
+'Zmumu_sherpa6_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364105.Sh221_PDF30_Zmumu_MV70_140_BF.M4.e5271_s3126_r9364_p4097.sv1_Le', '364105', 109.05, 0.9751, 0.11374] ,
+'Zmumu_sherpa6_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364105.Sh221_PDF30_Zmumu_MV70_140_BF.M4.e5271_s3126_r10201_p4097.sv1_Le', '364105', 109.05, 0.9751, 0.11374] ,
+'Zmumu_sherpa7_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364106.Sh221_PDF30_Zmumu_MV140_280_CVBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364106', 39.87, 0.9751, 0.61125] ,
+'Zmumu_sherpa7_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364106.Sh221_PDF30_Zmumu_MV140_280_CVBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364106', 39.87, 0.9751, 0.61125] ,
+'Zmumu_sherpa7_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364106.Sh221_PDF30_Zmumu_MV140_280_CVBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364106', 39.87, 0.9751, 0.61125] ,
+'Zmumu_sherpa8_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364107.Sh221_PDF30_Zmumu_MV140_280_CFBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364107', 39.857, 0.9751, 0.23359] ,
+'Zmumu_sherpa8_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364107.Sh221_PDF30_Zmumu_MV140_280_CFBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364107', 39.857, 0.9751, 0.23359] ,
+'Zmumu_sherpa8_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364107.Sh221_PDF30_Zmumu_MV140_280_CFBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364107', 39.857, 0.9751, 0.23359] ,
+'Zmumu_sherpa9_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364108.Sh221_PDF30_Zmumu_MV140_280_BF.M4.e5271_s3126_r10201_p4097.sv1_Le', '364108', 39.888, 0.9751, 0.1557] ,
+'Zmumu_sherpa9_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364108.Sh221_PDF30_Zmumu_MV140_280_BF.M4.e5271_s3126_r10724_p4097.sv1_Le', '364108', 39.888, 0.9751, 0.1557] ,
+'Zmumu_sherpa9_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364108.Sh221_PDF30_Zmumu_MV140_280_BF.M4.e5271_s3126_r9364_p4097.sv1_Le', '364108', 39.888, 0.9751, 0.1557] ,
+'Zmumu_sherpa10_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364109.Sh221_PDF30_Zmumu_MV280_500_CVBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364109', 8.522, 0.9751, 0.56046] ,
+'Zmumu_sherpa10_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364109.Sh221_PDF30_Zmumu_MV280_500_CVBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364109', 8.522, 0.9751, 0.56046] ,
+'Zmumu_sherpa10_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364109.Sh221_PDF30_Zmumu_MV280_500_CVBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364109', 8.522, 0.9751, 0.56046] ,
+'Zmumu_sherpa11_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364110.Sh221_PDF30_Zmumu_MV280_500_CFBV.M4.e5271_s3126_r10201_p4097.sv1_Le', '364110', 8.5194, 0.9751, 0.26621] ,
+'Zmumu_sherpa11_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364110.Sh221_PDF30_Zmumu_MV280_500_CFBV.M4.e5271_s3126_r10724_p4097.sv1_Le', '364110', 8.5194, 0.9751, 0.26621] ,
+'Zmumu_sherpa11_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364110.Sh221_PDF30_Zmumu_MV280_500_CFBV.M4.e5271_s3126_r9364_p4097.sv1_Le', '364110', 8.5194, 0.9751, 0.26621] ,
+'Zmumu_sherpa12_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364111.Sh221_PDF30_Zmumu_MV280_500_BF.M4.e5271_s3126_r10201_p4097.sv1_Le', '364111', 8.5301, 0.9751, 0.17666] ,
+'Zmumu_sherpa12_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364111.Sh221_PDF30_Zmumu_MV280_500_BF.M4.e5271_s3126_r10724_p4097.sv1_Le', '364111', 8.5301, 0.9751, 0.17666] ,
+'Zmumu_sherpa12_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364111.Sh221_PDF30_Zmumu_MV280_500_BF.M4.e5271_s3126_r9364_p4097.sv1_Le', '364111', 8.5301, 0.9751, 0.17666] ,
+'Zmumu_sherpa13_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364112.Sh221_PDF30_Zmumu_MV500_1000.M4.e5271_s3126_r10201_p4097.sv1_Le', '364112', 1.7876, 0.9751, 1.0] ,
+'Zmumu_sherpa13_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364112.Sh221_PDF30_Zmumu_MV500_1000.M4.e5271_s3126_r10724_p4097.sv1_Le', '364112', 1.7876, 0.9751, 1.0] ,
+'Zmumu_sherpa13_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364112.Sh221_PDF30_Zmumu_MV500_1000.M4.e5271_s3126_r9364_p4097.sv1_Le', '364112', 1.7876, 0.9751, 1.0] ,
+'Zmumu_sherpa14_2017'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364113.Sh221_PDF30_Zmumu_MV1000_E_CMS.M4.e5271_s3126_r10201_p4097.sv1_Le', '364113', 0.1476, 0.9751, 1.0] ,
+'Zmumu_sherpa14_2018'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364113.Sh221_PDF30_Zmumu_MV1000_E_CMS.M4.e5271_s3126_r10724_p4097.sv1_Le', '364113', 0.1476, 0.9751, 1.0] ,
+'Zmumu_sherpa14_2015'  :  [base_path_sherpa+'user.dbaronmo.v25-2mu-sherpa.mc.364113.Sh221_PDF30_Zmumu_MV1000_E_CMS.M4.e5271_s3126_r9364_p4097.sv1_Le', '364113', 0.1476, 0.9751, 1.0] ,
 
 }
 
@@ -178,7 +220,7 @@ def info_file(name,directory,DSID,XSEC,KFAC,FIL_EFF,home):
         if file[-4:]=='root':
             f = ROOT.TFile.Open(file, 'read')
             hist = f.Get('h_metadata')
-            sumw+=hist.GetBinContent(8)        
+            sumw+=hist.GetBinContent(8)
     k=0
     for file in os.listdir():
         if file[-4:]=='root':
@@ -190,7 +232,7 @@ def info_file(name,directory,DSID,XSEC,KFAC,FIL_EFF,home):
     return strin
 
 for sample in mc:
-    
+
     files=open('files.txt','a+')
     files.write('#%s\n'%(sample))
     files.write(list(sample,mc[sample][0],pwd))
