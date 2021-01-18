@@ -280,10 +280,10 @@ void CLoop::Fill(double weight, int z_sample) {
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{60},b{35};
+        double a{50},b{35};
         if(random){
           a=35;
-          b=60;
+          b=50;
         }
         if (angle<=11.5*pi/18){
           cuts[0]=1;

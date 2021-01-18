@@ -8,9 +8,12 @@ TH1F * h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt;
 TH1F * h_trans_lepmet_mass_topo;
 TH1F * h_trans_lepmet_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
 
-TH1F * h_tau_matched_topo;
-TH1F * h_tau_matched_after_0_to_90;
-TH1F * h_tau_matched_after_outside;
+TH1F * h_tau_matched_topo_1p;
+TH1F * h_tau_matched_cuts_1p;
+TH1F * h_tau_matched_cuts_tpt_1p;
+TH1F * h_tau_matched_topo_3p;
+TH1F * h_tau_matched_cuts_3p;
+TH1F * h_tau_matched_cuts_tpt_3p;
 TH1F * h_sf_e_recoid;
 TH1F * h_sf_e_vertex;
 TH1F * h_sf_e_trigger;

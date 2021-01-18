@@ -5,9 +5,12 @@
 TH1F * h_trans_lepmet_mass_topo;
 TH1F * h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
-TH1F * h_tau_matched_topo;
-TH1F * h_tau_matched_after_0_to_90;
-TH1F * h_tau_matched_after_outside;
+TH1F * h_tau_matched_topo_1p;
+TH1F * h_tau_matched_cuts_1p;
+TH1F * h_tau_matched_cuts_tpt_1p;
+TH1F * h_tau_matched_topo_3p;
+TH1F * h_tau_matched_cuts_3p;
+TH1F * h_tau_matched_cuts_tpt_3p;
 TH1F * h_sf_mu_recoid;
 TH1F * h_sf_mu_vertex;
 TH1F * h_sf_mu_trigger;
@@ -77,7 +80,7 @@ TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega;
 TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
-//Writing tau+nu pT
+//Writing sum pT
 TH1F * h_sum_pt_topo;
 TH1F * h_sum_pt_topo_dphi;
 TH1F * h_sum_pt_topo_dphi_btag;
@@ -87,6 +90,27 @@ TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu;
 TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega;
 TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+
+TH1F * h_sum_pt_topo_1p_ZpTa;
+TH1F * h_sum_pt_topo_1p_ZpTb;
+TH1F * h_sum_pt_topo_1p_ZpTc;
+TH1F * h_sum_pt_topo_3p_ZpTa;
+TH1F * h_sum_pt_topo_3p_ZpTb;
+TH1F * h_sum_pt_topo_3p_ZpTc;
+
+TH1F * h_sum_pt_cuts_1p_ZpTa;
+TH1F * h_sum_pt_cuts_1p_ZpTb;
+TH1F * h_sum_pt_cuts_1p_ZpTc;
+TH1F * h_sum_pt_cuts_3p_ZpTa;
+TH1F * h_sum_pt_cuts_3p_ZpTb;
+TH1F * h_sum_pt_cuts_3p_ZpTc;
+
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTa;
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTb;
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTc;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTa;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTb;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTc;
 
 //Writing MET
 TH1F * h_met_topo;
