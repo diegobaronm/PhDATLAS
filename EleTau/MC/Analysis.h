@@ -109,6 +109,27 @@ TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle;
 TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco;
 TH1F * h_sum_pt_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
 
+TH1F * h_sum_pt_topo_1p_ZpTa;
+TH1F * h_sum_pt_topo_1p_ZpTb;
+TH1F * h_sum_pt_topo_1p_ZpTc;
+TH1F * h_sum_pt_topo_3p_ZpTa;
+TH1F * h_sum_pt_topo_3p_ZpTb;
+TH1F * h_sum_pt_topo_3p_ZpTc;
+
+TH1F * h_sum_pt_cuts_1p_ZpTa;
+TH1F * h_sum_pt_cuts_1p_ZpTb;
+TH1F * h_sum_pt_cuts_1p_ZpTc;
+TH1F * h_sum_pt_cuts_3p_ZpTa;
+TH1F * h_sum_pt_cuts_3p_ZpTb;
+TH1F * h_sum_pt_cuts_3p_ZpTc;
+
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTa;
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTb;
+TH1F * h_sum_pt_cuts_tpt_1p_ZpTc;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTa;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTb;
+TH1F * h_sum_pt_cuts_tpt_3p_ZpTc;
+
 //Writing MET
 TH1F * h_met_topo;
 TH1F * h_met_topo_dphi;

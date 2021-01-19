@@ -400,7 +400,7 @@ void CLoop::Fill(double weight, int z_sample) {
           // truth ZpT definition
           if (z_sample==1 || z_sample==2)
           {
-            truth_z_pt=truth_Z_p4->Pt();
+            truth_z_pt=truth_Z_p4->Pt()/1000;
           }
 
           if (inside) {
@@ -412,7 +412,7 @@ void CLoop::Fill(double weight, int z_sample) {
             }
             h_Z_pt_reco_inside_topo->Fill(Z_pt,weight);
             if (weight!=1){
-              h_Z_pt_truth_inside_topo->Fill(truth_z_pt/1000,weight);
+              h_Z_pt_truth_inside_topo->Fill(truth_z_pt,weight);
             }
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
@@ -425,7 +425,7 @@ void CLoop::Fill(double weight, int z_sample) {
             }
             h_Z_pt_reco_outside_topo->Fill(Z_pt,weight);
             if (weight!=1){
-              h_Z_pt_truth_outside_topo->Fill(truth_z_pt/1000,weight);
+              h_Z_pt_truth_outside_topo->Fill(truth_z_pt,weight);
             }
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
@@ -438,7 +438,7 @@ void CLoop::Fill(double weight, int z_sample) {
             }
             h_Z_pt_reco_outside_topo->Fill(Z_pt,weight);
             if (weight!=1){
-              h_Z_pt_truth_outside_topo->Fill(truth_z_pt/1000,weight);
+              h_Z_pt_truth_outside_topo->Fill(truth_z_pt,weight);
             }
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
@@ -890,7 +890,7 @@ void CLoop::Fill(double weight, int z_sample) {
                             }
                           }
                           if (weight!=1){
-                            h_Z_pt_truth_cuts_inside->Fill(truth_z_pt/1000,weight);
+                            h_Z_pt_truth_cuts_inside->Fill(truth_z_pt,weight);
                           }
                         }
                         if (outside_lep) {
@@ -918,7 +918,7 @@ void CLoop::Fill(double weight, int z_sample) {
                             }
                           }
                           if (weight!=1){
-                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
+                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt,weight);
                           }
                         }
                         if (outside_tau){
@@ -946,7 +946,7 @@ void CLoop::Fill(double weight, int z_sample) {
                             }
                           }
                           if (weight!=1){
-                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt/1000,weight);
+                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt,weight);
                           }
                         }
                         //TAU PT CUT
@@ -1020,7 +1020,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               }
                             }
                             if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt/1000,weight);
+                              h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt,weight);
                             }
                           }
                           if (outside_lep) {
@@ -1049,7 +1049,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               }
                             }
                             if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
+                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt,weight);
                             }
                           }
                           if (outside_tau){
@@ -1078,7 +1078,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               }
                             }
                             if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt/1000,weight);
+                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt,weight);
                             }
                           }
                         }

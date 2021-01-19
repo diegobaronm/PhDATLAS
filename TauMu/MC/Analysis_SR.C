@@ -616,7 +616,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
               }
             }
@@ -625,7 +625,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
               }
             }
@@ -640,7 +640,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               }
             }
@@ -649,7 +649,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               }
             }
@@ -664,7 +664,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               }
             }
@@ -673,7 +673,7 @@ void CLoop::Fill(double weight, int z_sample) {
                 h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               } if (truth_z_pt>100 && truth_z_pt<150){
                 h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } else {
+              } if (truth_z_pt>150) {
                 h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
               }
             }
@@ -876,7 +876,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                             }
                           }
@@ -885,7 +885,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                             }
                           }
@@ -904,7 +904,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             }
                           }
@@ -913,7 +913,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             }
                           }
@@ -932,7 +932,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             }
                           }
@@ -941,7 +941,7 @@ void CLoop::Fill(double weight, int z_sample) {
                               h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             } if (truth_z_pt>100 && truth_z_pt<150){
                               h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } else {
+                            } if (truth_z_pt>150) {
                               h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                             }
                           }
@@ -1006,7 +1006,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                               }
                             }
@@ -1015,7 +1015,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
                               }
                             }
@@ -1035,7 +1035,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               }
                             }
@@ -1044,7 +1044,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               }
                             }
@@ -1064,7 +1064,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               }
                             }
@@ -1073,7 +1073,7 @@ void CLoop::Fill(double weight, int z_sample) {
                                 h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               } if (truth_z_pt>100 && truth_z_pt<150){
                                 h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } else {
+                              } if (truth_z_pt>150) {
                                 h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
                               }
                             }
