@@ -122,6 +122,17 @@ void CLoop::Book(double lumFactor) {
     h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl = new TH1F("sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl","Sum pT",400,0,400);
     h_sumlep_pt_topo_dphi_btag_iso_pt1_mass_ptl = new TH1F("sumlep_pt_topo_dphi_btag_iso_pt1_mass_ptl","Sum pT",400,0,400);
 
+    h_sum_pt_topo_ZpTa = new TH1F("sum_pt_pt_topo_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_topo_ZpTb = new TH1F("sum_pt_pt_topo_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_topo_ZpTc = new TH1F("sum_pt_pt_topo_ZpTc","Sum of pT ",400,0,400);
+
+    h_sum_pt_cuts_ZpTa = new TH1F("sum_pt_pt_cuts_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ZpTb = new TH1F("sum_pt_pt_cuts_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ZpTc = new TH1F("sum_pt_pt_cuts_ZpTc","Sum of pT ",400,0,400);
+
+    h_sum_pt_cuts_ptl_ZpTa = new TH1F("sum_pt_pt_cuts_ptl_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ptl_ZpTb = new TH1F("sum_pt_pt_cuts_ptl_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ptl_ZpTc = new TH1F("sum_pt_pt_cuts_ptl_ZpTc","Sum of pT ",400,0,400);
 
     h_lep2_phi_topo= new TH1F("lep2_phi_topo","Lepton 2 phi",64,-3.2,3.2);
     h_lep2_phi_cuts= new TH1F("lep2_phi_cuts","Lepton 2 phi",64,-3.2,3.2);
@@ -264,25 +275,28 @@ void CLoop::Fill(double weight, int z_sample) {
 
         if (z_sample==1 || z_sample==2)
         {
-          truth_z_pt=truth_Z_p4->Pt();
+          truth_z_pt=truth_Z_p4->Pt()/1000;
         }
 
         Z_pt_x=elec_1_p4->Pt()*cos(elec_1_p4->Phi())+elec_0_p4->Pt()*cos(elec_0_p4->Phi());
         Z_pt_y=elec_1_p4->Pt()*sin(elec_1_p4->Phi())+elec_0_p4->Pt()*sin(elec_0_p4->Phi());
         Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
+        if (z_sample==0){
+            truth_z_pt=Z_pt;
+        }
         h_Z_pt_reco_topo->Fill(Z_pt,weight);
         if (weight!=1){
-          h_Z_pt_truth_topo->Fill(truth_z_pt/1000,weight);
+          h_Z_pt_truth_topo->Fill(truth_z_pt,weight);
         }
         r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{60},b{35};
+        double a{50},b{35};
         if(random){
           a=35;
-          b=60;
+          b=50;
         }
         if (angle<=11.5*pi/18){
           cuts[0]=1;
@@ -353,6 +367,13 @@ void CLoop::Fill(double weight, int z_sample) {
         h_lep1_phi_topo->Fill(elec_0_p4->Phi(),weight);
         h_lep2_phi_topo->Fill(elec_1_p4->Phi(),weight);
         h_delta_phi_topo->Fill(angle,weight);
+        if (truth_z_pt<100){
+          h_sum_pt_topo_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+        } if (truth_z_pt>100 && truth_z_pt<150){
+          h_sum_pt_topo_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+        } if (truth_z_pt>150) {
+          h_sum_pt_topo_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+        }
         if (weight!=1){
           h_weight_total_topo->Fill(weight,1);
           h_weight_mc_topo->Fill(weight_total,1);
@@ -419,8 +440,16 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
 
+                    if (truth_z_pt<100){
+                      h_sum_pt_cuts_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                    } if (truth_z_pt>100 && truth_z_pt<150){
+                      h_sum_pt_cuts_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                    } if (truth_z_pt>150) {
+                      h_sum_pt_cuts_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                    }
+
                     if (weight!=1){
-                      h_Z_pt_truth_cuts->Fill(truth_z_pt/1000,weight);
+                      h_Z_pt_truth_cuts->Fill(truth_z_pt,weight);
                       h_weight_mc_cuts->Fill(weight_total,1);
                       h_weight_total_cuts->Fill(weight,1);
                       h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight,1);
@@ -441,8 +470,16 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ratio_ptjet_zpt_cuts_ptl->Fill(r_jpt_zpt,weight);
                       h_Z_pt_reco_cuts_ptl->Fill(Z_pt,weight);
 
+                      if (truth_z_pt<100){
+                        h_sum_pt_cuts_ptl_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                      } if (truth_z_pt>100 && truth_z_pt<150){
+                        h_sum_pt_cuts_ptl_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                      } if (truth_z_pt>150) {
+                        h_sum_pt_cuts_ptl_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
+                      }
+
                       if (weight!=1){
-                        h_Z_pt_truth_cuts_ptl->Fill(truth_z_pt/1000,weight);
+                        h_Z_pt_truth_cuts_ptl->Fill(truth_z_pt,weight);
                       }
                     }
                   }
@@ -502,6 +539,18 @@ void CLoop::Style(double lumFactor) {
     h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass->Write();
     h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Write();
     h_sumlep_pt_topo_dphi_btag_iso_pt1_mass_ptl->Write();
+
+    h_sum_pt_topo_ZpTa->Write();
+    h_sum_pt_topo_ZpTb->Write();
+    h_sum_pt_topo_ZpTc->Write();
+
+    h_sum_pt_cuts_ZpTa->Write();
+    h_sum_pt_cuts_ZpTb->Write();
+    h_sum_pt_cuts_ZpTc->Write();
+
+    h_sum_pt_cuts_ptl_ZpTa->Write();
+    h_sum_pt_cuts_ptl_ZpTb->Write();
+    h_sum_pt_cuts_ptl_ZpTc->Write();
 
     h_lep2_phi_topo->Write();
     h_lep2_phi_cuts->Write();
