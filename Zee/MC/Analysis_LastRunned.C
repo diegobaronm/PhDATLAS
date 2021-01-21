@@ -122,17 +122,17 @@ void CLoop::Book(double lumFactor) {
     h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl = new TH1F("sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl","Sum pT",400,0,400);
     h_sumlep_pt_topo_dphi_btag_iso_pt1_mass_ptl = new TH1F("sumlep_pt_topo_dphi_btag_iso_pt1_mass_ptl","Sum pT",400,0,400);
 
-    h_sum_pt_topo_ZpTa = new TH1F("sum_pt_pt_topo_1p_ZpTa","Sum of pT ",400,0,400);
-    h_sum_pt_topo_ZpTb = new TH1F("sum_pt_pt_topo_1p_ZpTb","Sum of pT ",400,0,400);
-    h_sum_pt_topo_ZpTc = new TH1F("sum_pt_pt_topo_1p_ZpTc","Sum of pT ",400,0,400);
+    h_sum_pt_topo_ZpTa = new TH1F("sum_pt_pt_topo_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_topo_ZpTb = new TH1F("sum_pt_pt_topo_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_topo_ZpTc = new TH1F("sum_pt_pt_topo_ZpTc","Sum of pT ",400,0,400);
 
-    h_sum_pt_cuts_ZpTa = new TH1F("sum_pt_pt_cuts_1p_ZpTa","Sum of pT ",400,0,400);
-    h_sum_pt_cuts_ZpTb = new TH1F("sum_pt_pt_cuts_1p_ZpTb","Sum of pT ",400,0,400);
-    h_sum_pt_cuts_ZpTc = new TH1F("sum_pt_pt_cuts_1p_ZpTc","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ZpTa = new TH1F("sum_pt_pt_cuts_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ZpTb = new TH1F("sum_pt_pt_cuts_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ZpTc = new TH1F("sum_pt_pt_cuts_ZpTc","Sum of pT ",400,0,400);
 
-    h_sum_pt_cuts_ptl_ZpTa = new TH1F("sum_pt_pt_cuts_ptl_1p_ZpTa","Sum of pT ",400,0,400);
-    h_sum_pt_cuts_ptl_ZpTb = new TH1F("sum_pt_pt_cuts_ptl_1p_ZpTb","Sum of pT ",400,0,400);
-    h_sum_pt_cuts_ptl_ZpTc = new TH1F("sum_pt_pt_cuts_ptl_1p_ZpTc","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ptl_ZpTa = new TH1F("sum_pt_pt_cuts_ptl_ZpTa","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ptl_ZpTb = new TH1F("sum_pt_pt_cuts_ptl_ZpTb","Sum of pT ",400,0,400);
+    h_sum_pt_cuts_ptl_ZpTc = new TH1F("sum_pt_pt_cuts_ptl_ZpTc","Sum of pT ",400,0,400);
 
     h_lep2_phi_topo= new TH1F("lep2_phi_topo","Lepton 2 phi",64,-3.2,3.2);
     h_lep2_phi_cuts= new TH1F("lep2_phi_cuts","Lepton 2 phi",64,-3.2,3.2);
