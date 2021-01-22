@@ -1,0 +1,5 @@
+﻿pT Random = 35,60+20
+DeltaPhi =115
+Generator = PoPy
+ZpT Rewight = NO
+Comments = Split on bins of ZpT

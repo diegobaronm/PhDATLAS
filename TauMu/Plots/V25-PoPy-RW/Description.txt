@@ -1,0 +1,5 @@
+﻿DeltaPhi =120
+CR = Failed Iso + n_tracks>15
+Generator = PoPy
+ZpT Rewight = YES
+Comments = Split on bins of ZpT
