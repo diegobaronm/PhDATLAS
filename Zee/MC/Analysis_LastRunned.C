@@ -317,11 +317,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(elec_1_p4->Pt()>=(b+20)){
+          if(elec_1_p4->Pt()<(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()>=(a+20)){
+          if(elec_0_p4->Pt()<(a+20)){
             cuts[6]=1;
           }
         }
@@ -367,11 +367,11 @@ void CLoop::Fill(double weight, int z_sample) {
         h_lep1_phi_topo->Fill(elec_0_p4->Phi(),weight);
         h_lep2_phi_topo->Fill(elec_1_p4->Phi(),weight);
         h_delta_phi_topo->Fill(angle,weight);
-        if (truth_z_pt<100){
+        if (Z_pt<100){
           h_sum_pt_topo_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-        } if (truth_z_pt>100 && truth_z_pt<150){
+        } if (Z_pt>100 && Z_pt<150){
           h_sum_pt_topo_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-        } if (truth_z_pt>150) {
+        } if (Z_pt>150) {
           h_sum_pt_topo_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
         }
         if (weight!=1){
@@ -440,11 +440,11 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
 
-                    if (truth_z_pt<100){
+                    if (Z_pt<100){
                       h_sum_pt_cuts_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-                    } if (truth_z_pt>100 && truth_z_pt<150){
+                    } if (Z_pt>100 && Z_pt<150){
                       h_sum_pt_cuts_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-                    } if (truth_z_pt>150) {
+                    } if (Z_pt>150) {
                       h_sum_pt_cuts_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
                     }
 
@@ -470,11 +470,11 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ratio_ptjet_zpt_cuts_ptl->Fill(r_jpt_zpt,weight);
                       h_Z_pt_reco_cuts_ptl->Fill(Z_pt,weight);
 
-                      if (truth_z_pt<100){
+                      if (Z_pt<100){
                         h_sum_pt_cuts_ptl_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-                      } if (truth_z_pt>100 && truth_z_pt<150){
+                      } if (Z_pt>100 && Z_pt<150){
                         h_sum_pt_cuts_ptl_ZpTb->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
-                      } if (truth_z_pt>150) {
+                      } if (Z_pt>150) {
                         h_sum_pt_cuts_ptl_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
                       }
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-rm out/*
+#rm out/*
 mc_signal_sherpa='Zee_sherpa'
 samples=('1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14')
 year=('2015' '2017' '2018')

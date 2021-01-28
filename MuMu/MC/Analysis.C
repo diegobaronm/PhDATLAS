@@ -294,10 +294,10 @@ void CLoop::Fill(double weight, int z_sample) {
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{50},b{35};
+        double a{60},b{35};
         if(random){
           a=35;
-          b=50;
+          b=60;
         }
         if (angle<=11.5*pi/18){
           cuts[0]=1;
@@ -318,11 +318,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(muon_1_p4->Pt()>=(b+20)){
+          if(muon_1_p4->Pt()<(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(muon_0_p4->Pt()>=(a+20)){
+          if(muon_0_p4->Pt()<(a+20)){
             cuts[6]=1;
           }
         }
@@ -368,11 +368,11 @@ void CLoop::Fill(double weight, int z_sample) {
         h_lep1_phi_topo->Fill(muon_0_p4->Phi(),weight);
         h_lep2_phi_topo->Fill(muon_1_p4->Phi(),weight);
         h_delta_phi_topo->Fill(angle,weight);
-        if (truth_z_pt<100){
+        if (Z_pt<100){
           h_sum_pt_topo_ZpTa->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-        } if (truth_z_pt>100 && truth_z_pt<150){
+        } if (Z_pt>100 && Z_pt<150){
           h_sum_pt_topo_ZpTb->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-        } if (truth_z_pt>150) {
+        } if (Z_pt>150) {
           h_sum_pt_topo_ZpTc->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
         }
         if (weight!=1){
@@ -441,11 +441,11 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
 
-                    if (truth_z_pt<100){
+                    if (Z_pt<100){
                       h_sum_pt_cuts_ZpTa->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-                    } if (truth_z_pt>100 && truth_z_pt<150){
+                    } if (Z_pt>100 && Z_pt<150){
                       h_sum_pt_cuts_ZpTb->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-                    } if (truth_z_pt>150) {
+                    } if (Z_pt>150) {
                       h_sum_pt_cuts_ZpTc->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
                     }
 
@@ -471,11 +471,11 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ratio_ptjet_zpt_cuts_ptl->Fill(r_jpt_zpt,weight);
                       h_Z_pt_reco_cuts_ptl->Fill(Z_pt,weight);
 
-                      if (truth_z_pt<100){
+                      if (Z_pt<100){
                         h_sum_pt_cuts_ptl_ZpTa->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-                      } if (truth_z_pt>100 && truth_z_pt<150){
+                      } if (Z_pt>100 && Z_pt<150){
                         h_sum_pt_cuts_ptl_ZpTb->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
-                      } if (truth_z_pt>150) {
+                      } if (Z_pt>150) {
                         h_sum_pt_cuts_ptl_ZpTc->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
                       }
 
