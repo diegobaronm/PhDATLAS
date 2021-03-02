@@ -17,7 +17,8 @@ def DrawC(filename,lumStr,fast,z_sample):
     fullPath = correctPath + filename
 
     # load in CLoop.C
-    r.gROOT.ProcessLine(".L backend/CLoop.C")
+    #r.gROOT.ProcessLine(".L backend/CLoop.C")
+    r.gSystem.Load("backend/CLoop_C")
 
     # load in tree from file
     r.gROOT.ProcessLine("TFile* f = new TFile(\""+fullPath+"\")")

@@ -7,6 +7,9 @@ mv DATA/out/ DATA/out_previous/
 mkdir DATA/out/
 cp MC/Analysis.h DATA/Analysis.h
 
+# COMPILE C++ ANALYSIS SCRIPT
+python3 Compiler.py
+
 cd MC
 
 mc_Ztautau_sherpa='Ztautau_sherpa'

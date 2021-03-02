@@ -8,6 +8,10 @@ mkdir DATA/out/
 cp MC/Analysis.h DATA/Analysis.h
 cd MC
 
+# COMPILE C++ ANALYSIS SCRIPT
+python3 Compiler.py
+
+
 mc_signal_sherpa='Ztautau_sherpa'
 samples=('1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14')
 year=('2015' '2017' '2018')

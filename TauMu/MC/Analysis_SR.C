@@ -39,7 +39,7 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
   string str1="NOPASS";
   string str2="NOPASS";
   string str3="NOPASS";
@@ -75,7 +75,7 @@ string print(std::vector<int> const &input)
 	}
   return cuts+'\n';
 }
-
+*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -348,7 +348,7 @@ void CLoop::Fill(double weight, int z_sample) {
         }
       }
       */
-      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
+      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology

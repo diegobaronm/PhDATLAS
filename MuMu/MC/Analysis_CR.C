@@ -1,8 +1,3 @@
-// Analysis.py
-// Skeleton code in python provided for you
-// In place of this comment you should write [your name] -- [the date] and update it as you go!
-// Make sure to make backups and comment as you go along :)
-
 // Header guard to ensure file is imported properly
 #ifndef Analysis
 #define Analysis

@@ -148,8 +148,10 @@ void CLoop::Book(double lumFactor) {
     // Invariant mass histograms
     // Non reco histos
     //Transeverse lepton mass
-    h_trans_lepmet_mass_topo = new TH1F("transverse_lepton_met_mass_topo","transverse mass lepton",300,0,300);
-    h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_met_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo = new TH1F("transverse_lepton_mass_topo","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
 
     // reco histos
     h_reco_mass_topo = new TH1F("reco_mass_topo","reco mass in between",300,0,300);
@@ -408,7 +410,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[1]=1;
           }
-          if ((tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks)>15 || muon_0_iso_FCLoose_FixedRad==0/*muon_0_iso_FCTightTrackOnly_FixedRad==0*/) {
+          if (lepmet_mass>=60 && /*muon_0_iso_FCLoose_FixedRad==0*/ muon_0_iso_FCTightTrackOnly_FixedRad==0) {
             cuts[2]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -420,25 +422,25 @@ void CLoop::Fill(double weight, int z_sample) {
           if (muon_0_p4->Pt()>=27) {
             cuts[4]=1;
           }
-          if (omega>0 && omega <1.4) {
+          if (omega<0 || omega >1.4) {
             cuts[5]=1;
           }
           if (inside) {
-            if (reco_mass<130 && reco_mass>50) {
+            if (reco_mass<110 && reco_mass>70) {
               cuts[6]=1;
             }
           }
           if (outside_lep) {
-            if (reco_mass_outside<130 && reco_mass_outside>50) {
+            if (reco_mass_outside<110 && reco_mass_outside>70) {
               cuts[6]=1;
             }
           }
           if (outside_tau) {
-            if (reco_mass_outside<130 && reco_mass_outside>50) {
+            if (reco_mass_outside<110 && reco_mass_outside>70) {
               cuts[6]=1;
           }
           }
-          if (tau_0_p4->Pt()>25){
+          if (tau_0_p4->Pt()>45){
             cuts[7]=1;
           }
 
@@ -460,7 +462,12 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCLoose_FixedRad,weight);
+            if(muon_0_iso_FCTightTrackOnly_FixedRad==0){
+              h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
+            }
+            if(lepmet_mass>=60){
+              h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
+            }
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){
@@ -502,7 +509,7 @@ void CLoop::Fill(double weight, int z_sample) {
           }
 
           //  Filling histos
-          h_trans_lepmet_mass_topo->Fill(lepmet_mass,weight);
+          h_trans_lep_mass_topo->Fill(lepmet_mass,weight);
           if (tau_0_n_charged_tracks==1){
             h_rnn_score_1prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
@@ -510,7 +517,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_rnn_score_3prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
           h_jet_n_topo->Fill(n_jets, weight);
-          h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Fill(muon_0_iso_FCLoose_FixedRad,weight);
+          h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
           h_omega_topo->Fill(omega,weight);
           h_met_topo->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_topo->Fill(muon_0_p4->Pt(),weight);
@@ -641,6 +648,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
             if (cuts[6]==1){
               h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
+              h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
               h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
               h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
               h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
@@ -750,7 +758,7 @@ void CLoop::Fill(double weight, int z_sample) {
               if (cuts[7]==1){
                 h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
                 h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_jets, weight);
-                h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
+                h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
                 h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
                 h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(omega,weight);
                 h_lep_phi_cuts_tpt->Fill(muon_0_p4->Phi(),weight);
@@ -889,8 +897,10 @@ void CLoop::Style(double lumFactor) {
 
     // Write histograms to a file
     // This needs to be done for each histogram
-    h_trans_lepmet_mass_topo->Write();
-    h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
+    h_trans_lep_mass_topo->Write();
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
+    h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt->Write();
 
     if (lumFactor!=1){
       h_tau_matched_topo_1p->Write();

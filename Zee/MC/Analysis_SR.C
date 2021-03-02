@@ -39,7 +39,7 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
   string str1="NOPASS";
   string str2="NOPASS";
   string str3="NOPASS";
@@ -75,7 +75,7 @@ string print(std::vector<int> const &input)
 	}
   return cuts+'\n';
 }
-
+*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -293,12 +293,12 @@ void CLoop::Fill(double weight, int z_sample) {
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{60},b{35};
+        double a{50},b{47};
         if(random){
-          a=35;
-          b=60;
+          a=50;
+          b=47;
         }
-        if (angle<=11.5*pi/18){
+        if (angle<=11*pi/18){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -317,11 +317,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(elec_1_p4->Pt()<(b+20)){
+          if(elec_1_p4->Pt()>(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()<(a+20)){
+          if(elec_0_p4->Pt()>(a+20)){
             cuts[6]=1;
           }
         }

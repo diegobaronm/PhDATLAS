@@ -647,16 +647,16 @@ public :
 };
 
 #endif
-
+/*
 #ifdef CLoop_cxx
 CLoop::CLoop(TTree *tree) : fChain(0)
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("user.sdysch.19616269._000010.LepUniv_ttbar.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/media/diego/27AB07EC0C8BE0A7/DATA/v25/user.dbaronmo.v25.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv2_Le/user.dbaronmo.22673042._000001.LepUniv_ttbar.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("user.sdysch.19616269._000010.LepUniv_ttbar.root");
+         f = new TFile("/media/diego/27AB07EC0C8BE0A7/DATA/v25/user.dbaronmo.v25.mc.361108.PoPy8_Ztt.M4.e3601_s3126_r10724_p3975.sv2_Le/user.dbaronmo.22673042._000001.LepUniv_ttbar.root");
       }
       f->GetObject("NOMINAL",tree);
 
@@ -1057,3 +1057,4 @@ Int_t CLoop::Cut(Long64_t entry)
    return 1;
 }
 #endif // #ifdef CLoop_cxx
+*/

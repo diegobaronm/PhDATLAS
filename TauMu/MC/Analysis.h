@@ -2,8 +2,10 @@
 #define Header
 
 // declare histograms here
-TH1F * h_trans_lepmet_mass_topo;
-TH1F * h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_trans_lep_mass_topo;
+TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_tau_matched_topo_1p;
 TH1F * h_tau_matched_cuts_1p;
