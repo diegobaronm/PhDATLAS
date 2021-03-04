@@ -2,6 +2,18 @@
 #define Header
 
 // declare histograms here
+// jet pT
+TH1F * h_ljet1_pt_topo;
+TH1F * h_ljet1_pt_topo_cuts;
+TH1F * h_ljet1_pt_topo_cuts_tpt;
+
+TH1F * h_ljet2_pt_topo;
+TH1F * h_ljet2_pt_topo_cuts;
+TH1F * h_ljet2_pt_topo_cuts_tpt;
+
+TH1F * h_ljet3_pt_topo;
+TH1F * h_ljet3_pt_topo_cuts;
+TH1F * h_ljet3_pt_topo_cuts_tpt;
 
 TH1F * h_lep1_pt_topo;
 TH1F * h_lep1_pt_topo_dphi;
@@ -93,6 +105,7 @@ TH1F * h_Z_pt_truth_cuts_ptl;
 // Jet Number Histograms
 TH1F * h_jet_n_topo;
 TH1F * h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass;
+TH1F * h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl;
 
 
 TH1F * h_b_tag_topo;

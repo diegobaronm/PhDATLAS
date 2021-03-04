@@ -1,8 +1,3 @@
-// Analysis.py
-// Skeleton code in python provided for you
-// In place of this comment you should write [your name] -- [the date] and update it as you go!
-// Make sure to make backups and comment as you go along :)
-
 // Header guard to ensure file is imported properly
 #ifndef Analysis
 #define Analysis
@@ -40,7 +35,7 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+/* string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
   string str1="NOPASS";
   string str2="NOPASS";
   string str3="NOPASS";
@@ -76,7 +71,7 @@ string print(std::vector<int> const &input)
 	}
   return cuts+'\n';
 }
-
+*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -305,7 +300,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
+        if (muon_0_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
         if (muon_0_p4->Pt()>=a) {

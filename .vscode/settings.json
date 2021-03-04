@@ -65,7 +65,9 @@
         "typeinfo": "cpp",
         "CLoop_SR.C": "cpp",
         "CLoop_CR.C": "cpp",
-        "Analysis_CRW.C": "cpp"
+        "Analysis_CRW.C": "cpp",
+        "Analysis_SR copy.C": "cpp",
+        "CLoop_SR copy.C": "cpp"
     },
     "python.pythonPath": "/bin/python3",
     "C_Cpp.dimInactiveRegions": false,

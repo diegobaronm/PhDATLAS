@@ -68,7 +68,43 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }
         }*/
         // PYTHIA REWEIGHTING
-        if (z_sample==1){
+        /*if(z_sample==1){
+            double zpt=truth_Z_p4->Pt()/1000;
+            if(zpt>=40 & zpt<46){
+                z_w=0.995;
+            }else if(zpt>=46 & zpt<48){
+                z_w=0.99;
+            }else if(zpt>=48 & zpt<51){
+                z_w=0.983;
+            }else if(zpt>=51 & zpt<54){
+                z_w=0.974;
+            }else if(zpt>=54 & zpt<58){
+                z_w=0.978;
+            }else if(zpt>=58 & zpt<60){
+                z_w=0.969;
+            }else if(zpt>=60 & zpt<65){
+                z_w=0.95;
+            }else if(zpt>=65 & zpt<70){
+                z_w=0.949;
+            }else if(zpt>=70 & zpt<75){
+                z_w=0.942;
+            }else if(zpt>=75 & zpt<80){
+                z_w=0.937;
+            }else if(zpt>=80 & zpt<85){
+                z_w=0.92;
+            }else if(zpt>=85 & zpt<95){
+                z_w=0.9;
+            }else if(zpt>=95 & zpt<108){
+                z_w=0.891;
+            }else if(zpt>=108 & zpt<130){
+                z_w=0.863;
+            }else if(zpt>=130 & zpt<151){
+                z_w=0.84;
+            }else if(zpt>=151){
+                z_w=0.8;
+            }
+        }*/
+        /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
                 z_w=((0.93-1)/(log10(80)-log10(40)))*(log10(zpt)-log10(40))+1;
@@ -79,7 +115,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             if (zpt>=151){
                 z_w=0.80;
             }
-        }
+        }*/
         double zpt_weight=1/z_w;
 
 
@@ -89,10 +125,11 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         // check if event is from real data
         if (weight_total != 0) {
             // take product of all scale factors
-            eventWeight = weight_total*lumFactor*zpt_weight*muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*/*muon_0_NOMINAL_MuEffSF_IsoFCLoose_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
-            *muon_0_NOMINAL_MuEffSF_TTVA
-            *jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT*
-            jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85*tau_0_NOMINAL_TauEffSF_JetRNNtight;
+            eventWeight = weight_total*lumFactor*zpt_weight
+            *elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
+            *jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT
+            *jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85
+            *elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_1_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_1_NOMINAL_EleEffSF_offline_RecoTrk;
         }
 
         // fill histograms

@@ -33,6 +33,18 @@ TH1F * h_rnn_score_1prong_topo;
 TH1F * h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
 TH1F * h_rnn_score_3prong_topo;
 TH1F * h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
+// jet pT
+TH1F * h_ljet1_pt_topo;
+TH1F * h_ljet1_pt_topo_cuts;
+TH1F * h_ljet1_pt_topo_cuts_tpt;
+
+TH1F * h_ljet2_pt_topo;
+TH1F * h_ljet2_pt_topo_cuts;
+TH1F * h_ljet2_pt_topo_cuts_tpt;
+
+TH1F * h_ljet3_pt_topo;
+TH1F * h_ljet3_pt_topo_cuts;
+TH1F * h_ljet3_pt_topo_cuts_tpt;
 
 //Writing lep pT
 TH1F * h_lep_pt0_topo;

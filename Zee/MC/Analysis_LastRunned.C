@@ -39,43 +39,6 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
-  string str1="NOPASS";
-  string str2="NOPASS";
-  string str3="NOPASS";
-  string str4="NOPASS";
-  string str5="NOPASS";
-  string str6="NOPASS";
-  if (cond1){
-    str1="Passed";
-  }
-  if (cond2){
-    str2="Passed";
-  }
-  if (cond3){
-    str3="Passed";
-  }
-  if (cond4){
-    str4="Passed";
-  }
-  if (cond5){
-    str5="Passed";
-  }
-  if (cond6){
-    str6="Passed";
-  }
-  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
-}
-
-string print(std::vector<int> const &input)
-{
-  string cuts="";
-	for (int i = 0; i < input.size(); i++) {
-		cuts=cuts+to_string(input.at(i))+',';
-	}
-  return cuts+'\n';
-}
-
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -83,7 +46,22 @@ void CLoop::Book(double lumFactor) {
     // VARIABLES ONLY ONCE
 
     //VARIABLES FOLLOWED AFTER EACH CUT
+    // pT light-jets
+    h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
+    h_ljet1_pt_topo_cuts = new TH1F("ljet1_pt_topo_cuts","Light-jet 1 pT",200,0,200);
+    h_ljet1_pt_topo_cuts_tpt = new TH1F("ljet1_pt_topo_cuts_tpt","Light-jet 1 pT",200,0,200);
 
+    h_ljet2_pt_topo = new TH1F("ljet2_pt_topo","Light-jet 2 pT",200,0,200);
+    h_ljet2_pt_topo_cuts = new TH1F("ljet2_pt_topo_cuts","Light-jet 2 pT",200,0,200);
+    h_ljet2_pt_topo_cuts_tpt = new TH1F("ljet2_pt_topo_cuts_tpt","Light-jet 2 pT",200,0,200);
+
+    h_ljet3_pt_topo = new TH1F("ljet3_pt_topo","Light-jet 3 pT",200,0,200);
+    h_ljet3_pt_topo_cuts = new TH1F("ljet3_pt_topo_cuts","Light-jet 3 pT",200,0,200);
+    h_ljet3_pt_topo_cuts_tpt = new TH1F("ljet3_pt_topo_cuts_tpt","Light-jet 3 pT",200,0,200);
+
+    h_ljet4_pt_topo = new TH1F("ljet4_pt_topo","Light-jet 4 pT",200,0,200);
+    h_ljet4_pt_topo_cuts = new TH1F("ljet4_pt_topo_cuts","Light-jet 4 pT",200,0,200);
+    h_ljet4_pt_topo_cuts_tpt = new TH1F("ljet4_pt_topo_cuts_tpt","Light-jet 4 pT",200,0,200);
     // Histograms for lepton 1
     //pT
     h_lep1_pt_topo = new TH1F("lep1_pt_topo","Transverse momentum of lep1",200,0,200);
@@ -179,7 +157,7 @@ void CLoop::Book(double lumFactor) {
     // Jet Number Histograms
     h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass","Number of jets",10,-1,9);
-
+    h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl","Number of jets",10,-1,9);
 
     h_b_tag_topo = new TH1F("b_tag_topo","b taging variable",2,0,2);
     h_b_tag_topo_dphi_iso_pt1_pt2_mass_ptl = new TH1F("b_tag_topo_dphi_iso_pt1_pt2_mass_ptl","b taging variable",2,0,2);
@@ -256,7 +234,7 @@ void CLoop::Fill(double weight, int z_sample) {
       h_trigger_1_pass->Fill((trigger_match_1 | trigger_match_2),weight);
       h_trigger_2_pass->Fill(trigger_match_12,weight);
 
-      bool elec_id = elec_0_id_tight && elec_1_id_tight;
+      bool elec_id = !elec_0_id_tight && elec_1_id_tight;
 
       float q_mu0=elec_0_q;
       float q_mu1=elec_1_q;
@@ -293,18 +271,18 @@ void CLoop::Fill(double weight, int z_sample) {
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
         int random=rand()%2;
-        double a{60},b{35};
+        double a{50},b{47};
         if(random){
-          a=35;
-          b=60;
+          a=50;
+          b=47;
         }
-        if (angle<=11.5*pi/18){
+        if (angle<=11*pi/18){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (elec_0_iso_FCTight==1 && elec_1_iso_FCTight==1) {
+        if (elec_0_iso_FCTight==0) {
           cuts[2]=1;
         }
         if (elec_0_p4->Pt()>=a) {
@@ -317,11 +295,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(elec_1_p4->Pt()<(b+20)){
+          if(elec_1_p4->Pt()>(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()<(a+20)){
+          if(elec_0_p4->Pt()>(a+20)){
             cuts[6]=1;
           }
         }
@@ -381,6 +359,10 @@ void CLoop::Fill(double weight, int z_sample) {
         h_inv_mass_topo->Fill(inv_mass,weight);
         h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
         h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
+        h_ljet1_pt_topo->Fill(ljet_0_p4->Pt(),weight);
+        h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
+        h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
+        h_ljet4_pt_topo->Fill(ljet_3_p4->Pt(),weight);
 
         // ANGLE CUT
         if (cuts[0]==1){
@@ -436,6 +418,10 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_lep1_phi_cuts->Fill(elec_0_p4->Phi(),weight);
                     h_lep2_phi_cuts->Fill(elec_1_p4->Phi(),weight);
                     h_Z_pt_reco_cuts->Fill(Z_pt,weight);
+                    h_ljet1_pt_topo_cuts->Fill(ljet_0_p4->Pt(),weight);
+                    h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
+                    h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
+                    h_ljet4_pt_topo_cuts->Fill(ljet_3_p4->Pt(),weight);
 
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
@@ -469,6 +455,10 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ratio_lpt_tpt_cuts_ptl->Fill(r_lpt_tpt,weight);
                       h_ratio_ptjet_zpt_cuts_ptl->Fill(r_jpt_zpt,weight);
                       h_Z_pt_reco_cuts_ptl->Fill(Z_pt,weight);
+                      h_ljet1_pt_topo_cuts_tpt->Fill(ljet_0_p4->Pt(),weight);
+                      h_ljet2_pt_topo_cuts_tpt->Fill(ljet_1_p4->Pt(),weight);
+                      h_ljet3_pt_topo_cuts_tpt->Fill(ljet_2_p4->Pt(),weight);
+                      h_ljet4_pt_topo_cuts_tpt->Fill(ljet_3_p4->Pt(),weight);
 
                       if (Z_pt<100){
                         h_sum_pt_cuts_ptl_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
@@ -505,6 +495,23 @@ void CLoop::Style(double lumFactor) {
 
     // Write histograms to a file
     // This needs to be done for each histogram
+    // Writing jet pT
+    h_ljet1_pt_topo->Write();
+    h_ljet1_pt_topo_cuts->Write();
+    h_ljet1_pt_topo_cuts_tpt->Write();
+
+    h_ljet2_pt_topo->Write();
+    h_ljet2_pt_topo_cuts->Write();
+    h_ljet2_pt_topo_cuts_tpt->Write();
+
+    h_ljet3_pt_topo->Write();
+    h_ljet3_pt_topo_cuts->Write();
+    h_ljet3_pt_topo_cuts_tpt->Write();
+
+    h_ljet4_pt_topo->Write();
+    h_ljet4_pt_topo_cuts->Write();
+    h_ljet4_pt_topo_cuts_tpt->Write();
+
     h_lep1_pt_topo->Write();
     h_lep1_pt_topo_dphi->Write();
     h_lep1_pt_topo_dphi_btag->Write();
@@ -597,6 +604,7 @@ void CLoop::Style(double lumFactor) {
     // Jet Number Histograms
     h_jet_n_topo->Write();
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass->Write();
+    h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Write();
 
 
     h_b_tag_topo->Write();
