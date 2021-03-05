@@ -5,8 +5,9 @@
 TH1F * h_inva_mass_ltau_topo;
 TH1F * h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt;
 
-TH1F * h_trans_lepmet_mass_topo;
-TH1F * h_trans_lepmet_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
+TH1F * h_trans_lep_mass_topo;
+TH1F * h_trans_lep_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco;
+TH1F * h_trans_lep_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
 
 TH1F * h_tau_matched_topo_1p;
 TH1F * h_tau_matched_cuts_1p;
@@ -184,6 +185,7 @@ TH1F * h_reco_mass_met_outside_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_tpt;
 
 //Writing jet number
 TH1F * h_jet_n_topo;
+TH1F * h_jet_n_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco;
 TH1F * h_jet_n_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt;
 //Writing b-tag
 TH1F * h_b_tag_topo;
