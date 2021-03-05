@@ -189,7 +189,6 @@ void CLoop::Book(double lumFactor) {
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl","Number of jets",10,-1,9);
 
-
     h_b_tag_topo = new TH1F("b_tag_topo","b taging variable",2,0,2);
     h_b_tag_topo_dphi_iso_pt1_pt2_mass_ptl = new TH1F("b_tag_topo_dphi_iso_pt1_pt2_mass_ptl","b taging variable",2,0,2);
 
@@ -270,7 +269,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float q_mu0=muon_0_q;
       float q_mu1=muon_1_q;
 
-      if (q_mu0==q_mu1 && angle<3*pi/4 && trigger_decision && muon_id && trigger_match ) {
+      if (q_mu0!=q_mu1 && angle<3*pi/4 && trigger_decision && muon_id && trigger_match ) {
 
         double inv_mass{};
         inv_mass=sqrt(2*muon_0_p4->Pt()*muon_1_p4->Pt()*(cosh(muon_0_p4->Eta()-muon_1_p4->Eta())-cos(muon_0_p4->Phi()-muon_1_p4->Phi())));
@@ -313,7 +312,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (muon_0_iso_FCTightTrackOnly_FixedRad==1 && muon_1_iso_FCTightTrackOnly_FixedRad==1) {
+        if (muon_0_iso_FCTightTrackOnly_FixedRad==0 || muon_1_iso_FCTightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
         if (muon_0_p4->Pt()>=a) {

@@ -39,6 +39,43 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
+/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+  string str1="NOPASS";
+  string str2="NOPASS";
+  string str3="NOPASS";
+  string str4="NOPASS";
+  string str5="NOPASS";
+  string str6="NOPASS";
+  if (cond1){
+    str1="Passed";
+  }
+  if (cond2){
+    str2="Passed";
+  }
+  if (cond3){
+    str3="Passed";
+  }
+  if (cond4){
+    str4="Passed";
+  }
+  if (cond5){
+    str5="Passed";
+  }
+  if (cond6){
+    str6="Passed";
+  }
+  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
+}
+
+string print(std::vector<int> const &input)
+{
+  string cuts="";
+	for (int i = 0; i < input.size(); i++) {
+		cuts=cuts+to_string(input.at(i))+',';
+	}
+  return cuts+'\n';
+}
+*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -236,7 +273,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float q_mu0=elec_0_q;
       float q_mu1=elec_1_q;
 
-      if (q_mu0==q_mu1 && angle<3*pi/4 && trigger_decision && elec_id && trigger_match ) {
+      if (q_mu0!=q_mu1 && angle<3*pi/4 && trigger_decision && elec_id && trigger_match ) {
 
         double inv_mass{};
         inv_mass=sqrt(2*elec_0_p4->Pt()*elec_1_p4->Pt()*(cosh(elec_0_p4->Eta()-elec_1_p4->Eta())-cos(elec_0_p4->Phi()-elec_1_p4->Phi())));
@@ -279,7 +316,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (elec_0_iso_FCTight==0) {
+        if (elec_0_iso_FCTight==1 && elec_1_iso_FCTight==1) {
           cuts[2]=1;
         }
         if (elec_0_p4->Pt()>=a) {
@@ -418,6 +455,7 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
                     h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
 
+
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
 
@@ -442,6 +480,7 @@ void CLoop::Fill(double weight, int z_sample) {
                     }
                     if(cuts[6]==1){
                       h_met_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(met_reco_p4->Pt(),weight);
+                      h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(n_jets, weight);
                       h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(elec_0_p4->Pt(),weight);
                       h_lep2_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(elec_1_p4->Pt(),weight);
                       h_sumlep_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
