@@ -39,7 +39,7 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
+/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
   string str1="NOPASS";
   string str2="NOPASS";
   string str3="NOPASS";
@@ -75,7 +75,7 @@ string print(std::vector<int> const &input)
 	}
   return cuts+'\n';
 }
-
+*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
@@ -83,6 +83,18 @@ void CLoop::Book(double lumFactor) {
     // VARIABLES ONLY ONCE
 
     //VARIABLES FOLLOWED AFTER EACH CUT
+    // pT light-jets
+    h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
+    h_ljet1_pt_topo_cuts = new TH1F("ljet1_pt_topo_cuts","Light-jet 1 pT",200,0,200);
+    h_ljet1_pt_topo_cuts_tpt = new TH1F("ljet1_pt_topo_cuts_tpt","Light-jet 1 pT",200,0,200);
+
+    h_ljet2_pt_topo = new TH1F("ljet2_pt_topo","Light-jet 2 pT",200,0,200);
+    h_ljet2_pt_topo_cuts = new TH1F("ljet2_pt_topo_cuts","Light-jet 2 pT",200,0,200);
+    h_ljet2_pt_topo_cuts_tpt = new TH1F("ljet2_pt_topo_cuts_tpt","Light-jet 2 pT",200,0,200);
+
+    h_ljet3_pt_topo = new TH1F("ljet3_pt_topo","Light-jet 3 pT",200,0,200);
+    h_ljet3_pt_topo_cuts = new TH1F("ljet3_pt_topo_cuts","Light-jet 3 pT",200,0,200);
+    h_ljet3_pt_topo_cuts_tpt = new TH1F("ljet3_pt_topo_cuts_tpt","Light-jet 3 pT",200,0,200);
 
     // Histograms for lepton
     h_lep_pt0_topo = new TH1F("lep_pt0_topo","Transverse momentum of lep1",200,0,200);
@@ -189,8 +201,9 @@ void CLoop::Book(double lumFactor) {
     // Invariant mass histograms
     // Non reco histos
     //Transeverse lepton mass
-    h_trans_lepmet_mass_topo = new TH1F("transverse_lepton_met_mass_topo","transverse mass lepton",300,0,300);
-    h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_met_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo = new TH1F("transverse_lepton_mass_topo","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","transverse mass lepton",300,0,300);
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
 
     // reco histos
     h_reco_mass_topo = new TH1F("reco_mass_topo","reco mass in between",300,0,300);
@@ -254,6 +267,7 @@ void CLoop::Book(double lumFactor) {
 
     // Jet Number Histograms
     h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
+    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Number of jets",10,-1,9);
 
 
@@ -445,7 +459,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
           // non RECO mass
           double lepmet_mass=sqrt(2*muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi())));
-          double inv_taulep=sqrt((2*muon_0_p4->Pt()*tau_0_p4->Pt())*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
+          //double inv_taulep=sqrt((2*muon_0_p4->Pt()*tau_0_p4->Pt())*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
           //double trans_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(1-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
           //double visi_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_0_p4->Eta())-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(cosh(tau_0_p4->Eta())-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
 
@@ -571,8 +585,6 @@ void CLoop::Fill(double weight, int z_sample) {
             }
           }
           //  Filling histos
-
-          h_trans_lepmet_mass_topo->Fill(lepmet_mass,weight);
           if (tau_0_n_charged_tracks==1){
             h_rnn_score_1prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
@@ -593,7 +605,10 @@ void CLoop::Fill(double weight, int z_sample) {
           h_n_core_tracks->Fill(tau_0_n_core_tracks,weight);
           h_n_isolation_tracks->Fill(tau_0_n_isolation_tracks,weight);
           h_n_tracks->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
-
+          h_ljet1_pt_topo->Fill(ljet_0_p4->Pt(),weight);
+          h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
+          h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
+          h_trans_lep_mass_topo->Fill(lepmet_mass,weight);
 
           if (weight!=1){
             h_weight_total_topo->Fill(weight,1);
@@ -843,6 +858,7 @@ void CLoop::Fill(double weight, int z_sample) {
                         // RECO MASS CUT
                       if (cuts[6]==1) {
                         h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
+                        h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(n_jets, weight);
                         h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
                         h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
                         h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
@@ -853,7 +869,10 @@ void CLoop::Fill(double weight, int z_sample) {
                         h_n_core_tracks_cuts->Fill(tau_0_n_core_tracks,weight);
                         h_n_isolation_tracks_cuts->Fill(tau_0_n_isolation_tracks,weight);
                         h_n_tracks_cuts->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
-
+                        h_ljet1_pt_topo_cuts->Fill(ljet_0_p4->Pt(),weight);
+                        h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
+                        h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
+                        h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
                         h_ratio_ptjet_zpt_cuts->Fill(r_jpt_zpt,weight);
                         h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
 
@@ -953,7 +972,6 @@ void CLoop::Fill(double weight, int z_sample) {
                         if (cuts[7]==1){
                           h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
                           h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_jets, weight);
-                          h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
                           h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
                           h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(omega,weight);
                           h_lep_phi_cuts_tpt->Fill(muon_0_p4->Phi(),weight);
@@ -964,7 +982,10 @@ void CLoop::Fill(double weight, int z_sample) {
                           h_n_core_tracks_cuts_tpt->Fill(tau_0_n_core_tracks,weight);
                           h_n_isolation_tracks_cuts_tpt->Fill(tau_0_n_isolation_tracks,weight);
                           h_n_tracks_cuts_tpt->Fill(tau_0_n_isolation_tracks+tau_0_n_core_tracks+tau_0_n_conversion_tracks,weight);
-
+                          h_ljet1_pt_topo_cuts_tpt->Fill(ljet_0_p4->Pt(),weight);
+                          h_ljet2_pt_topo_cuts_tpt->Fill(ljet_1_p4->Pt(),weight);
+                          h_ljet3_pt_topo_cuts_tpt->Fill(ljet_2_p4->Pt(),weight);
+                          h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
                           h_ratio_ptjet_zpt_cuts_tpt->Fill(r_jpt_zpt,weight);
                           h_ratio_lpt_tpt_cuts_tpt->Fill(r_lpt_tpt,weight);
 
@@ -1108,8 +1129,9 @@ void CLoop::Style(double lumFactor) {
     // Write histograms to a file
     // This needs to be done for each histogram
 
-    h_trans_lepmet_mass_topo->Write();
-    h_trans_lepmet_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
+    h_trans_lep_mass_topo->Write();
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
+    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
     if (lumFactor!=1){
       h_tau_matched_topo_1p->Write();
@@ -1142,6 +1164,19 @@ void CLoop::Style(double lumFactor) {
     h_rnn_score_1prong_topo_match->Write();
     h_rnn_score_3prong_topo_match->Write();
     */
+    // Writing jet pT
+    h_ljet1_pt_topo->Write();
+    h_ljet1_pt_topo_cuts->Write();
+    h_ljet1_pt_topo_cuts_tpt->Write();
+
+    h_ljet2_pt_topo->Write();
+    h_ljet2_pt_topo_cuts->Write();
+    h_ljet2_pt_topo_cuts_tpt->Write();
+
+    h_ljet3_pt_topo->Write();
+    h_ljet3_pt_topo_cuts->Write();
+    h_ljet3_pt_topo_cuts_tpt->Write();
+
     //Writing lep pT
     h_lep_pt0_topo->Write();
     h_lep_pt0_topo_dphi->Write();
@@ -1257,6 +1292,7 @@ void CLoop::Style(double lumFactor) {
 
     //Writing jet number
     h_jet_n_topo->Write();
+    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
     h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
     //Writing b-tag
     h_b_tag_topo->Write();

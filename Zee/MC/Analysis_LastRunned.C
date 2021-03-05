@@ -59,9 +59,6 @@ void CLoop::Book(double lumFactor) {
     h_ljet3_pt_topo_cuts = new TH1F("ljet3_pt_topo_cuts","Light-jet 3 pT",200,0,200);
     h_ljet3_pt_topo_cuts_tpt = new TH1F("ljet3_pt_topo_cuts_tpt","Light-jet 3 pT",200,0,200);
 
-    h_ljet4_pt_topo = new TH1F("ljet4_pt_topo","Light-jet 4 pT",200,0,200);
-    h_ljet4_pt_topo_cuts = new TH1F("ljet4_pt_topo_cuts","Light-jet 4 pT",200,0,200);
-    h_ljet4_pt_topo_cuts_tpt = new TH1F("ljet4_pt_topo_cuts_tpt","Light-jet 4 pT",200,0,200);
     // Histograms for lepton 1
     //pT
     h_lep1_pt_topo = new TH1F("lep1_pt_topo","Transverse momentum of lep1",200,0,200);
@@ -234,12 +231,12 @@ void CLoop::Fill(double weight, int z_sample) {
       h_trigger_1_pass->Fill((trigger_match_1 | trigger_match_2),weight);
       h_trigger_2_pass->Fill(trigger_match_12,weight);
 
-      bool elec_id = !elec_0_id_tight && elec_1_id_tight;
+      bool elec_id = elec_0_id_tight && elec_1_id_tight;
 
       float q_mu0=elec_0_q;
       float q_mu1=elec_1_q;
 
-      if (q_mu0!=q_mu1 && angle<3*pi/4 && trigger_decision && elec_id && trigger_match ) {
+      if (q_mu0==q_mu1 && angle<3*pi/4 && trigger_decision && elec_id && trigger_match ) {
 
         double inv_mass{};
         inv_mass=sqrt(2*elec_0_p4->Pt()*elec_1_p4->Pt()*(cosh(elec_0_p4->Eta()-elec_1_p4->Eta())-cos(elec_0_p4->Phi()-elec_1_p4->Phi())));
@@ -362,7 +359,6 @@ void CLoop::Fill(double weight, int z_sample) {
         h_ljet1_pt_topo->Fill(ljet_0_p4->Pt(),weight);
         h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
         h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
-        h_ljet4_pt_topo->Fill(ljet_3_p4->Pt(),weight);
 
         // ANGLE CUT
         if (cuts[0]==1){
@@ -421,7 +417,6 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_ljet1_pt_topo_cuts->Fill(ljet_0_p4->Pt(),weight);
                     h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
                     h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
-                    h_ljet4_pt_topo_cuts->Fill(ljet_3_p4->Pt(),weight);
 
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
@@ -458,7 +453,6 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ljet1_pt_topo_cuts_tpt->Fill(ljet_0_p4->Pt(),weight);
                       h_ljet2_pt_topo_cuts_tpt->Fill(ljet_1_p4->Pt(),weight);
                       h_ljet3_pt_topo_cuts_tpt->Fill(ljet_2_p4->Pt(),weight);
-                      h_ljet4_pt_topo_cuts_tpt->Fill(ljet_3_p4->Pt(),weight);
 
                       if (Z_pt<100){
                         h_sum_pt_cuts_ptl_ZpTa->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
@@ -507,10 +501,6 @@ void CLoop::Style(double lumFactor) {
     h_ljet3_pt_topo->Write();
     h_ljet3_pt_topo_cuts->Write();
     h_ljet3_pt_topo_cuts_tpt->Write();
-
-    h_ljet4_pt_topo->Write();
-    h_ljet4_pt_topo_cuts->Write();
-    h_ljet4_pt_topo_cuts_tpt->Write();
 
     h_lep1_pt_topo->Write();
     h_lep1_pt_topo_dphi->Write();

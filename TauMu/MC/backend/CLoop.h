@@ -647,7 +647,7 @@ public :
 };
 
 #endif
-/*
+
 #ifdef CLoop_cxx
 CLoop::CLoop(TTree *tree) : fChain(0)
 {
@@ -1057,4 +1057,3 @@ Int_t CLoop::Cut(Long64_t entry)
    return 1;
 }
 #endif // #ifdef CLoop_cxx
-*/
