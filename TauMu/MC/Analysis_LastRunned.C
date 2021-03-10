@@ -225,6 +225,7 @@ void CLoop::Book(double lumFactor) {
 
     // Jet Number Histograms
     h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
+    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Number of jets",10,-1,9);
 
     h_b_tag_topo = new TH1F("b_tag_topo","b taging variable",2,0,2);
@@ -657,6 +658,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
             if (cuts[6]==1){
               h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
+              h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(n_jets, weight);
               h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
               h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
               h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
@@ -1074,6 +1076,7 @@ void CLoop::Style(double lumFactor) {
 
     //Writing jet number
     h_jet_n_topo->Write();
+    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
     h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
     //Writing b-tag
     h_b_tag_topo->Write();
