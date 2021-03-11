@@ -23,8 +23,19 @@ fi
 # EXECUTE CODE
 cd MC
 
-mc_Ztautau_sherpa='Ztautau_sherpa'
+mc_signal_sherpa='Zmumu_sherpa'
 samples=('1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14')
+for n in ${samples[@]}
+do
+    for y in ${year[@]}
+    do
+        python3 RunAnalysis.py $mc_signal_sherpa$n'_'$y no
+    done
+done
+
+hadd out/Ztautau_Sherpa.root out/*
+
+mc_Ztautau_sherpa='Ztautau_sherpa'
 
 for n in ${samples[@]}
 do
@@ -34,7 +45,7 @@ do
     done
 done
 
-hadd out/Ztautau_Sherpa.root out/*
+hadd out/Ztautau_Sherpa.root out/Ztautau_sherpa*
 
 cd ..
 
