@@ -33,7 +33,7 @@ do
     done
 done
 
-hadd out/Ztautau_Sherpa.root out/*
+hadd out/Zmumu_Sherpa.root out/*
 
 mc_Ztautau_sherpa='Ztautau_sherpa'
 
