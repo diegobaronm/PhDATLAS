@@ -2,6 +2,9 @@
 #define Header
 
 // declare histograms here
+TH1F * h_eBDT_fail_mle;
+TH1F * h_mle_fail_eBDT;
+
 TH1F * h_inva_mass_ltau_topo;
 TH1F * h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt;
 

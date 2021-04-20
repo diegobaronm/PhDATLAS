@@ -302,6 +302,10 @@ void CLoop::Book(double lumFactor) {
     h_n_tracks = new TH1F("n_tracks","n_tracks",30,0,30);
     h_n_tracks_cuts = new TH1F("n_tracks_cuts","n_tracks_cuts",30,0,30);
     h_n_tracks_cuts_tpt = new TH1F("n_tracks_cuts_tpt","n_tracks_cuts_tpt",30,0,30);
+
+    // Test
+    h_eBDT_fail_mle = new TH1F("eBDT_fail_mle","eBDT events fail m(e,tau)",100,0,1);
+    h_mle_fail_eBDT = new TH1F("mle_fail_eBDT","m(e,tau) events fail eBDT",300,0,300);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
@@ -496,6 +500,14 @@ void CLoop::Fill(double weight, int z_sample) {
           vector<int> c_mreco={1,1,1,1,1,1,1,1,0,1};
           vector<int> c_tpt={1,1,1,1,1,1,1,1,1,0};
           vector<int> c_all={1,1,1,1,1,1,1,1,1,1};
+
+          //TEST
+          if (cuts==std::vector<int>{1,0,1,1,1,1,1,0,1,1} || cuts==std::vector<int>{1,1,1,1,1,1,1,0,1,1}){
+            h_eBDT_fail_mle->Fill(tau_0_ele_bdt_score_trans,weight);
+          }
+          if (cuts==std::vector<int>{1,0,1,1,1,1,1,0,1,1} || cuts==std::vector<int>{1,0,1,1,1,1,1,1,1,1}){
+            h_mle_fail_eBDT->Fill(inv_taulep,weight);
+          }
 
           if (cuts==c_phi||cuts==c_all) {
             h_delta_phi_cuts_butphi->Fill(angle,weight);
@@ -947,7 +959,8 @@ void CLoop::Style(double lumFactor) {
     h_lep_n->SetTitle("Number of leptons  per event");
     h_lep_n->SetLineColor(kRed);*/ // set the line colour to red
     // For more information see https://root.cern.ch/root/htmldoc/guides/users-guide/Histograms.html
-
+    h_eBDT_fail_mle->Write();
+    h_mle_fail_eBDT->Write();
     // Write histograms to a file
     // This needs to be done for each histogram
     h_inva_mass_ltau_topo->Write();
