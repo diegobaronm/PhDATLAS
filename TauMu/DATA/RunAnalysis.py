@@ -152,5 +152,5 @@ for i in range(len(chains)):
             runAnalysis(chain,fastMode)
 
     # combine chains in the series if it contains more than one chain
-    if (len(chains[i])>1):
-        combine(chains[i], fastMode)
+    #if (len(chains[i])>1):
+        #combine(chains[i], fastMode)

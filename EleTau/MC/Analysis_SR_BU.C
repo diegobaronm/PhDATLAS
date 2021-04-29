@@ -41,6 +41,10 @@ void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
 
     // VARIABLES ONLY ONCE
+    // Event number and run number
+    h_RunN_topo = new TH1F("RunN_topo","Run number",88035,276260,364295);
+    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",88035,276260,364295);
+
     h_inva_mass_ltau_topo = new TH1F("inva_mass_ltau_topo","Invariant mass lepton-tau system",300,0,300);
     h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt = new TH1F("inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt","Invariant mass lepton-tau system",300,0,300);
     //VARIABLES FOLLOWED AFTER EACH CUT
@@ -334,7 +338,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float ql=elec_0_q;
       float qtau=tau_0_q;
 
-      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match) {
+      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match) {
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -570,6 +574,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (tau_0_n_charged_tracks==3){
             h_rnn_score_3prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
+          h_RunN_topo->Fill(run_number,weight);
           h_bdt_e_score_topo->Fill(tau_0_ele_bdt_score_trans,weight);
           h_jet_n_topo->Fill(n_jets, weight);
           h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCTight,weight);
@@ -1006,6 +1011,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
                           //TAU PT CUT
                           if (cuts[9]==1) {
+                            h_RunN_topo_tpt->Fill(run_number,weight);
                             h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
                             h_trans_lep_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(lepmet_mass,weight);
                             h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_p4->Pt(),weight);
@@ -1156,6 +1162,9 @@ void CLoop::Style(double lumFactor) {
     // Write histograms to a file
     // This needs to be done for each histogram
     //TEST
+    h_RunN_topo->Write();
+    h_RunN_topo_tpt->Write();
+
     h_eBDT_fail_mle->Write();
     h_mle_fail_eBDT->Write();
 

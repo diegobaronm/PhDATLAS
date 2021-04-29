@@ -2,6 +2,9 @@
 #define Header
 
 // declare histograms here
+TH1F * h_RunN_topo;
+TH1F * h_RunN_topo_tpt;
+
 TH1F * h_eBDT_fail_mle;
 TH1F * h_mle_fail_eBDT;
 
