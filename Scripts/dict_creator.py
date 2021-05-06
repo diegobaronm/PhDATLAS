@@ -2,7 +2,7 @@
 
 # THIS SCRIPT MUST BE USED IN THE FOLLOWING WAY
 
-# python3 dict_creator.py <Path to folder containing samples> <string to identify sample, for instance: Zmumu_PoPy each word separated by "_" will be used to identify dataset>
+# python3 dict_creator.py <Path to folder containing samples>  <name_to_be_assigned> <string to identify sample, for instance: Zmumu_PoPy each word separated by "_" will be used to identify dataset>
 
 
 # IMPORTANT LIBRARIES
@@ -11,11 +11,12 @@ import sys
 import csv
 
 # ARGUMENTS GIVEN TO THE SCRIPT
-sample_string=sys.argv[2] # NAME TO BE ASSIGNED TO SAMPLES
+sample_name=sys.argv[2] # NAME TO BE ASSIGNED TO SAMPLES
+sample_match_strings=sys.argv[3] # MATCHING STRINGS
 folders=os.listdir(sys.argv[1]) # PATH TO LOOK FOR THE SAMPLES
 
 # KEYWORDS TO LOOK FOR THE SAMPLES
-keywords=sample_string.split("_")
+keywords=sample_match_strings.split("_")
 
 #FILL A LIST WITH ALL THE DIRECTORIES THAT CONTAIN THE KEYWORDS
 matching_folders=[]
@@ -57,13 +58,22 @@ for IDs in MC_Ids:
 
     # CREATE THE DICTIONARY DIVIDING EACH SAMPLE PER DATA TAKING PERIOD
     for sample in matching_folders:
-        if IDs in sample:
-            if "r9364" in sample:
-                dict[sample_string+str(id_counter)+"_2015"]=[sample,IDs,xsec,kfactor,filteref]
-            elif "r10201" in sample:
-                dict[sample_string+str(id_counter)+"_2017"]=[sample,IDs,xsec,kfactor,filteref]
-            elif "r10724" in sample:
-                dict[sample_string+str(id_counter)+"_2018"]=[sample,IDs,xsec,kfactor,filteref]
+        if(len(matching_folders)>3):
+            if IDs in sample:
+                if "r9364" in sample:
+                    dict[sample_name+str(id_counter)+"_2015"]=[sample,IDs,xsec,kfactor,filteref]
+                elif "r10201" in sample:
+                    dict[sample_name+str(id_counter)+"_2017"]=[sample,IDs,xsec,kfactor,filteref]
+                elif "r10724" in sample:
+                    dict[sample_name+str(id_counter)+"_2018"]=[sample,IDs,xsec,kfactor,filteref]
+        else :
+            if IDs in sample:
+                if "r9364" in sample:
+                    dict[sample_name+"_2015"]=[sample,IDs,xsec,kfactor,filteref]
+                elif "r10201" in sample:
+                    dict[sample_name+"_2017"]=[sample,IDs,xsec,kfactor,filteref]
+                elif "r10724" in sample:
+                    dict[sample_name+"_2018"]=[sample,IDs,xsec,kfactor,filteref]
     id_counter+=1
 
 # PRINT THE DICTIONARY IN THE CORRECT FORMAT TO PUT IT ON THE lister_mc.py SCRIPT

@@ -57,7 +57,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         double eventWeight = 1;
 
         // check if event is from real data
-       
+
 
         // fill histograms
         //cout << eventWeight;
@@ -77,4 +77,8 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
     // calculate time taken and print it
     double time_spent = (endTime - startTime) / CLOCKS_PER_SEC;
     cout << time_spent << std::endl;
+}
+
+int main(){
+    return 0;
 }

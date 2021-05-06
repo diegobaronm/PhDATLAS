@@ -5,6 +5,12 @@
 TH1F * h_RunN_topo;
 TH1F * h_RunN_topo_tpt;
 
+TH1F * h_EventN_RN363738_topo;
+TH1F * h_EventN_RN363738_topo_tpt;
+
+TH1F * h_EventN_RN363910_topo;
+TH1F * h_EventN_RN363910_topo_tpt;
+
 TH1F * h_trans_lep_mass_topo;
 TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;

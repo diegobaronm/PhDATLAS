@@ -6,6 +6,12 @@
 TH1F * h_RunN_topo;
 TH1F * h_RunN_topo_tpt;
 
+TH1F * h_EventN_RN358115_topo;
+TH1F * h_EventN_RN358115_topo_tpt;
+
+TH1F * h_EventN_RN359541_topo;
+TH1F * h_EventN_RN359541_topo_tpt;
+
 TH1F * h_ljet1_pt_topo;
 TH1F * h_ljet1_pt_topo_cuts;
 TH1F * h_ljet1_pt_topo_cuts_tpt;

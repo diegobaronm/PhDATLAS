@@ -42,8 +42,14 @@ void CLoop::Book(double lumFactor) {
 
     // VARIABLES ONLY ONCE
     // Event number and run number
-    h_RunN_topo = new TH1F("RunN_topo","Run number",88035,276260,364295);
-    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",88035,276260,364295);
+    h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
+    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
+
+    h_EventN_RN358115_topo = new TH1F("EventN_RN358115_topo","Event number RN(358115)",100000,0,3.0e9);
+    h_EventN_RN358115_topo_tpt = new TH1F("EventN_RN358115_topo_tpt","Event number RN(358115)",100000,0,3.0e9);
+
+    h_EventN_RN359541_topo = new TH1F("EventN_RN359541_topo","Event number RN(359541)",100000,0,3.0e9);
+    h_EventN_RN359541_topo_tpt = new TH1F("EventN_RN359541_topo_tpt","Event number RN(359541)",100000,0,3.0e9);
 
     h_inva_mass_ltau_topo = new TH1F("inva_mass_ltau_topo","Invariant mass lepton-tau system",300,0,300);
     h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt = new TH1F("inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt","Invariant mass lepton-tau system",300,0,300);
@@ -575,6 +581,8 @@ void CLoop::Fill(double weight, int z_sample) {
             h_rnn_score_3prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
           }
           h_RunN_topo->Fill(run_number,weight);
+          if(run_number==358115){h_EventN_RN358115_topo->Fill(event_number,weight);}
+          if(run_number==359541){h_EventN_RN359541_topo->Fill(event_number,weight);}
           h_bdt_e_score_topo->Fill(tau_0_ele_bdt_score_trans,weight);
           h_jet_n_topo->Fill(n_jets, weight);
           h_elec_0_iso_FCTight_topo->Fill(elec_0_iso_FCTight,weight);
@@ -1012,6 +1020,8 @@ void CLoop::Fill(double weight, int z_sample) {
                           //TAU PT CUT
                           if (cuts[9]==1) {
                             h_RunN_topo_tpt->Fill(run_number,weight);
+                            if(run_number==358115){h_EventN_RN358115_topo_tpt->Fill(event_number,weight);}
+                            if(run_number==359541){h_EventN_RN359541_topo_tpt->Fill(event_number,weight);}
                             h_met_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
                             h_trans_lep_mass_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(lepmet_mass,weight);
                             h_lep_pt0_topo_dphi_bdte_btag_iso_rnn_pte_omega_mle_mreco_tpt->Fill(elec_0_p4->Pt(),weight);
@@ -1165,9 +1175,14 @@ void CLoop::Style(double lumFactor) {
     h_RunN_topo->Write();
     h_RunN_topo_tpt->Write();
 
+    h_EventN_RN358115_topo->Write();
+    h_EventN_RN358115_topo_tpt->Write();
+
+    h_EventN_RN359541_topo->Write();
+    h_EventN_RN359541_topo_tpt->Write();
+
     h_eBDT_fail_mle->Write();
     h_mle_fail_eBDT->Write();
-
 
     h_inva_mass_ltau_topo->Write();
     h_inva_mass_ltau_topo_dphi_bdte_btag_iso_rnn_pte_omega_mreco_tpt->Write();

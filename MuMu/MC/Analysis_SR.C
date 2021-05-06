@@ -78,8 +78,14 @@ void CLoop::Book(double lumFactor) {
 
     // VARIABLES ONLY ONCE
     // Event number and run number
-    h_RunN_topo = new TH1F("RunN_topo","Run number",88035,276260,364295);
-    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",88035,276260,364295);
+    h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
+    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
+
+    h_EventN_RN363738_topo = new TH1F("EventN_RN363738_topo","Event number RN(363738)",100000,0.0,3.0e9);
+    h_EventN_RN363738_topo_tpt = new TH1F("EventN_RN363738_topo_tpt","Event number RN(363738)",100000,0,3.0e9);
+
+    h_EventN_RN363910_topo = new TH1F("EventN_RN363910_topo","Event number RN(363910)",100000,0.0,3.0e9);
+    h_EventN_RN363910_topo_tpt = new TH1F("EventN_RN363910_topo_tpt","Event number RN(363910)",100000,0.0,3.0e9);
     //VARIABLES FOLLOWED AFTER EACH CUT
     // pT light-jets
     h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
@@ -368,6 +374,8 @@ void CLoop::Fill(double weight, int z_sample) {
 
         //  Filling histos
         h_RunN_topo->Fill(run_number,weight);
+        if(run_number==363738){h_EventN_RN363738_topo->Fill(event_number,weight);}
+        if(run_number==363910){h_EventN_RN363910_topo->Fill(event_number,weight);}
         h_jet_n_topo->Fill(n_jets, weight);
         h_b_tag_topo->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         h_muon_0_isolation_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
@@ -479,6 +487,8 @@ void CLoop::Fill(double weight, int z_sample) {
                     }
                     if(cuts[6]==1){
                       h_RunN_topo_tpt->Fill(run_number,weight);
+                      if(run_number==363738){h_EventN_RN363738_topo_tpt->Fill(event_number,weight);}
+                      if(run_number==363910){h_EventN_RN363910_topo_tpt->Fill(event_number,weight);}
                       h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(n_jets, weight);
                       h_met_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(met_reco_p4->Pt(),weight);
                       h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(muon_0_p4->Pt(),weight);
@@ -529,6 +539,12 @@ void CLoop::Style(double lumFactor) {
     // This needs to be done for each histogram
     h_RunN_topo->Write();
     h_RunN_topo_tpt->Write();
+
+    h_EventN_RN363738_topo->Write();
+    h_EventN_RN363738_topo_tpt->Write();
+
+    h_EventN_RN363910_topo->Write();
+    h_EventN_RN363910_topo_tpt->Write();
     // Writing jet pT
     h_ljet1_pt_topo->Write();
     h_ljet1_pt_topo_cuts->Write();
