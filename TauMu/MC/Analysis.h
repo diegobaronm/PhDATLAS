@@ -178,8 +178,8 @@ TH1F * h_b_tag_topo;
 TH1F * h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt;
 
 //Writing isolation variables
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo;
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_muon_0_iso_topo;
+TH1F * h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_omega_topo;
 TH1F * h_omega_topo_dphi;

@@ -99,11 +99,11 @@ void CLoop::Book(double lumFactor) {
     h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
     h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
 
-    h_EventN_RN363738_topo = new TH1F("EventN_RN363738_topo","Event number RN(363738)",10000,0.0,1.0e10);
-    h_EventN_RN363738_topo_tpt = new TH1F("EventN_RN363738_topo_tpt","Event number RN(363738)",10000,0,1.0e10);
+    h_EventN_RN363738_topo = new TH1F("EventN_RN363738_topo","Event number RN(363738)",100000,0.0,3.0e9);
+    h_EventN_RN363738_topo_tpt = new TH1F("EventN_RN363738_topo_tpt","Event number RN(363738)",100000,0,3.0e9);
 
-    h_EventN_RN363910_topo = new TH1F("EventN_RN363910_topo","Event number RN(363910)",10000,0.0,1.0e10);
-    h_EventN_RN363910_topo_tpt = new TH1F("EventN_RN363910_topo_tpt","Event number RN(363910)",10000,0.0,1.0e10);
+    h_EventN_RN363910_topo = new TH1F("EventN_RN363910_topo","Event number RN(363910)",100000,0.0,3.0e9);
+    h_EventN_RN363910_topo_tpt = new TH1F("EventN_RN363910_topo_tpt","Event number RN(363910)",100000,0.0,3.0e9);
 
     // pT light-jets
     h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
@@ -267,18 +267,6 @@ void CLoop::Book(double lumFactor) {
       h_tau_matched_cuts_3p = new TH1F("tau_matched_cuts_3p","Tau truth matched 3 prong",2,0,2);
       h_tau_matched_cuts_tpt_3p = new TH1F("tau_matched_cuts_tpt_3p","Tau truth matched 3 prong",2,0,2);
 
-
-      h_weight_mc_topo = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-      h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",10000,-500,500);
-      h_weight_total_topo = new TH1F("weight_total","weight total",10000,-500,500);
-      h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
-
-      h_sf_mu_trigger = new TH1F("sf_mu_trigger","Muon trigger scale factor",30,0.85,1.15);
-      h_sf_mu_recoid = new TH1F("sf_mu_recoid","Muon reco and id scale factor",30,0.85,1.15);
-      h_sf_mu_vertex = new TH1F("sf_mu_vertex","Muon vertex matching scale factor",30,0.85,1.15);
-      h_sf_mu_isolation = new TH1F("sf_mu_isolation","Muon isolation scale factor",30,0.85,1.15);
-      h_sf_mu_total = new TH1F("sf_mu_total","Muon total scale factor",30,0.85,1.15);
-
       h_Z_pt_truth_inside_topo = new TH1F("Z_pt_truth_inside_topo","Z_truth boson transverse momentum inside",400,0,400);
       h_Z_pt_truth_cuts_inside = new TH1F("Z_pt_truth_cuts_inside","Z_truth boson transverse momentum inside",400,0,400);
       h_Z_pt_truth_cuts_tpt_inside = new TH1F("Z_pt_truth_cuts_tpt_inside","Z_truth boson transverse momentum inside",400,0,400);
@@ -298,8 +286,8 @@ void CLoop::Book(double lumFactor) {
 
 
     // Isolation variables Histograms
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_topo = new TH1F("muon_0_iso_FCTightTrackOnly_FixedRad_topo","lepton 1 isolation",2,0,2);
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt = new TH1F("muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt","lepton 1 isolation",2,0,2);
+    h_muon_0_iso_topo = new TH1F("muon_0_iso_topo","lepton 1 isolation",2,0,2);
+    h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt = new TH1F("muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt","lepton 1 isolation",2,0,2);
 
     // Angular variable
     h_omega_topo = new TH1F("omega_topo","omega variable",60,-3.0,3.0);
@@ -489,7 +477,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[1]=1;
           }
-          if (muon_0_iso_FCTightTrackOnly_FixedRad==1) {
+          if (muon_0_iso_TightTrackOnly_FixedRad==1) {
             cuts[2]=1;
           }
           if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
@@ -547,7 +535,7 @@ void CLoop::Fill(double weight, int z_sample) {
             h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
           }
           if (cuts==c_iso||cuts==c_all) {
-            h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
+            h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_TightTrackOnly_FixedRad,weight);
           }
           if (cuts==c_rnn||cuts==c_all) {
             if (tau_0_n_charged_tracks==1){
@@ -598,7 +586,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if(run_number==363738){h_EventN_RN363738_topo->Fill(event_number,weight);}
           if(run_number==363910){h_EventN_RN363910_topo->Fill(event_number,weight);}
           h_jet_n_topo->Fill(n_jets, weight);
-          h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Fill(muon_0_iso_FCTightTrackOnly_FixedRad,weight);
+          h_muon_0_iso_topo->Fill(muon_0_iso_TightTrackOnly_FixedRad,weight);
           h_omega_topo->Fill(omega,weight);
           h_met_topo->Fill(met_reco_p4->Pt(),weight);
           h_lep_pt0_topo->Fill(muon_0_p4->Pt(),weight);
@@ -617,8 +605,6 @@ void CLoop::Fill(double weight, int z_sample) {
           h_trans_lep_mass_topo->Fill(lepmet_mass,weight);
 
           if (weight!=1){
-            h_weight_total_topo->Fill(weight,1);
-            h_weight_mc_topo->Fill(weight_total,1);
             if (tau_0_n_charged_tracks==1){
               h_tau_matched_topo_1p->Fill(tau_0_truth_isHadTau,weight);
             }
@@ -1015,14 +1001,6 @@ void CLoop::Fill(double weight, int z_sample) {
                             if (tau_0_n_charged_tracks==3){
                               h_tau_matched_cuts_tpt_3p->Fill(tau_0_truth_isHadTau,weight);
                             }
-                            h_weight_mc_cuts->Fill(weight_total,1);
-                            h_weight_total_cuts->Fill(weight,1);
-                            h_sf_mu_isolation->Fill(muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad,1);
-                            h_sf_mu_recoid->Fill(muon_0_NOMINAL_MuEffSF_Reco_QualMedium,1);
-                            h_sf_mu_vertex->Fill(muon_0_NOMINAL_MuEffSF_TTVA,1);
-                            h_sf_mu_trigger->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium,1);
-                            h_sf_mu_total->Fill(muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_IsoFCTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium
-                                                *muon_0_NOMINAL_MuEffSF_TTVA,1);
                           }
                           if (inside) {
                             h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass,weight);
@@ -1157,15 +1135,7 @@ void CLoop::Style(double lumFactor) {
       h_tau_matched_topo_3p->Write();
       h_tau_matched_cuts_3p->Write();
       h_tau_matched_cuts_tpt_3p->Write();
-      h_sf_mu_recoid->Write();
-      h_sf_mu_vertex->Write();
-      h_sf_mu_trigger->Write();
-      h_sf_mu_isolation->Write();
-      h_sf_mu_total->Write();
-      h_weight_mc_topo->Write();
-      h_weight_mc_cuts->Write();
-      h_weight_total_topo->Write();
-      h_weight_total_cuts->Write();
+
       h_Z_pt_truth_inside_topo->Write();
       h_Z_pt_truth_cuts_inside->Write();
       h_Z_pt_truth_cuts_tpt_inside->Write();
@@ -1316,8 +1286,8 @@ void CLoop::Style(double lumFactor) {
     h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
     //Writing isolation variables
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_topo->Write();
-    h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Write();
+    h_muon_0_iso_topo->Write();
+    h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Write();
 
     h_omega_topo->Write();
     h_omega_topo_dphi->Write();
