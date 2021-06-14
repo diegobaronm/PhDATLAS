@@ -72,28 +72,50 @@ public :
    Float_t         elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
    Float_t         elec_0_cluster_eta;
    Float_t         elec_0_cluster_eta_be2;
+   Int_t           elec_0_id_bad;
+   Int_t           elec_0_id_charge;
+   Int_t           elec_0_id_loose;
    Int_t           elec_0_id_medium;
    Int_t           elec_0_id_tight;
+   Int_t           elec_0_id_veryloose;
    UInt_t          elec_0_iso_FCLoose;
-   UInt_t          elec_0_iso_FCLoose_FixedRad;
    UInt_t          elec_0_iso_FCTight;
-   UInt_t          elec_0_iso_FCTightTrackOnly_FixedRad;
    UInt_t          elec_0_iso_FixedCutLoose;
    UInt_t          elec_0_iso_FixedCutTight;
    UInt_t          elec_0_iso_FixedCutTightCaloOnly;
+   UInt_t          elec_0_iso_Loose_FixedRad;
+   UInt_t          elec_0_iso_TightTrackOnly_FixedRad;
+   UInt_t          elec_0_matched;
    Int_t           elec_0_matched_classifierParticleOrigin;
+   Int_t           elec_0_matched_classifierParticleOutcome;
    Int_t           elec_0_matched_classifierParticleType;
+   Int_t           elec_0_matched_isHad;
+   Int_t           elec_0_matched_mother_pdgId;
+   Int_t           elec_0_matched_mother_status;
    Int_t           elec_0_matched_origin;
    TLorentzVector  *elec_0_matched_p4;
    Int_t           elec_0_matched_pdgId;
-   Float_t         elec_0_matched_pz;
    Float_t         elec_0_matched_q;
+   Int_t           elec_0_matched_status;
    Int_t           elec_0_matched_type;
+   Int_t           elec_0_muonAuthor;
+   Int_t           elec_0_muonType;
+   Int_t           elec_0_origin;
    TLorentzVector  *elec_0_p4;
    Float_t         elec_0_q;
+   Float_t         elec_0_trk_d0;
    Float_t         elec_0_trk_d0_sig;
+   TLorentzVector  *elec_0_trk_p4;
+   Float_t         elec_0_trk_pt_error;
+   Float_t         elec_0_trk_pvx_z0;
+   Float_t         elec_0_trk_pvx_z0_sig;
    Float_t         elec_0_trk_pvx_z0_sintheta;
+   Int_t           elec_0_trk_vx;
+   TVector3        *elec_0_trk_vx_v;
+   Float_t         elec_0_trk_z0;
+   Float_t         elec_0_trk_z0_sig;
    Float_t         elec_0_trk_z0_sintheta;
+   Int_t           elec_0_type;
    UInt_t          elec_1;
    Float_t         elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
    Float_t         elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
@@ -110,21 +132,22 @@ public :
    Int_t           elec_1_id_tight;
    Int_t           elec_1_id_veryloose;
    UInt_t          elec_1_iso_FCLoose;
-   UInt_t          elec_1_iso_FCLoose_FixedRad;
    UInt_t          elec_1_iso_FCTight;
-   UInt_t          elec_1_iso_FCTightTrackOnly_FixedRad;
    UInt_t          elec_1_iso_FixedCutLoose;
    UInt_t          elec_1_iso_FixedCutTight;
    UInt_t          elec_1_iso_FixedCutTightCaloOnly;
+   UInt_t          elec_1_iso_Loose_FixedRad;
+   UInt_t          elec_1_iso_TightTrackOnly_FixedRad;
    UInt_t          elec_1_matched;
    Int_t           elec_1_matched_classifierParticleOrigin;
+   Int_t           elec_1_matched_classifierParticleOutcome;
    Int_t           elec_1_matched_classifierParticleType;
+   Int_t           elec_1_matched_isHad;
    Int_t           elec_1_matched_mother_pdgId;
    Int_t           elec_1_matched_mother_status;
    Int_t           elec_1_matched_origin;
    TLorentzVector  *elec_1_matched_p4;
    Int_t           elec_1_matched_pdgId;
-   Float_t         elec_1_matched_pz;
    Float_t         elec_1_matched_q;
    Int_t           elec_1_matched_status;
    Int_t           elec_1_matched_type;
@@ -135,6 +158,7 @@ public :
    Float_t         elec_1_q;
    Float_t         elec_1_trk_d0;
    Float_t         elec_1_trk_d0_sig;
+   TLorentzVector  *elec_1_trk_p4;
    Float_t         elec_1_trk_pt_error;
    Float_t         elec_1_trk_pvx_z0;
    Float_t         elec_1_trk_pvx_z0_sig;
@@ -145,6 +169,9 @@ public :
    Float_t         elec_1_trk_z0_sig;
    Float_t         elec_1_trk_z0_sintheta;
    Int_t           elec_1_type;
+   UInt_t          event_clean_EC_LooseBad;
+   UInt_t          event_clean_EC_TightBad;
+   Int_t           event_clean_detector_core;
    Int_t           event_is_bad_batman;
    ULong64_t       event_number;
    Float_t         jet_NOMINAL_central_jets_global_effSF_JVT;
@@ -154,13 +181,14 @@ public :
    Float_t         jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85;
    Float_t         jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85;
    UInt_t          ljet_0;
+   Float_t         ljet_0_MV2c10_FixedCutBEff_85_weight;
+   Float_t         ljet_0_b_tag_score;
    Int_t           ljet_0_b_tagged_MV2c10_FixedCutBEff_85;
-   Int_t           ljet_0_flavorlabel;
-   Int_t           ljet_0_flavorlabel_cone;
-   Int_t           ljet_0_flavorlabel_part;
    UInt_t          ljet_0_matched;
    Int_t           ljet_0_matched_classifierParticleOrigin;
    Int_t           ljet_0_matched_classifierParticleType;
+   Int_t           ljet_0_matched_mother_pdgId;
+   Int_t           ljet_0_matched_mother_status;
    Int_t           ljet_0_matched_origin;
    TLorentzVector  *ljet_0_matched_p4;
    Int_t           ljet_0_matched_pdgId;
@@ -170,15 +198,18 @@ public :
    Int_t           ljet_0_matched_type;
    Int_t           ljet_0_origin;
    TLorentzVector  *ljet_0_p4;
+   Float_t         ljet_0_q;
    Int_t           ljet_0_type;
+   Float_t         ljet_0_width;
    UInt_t          ljet_1;
+   Float_t         ljet_1_MV2c10_FixedCutBEff_85_weight;
+   Float_t         ljet_1_b_tag_score;
    Int_t           ljet_1_b_tagged_MV2c10_FixedCutBEff_85;
-   Int_t           ljet_1_flavorlabel;
-   Int_t           ljet_1_flavorlabel_cone;
-   Int_t           ljet_1_flavorlabel_part;
    UInt_t          ljet_1_matched;
    Int_t           ljet_1_matched_classifierParticleOrigin;
    Int_t           ljet_1_matched_classifierParticleType;
+   Int_t           ljet_1_matched_mother_pdgId;
+   Int_t           ljet_1_matched_mother_status;
    Int_t           ljet_1_matched_origin;
    TLorentzVector  *ljet_1_matched_p4;
    Int_t           ljet_1_matched_pdgId;
@@ -188,18 +219,13 @@ public :
    Int_t           ljet_1_matched_type;
    Int_t           ljet_1_origin;
    TLorentzVector  *ljet_1_p4;
+   Float_t         ljet_1_q;
    Int_t           ljet_1_type;
+   Float_t         ljet_1_width;
    UInt_t          ljet_2;
-   Int_t           ljet_2_b_tag_quantile;
+   Float_t         ljet_2_MV2c10_FixedCutBEff_85_weight;
    Float_t         ljet_2_b_tag_score;
    Int_t           ljet_2_b_tagged_MV2c10_FixedCutBEff_85;
-   UInt_t          ljet_2_cleanJet_EC_LooseBad;
-   Float_t         ljet_2_fjvt;
-   Int_t           ljet_2_flavorlabel;
-   Int_t           ljet_2_flavorlabel_cone;
-   Int_t           ljet_2_flavorlabel_part;
-   Int_t           ljet_2_is_Jvt_HS;
-   Float_t         ljet_2_jvt;
    UInt_t          ljet_2_matched;
    Int_t           ljet_2_matched_classifierParticleOrigin;
    Int_t           ljet_2_matched_classifierParticleType;
@@ -217,16 +243,35 @@ public :
    Float_t         ljet_2_q;
    Int_t           ljet_2_type;
    Float_t         ljet_2_width;
+   UInt_t          mc_channel_number;
    TLorentzVector  *met_reco_p4;
+   TLorentzVector  *met_truth_p4;
+   Int_t           muon_0_matched_classifierParticleOutcome;
+   Int_t           muon_0_matched_isHad;
    Float_t         n_actual_int;
    Float_t         n_actual_int_cor;
    Float_t         n_avg_int;
    Float_t         n_avg_int_cor;
    Int_t           n_bjets_MV2c10_FixedCutBEff_85;
    Int_t           n_electrons;
+   Int_t           n_electrons_met;
    Int_t           n_electrons_olr;
    Int_t           n_jets;
+   Int_t           n_jets_30;
+   Int_t           n_jets_40;
+   Int_t           n_jets_bad;
+   Int_t           n_jets_mc_hs;
+   Int_t           n_jets_met;
+   Int_t           n_jets_olr;
    Int_t           n_muons;
+   Int_t           n_muons_bad;
+   Int_t           n_muons_loose;
+   Int_t           n_muons_medium;
+   Int_t           n_muons_met;
+   Int_t           n_muons_olr;
+   Int_t           n_muons_tight;
+   Int_t           n_muons_veryloose;
+   Int_t           n_photons;
    Int_t           n_pvx;
    Int_t           n_taus;
    Int_t           n_taus_met;
@@ -235,13 +280,16 @@ public :
    Int_t           n_taus_rnn_medium;
    Int_t           n_taus_rnn_tight;
    Int_t           n_taus_rnn_veryloose;
+   UInt_t          n_truth_gluon_jets;
+   UInt_t          n_truth_jets;
+   UInt_t          n_truth_jets_pt20_eta45;
+   UInt_t          n_truth_quark_jets;
    Int_t           n_vx;
    UInt_t          run_number;
    Float_t         triggerSF_em_NOMINAL;
    TLorentzVector  *truth_Z_p4;
    Double_t        weight_mc;
    vector<float>   *weight_mc_v;
-   Double_t        weight_total;
 
    // List of branches
    TBranch        *b_HLT_e120_lhloose;   //!
@@ -278,28 +326,50 @@ public :
    TBranch        *b_elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;   //!
    TBranch        *b_elec_0_cluster_eta;   //!
    TBranch        *b_elec_0_cluster_eta_be2;   //!
+   TBranch        *b_elec_0_id_bad;   //!
+   TBranch        *b_elec_0_id_charge;   //!
+   TBranch        *b_elec_0_id_loose;   //!
    TBranch        *b_elec_0_id_medium;   //!
    TBranch        *b_elec_0_id_tight;   //!
+   TBranch        *b_elec_0_id_veryloose;   //!
    TBranch        *b_elec_0_iso_FCLoose;   //!
-   TBranch        *b_elec_0_iso_FCLoose_FixedRad;   //!
    TBranch        *b_elec_0_iso_FCTight;   //!
-   TBranch        *b_elec_0_iso_FCTightTrackOnly_FixedRad;   //!
    TBranch        *b_elec_0_iso_FixedCutLoose;   //!
    TBranch        *b_elec_0_iso_FixedCutTight;   //!
    TBranch        *b_elec_0_iso_FixedCutTightCaloOnly;   //!
+   TBranch        *b_elec_0_iso_Loose_FixedRad;   //!
+   TBranch        *b_elec_0_iso_TightTrackOnly_FixedRad;   //!
+   TBranch        *b_elec_0_matched;   //!
    TBranch        *b_elec_0_matched_classifierParticleOrigin;   //!
+   TBranch        *b_elec_0_matched_classifierParticleOutcome;   //!
    TBranch        *b_elec_0_matched_classifierParticleType;   //!
+   TBranch        *b_elec_0_matched_isHad;   //!
+   TBranch        *b_elec_0_matched_mother_pdgId;   //!
+   TBranch        *b_elec_0_matched_mother_status;   //!
    TBranch        *b_elec_0_matched_origin;   //!
    TBranch        *b_elec_0_matched_p4;   //!
    TBranch        *b_elec_0_matched_pdgId;   //!
-   TBranch        *b_elec_0_matched_pz;   //!
    TBranch        *b_elec_0_matched_q;   //!
+   TBranch        *b_elec_0_matched_status;   //!
    TBranch        *b_elec_0_matched_type;   //!
+   TBranch        *b_elec_0_muonAuthor;   //!
+   TBranch        *b_elec_0_muonType;   //!
+   TBranch        *b_elec_0_origin;   //!
    TBranch        *b_elec_0_p4;   //!
    TBranch        *b_elec_0_q;   //!
+   TBranch        *b_elec_0_trk_d0;   //!
    TBranch        *b_elec_0_trk_d0_sig;   //!
+   TBranch        *b_elec_0_trk_p4;   //!
+   TBranch        *b_elec_0_trk_pt_error;   //!
+   TBranch        *b_elec_0_trk_pvx_z0;   //!
+   TBranch        *b_elec_0_trk_pvx_z0_sig;   //!
    TBranch        *b_elec_0_trk_pvx_z0_sintheta;   //!
+   TBranch        *b_elec_0_trk_vx;   //!
+   TBranch        *b_elec_0_trk_vx_v;   //!
+   TBranch        *b_elec_0_trk_z0;   //!
+   TBranch        *b_elec_0_trk_z0_sig;   //!
    TBranch        *b_elec_0_trk_z0_sintheta;   //!
+   TBranch        *b_elec_0_type;   //!
    TBranch        *b_elec_1;   //!
    TBranch        *b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;   //!
    TBranch        *b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;   //!
@@ -316,21 +386,22 @@ public :
    TBranch        *b_elec_1_id_tight;   //!
    TBranch        *b_elec_1_id_veryloose;   //!
    TBranch        *b_elec_1_iso_FCLoose;   //!
-   TBranch        *b_elec_1_iso_FCLoose_FixedRad;   //!
    TBranch        *b_elec_1_iso_FCTight;   //!
-   TBranch        *b_elec_1_iso_FCTightTrackOnly_FixedRad;   //!
    TBranch        *b_elec_1_iso_FixedCutLoose;   //!
    TBranch        *b_elec_1_iso_FixedCutTight;   //!
    TBranch        *b_elec_1_iso_FixedCutTightCaloOnly;   //!
+   TBranch        *b_elec_1_iso_Loose_FixedRad;   //!
+   TBranch        *b_elec_1_iso_TightTrackOnly_FixedRad;   //!
    TBranch        *b_elec_1_matched;   //!
    TBranch        *b_elec_1_matched_classifierParticleOrigin;   //!
+   TBranch        *b_elec_1_matched_classifierParticleOutcome;   //!
    TBranch        *b_elec_1_matched_classifierParticleType;   //!
+   TBranch        *b_elec_1_matched_isHad;   //!
    TBranch        *b_elec_1_matched_mother_pdgId;   //!
    TBranch        *b_elec_1_matched_mother_status;   //!
    TBranch        *b_elec_1_matched_origin;   //!
    TBranch        *b_elec_1_matched_p4;   //!
    TBranch        *b_elec_1_matched_pdgId;   //!
-   TBranch        *b_elec_1_matched_pz;   //!
    TBranch        *b_elec_1_matched_q;   //!
    TBranch        *b_elec_1_matched_status;   //!
    TBranch        *b_elec_1_matched_type;   //!
@@ -341,6 +412,7 @@ public :
    TBranch        *b_elec_1_q;   //!
    TBranch        *b_elec_1_trk_d0;   //!
    TBranch        *b_elec_1_trk_d0_sig;   //!
+   TBranch        *b_elec_1_trk_p4;   //!
    TBranch        *b_elec_1_trk_pt_error;   //!
    TBranch        *b_elec_1_trk_pvx_z0;   //!
    TBranch        *b_elec_1_trk_pvx_z0_sig;   //!
@@ -351,6 +423,9 @@ public :
    TBranch        *b_elec_1_trk_z0_sig;   //!
    TBranch        *b_elec_1_trk_z0_sintheta;   //!
    TBranch        *b_elec_1_type;   //!
+   TBranch        *b_event_clean_EC_LooseBad;   //!
+   TBranch        *b_event_clean_EC_TightBad;   //!
+   TBranch        *b_event_clean_detector_core;   //!
    TBranch        *b_event_is_bad_batman;   //!
    TBranch        *b_event_number;   //!
    TBranch        *b_jet_NOMINAL_central_jets_global_effSF_JVT;   //!
@@ -360,13 +435,14 @@ public :
    TBranch        *b_jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_ljet_0;   //!
+   TBranch        *b_ljet_0_MV2c10_FixedCutBEff_85_weight;   //!
+   TBranch        *b_ljet_0_b_tag_score;   //!
    TBranch        *b_ljet_0_b_tagged_MV2c10_FixedCutBEff_85;   //!
-   TBranch        *b_ljet_0_flavorlabel;   //!
-   TBranch        *b_ljet_0_flavorlabel_cone;   //!
-   TBranch        *b_ljet_0_flavorlabel_part;   //!
    TBranch        *b_ljet_0_matched;   //!
    TBranch        *b_ljet_0_matched_classifierParticleOrigin;   //!
    TBranch        *b_ljet_0_matched_classifierParticleType;   //!
+   TBranch        *b_ljet_0_matched_mother_pdgId;   //!
+   TBranch        *b_ljet_0_matched_mother_status;   //!
    TBranch        *b_ljet_0_matched_origin;   //!
    TBranch        *b_ljet_0_matched_p4;   //!
    TBranch        *b_ljet_0_matched_pdgId;   //!
@@ -376,15 +452,18 @@ public :
    TBranch        *b_ljet_0_matched_type;   //!
    TBranch        *b_ljet_0_origin;   //!
    TBranch        *b_ljet_0_p4;   //!
+   TBranch        *b_ljet_0_q;   //!
    TBranch        *b_ljet_0_type;   //!
+   TBranch        *b_ljet_0_width;   //!
    TBranch        *b_ljet_1;   //!
+   TBranch        *b_ljet_1_MV2c10_FixedCutBEff_85_weight;   //!
+   TBranch        *b_ljet_1_b_tag_score;   //!
    TBranch        *b_ljet_1_b_tagged_MV2c10_FixedCutBEff_85;   //!
-   TBranch        *b_ljet_1_flavorlabel;   //!
-   TBranch        *b_ljet_1_flavorlabel_cone;   //!
-   TBranch        *b_ljet_1_flavorlabel_part;   //!
    TBranch        *b_ljet_1_matched;   //!
    TBranch        *b_ljet_1_matched_classifierParticleOrigin;   //!
    TBranch        *b_ljet_1_matched_classifierParticleType;   //!
+   TBranch        *b_ljet_1_matched_mother_pdgId;   //!
+   TBranch        *b_ljet_1_matched_mother_status;   //!
    TBranch        *b_ljet_1_matched_origin;   //!
    TBranch        *b_ljet_1_matched_p4;   //!
    TBranch        *b_ljet_1_matched_pdgId;   //!
@@ -394,18 +473,13 @@ public :
    TBranch        *b_ljet_1_matched_type;   //!
    TBranch        *b_ljet_1_origin;   //!
    TBranch        *b_ljet_1_p4;   //!
+   TBranch        *b_ljet_1_q;   //!
    TBranch        *b_ljet_1_type;   //!
+   TBranch        *b_ljet_1_width;   //!
    TBranch        *b_ljet_2;   //!
-   TBranch        *b_ljet_2_b_tag_quantile;   //!
+   TBranch        *b_ljet_2_MV2c10_FixedCutBEff_85_weight;   //!
    TBranch        *b_ljet_2_b_tag_score;   //!
    TBranch        *b_ljet_2_b_tagged_MV2c10_FixedCutBEff_85;   //!
-   TBranch        *b_ljet_2_cleanJet_EC_LooseBad;   //!
-   TBranch        *b_ljet_2_fjvt;   //!
-   TBranch        *b_ljet_2_flavorlabel;   //!
-   TBranch        *b_ljet_2_flavorlabel_cone;   //!
-   TBranch        *b_ljet_2_flavorlabel_part;   //!
-   TBranch        *b_ljet_2_is_Jvt_HS;   //!
-   TBranch        *b_ljet_2_jvt;   //!
    TBranch        *b_ljet_2_matched;   //!
    TBranch        *b_ljet_2_matched_classifierParticleOrigin;   //!
    TBranch        *b_ljet_2_matched_classifierParticleType;   //!
@@ -423,16 +497,35 @@ public :
    TBranch        *b_ljet_2_q;   //!
    TBranch        *b_ljet_2_type;   //!
    TBranch        *b_ljet_2_width;   //!
+   TBranch        *b_mc_channel_number;   //!
    TBranch        *b_met_reco_p4;   //!
+   TBranch        *b_met_truth_p4;   //!
+   TBranch        *b_muon_0_matched_classifierParticleOutcome;   //!
+   TBranch        *b_muon_0_matched_isHad;   //!
    TBranch        *b_n_actual_int;   //!
    TBranch        *b_n_actual_int_cor;   //!
    TBranch        *b_n_avg_int;   //!
    TBranch        *b_n_avg_int_cor;   //!
    TBranch        *b_n_bjets_MV2c10_FixedCutBEff_85;   //!
    TBranch        *b_n_electrons;   //!
+   TBranch        *b_n_electrons_met;   //!
    TBranch        *b_n_electrons_olr;   //!
    TBranch        *b_n_jets;   //!
+   TBranch        *b_n_jets_30;   //!
+   TBranch        *b_n_jets_40;   //!
+   TBranch        *b_n_jets_bad;   //!
+   TBranch        *b_n_jets_mc_hs;   //!
+   TBranch        *b_n_jets_met;   //!
+   TBranch        *b_n_jets_olr;   //!
    TBranch        *b_n_muons;   //!
+   TBranch        *b_n_muons_bad;   //!
+   TBranch        *b_n_muons_loose;   //!
+   TBranch        *b_n_muons_medium;   //!
+   TBranch        *b_n_muons_met;   //!
+   TBranch        *b_n_muons_olr;   //!
+   TBranch        *b_n_muons_tight;   //!
+   TBranch        *b_n_muons_veryloose;   //!
+   TBranch        *b_n_photons;   //!
    TBranch        *b_n_pvx;   //!
    TBranch        *b_n_taus;   //!
    TBranch        *b_n_taus_met;   //!
@@ -441,13 +534,16 @@ public :
    TBranch        *b_n_taus_rnn_medium;   //!
    TBranch        *b_n_taus_rnn_tight;   //!
    TBranch        *b_n_taus_rnn_veryloose;   //!
+   TBranch        *b_n_truth_gluon_jets;   //!
+   TBranch        *b_n_truth_jets;   //!
+   TBranch        *b_n_truth_jets_pt20_eta45;   //!
+   TBranch        *b_n_truth_quark_jets;   //!
    TBranch        *b_n_vx;   //!
    TBranch        *b_run_number;   //!
    TBranch        *b_triggerSF_em_NOMINAL;   //!
    TBranch        *b_truth_Z_p4;   //!
    TBranch        *b_weight_mc;   //!
    TBranch        *b_weight_mc_v;   //!
-   TBranch        *b_weight_total;   //!
 
    CLoop(TTree *tree=0);
    virtual ~CLoop();
@@ -516,8 +612,11 @@ void CLoop::Init(TTree *tree)
    // Set object pointer
    elec_0_matched_p4 = 0;
    elec_0_p4 = 0;
+   elec_0_trk_p4 = 0;
+   elec_0_trk_vx_v = 0;
    elec_1_matched_p4 = 0;
    elec_1_p4 = 0;
+   elec_1_trk_p4 = 0;
    elec_1_trk_vx_v = 0;
    ljet_0_matched_p4 = 0;
    ljet_0_p4 = 0;
@@ -526,6 +625,7 @@ void CLoop::Init(TTree *tree)
    ljet_2_matched_p4 = 0;
    ljet_2_p4 = 0;
    met_reco_p4 = 0;
+   met_truth_p4 = 0;
    truth_Z_p4 = 0;
    weight_mc_v = 0;
    // Set branch addresses and branch pointers
@@ -568,28 +668,50 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight", &elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight, &b_elec_0_NOMINAL_efficiency_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight);
    fChain->SetBranchAddress("elec_0_cluster_eta", &elec_0_cluster_eta, &b_elec_0_cluster_eta);
    fChain->SetBranchAddress("elec_0_cluster_eta_be2", &elec_0_cluster_eta_be2, &b_elec_0_cluster_eta_be2);
+   fChain->SetBranchAddress("elec_0_id_bad", &elec_0_id_bad, &b_elec_0_id_bad);
+   fChain->SetBranchAddress("elec_0_id_charge", &elec_0_id_charge, &b_elec_0_id_charge);
+   fChain->SetBranchAddress("elec_0_id_loose", &elec_0_id_loose, &b_elec_0_id_loose);
    fChain->SetBranchAddress("elec_0_id_medium", &elec_0_id_medium, &b_elec_0_id_medium);
    fChain->SetBranchAddress("elec_0_id_tight", &elec_0_id_tight, &b_elec_0_id_tight);
+   fChain->SetBranchAddress("elec_0_id_veryloose", &elec_0_id_veryloose, &b_elec_0_id_veryloose);
    fChain->SetBranchAddress("elec_0_iso_FCLoose", &elec_0_iso_FCLoose, &b_elec_0_iso_FCLoose);
-   fChain->SetBranchAddress("elec_0_iso_FCLoose_FixedRad", &elec_0_iso_FCLoose_FixedRad, &b_elec_0_iso_FCLoose_FixedRad);
    fChain->SetBranchAddress("elec_0_iso_FCTight", &elec_0_iso_FCTight, &b_elec_0_iso_FCTight);
-   fChain->SetBranchAddress("elec_0_iso_FCTightTrackOnly_FixedRad", &elec_0_iso_FCTightTrackOnly_FixedRad, &b_elec_0_iso_FCTightTrackOnly_FixedRad);
    fChain->SetBranchAddress("elec_0_iso_FixedCutLoose", &elec_0_iso_FixedCutLoose, &b_elec_0_iso_FixedCutLoose);
    fChain->SetBranchAddress("elec_0_iso_FixedCutTight", &elec_0_iso_FixedCutTight, &b_elec_0_iso_FixedCutTight);
    fChain->SetBranchAddress("elec_0_iso_FixedCutTightCaloOnly", &elec_0_iso_FixedCutTightCaloOnly, &b_elec_0_iso_FixedCutTightCaloOnly);
+   fChain->SetBranchAddress("elec_0_iso_Loose_FixedRad", &elec_0_iso_Loose_FixedRad, &b_elec_0_iso_Loose_FixedRad);
+   fChain->SetBranchAddress("elec_0_iso_TightTrackOnly_FixedRad", &elec_0_iso_TightTrackOnly_FixedRad, &b_elec_0_iso_TightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("elec_0_matched", &elec_0_matched, &b_elec_0_matched);
    fChain->SetBranchAddress("elec_0_matched_classifierParticleOrigin", &elec_0_matched_classifierParticleOrigin, &b_elec_0_matched_classifierParticleOrigin);
+   fChain->SetBranchAddress("elec_0_matched_classifierParticleOutcome", &elec_0_matched_classifierParticleOutcome, &b_elec_0_matched_classifierParticleOutcome);
    fChain->SetBranchAddress("elec_0_matched_classifierParticleType", &elec_0_matched_classifierParticleType, &b_elec_0_matched_classifierParticleType);
+   fChain->SetBranchAddress("elec_0_matched_isHad", &elec_0_matched_isHad, &b_elec_0_matched_isHad);
+   fChain->SetBranchAddress("elec_0_matched_mother_pdgId", &elec_0_matched_mother_pdgId, &b_elec_0_matched_mother_pdgId);
+   fChain->SetBranchAddress("elec_0_matched_mother_status", &elec_0_matched_mother_status, &b_elec_0_matched_mother_status);
    fChain->SetBranchAddress("elec_0_matched_origin", &elec_0_matched_origin, &b_elec_0_matched_origin);
    fChain->SetBranchAddress("elec_0_matched_p4", &elec_0_matched_p4, &b_elec_0_matched_p4);
    fChain->SetBranchAddress("elec_0_matched_pdgId", &elec_0_matched_pdgId, &b_elec_0_matched_pdgId);
-   fChain->SetBranchAddress("elec_0_matched_pz", &elec_0_matched_pz, &b_elec_0_matched_pz);
    fChain->SetBranchAddress("elec_0_matched_q", &elec_0_matched_q, &b_elec_0_matched_q);
+   fChain->SetBranchAddress("elec_0_matched_status", &elec_0_matched_status, &b_elec_0_matched_status);
    fChain->SetBranchAddress("elec_0_matched_type", &elec_0_matched_type, &b_elec_0_matched_type);
+   fChain->SetBranchAddress("elec_0_muonAuthor", &elec_0_muonAuthor, &b_elec_0_muonAuthor);
+   fChain->SetBranchAddress("elec_0_muonType", &elec_0_muonType, &b_elec_0_muonType);
+   fChain->SetBranchAddress("elec_0_origin", &elec_0_origin, &b_elec_0_origin);
    fChain->SetBranchAddress("elec_0_p4", &elec_0_p4, &b_elec_0_p4);
    fChain->SetBranchAddress("elec_0_q", &elec_0_q, &b_elec_0_q);
+   fChain->SetBranchAddress("elec_0_trk_d0", &elec_0_trk_d0, &b_elec_0_trk_d0);
    fChain->SetBranchAddress("elec_0_trk_d0_sig", &elec_0_trk_d0_sig, &b_elec_0_trk_d0_sig);
+   fChain->SetBranchAddress("elec_0_trk_p4", &elec_0_trk_p4, &b_elec_0_trk_p4);
+   fChain->SetBranchAddress("elec_0_trk_pt_error", &elec_0_trk_pt_error, &b_elec_0_trk_pt_error);
+   fChain->SetBranchAddress("elec_0_trk_pvx_z0", &elec_0_trk_pvx_z0, &b_elec_0_trk_pvx_z0);
+   fChain->SetBranchAddress("elec_0_trk_pvx_z0_sig", &elec_0_trk_pvx_z0_sig, &b_elec_0_trk_pvx_z0_sig);
    fChain->SetBranchAddress("elec_0_trk_pvx_z0_sintheta", &elec_0_trk_pvx_z0_sintheta, &b_elec_0_trk_pvx_z0_sintheta);
+   fChain->SetBranchAddress("elec_0_trk_vx", &elec_0_trk_vx, &b_elec_0_trk_vx);
+   fChain->SetBranchAddress("elec_0_trk_vx_v", &elec_0_trk_vx_v, &b_elec_0_trk_vx_v);
+   fChain->SetBranchAddress("elec_0_trk_z0", &elec_0_trk_z0, &b_elec_0_trk_z0);
+   fChain->SetBranchAddress("elec_0_trk_z0_sig", &elec_0_trk_z0_sig, &b_elec_0_trk_z0_sig);
    fChain->SetBranchAddress("elec_0_trk_z0_sintheta", &elec_0_trk_z0_sintheta, &b_elec_0_trk_z0_sintheta);
+   fChain->SetBranchAddress("elec_0_type", &elec_0_type, &b_elec_0_type);
    fChain->SetBranchAddress("elec_1", &elec_1, &b_elec_1);
    fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose", &elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose, &b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose);
    fChain->SetBranchAddress("elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight", &elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight, &b_elec_1_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight);
@@ -606,21 +728,22 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_1_id_tight", &elec_1_id_tight, &b_elec_1_id_tight);
    fChain->SetBranchAddress("elec_1_id_veryloose", &elec_1_id_veryloose, &b_elec_1_id_veryloose);
    fChain->SetBranchAddress("elec_1_iso_FCLoose", &elec_1_iso_FCLoose, &b_elec_1_iso_FCLoose);
-   fChain->SetBranchAddress("elec_1_iso_FCLoose_FixedRad", &elec_1_iso_FCLoose_FixedRad, &b_elec_1_iso_FCLoose_FixedRad);
    fChain->SetBranchAddress("elec_1_iso_FCTight", &elec_1_iso_FCTight, &b_elec_1_iso_FCTight);
-   fChain->SetBranchAddress("elec_1_iso_FCTightTrackOnly_FixedRad", &elec_1_iso_FCTightTrackOnly_FixedRad, &b_elec_1_iso_FCTightTrackOnly_FixedRad);
    fChain->SetBranchAddress("elec_1_iso_FixedCutLoose", &elec_1_iso_FixedCutLoose, &b_elec_1_iso_FixedCutLoose);
    fChain->SetBranchAddress("elec_1_iso_FixedCutTight", &elec_1_iso_FixedCutTight, &b_elec_1_iso_FixedCutTight);
    fChain->SetBranchAddress("elec_1_iso_FixedCutTightCaloOnly", &elec_1_iso_FixedCutTightCaloOnly, &b_elec_1_iso_FixedCutTightCaloOnly);
+   fChain->SetBranchAddress("elec_1_iso_Loose_FixedRad", &elec_1_iso_Loose_FixedRad, &b_elec_1_iso_Loose_FixedRad);
+   fChain->SetBranchAddress("elec_1_iso_TightTrackOnly_FixedRad", &elec_1_iso_TightTrackOnly_FixedRad, &b_elec_1_iso_TightTrackOnly_FixedRad);
    fChain->SetBranchAddress("elec_1_matched", &elec_1_matched, &b_elec_1_matched);
    fChain->SetBranchAddress("elec_1_matched_classifierParticleOrigin", &elec_1_matched_classifierParticleOrigin, &b_elec_1_matched_classifierParticleOrigin);
+   fChain->SetBranchAddress("elec_1_matched_classifierParticleOutcome", &elec_1_matched_classifierParticleOutcome, &b_elec_1_matched_classifierParticleOutcome);
    fChain->SetBranchAddress("elec_1_matched_classifierParticleType", &elec_1_matched_classifierParticleType, &b_elec_1_matched_classifierParticleType);
+   fChain->SetBranchAddress("elec_1_matched_isHad", &elec_1_matched_isHad, &b_elec_1_matched_isHad);
    fChain->SetBranchAddress("elec_1_matched_mother_pdgId", &elec_1_matched_mother_pdgId, &b_elec_1_matched_mother_pdgId);
    fChain->SetBranchAddress("elec_1_matched_mother_status", &elec_1_matched_mother_status, &b_elec_1_matched_mother_status);
    fChain->SetBranchAddress("elec_1_matched_origin", &elec_1_matched_origin, &b_elec_1_matched_origin);
    fChain->SetBranchAddress("elec_1_matched_p4", &elec_1_matched_p4, &b_elec_1_matched_p4);
    fChain->SetBranchAddress("elec_1_matched_pdgId", &elec_1_matched_pdgId, &b_elec_1_matched_pdgId);
-   fChain->SetBranchAddress("elec_1_matched_pz", &elec_1_matched_pz, &b_elec_1_matched_pz);
    fChain->SetBranchAddress("elec_1_matched_q", &elec_1_matched_q, &b_elec_1_matched_q);
    fChain->SetBranchAddress("elec_1_matched_status", &elec_1_matched_status, &b_elec_1_matched_status);
    fChain->SetBranchAddress("elec_1_matched_type", &elec_1_matched_type, &b_elec_1_matched_type);
@@ -631,6 +754,7 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_1_q", &elec_1_q, &b_elec_1_q);
    fChain->SetBranchAddress("elec_1_trk_d0", &elec_1_trk_d0, &b_elec_1_trk_d0);
    fChain->SetBranchAddress("elec_1_trk_d0_sig", &elec_1_trk_d0_sig, &b_elec_1_trk_d0_sig);
+   fChain->SetBranchAddress("elec_1_trk_p4", &elec_1_trk_p4, &b_elec_1_trk_p4);
    fChain->SetBranchAddress("elec_1_trk_pt_error", &elec_1_trk_pt_error, &b_elec_1_trk_pt_error);
    fChain->SetBranchAddress("elec_1_trk_pvx_z0", &elec_1_trk_pvx_z0, &b_elec_1_trk_pvx_z0);
    fChain->SetBranchAddress("elec_1_trk_pvx_z0_sig", &elec_1_trk_pvx_z0_sig, &b_elec_1_trk_pvx_z0_sig);
@@ -641,6 +765,9 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("elec_1_trk_z0_sig", &elec_1_trk_z0_sig, &b_elec_1_trk_z0_sig);
    fChain->SetBranchAddress("elec_1_trk_z0_sintheta", &elec_1_trk_z0_sintheta, &b_elec_1_trk_z0_sintheta);
    fChain->SetBranchAddress("elec_1_type", &elec_1_type, &b_elec_1_type);
+   fChain->SetBranchAddress("event_clean_EC_LooseBad", &event_clean_EC_LooseBad, &b_event_clean_EC_LooseBad);
+   fChain->SetBranchAddress("event_clean_EC_TightBad", &event_clean_EC_TightBad, &b_event_clean_EC_TightBad);
+   fChain->SetBranchAddress("event_clean_detector_core", &event_clean_detector_core, &b_event_clean_detector_core);
    fChain->SetBranchAddress("event_is_bad_batman", &event_is_bad_batman, &b_event_is_bad_batman);
    fChain->SetBranchAddress("event_number", &event_number, &b_event_number);
    fChain->SetBranchAddress("jet_NOMINAL_central_jets_global_effSF_JVT", &jet_NOMINAL_central_jets_global_effSF_JVT, &b_jet_NOMINAL_central_jets_global_effSF_JVT);
@@ -650,13 +777,14 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85", &jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("ljet_0", &ljet_0, &b_ljet_0);
+   fChain->SetBranchAddress("ljet_0_MV2c10_FixedCutBEff_85_weight", &ljet_0_MV2c10_FixedCutBEff_85_weight, &b_ljet_0_MV2c10_FixedCutBEff_85_weight);
+   fChain->SetBranchAddress("ljet_0_b_tag_score", &ljet_0_b_tag_score, &b_ljet_0_b_tag_score);
    fChain->SetBranchAddress("ljet_0_b_tagged_MV2c10_FixedCutBEff_85", &ljet_0_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_0_b_tagged_MV2c10_FixedCutBEff_85);
-   fChain->SetBranchAddress("ljet_0_flavorlabel", &ljet_0_flavorlabel, &b_ljet_0_flavorlabel);
-   fChain->SetBranchAddress("ljet_0_flavorlabel_cone", &ljet_0_flavorlabel_cone, &b_ljet_0_flavorlabel_cone);
-   fChain->SetBranchAddress("ljet_0_flavorlabel_part", &ljet_0_flavorlabel_part, &b_ljet_0_flavorlabel_part);
    fChain->SetBranchAddress("ljet_0_matched", &ljet_0_matched, &b_ljet_0_matched);
    fChain->SetBranchAddress("ljet_0_matched_classifierParticleOrigin", &ljet_0_matched_classifierParticleOrigin, &b_ljet_0_matched_classifierParticleOrigin);
    fChain->SetBranchAddress("ljet_0_matched_classifierParticleType", &ljet_0_matched_classifierParticleType, &b_ljet_0_matched_classifierParticleType);
+   fChain->SetBranchAddress("ljet_0_matched_mother_pdgId", &ljet_0_matched_mother_pdgId, &b_ljet_0_matched_mother_pdgId);
+   fChain->SetBranchAddress("ljet_0_matched_mother_status", &ljet_0_matched_mother_status, &b_ljet_0_matched_mother_status);
    fChain->SetBranchAddress("ljet_0_matched_origin", &ljet_0_matched_origin, &b_ljet_0_matched_origin);
    fChain->SetBranchAddress("ljet_0_matched_p4", &ljet_0_matched_p4, &b_ljet_0_matched_p4);
    fChain->SetBranchAddress("ljet_0_matched_pdgId", &ljet_0_matched_pdgId, &b_ljet_0_matched_pdgId);
@@ -666,15 +794,18 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("ljet_0_matched_type", &ljet_0_matched_type, &b_ljet_0_matched_type);
    fChain->SetBranchAddress("ljet_0_origin", &ljet_0_origin, &b_ljet_0_origin);
    fChain->SetBranchAddress("ljet_0_p4", &ljet_0_p4, &b_ljet_0_p4);
+   fChain->SetBranchAddress("ljet_0_q", &ljet_0_q, &b_ljet_0_q);
    fChain->SetBranchAddress("ljet_0_type", &ljet_0_type, &b_ljet_0_type);
+   fChain->SetBranchAddress("ljet_0_width", &ljet_0_width, &b_ljet_0_width);
    fChain->SetBranchAddress("ljet_1", &ljet_1, &b_ljet_1);
+   fChain->SetBranchAddress("ljet_1_MV2c10_FixedCutBEff_85_weight", &ljet_1_MV2c10_FixedCutBEff_85_weight, &b_ljet_1_MV2c10_FixedCutBEff_85_weight);
+   fChain->SetBranchAddress("ljet_1_b_tag_score", &ljet_1_b_tag_score, &b_ljet_1_b_tag_score);
    fChain->SetBranchAddress("ljet_1_b_tagged_MV2c10_FixedCutBEff_85", &ljet_1_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_1_b_tagged_MV2c10_FixedCutBEff_85);
-   fChain->SetBranchAddress("ljet_1_flavorlabel", &ljet_1_flavorlabel, &b_ljet_1_flavorlabel);
-   fChain->SetBranchAddress("ljet_1_flavorlabel_cone", &ljet_1_flavorlabel_cone, &b_ljet_1_flavorlabel_cone);
-   fChain->SetBranchAddress("ljet_1_flavorlabel_part", &ljet_1_flavorlabel_part, &b_ljet_1_flavorlabel_part);
    fChain->SetBranchAddress("ljet_1_matched", &ljet_1_matched, &b_ljet_1_matched);
    fChain->SetBranchAddress("ljet_1_matched_classifierParticleOrigin", &ljet_1_matched_classifierParticleOrigin, &b_ljet_1_matched_classifierParticleOrigin);
    fChain->SetBranchAddress("ljet_1_matched_classifierParticleType", &ljet_1_matched_classifierParticleType, &b_ljet_1_matched_classifierParticleType);
+   fChain->SetBranchAddress("ljet_1_matched_mother_pdgId", &ljet_1_matched_mother_pdgId, &b_ljet_1_matched_mother_pdgId);
+   fChain->SetBranchAddress("ljet_1_matched_mother_status", &ljet_1_matched_mother_status, &b_ljet_1_matched_mother_status);
    fChain->SetBranchAddress("ljet_1_matched_origin", &ljet_1_matched_origin, &b_ljet_1_matched_origin);
    fChain->SetBranchAddress("ljet_1_matched_p4", &ljet_1_matched_p4, &b_ljet_1_matched_p4);
    fChain->SetBranchAddress("ljet_1_matched_pdgId", &ljet_1_matched_pdgId, &b_ljet_1_matched_pdgId);
@@ -684,18 +815,13 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("ljet_1_matched_type", &ljet_1_matched_type, &b_ljet_1_matched_type);
    fChain->SetBranchAddress("ljet_1_origin", &ljet_1_origin, &b_ljet_1_origin);
    fChain->SetBranchAddress("ljet_1_p4", &ljet_1_p4, &b_ljet_1_p4);
+   fChain->SetBranchAddress("ljet_1_q", &ljet_1_q, &b_ljet_1_q);
    fChain->SetBranchAddress("ljet_1_type", &ljet_1_type, &b_ljet_1_type);
+   fChain->SetBranchAddress("ljet_1_width", &ljet_1_width, &b_ljet_1_width);
    fChain->SetBranchAddress("ljet_2", &ljet_2, &b_ljet_2);
-   fChain->SetBranchAddress("ljet_2_b_tag_quantile", &ljet_2_b_tag_quantile, &b_ljet_2_b_tag_quantile);
+   fChain->SetBranchAddress("ljet_2_MV2c10_FixedCutBEff_85_weight", &ljet_2_MV2c10_FixedCutBEff_85_weight, &b_ljet_2_MV2c10_FixedCutBEff_85_weight);
    fChain->SetBranchAddress("ljet_2_b_tag_score", &ljet_2_b_tag_score, &b_ljet_2_b_tag_score);
    fChain->SetBranchAddress("ljet_2_b_tagged_MV2c10_FixedCutBEff_85", &ljet_2_b_tagged_MV2c10_FixedCutBEff_85, &b_ljet_2_b_tagged_MV2c10_FixedCutBEff_85);
-   fChain->SetBranchAddress("ljet_2_cleanJet_EC_LooseBad", &ljet_2_cleanJet_EC_LooseBad, &b_ljet_2_cleanJet_EC_LooseBad);
-   fChain->SetBranchAddress("ljet_2_fjvt", &ljet_2_fjvt, &b_ljet_2_fjvt);
-   fChain->SetBranchAddress("ljet_2_flavorlabel", &ljet_2_flavorlabel, &b_ljet_2_flavorlabel);
-   fChain->SetBranchAddress("ljet_2_flavorlabel_cone", &ljet_2_flavorlabel_cone, &b_ljet_2_flavorlabel_cone);
-   fChain->SetBranchAddress("ljet_2_flavorlabel_part", &ljet_2_flavorlabel_part, &b_ljet_2_flavorlabel_part);
-   fChain->SetBranchAddress("ljet_2_is_Jvt_HS", &ljet_2_is_Jvt_HS, &b_ljet_2_is_Jvt_HS);
-   fChain->SetBranchAddress("ljet_2_jvt", &ljet_2_jvt, &b_ljet_2_jvt);
    fChain->SetBranchAddress("ljet_2_matched", &ljet_2_matched, &b_ljet_2_matched);
    fChain->SetBranchAddress("ljet_2_matched_classifierParticleOrigin", &ljet_2_matched_classifierParticleOrigin, &b_ljet_2_matched_classifierParticleOrigin);
    fChain->SetBranchAddress("ljet_2_matched_classifierParticleType", &ljet_2_matched_classifierParticleType, &b_ljet_2_matched_classifierParticleType);
@@ -713,16 +839,35 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("ljet_2_q", &ljet_2_q, &b_ljet_2_q);
    fChain->SetBranchAddress("ljet_2_type", &ljet_2_type, &b_ljet_2_type);
    fChain->SetBranchAddress("ljet_2_width", &ljet_2_width, &b_ljet_2_width);
+   fChain->SetBranchAddress("mc_channel_number", &mc_channel_number, &b_mc_channel_number);
    fChain->SetBranchAddress("met_reco_p4", &met_reco_p4, &b_met_reco_p4);
+   fChain->SetBranchAddress("met_truth_p4", &met_truth_p4, &b_met_truth_p4);
+   fChain->SetBranchAddress("muon_0_matched_classifierParticleOutcome", &muon_0_matched_classifierParticleOutcome, &b_muon_0_matched_classifierParticleOutcome);
+   fChain->SetBranchAddress("muon_0_matched_isHad", &muon_0_matched_isHad, &b_muon_0_matched_isHad);
    fChain->SetBranchAddress("n_actual_int", &n_actual_int, &b_n_actual_int);
    fChain->SetBranchAddress("n_actual_int_cor", &n_actual_int_cor, &b_n_actual_int_cor);
    fChain->SetBranchAddress("n_avg_int", &n_avg_int, &b_n_avg_int);
    fChain->SetBranchAddress("n_avg_int_cor", &n_avg_int_cor, &b_n_avg_int_cor);
    fChain->SetBranchAddress("n_bjets_MV2c10_FixedCutBEff_85", &n_bjets_MV2c10_FixedCutBEff_85, &b_n_bjets_MV2c10_FixedCutBEff_85);
    fChain->SetBranchAddress("n_electrons", &n_electrons, &b_n_electrons);
+   fChain->SetBranchAddress("n_electrons_met", &n_electrons_met, &b_n_electrons_met);
    fChain->SetBranchAddress("n_electrons_olr", &n_electrons_olr, &b_n_electrons_olr);
    fChain->SetBranchAddress("n_jets", &n_jets, &b_n_jets);
+   fChain->SetBranchAddress("n_jets_30", &n_jets_30, &b_n_jets_30);
+   fChain->SetBranchAddress("n_jets_40", &n_jets_40, &b_n_jets_40);
+   fChain->SetBranchAddress("n_jets_bad", &n_jets_bad, &b_n_jets_bad);
+   fChain->SetBranchAddress("n_jets_mc_hs", &n_jets_mc_hs, &b_n_jets_mc_hs);
+   fChain->SetBranchAddress("n_jets_met", &n_jets_met, &b_n_jets_met);
+   fChain->SetBranchAddress("n_jets_olr", &n_jets_olr, &b_n_jets_olr);
    fChain->SetBranchAddress("n_muons", &n_muons, &b_n_muons);
+   fChain->SetBranchAddress("n_muons_bad", &n_muons_bad, &b_n_muons_bad);
+   fChain->SetBranchAddress("n_muons_loose", &n_muons_loose, &b_n_muons_loose);
+   fChain->SetBranchAddress("n_muons_medium", &n_muons_medium, &b_n_muons_medium);
+   fChain->SetBranchAddress("n_muons_met", &n_muons_met, &b_n_muons_met);
+   fChain->SetBranchAddress("n_muons_olr", &n_muons_olr, &b_n_muons_olr);
+   fChain->SetBranchAddress("n_muons_tight", &n_muons_tight, &b_n_muons_tight);
+   fChain->SetBranchAddress("n_muons_veryloose", &n_muons_veryloose, &b_n_muons_veryloose);
+   fChain->SetBranchAddress("n_photons", &n_photons, &b_n_photons);
    fChain->SetBranchAddress("n_pvx", &n_pvx, &b_n_pvx);
    fChain->SetBranchAddress("n_taus", &n_taus, &b_n_taus);
    fChain->SetBranchAddress("n_taus_met", &n_taus_met, &b_n_taus_met);
@@ -731,13 +876,16 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("n_taus_rnn_medium", &n_taus_rnn_medium, &b_n_taus_rnn_medium);
    fChain->SetBranchAddress("n_taus_rnn_tight", &n_taus_rnn_tight, &b_n_taus_rnn_tight);
    fChain->SetBranchAddress("n_taus_rnn_veryloose", &n_taus_rnn_veryloose, &b_n_taus_rnn_veryloose);
+   fChain->SetBranchAddress("n_truth_gluon_jets", &n_truth_gluon_jets, &b_n_truth_gluon_jets);
+   fChain->SetBranchAddress("n_truth_jets", &n_truth_jets, &b_n_truth_jets);
+   fChain->SetBranchAddress("n_truth_jets_pt20_eta45", &n_truth_jets_pt20_eta45, &b_n_truth_jets_pt20_eta45);
+   fChain->SetBranchAddress("n_truth_quark_jets", &n_truth_quark_jets, &b_n_truth_quark_jets);
    fChain->SetBranchAddress("n_vx", &n_vx, &b_n_vx);
    fChain->SetBranchAddress("run_number", &run_number, &b_run_number);
    fChain->SetBranchAddress("triggerSF_em_NOMINAL", &triggerSF_em_NOMINAL, &b_triggerSF_em_NOMINAL);
    fChain->SetBranchAddress("truth_Z_p4", &truth_Z_p4, &b_truth_Z_p4);
    fChain->SetBranchAddress("weight_mc", &weight_mc, &b_weight_mc);
    fChain->SetBranchAddress("weight_mc_v", &weight_mc_v, &b_weight_mc_v);
-   fChain->SetBranchAddress("weight_total", &weight_total, &b_weight_total);
    Notify();
 }
 

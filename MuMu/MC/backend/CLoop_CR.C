@@ -121,7 +121,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 
         // calculate event weight
         double eventWeight = 1;
-
+        double weight_total= weight_mc*NOMINAL_pileup_combined_weight;
         // check if event is from real data
         if (weight_total != 0) {
             // take product of all scale factors

@@ -181,15 +181,6 @@ void CLoop::Book(double lumFactor) {
 
     if (lumFactor!=1)
     {
-      h_weight_mc_topo = new TH1F("weight_mc","lepton 1 isolation2",40000,-20000,20000);
-      h_weight_total_cuts = new TH1F("weight_total_cuts","weight total",10000,-500,500);
-      h_weight_total_topo = new TH1F("weight_total","weight total",10000,-500,500);
-      h_weight_mc_cuts = new TH1F("weight_mc_cuts","weight mc",40000,-20000,20000);
-      h_sf_e_trigger = new TH1F("sf_e_trigger","elec trigger scale factor",30,0.85,1.15);
-      h_sf_e_recoid = new TH1F("sf_e_recoid","elec reco and id scale factor",30,0.85,1.15);
-      h_sf_e_vertex = new TH1F("sf_e_vertex","elec vertex matching scale factor",30,0.85,1.15);
-      h_sf_e_isolation = new TH1F("sf_e_isolation","elec isolation scale factor",30,0.85,1.15);
-      h_sf_e_total = new TH1F("sf_e_total","elec total scale factor",30,0.85,1.15);
       h_Z_pt_truth_topo = new TH1F("Z_pt_truth_topo","Z_truth boson transverse momentum inside",400,0,400);
       h_Z_pt_truth_cuts = new TH1F("Z_pt_truth_cuts","Z_truth boson transverse momentum inside",400,0,400);
       h_Z_pt_truth_cuts_ptl = new TH1F("Z_pt_truth_cuts_ptl","Z_truth boson transverse momentum inside",400,0,400);
@@ -396,10 +387,6 @@ void CLoop::Fill(double weight, int z_sample) {
         } if (Z_pt>150) {
           h_sum_pt_topo_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
         }
-        if (weight!=1){
-          h_weight_total_topo->Fill(weight,1);
-          h_weight_mc_topo->Fill(weight_total,1);
-        }
         h_inv_mass_topo->Fill(inv_mass,weight);
         h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
         h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
@@ -479,14 +466,6 @@ void CLoop::Fill(double weight, int z_sample) {
 
                     if (weight!=1){
                       h_Z_pt_truth_cuts->Fill(truth_z_pt,weight);
-                      h_weight_mc_cuts->Fill(weight_total,1);
-                      h_weight_total_cuts->Fill(weight,1);
-                      h_sf_e_isolation->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight,1);
-                      h_sf_e_recoid->Fill(elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13,1);
-                      h_sf_e_vertex->Fill(elec_0_NOMINAL_EleEffSF_offline_RecoTrk,1);
-                      h_sf_e_trigger->Fill(elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
-                      h_sf_e_total->Fill(elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
-                                          *elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight,1);
                     }
                     if(cuts[6]==1){
                       h_RunN_topo_tpt->Fill(run_number,weight);
@@ -637,15 +616,6 @@ void CLoop::Style(double lumFactor) {
 
     if (lumFactor!=1)
     {
-      h_weight_mc_topo->Write();
-      h_weight_total_cuts->Write();
-      h_weight_total_topo->Write();
-      h_weight_mc_cuts->Write();
-      h_sf_e_recoid->Write();
-      h_sf_e_vertex->Write();
-      h_sf_e_trigger->Write();
-      h_sf_e_isolation->Write();
-      h_sf_e_total->Write();
       h_Z_pt_truth_topo->Write();
       h_Z_pt_truth_cuts->Write();
       h_Z_pt_truth_cuts_ptl->Write();
