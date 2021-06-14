@@ -204,8 +204,8 @@ TH1F * h_b_tag_topo;
 TH1F * h_b_tag_topo_dphi_bdte_iso_rnn_pte_omega_mle_mreco_tpt;
 
 //Writing isolation variables
-TH1F * h_elec_0_iso_FCTight_topo;
-TH1F * h_elec_0_iso_FCTight_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt;
+TH1F * h_elec_0_iso_topo;
+TH1F * h_elec_0_iso_topo_dphi_bdte_btag_rnn_pte_omega_mle_mreco_tpt;
 
 TH1F * h_omega_topo;
 TH1F * h_omega_topo_dphi;
