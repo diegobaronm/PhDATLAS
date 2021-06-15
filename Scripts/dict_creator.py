@@ -81,13 +81,13 @@ def create_dict(sample_name,sample_match_strings):
     for key, value in dict.items():
         print("'"+key+"'", ' : ', value,",")
 
-dict_of_samples={"Ztautau":"tt_PoPy","Zmumu":"mumu_PoPy","Zee":"Zee_PoPy","Wplustaunu":"Wplustaunu_PoPy","Wminustaunu":"Wminustaunu_PoPy",
+dict_of_samples={"Ztautau":"361108_PoPy","Zmumu":"mumu_PoPy","Zee":"Zee_PoPy","Wplustaunu":"Wplustaunu_PoPy","Wminustaunu":"Wminustaunu_PoPy",
 "Wplusmunu":"Wplusmunu_PoPy","Wminusmunu":"Wminusmunu_PoPy","Wminusenu":"Wminusenu_PoPy","Wplusenu":"Wplusenu_PoPy","ttbar":"ttb",
 "ZqqZvv":"ZqqZvv","ZqqZll":"ZqqZll","WqqZvv":"WqqZvv","WqqZll":"WqqZll","WlvZqq":"WlvZqq","llll":"llll","lllv":"lllv",
 "llvv":"llvv","lvvv":"lvvv","st_schan_top":"410644","st_schan_atop":"410645","st_wt_top":"410646","st_wt_atop":"410647",
-"st_tchan_top":"410658","st_tchan_atop":"410659","Ztautau_sherpa":"tt_Sh221","Zmumu_sherpa":"mumu_Sh221",
-"Zee_sherpa":"Zee_Sh221","VBF_Ztautau":"tt_Sh221_2jets","VBF_Zmumu":"mm_Sh221_2jets",
-"VBF_Zee":"ee_Sh221_2jets"}
+"st_tchan_top":"410658","st_tchan_atop":"410659","Ztautau_sherpa":"364_MV_tt_Sh221","Zmumu_sherpa":"364_MV_mumu_Sh221",
+"Zee_sherpa":"364_MV_Zee_Sh221","VBF_Ztautau":"tt_Sh221_2jets","VBF_Zmumu":"mm_Sh221_2jets",
+"VBF_Zee":"ee_Sh221_2jets","WpH":"345212","WmH":"345211","ZHllbb":"345055","ZHlltautau":"346329"}
 
 
 for i in dict_of_samples:

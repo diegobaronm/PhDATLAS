@@ -141,17 +141,17 @@ for i in range(len(chains)):
             for subChain in dataCombos[chain]:
                 print(subChain)
                 runAnalysis(subChain, fastMode)
-            combine(dataCombos[chain], fastMode)
+            #combine(dataCombos[chain], fastMode)
 
             # rename the outputted file to use the input key
-            oldName = sys.argv[2]+fastStr(fastMode)+".root"
-            os.system("mv out/"+oldName+" out/"+chain+
-                    fastStr(fastMode)+".root")
+            #oldName = sys.argv[2]+fastStr(fastMode)+".root"
+            #os.system("mv out/"+oldName+" out/"+chain+
+                    #fastStr(fastMode)+".root")
 
         # otherwise run the analysis for the single file
         else:
             runAnalysis(chain,fastMode)
 
     # combine chains in the series if it contains more than one chain
-    if (len(chains[i])>1):
-        combine(chains[i], fastMode)
+    #if (len(chains[i])>1):
+        #combine(chains[i], fastMode)

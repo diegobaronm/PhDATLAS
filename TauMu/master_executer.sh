@@ -22,7 +22,7 @@ do
         python3 RunAnalysis.py $mc_signal_sherpa$n'_'$y no
     done
 done
-rm out/Ztautau_sherpa*_*_*.root
+
 hadd out/Signal.root out/*
 
 cd ..
@@ -33,10 +33,10 @@ do
     ./executer.sh $i
 done
 
-hadd MC/out/Signal_PoPy.root MC/out/Ztautau_2018.root MC/out/Ztautau_2017.root MC/out/Ztautau_2015.root
-hadd MC/out/Zmumu.root MC/out/Zmumu_2018.root MC/out/Zmumu_2017.root MC/out/Zmumu_2015.root
-hadd MC/out/VV.root MC/out/VV_2018.root MC/out/VV_2017.root MC/out/VV_2015.root
-hadd MC/out/Wjets.root MC/out/Wjets_2018.root MC/out/Wjets_2017.root MC/out/Wjets_2015.root
-hadd MC/out/singletop.root MC/out/singletop_2018.root MC/out/singletop_2017.root MC/out/singletop_2015.root
-hadd MC/out/ttbar.root MC/out/ttbar_2018.root MC/out/ttbar_2017.root MC/out/ttbar_2015.root
-hadd DATA/out/data.root DATA/out/data_2018.root DATA/out/data_2017.root DATA/out/data_2015.root
+hadd MC/out/Signal_PoPy.root MC/out/Ztautau_201*.root
+hadd MC/out/Zmumu.root MC/out/Zmumu_201*.root
+hadd MC/out/VV.root MC/out/llll*.root MC/out/lllv*.root MC/out/llvv*.root MC/out/lvvv*.root MC/out/ZqqZvv*.root MC/out/ZqqZll*.root MC/out/WqqZvv*.root MC/out/WqqZll*.root MC/out/WlvZqq*.root
+hadd MC/out/Wjets.root MC/out/Wplusenu*.root MC/out/Wminusenu*.root MC/out/Wplusmunu*.root MC/out/Wminusmunu*.root MC/out/Wplustaunu*.root MC/out/Wminustaunu*.root
+hadd MC/out/singletop.root MC/out/st_schan_top*.root MC/out/st_schan_atop*.root MC/out/st_tchan_top*.root MC/out/st_tchan_atop*.root MC/out/st_wt_top*.root MC/out/st_wt_atop*.root
+hadd MC/out/ttbar.root MC/out/ttbar_201*.root
+hadd DATA/out/data.root DATA/out/data_201*.root

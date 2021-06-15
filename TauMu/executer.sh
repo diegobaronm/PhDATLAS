@@ -23,9 +23,4 @@ done
 
 cd ..
 
-hadd MC/out/VV_$1.root MC/out/llll_$1.root MC/out/lllv_$1.root MC/out/llvv_$1.root MC/out/lvvv_$1.root MC/out/ZqqZvv_$1.root MC/out/ZqqZll_$1.root MC/out/WqqZvv_$1.root MC/out/WqqZll_$1.root MC/out/WlvZqq_$1.root
-hadd MC/out/Wjets_$1.root MC/out/Wplusenu_$1.root MC/out/Wminusenu_$1.root MC/out/Wplusmunu_$1.root MC/out/Wminusmunu_$1.root MC/out/Wplustaunu_$1.root MC/out/Wminustaunu_$1.root
-hadd MC/out/singletop_$1.root MC/out/st_schan_top_$1.root MC/out/st_schan_atop_$1.root MC/out/st_tchan_top_$1.root MC/out/st_tchan_atop_$1.root MC/out/st_wt_top_$1.root MC/out/st_wt_atop_$1.root
-
-hadd DATA/out/data_$1.root DATA/out/data_$1*
 
