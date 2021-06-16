@@ -66,7 +66,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }
         }*/
         // PYTHIA REWEIGHTING
-        if(z_sample==1){
+        /*if(z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if(zpt>=40 & zpt<46){
                 z_w=0.995;
@@ -101,7 +101,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             }else if(zpt>=151){
                 z_w=0.8;
             }
-        }
+        }*/
         /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
@@ -119,6 +119,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
 
         // calculate event weight
         double eventWeight = 1;
+        double weight_total= weight_mc*NOMINAL_pileup_combined_weight;
 
         // check if event is from real data
         if (weight_total != 0) {
@@ -128,7 +129,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
             *elec_0_NOMINAL_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight
             *jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT*
             jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85
-            *tau_0_NOMINAL_TauEffSF_reco;
+            *tau_0_NOMINAL_TauEffSF_reco*tau_0_NOMINAL_TauEffSF_LooseEleBDT_electron;
         }
 
         // fill histograms

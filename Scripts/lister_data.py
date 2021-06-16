@@ -72,3 +72,9 @@ data_combo("data_2015",c_2015)
 
 final_list=data_combo("data_2018",c_2018)+data_combo("data_2017",c_2017)+data_combo("data_2015",c_2015)
 print(final_list)
+
+print('\n')
+os.chdir(sys.argv[1])
+list_of_directories=[os.path.abspath(i)+'/' for i in os.listdir() if 'data' in i]
+print(list_of_directories)
+print(len(list_of_directories))
