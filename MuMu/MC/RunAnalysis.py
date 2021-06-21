@@ -63,10 +63,10 @@ def runAnalysis(key, fast):
         lumStr = "%.5E" % (lumWeight)
 
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast,z_sample)
+    DrawC(filename,lumStr,fast,z_sample,key)
 
     # move the output to a different directory
-    os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
+    os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")
 
 def combine(files, fast):
     """
@@ -155,5 +155,5 @@ for i in range(len(chains)):
             runAnalysis(chain,fastMode)
 
     # combine chains in the series if it contains more than one chain
-    if (len(chains[i])>1):
-        combine(chains[i], fastMode)
+    #if (len(chains[i])>1):
+        #combine(chains[i], fastMode)

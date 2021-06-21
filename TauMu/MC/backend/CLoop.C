@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
+void CLoop::Loop(double lumFactor, bool fastMode, int z_sample, std::string key)
 {
 //    In a ROOT session, you can do:
 //        root> .L CLoop.C
@@ -118,11 +118,13 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         }*/
         double zpt_weight=1/z_w;
 
-
-        // calculate event weight
         double eventWeight = 1;
-        double weight_total= weight_mc*NOMINAL_pileup_combined_weight;
-
+        double weight_total{0};
+        try
+        {
+            double weight_total= weight_mc*NOMINAL_pileup_combined_weight;
+        }
+        catch(const std::exception& e){}
         // check if event is from real data
         if (weight_total != 0) {
             // take product of all scale factors
@@ -138,10 +140,11 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         Fill(eventWeight, z_sample);
         // end filling
     }
-
+    key = key+".root";
+    const char*  name_root = key.c_str();
     // set style of histograms and write to output file
     // open output file
-    TFile outfile("outfile.root","recreate");
+    TFile outfile(name_root,"recreate");
     Style(lumFactor);
     // end style and writing
     //

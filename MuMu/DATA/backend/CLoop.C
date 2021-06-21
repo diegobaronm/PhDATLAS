@@ -3,7 +3,7 @@
 
 #include "../Analysis.C"
 
-void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
+void CLoop::Loop(double lumFactor, bool fastMode, int z_sample, std::string key)
 {
 //    In a ROOT session, you can do:
 //        root> .L CLoop.C
@@ -54,7 +54,24 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         // if (Cut(ientry) < 0) continue;
 
         // calculate event weight
+        double z_w=1;
+        double zpt_weight=1/z_w;
         double eventWeight = 1;
+        double weight_total{0};
+        try
+        {
+            double weight_total= weight_mc*NOMINAL_pileup_combined_weight;
+        }
+        catch(const std::exception& e){}
+        // check if event is from real data
+        if (weight_total != 0) {
+            // take product of all scale factors
+            eventWeight = weight_total*lumFactor*zpt_weight
+            *muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA
+            *jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT
+            *jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85
+            *muon_1_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad*muon_1_NOMINAL_MuEffSF_Reco_QualMedium*muon_1_NOMINAL_MuEffSF_TTVA;
+        }
 
         // check if event is from real data
 
@@ -64,10 +81,11 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample)
         Fill(eventWeight, z_sample);
         // end filling
     }
-
+    key = key+".root";
+    const char*  name_root = key.c_str();
     // set style of histograms and write to output file
     // open output file
-    TFile outfile("outfile.root","recreate");
+    TFile outfile(name_root,"recreate");
     Style(lumFactor);
     // end style and writing
     //

@@ -13,6 +13,7 @@ from dataSets import dataSets, totRealLum, realList, dataCombos
 
 def luminosity(key):
     if "2018" in key:
+        #print("Working with less data")
         return 58.4501
     elif "2017" in key:
         return 43.5873
@@ -60,11 +61,12 @@ def runAnalysis(key, fast):
             lumWeight = (totRealLum * 1000 * infos[shortKey]["xsec"] * infos[shortKey]["fil_eff"] * infos[shortKey]["kfac"])/infos[shortKey]["sumw"]
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
+
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast,z_sample)
+    DrawC(filename,lumStr,fast,z_sample,key)
 
     # move the output to a different directory
-    os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
+    os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")
 
 def combine(files, fast):
     """
