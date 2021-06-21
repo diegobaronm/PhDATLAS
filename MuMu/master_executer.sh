@@ -1,13 +1,6 @@
 #!/bin/bash
 
-# REMOVE WHAT IS IN out_previous AND FILL IT WITH out CONTENTS
-rm -r MC/out_previous
-rm -r DATA/out_previous
-mv MC/out/ MC/out_previous/
-mkdir MC/out/
-mv DATA/out/ DATA/out_previous/
-mkdir DATA/out/
-cp MC/Analysis.h DATA/Analysis.h
+
 
 # COMPILE C++ ANALYSIS SCRIPT
 python3 Compiler.py

@@ -27,7 +27,7 @@ parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no
 
 cd ..
 
-hadd MC/out/Signal.root MC/out/Ztautau_sherpa*.root
+hadd MC/out/Signal_Sherpa.root MC/out/Ztautau_sherpa*.root
 hadd MC/out/Signal_PoPy.root MC/out/Ztautau_201*.root
 hadd MC/out/Zmumu.root MC/out/Zmumu_201*.root
 hadd MC/out/VV.root MC/out/llll*.root MC/out/lllv*.root MC/out/llvv*.root MC/out/lvvv*.root MC/out/ZqqZvv*.root MC/out/ZqqZll*.root MC/out/WqqZvv*.root MC/out/WqqZll*.root MC/out/WlvZqq*.root

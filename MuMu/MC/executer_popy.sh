@@ -1,9 +1,8 @@
 #!/bin/bash
+cat samples.txt | awk '(/Zmumu/) && !(/VBF/ || /sherpa/)' > samples_PoPy.txt
+
 rm out/*
-mc_signal_popy='Zmumu'
-year=('2015' '2017' '2018')
-for y in ${year[@]}
-do
-	python3 RunAnalysis.py $mc_signal_popy'_'$y no
-done
-hadd out/Zmumu.root out/Zmumu_2018.root out/Zmumu_2017.root out/Zmumu_2015.root
+
+parallel --progress -j $1 -a samples_PoPy.txt python3 RunAnalysis.py :: no
+
+hadd out Signal_PoPy.root out/*.root
