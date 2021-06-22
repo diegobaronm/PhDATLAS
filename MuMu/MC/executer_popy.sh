@@ -3,6 +3,12 @@ cat samples.txt | awk '(/Zmumu/) && !(/VBF/ || /sherpa/)' > samples_PoPy.txt
 
 rm out/*
 
-parallel --progress -j $1 -a samples_PoPy.txt python3 RunAnalysis.py :: no
+cd ..
 
-hadd out Signal_PoPy.root out/*.root
+python3 Compiler.py MC
+
+cd MC
+
+parallel --progress -j $1 -a samples_PoPy.txt python3 RunAnalysis.py ::: no
+
+hadd out/Signal_PoPy$2.root out/*.root

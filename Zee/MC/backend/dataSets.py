@@ -4,7 +4,7 @@
 
 totRealLum = 57.6164
 import socket
-socket.gethostname()
+host=socket.gethostname()
 
 # list of directories to check for .root files
 if('lxplus' in host):
