@@ -8,5 +8,5 @@ cp ../MC/out/Signal_Sherpa.root .
 cp ../MC/out/ttbar.root ttbar.root
 #cp ../MC/out/Ztautau_Sherpa.root .
 cp ../MC/out/Ztautau_PoPy.root .
-hadd BG.root VV.root singletop.root Wjets.root Ztautau_Sherpa.root ttbar.root
+hadd BG.root VV.root singletop.root Wjets.root Ztautau_PoPy.root ttbar.root
 hadd MC.root BG.root Signal_Sherpa.root
