@@ -1,0 +1,3 @@
+This analysis have the same cuts of V26.0 but no eBDT is used in this analysis.
+The cut before the last hass no-eBDT+m(e,tau)<80, the last cut just takes m(e,tau)<75 GeV.
+No eBDT SFs used.

@@ -16,12 +16,25 @@ TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
 
-TH1F * h_tau_matched_topo_1p;
-TH1F * h_tau_matched_cuts_1p;
-TH1F * h_tau_matched_cuts_tpt_1p;
-TH1F * h_tau_matched_topo_3p;
-TH1F * h_tau_matched_cuts_3p;
-TH1F * h_tau_matched_cuts_tpt_3p;
+TH1F * h_tau_matched_1p_topo;
+TH1F * h_tau_matched_1p_topo_dphi;
+TH1F * h_tau_matched_1p_topo_dphi_btag;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+
+TH1F * h_tau_matched_3p_topo;
+TH1F * h_tau_matched_3p_topo_dphi;
+TH1F * h_tau_matched_3p_topo_dphi_btag;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_Z_pt_truth_inside_topo;
 TH1F * h_Z_pt_truth_cuts_inside;

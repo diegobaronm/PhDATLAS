@@ -11,8 +11,7 @@ mv CR_OS $1/.
 mv CR_SS $1/.
 mv *.pdf $1/.
 
-cp ../MC/Analysis_CR.C $1/.
-cp ../MC/Analysis_SR.C $1/.
-cp ../MC/backend/CLoop_SR.C $1/.
+cp MJ\ Estimation.ipynb $1/.
+cp StackPlot.ipynb $1/.
 
 
