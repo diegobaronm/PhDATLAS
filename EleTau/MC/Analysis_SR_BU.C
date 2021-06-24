@@ -461,7 +461,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (angle<=2*pi/3){
             cuts[0]=1;
           }
-          if (tau_0_p4->Pt()>=45/*tau_0_ele_bdt_score_trans_retuned>=0.05*/) {
+          if (tau_0_ele_bdt_score_trans_retuned>=0.05) {
             cuts[1]=1;
           }
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -500,7 +500,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[8]=1;
             }
           }
-          if (inv_taulep < 75){
+          if (tau_0_p4->Pt()<45){
               cuts[9]=1;
           }
 
