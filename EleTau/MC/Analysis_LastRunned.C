@@ -457,13 +457,13 @@ void CLoop::Fill(double weight, int z_sample) {
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
             cuts[2]=1;
           }
-          if ((tau_0_n_all_tracks)>15 || elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
+          if (elec_0_iso_FCLoose==0/*elec_0_iso_FCTight==0*/) {
             cuts[3]=1;
           }
-          if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans>0.4) {
+          if (tau_0_n_charged_tracks==1 && tau_0_jet_rnn_score_trans<0.4) {
             cuts[4]=1;
           }
-          if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans>0.55) {
+          if (tau_0_n_charged_tracks==3 && tau_0_jet_rnn_score_trans<0.55) {
             cuts[4]=1;
           }
           if (elec_0_p4->Pt()>=27) {
@@ -490,7 +490,7 @@ void CLoop::Fill(double weight, int z_sample) {
               cuts[8]=1;
             }
           }
-          if (tau_0_p4->Pt()<45){
+          if (tau_0_p4->Pt()>25){
               cuts[9]=1;
           }
 

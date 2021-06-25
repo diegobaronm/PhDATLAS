@@ -1,0 +1,1 @@
+Same cuts of V26.0, but just picking the low-pT events.
