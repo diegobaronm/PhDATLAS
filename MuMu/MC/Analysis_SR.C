@@ -325,11 +325,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(muon_1_p4->Pt()<(b+20)){
+          if(muon_1_p4->Pt()>=(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(muon_0_p4->Pt()<(a+20)){
+          if(muon_0_p4->Pt()>=(a+20)){
             cuts[6]=1;
           }
         }

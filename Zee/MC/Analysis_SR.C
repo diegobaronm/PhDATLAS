@@ -327,11 +327,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(elec_1_p4->Pt()<(b+20)){
+          if(elec_1_p4->Pt()>=(b+20)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()<(a+20)){
+          if(elec_0_p4->Pt()>=(a+20)){
             cuts[6]=1;
           }
         }
