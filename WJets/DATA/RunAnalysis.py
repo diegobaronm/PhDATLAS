@@ -13,6 +13,7 @@ from dataSets import dataSets, totRealLum, realList, dataCombos
 
 def luminosity(key):
     if "2018" in key:
+        #print("Working with less data")
         return 58.4501
     elif "2017" in key:
         return 43.5873
@@ -35,6 +36,10 @@ def runAnalysis(key, fast):
     z_sample=0
     if ("Zee" in key) or ("Zmumu" in key) or ("Ztautau" in key):
         z_sample=1
+        if "sherpa" in key:
+            z_sample=2
+            if "VBF" in key:
+                z_sample=0
     """
     Function to run the analysis for a given decay chain labelled 'key'
     """
@@ -60,10 +65,10 @@ def runAnalysis(key, fast):
         lumStr = "%.5E" % (lumWeight)
 
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast,z_sample)
+    DrawC(filename,lumStr,fast,z_sample,key)
 
     # move the output to a different directory
-    os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
+    os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")
 
 def combine(files, fast):
     """
@@ -106,9 +111,9 @@ def combine(files, fast):
 # keep asking until answered
 chainsValid = False
 while (not chainsValid):
-    print("Please enter a comma-seperated list of decay chains.")
-    print("Use '+' to add data sets together.")
-    print("Write 'text' if you would prefer to read a list from 'input.txt':")
+    #print("Please enter a comma-seperated list of decay chains.")
+    #print("Use '+' to add data sets together.")
+    #print("Write 'text' if you would prefer to read a list from 'input.txt':")
     chains, chainsValid = getInput()
     print()
 
@@ -116,7 +121,7 @@ while (not chainsValid):
 # detect whether the user wants to run in 'fast' mode for only 1% of data
 answered = False
 while (not answered):
-    print("Would you like to run in fast mode to only analyse 1% of data? (yes/no)")
+    #print("Would you like to run in fast mode to only analyse 1% of data? (yes/no)")
     useFast = sys.argv[2]
     if useFast in "yes":
         answered = True
@@ -152,5 +157,5 @@ for i in range(len(chains)):
             runAnalysis(chain,fastMode)
 
     # combine chains in the series if it contains more than one chain
-    if (len(chains[i])>1):
-        combine(chains[i], fastMode)
+    #if (len(chains[i])>1):
+        #combine(chains[i], fastMode)

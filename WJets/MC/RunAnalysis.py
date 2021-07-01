@@ -38,6 +38,8 @@ def runAnalysis(key, fast):
         z_sample=1
         if "sherpa" in key:
             z_sample=2
+            if "VBF" in key:
+                z_sample=0
     """
     Function to run the analysis for a given decay chain labelled 'key'
     """
@@ -63,10 +65,10 @@ def runAnalysis(key, fast):
         lumStr = "%.5E" % (lumWeight)
 
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast,z_sample)
+    DrawC(filename,lumStr,fast,z_sample,key)
 
     # move the output to a different directory
-    os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
+    os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")
 
 def combine(files, fast):
     """
@@ -143,17 +145,17 @@ for i in range(len(chains)):
             for subChain in dataCombos[chain]:
                 print(subChain)
                 runAnalysis(subChain, fastMode)
-            combine(dataCombos[chain], fastMode)
+            #combine(dataCombos[chain], fastMode)
 
             # rename the outputted file to use the input key
-            oldName = sys.argv[2]+fastStr(fastMode)+".root"
-            os.system("mv out/"+oldName+" out/"+chain+
-                    fastStr(fastMode)+".root")
+            #oldName = sys.argv[2]+fastStr(fastMode)+".root"
+            #os.system("mv out/"+oldName+" out/"+chain+
+                    #fastStr(fastMode)+".root")
 
         # otherwise run the analysis for the single file
         else:
             runAnalysis(chain,fastMode)
 
     # combine chains in the series if it contains more than one chain
-    if (len(chains[i])>1):
-        combine(chains[i], fastMode)
+    #if (len(chains[i])>1):
+        #combine(chains[i], fastMode)

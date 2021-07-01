@@ -2,26 +2,35 @@
 #define Header
 
 // declare histograms here
-TH1F * h_trans_lep_mass_topo;
-TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_RunN_topo;
+TH1F * h_RunN_topo_tpt;
 
-TH1F * h_tau_matched_topo_1p;
-TH1F * h_tau_matched_cuts_1p;
-TH1F * h_tau_matched_cuts_tpt_1p;
-TH1F * h_tau_matched_topo_3p;
-TH1F * h_tau_matched_cuts_3p;
-TH1F * h_tau_matched_cuts_tpt_3p;
-TH1F * h_sf_mu_recoid;
-TH1F * h_sf_mu_vertex;
-TH1F * h_sf_mu_trigger;
-TH1F * h_sf_mu_isolation;
-TH1F * h_sf_mu_total;
-TH1F * h_weight_mc_topo;
-TH1F * h_weight_mc_cuts;
-TH1F * h_weight_total_topo;
-TH1F * h_weight_total_cuts;
+TH1F * h_EventN_RN363738_topo;
+TH1F * h_EventN_RN363738_topo_tpt;
+
+TH1F * h_EventN_RN363910_topo;
+TH1F * h_EventN_RN363910_topo_tpt;
+
+TH1F * h_tau_matched_1p_topo;
+TH1F * h_tau_matched_1p_topo_dphi;
+TH1F * h_tau_matched_1p_topo_dphi_btag;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+
+TH1F * h_tau_matched_3p_topo;
+TH1F * h_tau_matched_3p_topo_dphi;
+TH1F * h_tau_matched_3p_topo_dphi_btag;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+
 TH1F * h_Z_pt_truth_inside_topo;
 TH1F * h_Z_pt_truth_cuts_inside;
 TH1F * h_Z_pt_truth_cuts_tpt_inside;
@@ -33,7 +42,6 @@ TH1F * h_rnn_score_1prong_topo;
 TH1F * h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
 TH1F * h_rnn_score_3prong_topo;
 TH1F * h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
-
 // jet pT
 TH1F * h_ljet1_pt_topo;
 TH1F * h_ljet1_pt_topo_cuts;
@@ -138,6 +146,11 @@ TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega;
 TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
+TH1F * h_trans_lep_mass_topo;
+TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
+TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_trans_lep_mass_topo_dphi_btag_rnn_ptmu_omega_mreco_tpt;
+
 //Writing reco
 TH1F * h_reco_mass_topo;
 TH1F * h_reco_mass_topo_dphi;
@@ -163,14 +176,15 @@ TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt;
 
 //Writing jet number
 TH1F * h_jet_n_topo;
+TH1F * h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 //Writing b-tag
 TH1F * h_b_tag_topo;
 TH1F * h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt;
 
 //Writing isolation variables
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo;
-TH1F * h_muon_0_iso_FCTightTrackOnly_FixedRad_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
+TH1F * h_muon_0_iso_topo;
+TH1F * h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_omega_topo;
 TH1F * h_omega_topo_dphi;
@@ -216,13 +230,13 @@ TH1F * h_ratio_lpt_tpt_cuts_tpt;
 TH1F * h_rnn_score_1prong_topo_match;
 TH1F * h_rnn_score_3prong_topo_match;
 
-TH1F * h_n_conversion_tracks;
+TH1F * h_n_fake_tracks;
 TH1F * h_n_core_tracks;
 TH1F * h_n_isolation_tracks;
-TH1F * h_n_conversion_tracks_cuts;
+TH1F * h_n_fake_tracks_cuts;
 TH1F * h_n_core_tracks_cuts;
 TH1F * h_n_isolation_tracks_cuts;
-TH1F * h_n_conversion_tracks_cuts_tpt;
+TH1F * h_n_fake_tracks_cuts_tpt;
 TH1F * h_n_core_tracks_cuts_tpt;
 TH1F * h_n_isolation_tracks_cuts_tpt;
 TH1F * h_n_tracks;
