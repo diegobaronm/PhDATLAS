@@ -64,8 +64,9 @@ def runAnalysis(key, fast):
             print(lumWeight)
         lumStr = "%.5E" % (lumWeight)
 
+
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast,z_sample,key)
+    DrawC(filename,lumStr,fast,z_sample,key,sys.argv[3])
 
     # move the output to a different directory
     os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")

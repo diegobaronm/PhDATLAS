@@ -2,10 +2,11 @@ import ROOT as r
 from os import listdir
 from dataSets import dirs
 
-def DrawC(filename,lumStr,fast,z_sample,key_pop):
+def DrawC(filename,lumStr,fast,z_sample,key_pop,tree):
     """
     Function to load in the C++ code and run it for a given data set
     """
+
 
     # search through several directories to find where the input file is located
     for path in dirs:
@@ -24,7 +25,7 @@ def DrawC(filename,lumStr,fast,z_sample,key_pop):
     # load in tree from file
     r.gROOT.ProcessLine("TFile* f = new TFile(\""+fullPath+"\")")
     r.gROOT.ProcessLine("TTree * minTree = new TTree")
-    r.gROOT.ProcessLine("f->GetObject(\"NOMINAL\",minTree)")
+    r.gROOT.ProcessLine("f->GetObject(\""+tree+"\",minTree)")
 
     # create new instance of CLoop and loop over events
     r.gROOT.ProcessLine("CLoop* t = new CLoop(minTree)")

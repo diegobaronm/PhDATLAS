@@ -7,8 +7,6 @@ def DrawC(filename,lumStr,fast,z_sample,key_pop,tree):
     Function to load in the C++ code and run it for a given data set
     """
 
-    if tree=="":
-        tree="NOMINAL"
 
     # search through several directories to find where the input file is located
     for path in dirs:

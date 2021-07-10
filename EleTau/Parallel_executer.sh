@@ -13,7 +13,7 @@ python3 lister.py DATA
 
 cd DATA
 
-parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no
+parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no ::: NOMINAL
 
 cd ..
 
@@ -23,7 +23,7 @@ python3 lister.py MC
 
 cd MC
 
-parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no
+parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no ::: NOMINAL
 
 cd ..
 
