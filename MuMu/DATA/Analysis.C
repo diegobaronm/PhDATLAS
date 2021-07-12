@@ -77,15 +77,7 @@ void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
 
     // VARIABLES ONLY ONCE
-    // Event number and run number
-    h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
-    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
 
-    h_EventN_RN363738_topo = new TH1F("EventN_RN363738_topo","Event number RN(363738)",100000,0.0,3.0e9);
-    h_EventN_RN363738_topo_tpt = new TH1F("EventN_RN363738_topo_tpt","Event number RN(363738)",100000,0,3.0e9);
-
-    h_EventN_RN363910_topo = new TH1F("EventN_RN363910_topo","Event number RN(363910)",100000,0.0,3.0e9);
-    h_EventN_RN363910_topo_tpt = new TH1F("EventN_RN363910_topo_tpt","Event number RN(363910)",100000,0.0,3.0e9);
     //VARIABLES FOLLOWED AFTER EACH CUT
     // pT light-jets
     h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
@@ -187,7 +179,6 @@ void CLoop::Book(double lumFactor) {
     h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass","Number of jets",10,-1,9);
     h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl = new TH1F("jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl","Number of jets",10,-1,9);
-
 
     h_b_tag_topo = new TH1F("b_tag_topo","b taging variable",2,0,2);
     h_b_tag_topo_dphi_iso_pt1_pt2_mass_ptl = new TH1F("b_tag_topo_dphi_iso_pt1_pt2_mass_ptl","b taging variable",2,0,2);
@@ -312,7 +303,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (muon_0_iso_TightTrackOnly_FixedRad==1 && muon_1_iso_TightTrackOnly_FixedRad==1) {
+        if (muon_0_iso_TightTrackOnly_FixedRad==0 || muon_1_iso_TightTrackOnly_FixedRad==0) {
           cuts[2]=1;
         }
         if (muon_0_p4->Pt()>=a) {
@@ -325,11 +316,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(random){
-          if(muon_1_p4->Pt()>=(b+20)){
+          if(muon_1_p4->Pt()>(b+0)){
             cuts[6]=1;
           }
         } else{
-          if(muon_0_p4->Pt()>=(a+20)){
+          if(muon_0_p4->Pt()>(a+0)){
             cuts[6]=1;
           }
         }
@@ -364,9 +355,6 @@ void CLoop::Fill(double weight, int z_sample) {
         }
 
         //  Filling histos
-        h_RunN_topo->Fill(run_number,weight);
-        if(run_number==363738){h_EventN_RN363738_topo->Fill(event_number,weight);}
-        if(run_number==363910){h_EventN_RN363910_topo->Fill(event_number,weight);}
         h_jet_n_topo->Fill(n_jets, weight);
         h_b_tag_topo->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         h_muon_0_isolation_topo->Fill(muon_0_iso_TightTrackOnly_FixedRad,weight);
@@ -385,6 +373,7 @@ void CLoop::Fill(double weight, int z_sample) {
         } if (Z_pt>150) {
           h_sum_pt_topo_ZpTc->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
         }
+
         h_inv_mass_topo->Fill(inv_mass,weight);
         h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
         h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
@@ -461,13 +450,7 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_sum_pt_cuts_ZpTc->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
                     }
 
-                    if (weight!=1){
-                      h_Z_pt_truth_cuts->Fill(truth_z_pt,weight);
-                    }
                     if(cuts[6]==1){
-                      h_RunN_topo_tpt->Fill(run_number,weight);
-                      if(run_number==363738){h_EventN_RN363738_topo_tpt->Fill(event_number,weight);}
-                      if(run_number==363910){h_EventN_RN363910_topo_tpt->Fill(event_number,weight);}
                       h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(n_jets, weight);
                       h_met_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(met_reco_p4->Pt(),weight);
                       h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(muon_0_p4->Pt(),weight);
@@ -516,14 +499,6 @@ void CLoop::Style(double lumFactor) {
 
     // Write histograms to a file
     // This needs to be done for each histogram
-    h_RunN_topo->Write();
-    h_RunN_topo_tpt->Write();
-
-    h_EventN_RN363738_topo->Write();
-    h_EventN_RN363738_topo_tpt->Write();
-
-    h_EventN_RN363910_topo->Write();
-    h_EventN_RN363910_topo_tpt->Write();
     // Writing jet pT
     h_ljet1_pt_topo->Write();
     h_ljet1_pt_topo_cuts->Write();
