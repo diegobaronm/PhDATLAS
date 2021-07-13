@@ -244,6 +244,7 @@ void CLoop::Fill(double weight, int z_sample) {
               // ISOLATION CUT
               if (cuts[2]==1) {
                 h_omega_topo_dphi_btag_iso->Fill(omega,weight);
+
                 // RNN SCORE
                 if (cuts[3]==1) {
                   h_omega_topo_dphi_btag_iso_rnn->Fill(omega,weight);
@@ -257,8 +258,10 @@ void CLoop::Fill(double weight, int z_sample) {
                       if (cuts[6]==1) {
 
                         h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
+                        std::cout<<weight<<std::endl;
 
                         if (weight!=1){
+                          std::cout<<"FINE UNTIL LINE 263!"<<std::endl;
                           if (tau_0_n_charged_tracks==1){
                             h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_truth_isHadTau,weight);
                           }
@@ -272,6 +275,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
                           if (weight!=1){
                             if (tau_0_n_charged_tracks==1){
+                              std::cout<<"HELLO THIS IS FOR 1 PRONGS!"<<std::endl;
                               h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_truth_isHadTau,weight);
                             }
                             if (tau_0_n_charged_tracks==3){
