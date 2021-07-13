@@ -1,8 +1,4 @@
 #!/bin/bash
-rm -r out_previous
-mv out/ out_previous/
-mkdir out/
-
 cd ..
 
 python3 Compiler.py MC
@@ -11,11 +7,23 @@ cd MC
 
 python3 lister_sys.py $3
 
-parallel -j $1 --progress -a samples_sys.txt python3 RunAnalysis.py ::: no ::: $2
+if [ "$2" = "NOMINAL" ]
+then
+	parallel -j $1 --progress -a samples_sys.txt python3 RunAnalysis.py ::: no ::: $2
+	hadd out/Signal_Sherpa$2$3.root out/Ztautau_sherpa*_sys$3*[0-9].root
+	hadd out/Signal_PoPy$2$3.root out/Ztautau_201_sys$3*[0-9].root
+	hadd out/Zjets$2$3.root out/Zmumu_*_sys$3*[0-9].root out/Zee_*_sys$3*[0-9].root
+	hadd out/VV$2$3.root out/llll*_sys$3*[0-9].root out/lllv*_sys$3*[0-9].root out/llvv*_sys$3*[0-9].root out/lvvv*_sys$3*[0-9].root out/ZqqZvv*_sys$3*[0-9].root out/ZqqZll*_sys$3*[0-9].root out/WqqZvv*_sys$3*[0-9].root out/WqqZll*_sys$3*[0-9].root out/WlvZqq*_sys$3*[0-9].root
+fi
 
-cd ..
+if [ "$2" = "SYS1" ]
+then
+	parallel -j $1 --progress -a samples_sys.txt python3 RunAnalysis.py ::: no :::: sys_trees1.txt
+	python3 sys_merger.py sys_trees1.txt
+fi
 
-hadd MC/out/Signal_Sherpa.root MC/out/Ztautau_sherpa*.root
-hadd MC/out/Signal_PoPy.root MC/out/Ztautau_201*.root
-hadd MC/out/Zjets.root MC/out/Zmumu_*.root MC/out/Zee_*.root
-hadd MC/out/VV.root MC/out/llll*.root MC/out/lllv*.root MC/out/llvv*.root MC/out/lvvv*.root MC/out/ZqqZvv*.root MC/out/ZqqZll*.root MC/out/WqqZvv*.root MC/out/WqqZll*.root MC/out/WlvZqq*.root
+if [ "$2" = "SYS2" ]
+then
+        parallel -j $1 --progress -a samples_sys.txt python3 RunAnalysis.py ::: no :::: sys_trees2.txt
+		python3 sys_merger.py sys_trees2.txt
+fi

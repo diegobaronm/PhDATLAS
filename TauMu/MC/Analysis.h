@@ -1,190 +1,12 @@
 #ifndef Header
 #define Header
 
-// declare histograms here
-TH1F * h_RunN_topo;
-TH1F * h_RunN_topo_tpt;
 
-TH1F * h_EventN_RN363738_topo;
-TH1F * h_EventN_RN363738_topo_tpt;
-
-TH1F * h_EventN_RN363910_topo;
-TH1F * h_EventN_RN363910_topo_tpt;
-
-TH1F * h_trans_lep_mass_topo;
-TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-
-TH1F * h_tau_matched_1p_topo;
-TH1F * h_tau_matched_1p_topo_dphi;
-TH1F * h_tau_matched_1p_topo_dphi_btag;
-TH1F * h_tau_matched_1p_topo_dphi_btag_iso;
-TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn;
-TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega;
 TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 
-TH1F * h_tau_matched_3p_topo;
-TH1F * h_tau_matched_3p_topo_dphi;
-TH1F * h_tau_matched_3p_topo_dphi_btag;
-TH1F * h_tau_matched_3p_topo_dphi_btag_iso;
-TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn;
-TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega;
 TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-TH1F * h_Z_pt_truth_inside_topo;
-TH1F * h_Z_pt_truth_cuts_inside;
-TH1F * h_Z_pt_truth_cuts_tpt_inside;
-TH1F * h_Z_pt_truth_outside_topo;
-TH1F * h_Z_pt_truth_cuts_outside;
-TH1F * h_Z_pt_truth_cuts_tpt_outside;
-
-TH1F * h_rnn_score_1prong_topo;
-TH1F * h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
-TH1F * h_rnn_score_3prong_topo;
-TH1F * h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt;
-// jet pT
-TH1F * h_ljet1_pt_topo;
-TH1F * h_ljet1_pt_topo_cuts;
-TH1F * h_ljet1_pt_topo_cuts_tpt;
-
-TH1F * h_ljet2_pt_topo;
-TH1F * h_ljet2_pt_topo_cuts;
-TH1F * h_ljet2_pt_topo_cuts_tpt;
-
-TH1F * h_ljet3_pt_topo;
-TH1F * h_ljet3_pt_topo_cuts;
-TH1F * h_ljet3_pt_topo_cuts_tpt;
-
-//Writing lep pT
-TH1F * h_lep_pt0_topo;
-TH1F * h_lep_pt0_topo_dphi;
-TH1F * h_lep_pt0_topo_dphi_btag;
-TH1F * h_lep_pt0_topo_dphi_btag_iso;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt;
-
-//Writing lep pT+nu
-TH1F * h_lep_pt0nu_topo;
-TH1F * h_lep_pt0nu_topo_dphi;
-TH1F * h_lep_pt0nu_topo_dphi_btag;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-//Writing tau pT
-TH1F * h_lep_pt1_topo;
-TH1F * h_lep_pt1_topo_dphi;
-TH1F * h_lep_pt1_topo_dphi_btag;
-TH1F * h_lep_pt1_topo_dphi_btag_iso;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside;
-TH1F * h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside;
-
-//Writing tau+nu pT
-TH1F * h_lep_pt1nu_topo;
-TH1F * h_lep_pt1nu_topo_dphi;
-TH1F * h_lep_pt1nu_topo_dphi_btag;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-//Writing sum pT
-TH1F * h_sum_pt_topo;
-TH1F * h_sum_pt_topo_dphi;
-TH1F * h_sum_pt_topo_dphi_btag;
-TH1F * h_sum_pt_topo_dphi_btag_iso;
-TH1F * h_sum_pt_topo_dphi_btag_iso_rnn;
-TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-TH1F * h_sum_pt_topo_1p_ZpTa;
-TH1F * h_sum_pt_topo_1p_ZpTb;
-TH1F * h_sum_pt_topo_1p_ZpTc;
-TH1F * h_sum_pt_topo_3p_ZpTa;
-TH1F * h_sum_pt_topo_3p_ZpTb;
-TH1F * h_sum_pt_topo_3p_ZpTc;
-
-TH1F * h_sum_pt_cuts_1p_ZpTa;
-TH1F * h_sum_pt_cuts_1p_ZpTb;
-TH1F * h_sum_pt_cuts_1p_ZpTc;
-TH1F * h_sum_pt_cuts_3p_ZpTa;
-TH1F * h_sum_pt_cuts_3p_ZpTb;
-TH1F * h_sum_pt_cuts_3p_ZpTc;
-
-TH1F * h_sum_pt_cuts_tpt_1p_ZpTa;
-TH1F * h_sum_pt_cuts_tpt_1p_ZpTb;
-TH1F * h_sum_pt_cuts_tpt_1p_ZpTc;
-TH1F * h_sum_pt_cuts_tpt_3p_ZpTa;
-TH1F * h_sum_pt_cuts_tpt_3p_ZpTb;
-TH1F * h_sum_pt_cuts_tpt_3p_ZpTc;
-
-//Writing MET
-TH1F * h_met_topo;
-TH1F * h_met_topo_dphi;
-TH1F * h_met_topo_dphi_btag;
-TH1F * h_met_topo_dphi_btag_iso;
-TH1F * h_met_topo_dphi_btag_iso_rnn;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-
-//Writing reco
-TH1F * h_reco_mass_topo;
-TH1F * h_reco_mass_topo_dphi;
-TH1F * h_reco_mass_topo_dphi_btag;
-TH1F * h_reco_mass_topo_dphi_btag_iso;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt;
-
-TH1F * h_reco_mass_met_outside_topo;
-TH1F * h_reco_mass_met_outside_topo_dphi;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-TH1F * h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt;
-
-//Writing jet number
-TH1F * h_jet_n_topo;
-TH1F * h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
-TH1F * h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
-//Writing b-tag
-TH1F * h_b_tag_topo;
-TH1F * h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt;
-
-//Writing isolation variables
-TH1F * h_muon_0_iso_topo;
-TH1F * h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt;
 
 TH1F * h_omega_topo;
 TH1F * h_omega_topo_dphi;
@@ -197,62 +19,6 @@ TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco;
 TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt;
 TH1F * h_omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt;
 
-TH1F * h_Z_pt_reco_inside_topo;
-TH1F * h_Z_pt_reco_cuts_inside;
-TH1F * h_Z_pt_reco_cuts_tpt_inside;
-TH1F * h_Z_pt_reco_outside_topo;
-TH1F * h_Z_pt_reco_cuts_outside;
-TH1F * h_Z_pt_reco_cuts_tpt_outside;
-
-TH1F * h_lep_phi_topo;
-TH1F * h_tau_phi_topo;
-TH1F * h_delta_phi;
-TH1F * h_delta_phi_second_stage;
-TH1F * h_delta_phi_topo;
-TH1F * h_tau_nprongs_topo;
-TH1F * h_lep_phi_cuts;
-TH1F * h_lep_phi_cuts_tpt;
-TH1F * h_tau_phi_cuts;
-TH1F * h_tau_phi_cuts_tpt;
-TH1F * h_delta_phi_cuts;
-TH1F * h_delta_phi_cuts_tpt;
-TH1F * h_delta_phi_cuts_butphi;
-TH1F * h_tau_nprongs_cuts;
-TH1F * h_tau_nprongs_cuts_tpt;
-
-TH1F * h_ratio_ptjet_zpt_topo;
-TH1F * h_ratio_lpt_tpt_topo;
-TH1F * h_ratio_ptjet_zpt_cuts;
-TH1F * h_ratio_lpt_tpt_cuts;
-TH1F * h_ratio_ptjet_zpt_cuts_tpt;
-TH1F * h_ratio_lpt_tpt_cuts_tpt;
-
-TH1F * h_rnn_score_1prong_topo_match;
-TH1F * h_rnn_score_3prong_topo_match;
-
-TH1F * h_n_fake_tracks;
-TH1F * h_n_core_tracks;
-TH1F * h_n_isolation_tracks;
-TH1F * h_n_fake_tracks_cuts;
-TH1F * h_n_core_tracks_cuts;
-TH1F * h_n_isolation_tracks_cuts;
-TH1F * h_n_fake_tracks_cuts_tpt;
-TH1F * h_n_core_tracks_cuts_tpt;
-TH1F * h_n_isolation_tracks_cuts_tpt;
-TH1F * h_n_tracks;
-TH1F * h_n_tracks_cuts;
-TH1F * h_n_tracks_cuts_tpt;
-
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-TH1F* h_tm1p_cuts_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
 TH1F* h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
 TH1F* h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
 TH1F* h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;
@@ -354,17 +120,6 @@ TH1F* h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection;
 TH1F* h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco;
 TH1F* h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection;
 
-
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-TH1F* h_tm1p_cuts_tpt_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
 TH1F* h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
 TH1F* h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
 TH1F* h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;
@@ -466,19 +221,6 @@ TH1F* h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_select
 TH1F* h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco;
 TH1F* h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection;
 
-
-
-
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-TH1F* h_tm3p_cuts_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
 TH1F* h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
 TH1F* h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
 TH1F* h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;
@@ -580,17 +322,6 @@ TH1F* h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection;
 TH1F* h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco;
 TH1F* h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection;
 
-
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_RecoTrk;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Reco_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_RecoTrk;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
-TH1F* h_tm3p_cuts_tpt_elec_0_EL_EFF_Trigger_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_SINGLE_E_2015_e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose_2016_2018_e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0_TightLLH_d0z0_v13_isolFCTight;
 TH1F* h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
 TH1F* h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
 TH1F* h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;

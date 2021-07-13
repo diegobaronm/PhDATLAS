@@ -67,8 +67,12 @@ def runAnalysis(key, fast):
     # launch the analysis script for the given data set
     DrawC(filename,lumStr,fast,z_sample,key,sys.argv[3])
 
+    tree_name=sys.argv[3]
+    if tree_name=="NOMINAL":
+        tree_name=""
+
     # move the output to a different directory
-    os.system("mv "+key+".root "+"out/" + key + fastStr(fast) + ".root")
+    os.system("mv "+key+tree_name+".root "+"out/" + key+tree_name+ fastStr(fast) + ".root")
 
 def combine(files, fast):
     """
