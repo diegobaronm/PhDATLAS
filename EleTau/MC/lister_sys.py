@@ -7,7 +7,7 @@ from dataSets import dataCombos
 
 samples=[]
 for i in dataCombos:
-    if(("_sys"+sys.argv[1]) in i):
+    if(("_sys") in i):
         samples=samples+dataCombos[i]
 
 with open("samples_sys.txt","w") as file:

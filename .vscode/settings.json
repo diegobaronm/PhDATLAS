@@ -72,7 +72,8 @@
         "Analysis_Sys copy.C": "cpp",
         "Analysis_SysW1.C": "cpp",
         "Analysis_SysW1 copy.C": "cpp",
-        "Analysis_SysW2.C": "cpp"
+        "Analysis_SysW2.C": "cpp",
+        "Analysis_SysW.C": "cpp"
     },
     "python.pythonPath": "/bin/python3",
     "C_Cpp.dimInactiveRegions": false,

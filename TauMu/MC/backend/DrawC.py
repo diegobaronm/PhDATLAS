@@ -25,7 +25,6 @@ def DrawC(filename,lumStr,fast,z_sample,key_pop,tree):
     # load in tree from file
     r.gROOT.ProcessLine("TFile* f = new TFile(\""+fullPath+"\")")
     r.gROOT.ProcessLine("TTree * minTree = new TTree")
-    print("HOLAAAAAAAAAAAAAAAAAAA")
     r.gROOT.ProcessLine("f->GetObject(\""+tree+"\",minTree)")
 
     if tree=="NOMINAL":
