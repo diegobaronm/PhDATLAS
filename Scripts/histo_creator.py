@@ -1,6 +1,6 @@
 import sys
 
-cuts=["basic","dphi","drap","btag","iso","rnn","ptl","j1pt","j2pt","ptbal","mjj","nji","omega","mreco","tpt"]
+cuts=["basic","dphi","drap","btag","iso","rnn","ptl","j1pt","j2pt","ptbal","mjj","nji","zcen","omega","mreco","tpt"]
 cuts_basic=["basic","cuts","tpt"]
 histos_full={"lepiso":["Lep Isolation",2,0,1],
         "lep_pt":["Lep pT",200,0,200],
@@ -36,6 +36,7 @@ histos_not_full={"lep_phi":["Lep phi angle",64,-3.2,3.2],
 "n_iso_tracks":["Number of isolation tracks",40,0,40],
 "n_tracks":["Number of all tracks",40,0,40],
 "delta_y":["Delta Rapidity",100,0,10],
+"Z_centrality":["Z boson centrality",500,0,5],
 "pt_bal":["pT Balance",100,0,1],
 "mass_jj":["Invariant mass di_jet system",100,0,10],
 "n_jets_interval":["N jets between rapidity interval",100,0,10],
