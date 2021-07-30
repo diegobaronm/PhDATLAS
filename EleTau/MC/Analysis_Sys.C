@@ -70,7 +70,7 @@ void CLoop::Book(double lumFactor) {
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
 
-    if (n_electrons==1 && n_taus_rnn_loose>=1){
+    if (n_electrons==1 && n_taus_rnn_loose>=1 && useEvent==1){
       //angles
       double angle_l_MET=del_phi(elec_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
