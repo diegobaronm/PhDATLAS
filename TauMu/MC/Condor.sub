@@ -1,4 +1,4 @@
-executable              = RunAnalysisCONDOR.py
+executable              = RunAnalysis.py
 arguments               = $(ClusterId)$(ProcId)
 output                  = output/$(ClusterId).$(ProcId).out
 error                   = error/$(ClusterId).$(ProcId).err
