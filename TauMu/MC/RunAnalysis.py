@@ -64,11 +64,11 @@ def runAnalysis(key, remote):
     if remote:
         output=os.system("mv "+key+tree_name+".root "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/Ztm/"+tree_name+"/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Ztm.txt")
+            os.system("echo "+key+" yes "+tree_name+"   >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Ztm.txt")
     else :
         output=os.system("mv "+key+tree_name+".root "+"out/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"FAILED.txt")
+            os.system("echo "+key+" yes "+tree_name+" >> "+"FAILED.txt")
 
 # get input from user
 # keep asking until answered
