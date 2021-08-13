@@ -64,13 +64,13 @@ def runAnalysis(key, remote):
 
     # move the output to a different directory and log failure in producing or moving the file
     if remote:
-        output=os.system("mv "+key+tree_name+".root "+"/eos/user/d/dbaronmo/Ztm/"+key+tree_name+".root")
+        output=os.system("mv "+key+tree_name+".root "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/Ztm/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"/eos/user/d/dbaronmo/Ztm/FAILED.txt")
+            os.system("echo "+key+tree_name+"----FAILED >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Ztm.txt")
     else :
         output=os.system("mv "+key+tree_name+".root "+"out/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"out/FAILED.txt")
+            os.system("echo "+key+tree_name+"----FAILED >> "+"FAILED.txt")
 
 # get input from user
 # keep asking until answered
