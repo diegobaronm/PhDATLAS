@@ -59,18 +59,16 @@ def runAnalysis(key, remote):
     DrawC(filename,lumStr,remote,z_sample,key,sys.argv[3])
 
     tree_name=sys.argv[3]
-    if tree_name=="NOMINAL":
-        tree_name=""
 
     # move the output to a different directory and log failure in producing or moving the file
     if remote:
-        output=os.system("mv "+key+tree_name+".root "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/Zte/"+key+tree_name+".root")
+        output=os.system("mv "+key+tree_name+".root "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/Zte/"+tree_name+"/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Zte.txt")
+            os.system("echo "+key+" yes "+tree_name+"   >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Zte.txt")
     else :
         output=os.system("mv "+key+tree_name+".root "+"out/"+key+tree_name+".root")
         if (output!=0):
-            os.system("echo "+key+tree_name+"----FAILED >> "+"FAILED.txt")
+            os.system("echo "+key+" yes "+tree_name+" >> "+"FAILED.txt")
 
 # get input from user
 # keep asking until answered
