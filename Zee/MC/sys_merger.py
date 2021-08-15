@@ -1,14 +1,12 @@
 import os
 import sys
 
-trees=[]
-with open(sys.argv[1],"r") as file:
-	line=file.readline()
-	while line:
-		trees.append(line.rstrip('\n'))
-		line=file.readline()
+samples_dir=sys.argv[1]
 
-for t in trees:
-	os.system("hadd out/Signal_Sherpa"+t+".root out/Zee_sherpa*_sys_*"+t+".root")
-	os.system("hadd out/Signal_PoPy"+t+".root out/Zee_201*_sys_*"+t+".root")
-	os.system("hadd out/VV"+t+".root out/llll*_sys_*"+t+".root out/lllv*_sys_*"+t+".root out/llvv*_sys_*"+t+".root out/lvvv*_sys_*"+t+".root out/ZqqZvv*_sys_*"+t+".root out/ZqqZll*_sys_*"+t+".root out/WqqZvv*_sys_*"+t+".root out/WqqZll*_sys_*"+t+".root out/WlvZqq*_sys_*"+t+".root")
+os.chdir(samples_dir)
+
+for d in os.listdir():
+	if d!="out":
+		os.system("hadd out/Signal_Sherpa"+d+".root "+d+"/Zee_sherpa*_sys_*"+d+".root")
+		os.system("hadd out/Signal_PoPy"+d+".root "+d+"/Zee_201*_sys_*"+d+".root")
+		os.system("hadd out/VV"+d+".root "+d+"/llll*_sys_*"+d+".root "+d+"/lllv*_sys_*"+d+".root "+d+"/llvv*_sys_*"+d+".root "+d+"/lvvv*_sys_*"+d+".root "+d+"/ZqqZvv*_sys_*"+d+".root "+d+"/ZqqZll*_sys_*"+d+".root "+d+"/WqqZvv*_sys_*"+d+".root "+d+"/WqqZll*_sys_*"+d+".root "+d+"/WlvZqq*_sys_*"+d+".root")
