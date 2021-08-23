@@ -120,12 +120,9 @@ void CLoop::Fill(double weight, int z_sample) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-        int random=rand()%2;
+
         double a{50},b{47};
-        if(random){
-          a=50;
-          b=47;
-        }
+
         if (angle<=11*pi/18){
           cuts[0]=1;
         }
@@ -144,7 +141,7 @@ void CLoop::Fill(double weight, int z_sample) {
         if (inv_mass<100 && inv_mass>80) {
           cuts[5]=1;
         }
-        if(random){
+        if(event_number%2==0){
           if(muon_1_p4->Pt()>=(b+20)){
             cuts[6]=1;
           }

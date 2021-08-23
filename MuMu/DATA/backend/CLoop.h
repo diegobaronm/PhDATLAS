@@ -282,6 +282,123 @@ public :
    TLorentzVector  *truth_Z_p4;
    Double_t        weight_mc;
    vector<float>   *weight_mc_v;
+   UInt_t          useEvent;
+   Float_t         jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85;
+   Float_t         jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT;
+   Float_t         jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT;
+   Float_t         jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT;
+   Float_t         jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT;
+   Float_t         jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT;
+   Float_t         jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT;
+   Float_t         jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT;
+   Float_t         jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT;
+   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;
+   Float_t         muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;
+   Float_t         muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;
+   Float_t         muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;
+   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad;
+   Float_t         muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad;
+   Float_t         muon_1_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;
+   Float_t         muon_1_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;
+   Float_t         muon_1_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;
+   Float_t         muon_1_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;
+   Float_t         muon_1_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;
+   Float_t         muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;
+   Float_t         muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;
 
    // List of branches
    TBranch        *b_HLT_e120_lhloose;   //!
@@ -528,6 +645,123 @@ public :
    TBranch        *b_truth_Z_p4;   //!
    TBranch        *b_weight_mc;   //!
    TBranch        *b_weight_mc_v;   //!
+   TBranch        *b_useEvent;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85;   //!
+   TBranch        *b_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT;   //!
+   TBranch        *b_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT;   //!
+   TBranch        *b_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT;   //!
+   TBranch        *b_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT;   //!
+   TBranch        *b_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT;   //!
+   TBranch        *b_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT;   //!
+   TBranch        *b_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT;   //!
+   TBranch        *b_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_1_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_1_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_1_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium;   //!
+   TBranch        *b_muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium;   //!
 
    CLoop(TTree *tree=0);
    virtual ~CLoop();
@@ -535,7 +769,7 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     Loop(double lumFactor, bool fastMode, int z_sample, std::string key);
+   virtual void     Loop(double lumFactor, int z_sample, std::string key);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };
@@ -862,6 +1096,123 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("truth_Z_p4", &truth_Z_p4, &b_truth_Z_p4);
    fChain->SetBranchAddress("weight_mc", &weight_mc, &b_weight_mc);
    fChain->SetBranchAddress("weight_mc_v", &weight_mc_v, &b_weight_mc_v);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85", &jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85, &b_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85);
+   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT", &jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT, &b_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT);
+   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT", &jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT, &b_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT);
+   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT", &jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT, &b_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT);
+   fChain->SetBranchAddress("jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT", &jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT, &b_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT);
+   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT", &jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT, &b_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT);
+   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT", &jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT, &b_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT);
+   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT", &jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT, &b_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT);
+   fChain->SetBranchAddress("jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT", &jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT, &b_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA", &muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA, &b_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad", &muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad, &b_muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_1_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad", &muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad, &b_muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_1_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad", &muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad, &b_muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_1_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad", &muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad, &b_muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad", &muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad, &b_muon_1_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium", &muon_1_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium, &b_muon_1_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA", &muon_1_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA, &b_muon_1_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA", &muon_1_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA, &b_muon_1_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA", &muon_1_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA, &b_muon_1_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA", &muon_1_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA, &b_muon_1_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium", &muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium, &b_muon_1_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+   fChain->SetBranchAddress("useEvent", &useEvent, &b_useEvent);
    Notify();
 }
 

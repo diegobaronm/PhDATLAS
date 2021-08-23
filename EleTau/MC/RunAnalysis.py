@@ -66,7 +66,7 @@ def runAnalysis(key, remote):
         if (output!=0):
             os.system("echo "+key+" yes "+tree_name+"   >> "+"/afs/cern.ch/work/d/dbaronmo/private/Outputs/FAILED_Zte.txt")
     else :
-        output=os.system("mv "+key+tree_name+".root "+"out/"+key+tree_name+".root")
+        output=os.system("mv "+key+tree_name+".root "+"out/"+tree_name+"/"+key+tree_name+".root")
         if (output!=0):
             os.system("echo "+key+" yes "+tree_name+" >> "+"FAILED.txt")
 
