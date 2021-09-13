@@ -222,11 +222,16 @@ void CLoop::Book(double lumFactor) {
     h_trigger_1_pass_cuts = new TH1F("trigger_1_pass_cuts","Events where 1 muon fires the trigger",2,0,2);
     h_trigger_2_pass = new TH1F("trigger_2_pass","Events where 2 muons fire the trigger",2,0,2);
     h_trigger_2_pass_cuts = new TH1F("trigger_2_pass_cuts","Events where 2 muons fire the trigger",2,0,2);
+
+    h_w_topo = new TH1F("w_topo","sum of weights",2,0,2);
+    h_w_topo_cuts_ptl = new TH1F("w_topo_cuts_ptl","sum of weights",2,0,2);
+    h_w_dist_topo = new TH1F("w_dist_topo","weights distribution",2000,-10,10);
+    h_w_dist_topo_cuts_ptl = new TH1F("w_dist_topo_cuts_ptl","weights distribution",2000,-10,10);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==2){
+    if (n_muons==2 && useEvent==1){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(muon_1_p4->Phi(),met_reco_p4->Phi());
@@ -389,6 +394,10 @@ void CLoop::Fill(double weight, int z_sample) {
         h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
         h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
 
+        h_w_topo->Fill(1,weight);
+        h_w_dist_topo->Fill(weight,1);
+        
+
         // ANGLE CUT
         if (cuts[0]==1){
           h_met_topo_dphi->Fill(met_reco_p4->Pt(),weight);
@@ -398,7 +407,7 @@ void CLoop::Fill(double weight, int z_sample) {
           h_inv_mass_topo_dphi->Fill(inv_mass,weight);
 
           // B TAGGING CUT
-          if (cuts[1]==1 || n_jets==0) {
+          if (cuts[1]==1) {
             h_met_topo_dphi_btag->Fill(met_reco_p4->Pt(),weight);
             h_lep1_pt_topo_dphi_btag->Fill(muon_0_p4->Pt(),weight);
             h_lep2_pt_topo_dphi_btag->Fill(muon_1_p4->Pt(),weight);
@@ -477,6 +486,9 @@ void CLoop::Fill(double weight, int z_sample) {
                       h_ratio_lpt_tpt_cuts_ptl->Fill(r_lpt_tpt,weight);
                       h_ratio_ptjet_zpt_cuts_ptl->Fill(r_jpt_zpt,weight);
                       h_Z_pt_reco_cuts_ptl->Fill(Z_pt,weight);
+
+                      h_w_topo_cuts_ptl->Fill(1,weight);
+                      h_w_dist_topo_cuts_ptl->Fill(weight,1);
 
                       if (Z_pt<100){
                         h_sum_pt_cuts_ptl_ZpTa->Fill(muon_0_p4->Pt()+muon_1_p4->Pt(),weight);
@@ -653,6 +665,11 @@ void CLoop::Style(double lumFactor) {
     h_trigger_1_pass_cuts->Write();
     h_trigger_2_pass->Write();
     h_trigger_2_pass_cuts->Write();
+
+    h_w_topo->Write();
+    h_w_topo_cuts_ptl->Write();
+    h_w_dist_topo->Write();
+    h_w_dist_topo_cuts_ptl->Write();
 }
 
 #endif // End header guard
