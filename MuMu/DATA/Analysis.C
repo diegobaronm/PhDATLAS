@@ -500,7 +500,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
                       if (weight!=1){
                         h_Z_pt_truth_cuts_ptl->Fill(truth_z_pt,weight);
-                      }
+                      } else {std::cout<<weight<<std::endl;}
                     }
                   }
                 }

@@ -67,7 +67,7 @@ void CLoop::Loop(double lumFactor, int z_sample, std::string key)
             }
         }*/
         // PYTHIA REWEIGHTING
-        if(z_sample==1){
+        /*if(z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if(zpt>=40 & zpt<46){
                 z_w=0.995;
@@ -102,7 +102,7 @@ void CLoop::Loop(double lumFactor, int z_sample, std::string key)
             }else if(zpt>=151){
                 z_w=0.8;
             }
-        }
+        }*/
         /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;
             if (zpt>40 & zpt<80){
@@ -125,7 +125,8 @@ void CLoop::Loop(double lumFactor, int z_sample, std::string key)
             weight_total= weight_mc*NOMINAL_pileup_combined_weight;
         }
         // check if event is from real data
-        if (weight_total != 0) {
+        std::cout<<"Weight total: "<<weight_total<<std::endl;
+        if (!(key.substr(0,4)=="data"))  {
             // take product of all scale factors
             eventWeight = weight_total*lumFactor*zpt_weight
             *muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA
@@ -136,6 +137,7 @@ void CLoop::Loop(double lumFactor, int z_sample, std::string key)
         //std::cout<<eventWeight<<std::endl;
         // fill histograms
         //cout << eventWeight;
+        std::cout<<"Event weight: "<<eventWeight<<std::endl;
         Fill(eventWeight, z_sample);
         // end filling
     }
