@@ -39,56 +39,12 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
-  string str1="NOPASS";
-  string str2="NOPASS";
-  string str3="NOPASS";
-  string str4="NOPASS";
-  string str5="NOPASS";
-  string str6="NOPASS";
-  if (cond1){
-    str1="Passed";
-  }
-  if (cond2){
-    str2="Passed";
-  }
-  if (cond3){
-    str3="Passed";
-  }
-  if (cond4){
-    str4="Passed";
-  }
-  if (cond5){
-    str5="Passed";
-  }
-  if (cond6){
-    str6="Passed";
-  }
-  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
-}
-
-string print(std::vector<int> const &input)
-{
-  string cuts="";
-	for (int i = 0; i < input.size(); i++) {
-		cuts=cuts+to_string(input.at(i))+',';
-	}
-  return cuts+'\n';
-}
-*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
 
     // VARIABLES ONLY ONCE
-    h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
-    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
 
-    h_EventN_RN358115_topo = new TH1F("EventN_RN358115_topo","Event number RN(358115)",100000,0,3.0e9);
-    h_EventN_RN358115_topo_tpt = new TH1F("EventN_RN358115_topo_tpt","Event number RN(358115)",100000,0,3.0e9);
-
-    h_EventN_RN359541_topo = new TH1F("EventN_RN359541_topo","Event number RN(359541)",100000,0,3.0e9);
-    h_EventN_RN359541_topo_tpt = new TH1F("EventN_RN359541_topo_tpt","Event number RN(359541)",100000,0,3.0e9);
     //VARIABLES FOLLOWED AFTER EACH CUT
     // pT light-jets
     h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
@@ -302,16 +258,19 @@ void CLoop::Fill(double weight, int z_sample) {
 
         // Cuts bits
         vector<int> cuts={0,0,0,0,0,0,0};
-
+        int random=rand()%2;
         double a{50},b{47};
-
+        if(random){
+          a=50;
+          b=47;
+        }
         if (angle<=11*pi/18){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
           cuts[1]=1;
         }
-        if (elec_0_iso_FCTight==1 && elec_1_iso_FCTight==1) {
+        if (elec_0_iso_FCTight==0 || elec_1_iso_FCTight==0) {
           cuts[2]=1;
         }
         if (elec_0_p4->Pt()>=a) {
@@ -323,12 +282,12 @@ void CLoop::Fill(double weight, int z_sample) {
         if (inv_mass<100 && inv_mass>80) {
           cuts[5]=1;
         }
-        if(event_number%2==0){
-          if(elec_1_p4->Pt()>=(b+20)){
+        if(random){
+          if(elec_1_p4->Pt()>=(b+0)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()>=(a+20)){
+          if(elec_0_p4->Pt()>=(a+0)){
             cuts[6]=1;
           }
         }
@@ -363,9 +322,6 @@ void CLoop::Fill(double weight, int z_sample) {
         }
 
         //  Filling histos
-        h_RunN_topo->Fill(run_number,weight);
-        if(run_number==358115){h_EventN_RN358115_topo->Fill(event_number,weight);}
-        if(run_number==359541){h_EventN_RN359541_topo->Fill(event_number,weight);}
         h_jet_n_topo->Fill(n_jets, weight);
         h_b_tag_topo->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
         h_elec_0_isolation_topo->Fill(elec_0_iso_FCTight,weight);
@@ -449,7 +405,6 @@ void CLoop::Fill(double weight, int z_sample) {
                     h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
                     h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
 
-
                     h_trigger_1_pass_cuts->Fill((trigger_match_1 | trigger_match_2),weight);
                     h_trigger_2_pass_cuts->Fill(trigger_match_12,weight);
 
@@ -460,14 +415,7 @@ void CLoop::Fill(double weight, int z_sample) {
                     } if (Z_pt>150) {
                       h_sum_pt_cuts_ZpTc->Fill(elec_0_p4->Pt()+elec_1_p4->Pt(),weight);
                     }
-
-                    if (weight!=1){
-                      h_Z_pt_truth_cuts->Fill(truth_z_pt,weight);
-                    }
                     if(cuts[6]==1){
-                      h_RunN_topo_tpt->Fill(run_number,weight);
-                      if(run_number==358115){h_EventN_RN358115_topo_tpt->Fill(event_number,weight);}
-                      if(run_number==359541){h_EventN_RN359541_topo_tpt->Fill(event_number,weight);}
                       h_met_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(met_reco_p4->Pt(),weight);
                       h_jet_n_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(n_jets, weight);
                       h_lep1_pt_topo_dphi_btag_iso_pt1_pt2_mass_ptl->Fill(elec_0_p4->Pt(),weight);
@@ -517,14 +465,6 @@ void CLoop::Style(double lumFactor) {
 
     // Write histograms to a file
     // This needs to be done for each histogram
-    h_RunN_topo->Write();
-    h_RunN_topo_tpt->Write();
-
-    h_EventN_RN358115_topo->Write();
-    h_EventN_RN358115_topo_tpt->Write();
-
-    h_EventN_RN359541_topo->Write();
-    h_EventN_RN359541_topo_tpt->Write();
     // Writing jet pT
     h_ljet1_pt_topo->Write();
     h_ljet1_pt_topo_cuts->Write();

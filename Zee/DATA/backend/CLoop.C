@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-void CLoop::Loop(double lumFactor, bool fastMode, int z_sample, std::string key)
+void CLoop::Loop(double lumFactor, int z_sample, std::string key)
 {
 //    In a ROOT session, you can do:
 //        root> .L CLoop.C
@@ -43,7 +43,6 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample, std::string key)
 
     // if in fast mode only loop over 1% of the entries
     Long64_t nLoop = nentries;
-    if (fastMode) nLoop = nentries * 0.01;
 
     Long64_t nbytes = 0, nb = 0;
 
@@ -126,7 +125,7 @@ void CLoop::Loop(double lumFactor, bool fastMode, int z_sample, std::string key)
             weight_total= weight_mc*NOMINAL_pileup_combined_weight;
         }
         // check if event is from real data
-        if (weight_total != 0) {
+        if (!(key.substr(0,4)=="data")) {
             // take product of all scale factors
             eventWeight = weight_total*lumFactor*zpt_weight
             *elec_0_NOMINAL_EleEffSF_Isolation_TightLLH_d0z0_v13_FCTight*elec_0_NOMINAL_EleEffSF_offline_TightLLH_d0z0_v13*elec_0_NOMINAL_EleEffSF_offline_RecoTrk
