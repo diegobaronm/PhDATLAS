@@ -2,3 +2,4 @@ Ztautau_2018_0 yes JET_JER_EffectiveNP_1_1up
 Ztautau_2018_1 yes JET_JER_EffectiveNP_1_1up
 Ztautau_2018_2 yes JET_JER_EffectiveNP_1_1up
 Ztautau_2018_3 yes JET_JER_EffectiveNP_1_1up
+Ztautau_2017_1 yes NOMINAL
