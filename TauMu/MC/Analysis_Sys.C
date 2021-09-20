@@ -206,17 +206,17 @@ void CLoop::Fill(double weight, int z_sample) {
             cuts[5]=1;
           }
           if (inside) {
-            if (reco_mass<110 && reco_mass>70) {
+            if (reco_mass<120 && reco_mass>60) {
               cuts[6]=1;
             }
           }
           if (outside_lep) {
-            if (reco_mass_outside<110 && reco_mass_outside>70) {
+            if (reco_mass_outside<120 && reco_mass_outside>60) {
               cuts[6]=1;
             }
           }
           if (outside_tau) {
-            if (reco_mass_outside<110 && reco_mass_outside>70) {
+            if (reco_mass_outside<120 && reco_mass_outside>60) {
               cuts[6]=1;
           }
           }
