@@ -202,7 +202,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (muon_0_p4->Pt()>=27) {
             cuts[4]=1;
           }
-          if (omega>0 && omega <1.4) {
+          if (omega>-0.2 && omega <1.6) {
             cuts[5]=1;
           }
           if (inside) {
