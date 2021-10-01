@@ -419,6 +419,7 @@ public :
    TLorentzVector  *truth_Z_p4;
    Double_t        weight_mc;
    vector<float>   *weight_mc_v;
+   UInt_t          useEvent;
    Float_t         elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;
    Float_t         elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;
    Float_t         elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;
@@ -996,6 +997,7 @@ public :
    TBranch        *b_truth_Z_p4;   //!
    TBranch        *b_weight_mc;   //!
    TBranch        *b_weight_mc_v;   //!
+   TBranch        *b_useEvent;   //!
    TBranch        *b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_offline_TightLLH_d0z0_v13;   //!
    TBranch        *b_elec_0_EL_EFF_ID_TOTAL_1NPCOR_PLUS_UNCOR_1up_EleEffSF_offline_TightLLH_d0z0_v13;   //!
    TBranch        *b_elec_0_EL_EFF_Iso_TOTAL_1NPCOR_PLUS_UNCOR_1down_EleEffSF_Isolation_TightLLH_d0z0_v13_FCLoose;   //!
@@ -1197,7 +1199,7 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     Loop(double lumFactor, bool fastMode, int z_sample, std::string key);
+   virtual void     Loop(double lumFactor, int z_sample, std::string key);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };
@@ -1865,6 +1867,7 @@ void CLoop::Init(TTree *tree)
    fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNmedium", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNmedium, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNmedium);
    fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_JetRNNtight);
    fChain->SetBranchAddress("tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection", &tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection, &b_tau_0_TAUS_TRUEHADTAU_EFF_RNNID_SYST_1up_TauEffSF_selection);
+   fChain->SetBranchAddress("useEvent", &useEvent, &b_useEvent);
    Notify();
 }
 

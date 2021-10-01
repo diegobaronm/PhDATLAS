@@ -1,0 +1,16 @@
+<!--
+This xml file created automatically on: 
+2021-9-28
+-->
+<!DOCTYPE Combination  SYSTEM 'HistFactorySchema.dtd'>
+
+<Combination OutputFilePrefix="./results/example_UsingPy" >
+
+
+  <Input>./xmlFromPy/meas_channel1.xml</Input>
+
+  <Measurement Name="meas" Lumi="1" LumiRelErr="0.1" ExportOnly="False"  >
+    <POI>b a</POI>  
+  </Measurement> 
+
+</Combination>

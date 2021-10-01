@@ -1,0 +1,1 @@
+mreco(60,140) omega(-0.2,1.6) and deltaPhi<1.0 back to the tau pT>45 GeV.

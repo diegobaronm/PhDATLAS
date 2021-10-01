@@ -1,0 +1,1 @@
+Omega (-0.2,1.6) and mreco (60,140) the final cut is not in the tau pT but in the tau+nu pT > 55 GeV.

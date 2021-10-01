@@ -1,0 +1,22 @@
+<!--
+This xml file created automatically on: 
+2021-9-28
+-->
+<!DOCTYPE Channel  SYSTEM 'HistFactorySchema.dtd'>  
+
+  <Channel Name="channel1" InputFile="" >
+
+    <Data HistoName="reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt" InputFile="SR_OS/Data.root" HistoPath=""  /> 
+
+    <StatErrorConfig RelErrorThreshold="0.05" ConstraintType="Poisson" /> 
+
+    <Sample Name="signal"  HistoPath=""  HistoName="reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt"  InputFile="SR_OS/Signal_PoPy.root"  NormalizeByTheory="True" >
+    </Sample>
+
+
+    <Sample Name="background1"  HistoPath=""  HistoName="reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt"  InputFile="SR_OS/VV.root"  NormalizeByTheory="True" >
+    </Sample>
+
+
+
+  </Channel>  

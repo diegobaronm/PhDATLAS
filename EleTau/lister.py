@@ -9,7 +9,8 @@ from dataSets import dataCombos
 
 samples=[]
 for i in dataCombos:
-    samples=samples+dataCombos[i]
+    if "sys" not in i:
+    	samples=samples+dataCombos[i]
 
 with open("samples.txt","w") as file:
     for j in samples:

@@ -1,8 +1,8 @@
 #!/bin/bash
-rm -rf MC/out/NOMINAL/NOMINAL
-rm -rf DATA/out/NOMINAL/NOMINAL
-mkdir MC/out/NOMINAL/NOMINAL
-mkdir DATA/out/NOMINAL/NOMINAL
+rm -rf MC/out/NOMINAL
+rm -rf DATA/out/NOMINAL
+mkdir MC/out/NOMINAL
+mkdir DATA/out/NOMINAL
 cp MC/Analysis.h DATA/Analysis.h
 
 python3 Compiler.py DATA

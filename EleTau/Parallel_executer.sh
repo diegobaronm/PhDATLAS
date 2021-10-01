@@ -1,10 +1,8 @@
 #!/bin/bash
-rm -r MC/out_previous
-rm -r DATA/out_previous
-mv MC/out/ MC/out_previous/
-mkdir MC/out/
-mv DATA/out/ DATA/out_previous/
-mkdir DATA/out/
+rm -rf MC/out/NOMINAL
+rm -rf DATA/out/NOMINAL
+mkdir MC/out/NOMINAL
+mkdir DATA/out/NOMINAL
 cp MC/Analysis.h DATA/Analysis.h
 
 python3 Compiler.py DATA
@@ -28,11 +26,11 @@ parallel -j $1 --progress -a samples.txt python3 RunAnalysis.py ::: no ::: NOMIN
 cd ..
 
 
-hadd MC/out/Signal_Sherpa.root MC/out/Ztautau_sherpa*.root
-hadd MC/out/Signal_PoPy.root MC/out/Ztautau_201*.root
-hadd MC/out/Zjets.root MC/out/Zmumu_*.root MC/out/Zee_*.root
-hadd MC/out/VV.root MC/out/llll_*.root MC/out/lllv_*.root MC/out/llvv_*.root MC/out/lvvv_*.root MC/out/ZqqZvv_*.root MC/out/ZqqZll_*.root MC/out/WqqZvv_*.root MC/out/WqqZll_*.root MC/out/WlvZqq_*.root
-hadd MC/out/Wjets.root MC/out/Wplusenu_*.root MC/out/Wminusenu_*.root MC/out/Wplusmunu_*.root MC/out/Wminusmunu_*.root MC/out/Wplustaunu_*.root MC/out/Wminustaunu_*.root
-hadd MC/out/singletop.root MC/out/st_schan_top_*.root MC/out/st_schan_atop_*.root MC/out/st_tchan_top_*.root MC/out/st_tchan_atop_*.root MC/out/st_wt_top_*.root MC/out/st_wt_atop_*.root
-hadd MC/out/ttbar.root MC/out/ttbar_201*.root
-hadd DATA/out/data.root DATA/out/data_201*.root
+hadd MC/out/Signal_Sherpa.root MC/out/NOMINAL/Ztautau_sherpa*.root
+hadd MC/out/Signal_PoPy.root MC/out/NOMINAL/Ztautau_201*.root
+hadd MC/out/Zjets.root MC/out/NOMINAL/Zmumu_*.root MC/out/NOMINAL/Zee_*.root
+hadd MC/out/VV.root MC/out/NOMINAL/llll_*.root MC/out/NOMINAL/lllv_*.root MC/out/NOMINAL/llvv_*.root MC/out/NOMINAL/lvvv_*.root MC/out/NOMINAL/ZqqZvv_*.root MC/out/NOMINAL/ZqqZll_*.root MC/out/NOMINAL/WqqZvv_*.root MC/out/NOMINAL/WqqZll_*.root MC/out/NOMINAL/WlvZqq_*.root
+hadd MC/out/Wjets.root MC/out/NOMINAL/Wplusenu_*.root MC/out/NOMINAL/Wminusenu_*.root MC/out/NOMINAL/Wplusmunu_*.root MC/out/NOMINAL/Wminusmunu_*.root MC/out/NOMINAL/Wplustaunu_*.root MC/out/NOMINAL/Wminustaunu_*.root
+hadd MC/out/singletop.root MC/out/NOMINAL/st_schan_top_*.root MC/out/NOMINAL/st_schan_atop_*.root MC/out/NOMINAL/st_tchan_top_*.root MC/out/NOMINAL/st_tchan_atop_*.root MC/out/NOMINAL/st_wt_top_*.root MC/out/NOMINAL/st_wt_atop_*.root
+hadd MC/out/ttbar.root MC/out/NOMINAL/ttbar_201*.root
+hadd DATA/out/data.root DATA/out/NOMINAL/data_201*.root

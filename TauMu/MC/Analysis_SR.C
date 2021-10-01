@@ -420,11 +420,13 @@ void CLoop::Fill(double weight, int z_sample) {
           {
             truth_z_pt=truth_Z_p4->Pt()/1000;
           }
-
+          double tau_nu_pt=0.0;
           if (inside) {
+            tau_nu_pt=tau_0_p4->Pt()+pt_tau_nu;
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(muon_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+pt_tau_nu*sin(tau_0_p4->Phi())+pt_lep_nu*sin(muon_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
+
             if (z_sample==0){
               truth_z_pt=Z_pt;
             }
@@ -435,6 +437,7 @@ void CLoop::Fill(double weight, int z_sample) {
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
           if (outside_tau) {
+            tau_nu_pt=tau_0_p4->Pt()+neutrino_pt;
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(tau_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(tau_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
@@ -448,6 +451,7 @@ void CLoop::Fill(double weight, int z_sample) {
             r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
           if (outside_lep) {
+            tau_nu_pt=tau_0_p4->Pt();
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(muon_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(muon_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
@@ -506,17 +510,17 @@ void CLoop::Fill(double weight, int z_sample) {
             cuts[5]=1;
           }
           if (inside) {
-            if (reco_mass<120 && reco_mass>60) {
+            if (reco_mass<140 && reco_mass>60) {
               cuts[6]=1;
             }
           }
           if (outside_lep) {
-            if (reco_mass_outside<120 && reco_mass_outside>60) {
+            if (reco_mass_outside<140 && reco_mass_outside>60) {
               cuts[6]=1;
             }
           }
           if (outside_tau) {
-            if (reco_mass_outside<120 && reco_mass_outside>60) {
+            if (reco_mass_outside<140 && reco_mass_outside>60) {
               cuts[6]=1;
           }
           }
