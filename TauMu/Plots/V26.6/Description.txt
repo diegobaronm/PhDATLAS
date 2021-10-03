@@ -1,0 +1,1 @@
+mreco(60,120), omega (-0.2,1.6) and DeltaPhi<1 . The CR has been recalculated to adapt to DeltaPhi<1. CR=Fail Loose ISO AND RNNScore<Tight.
