@@ -1,0 +1,1 @@
+m_reco (60,120) omega(-0.2,1.6) and DeltaPhi <= 1 . CR = Anti-Tight RNN and Loose Lepton ID.

@@ -101,6 +101,7 @@ void CLoop::Loop(double lumFactor, int z_sample, std::string key)
             }else if(zpt>=151){
                 z_w=0.8;
             }
+            z_w=1.0;
         }
         /*if (z_sample==1){
             double zpt=truth_Z_p4->Pt()/1000;

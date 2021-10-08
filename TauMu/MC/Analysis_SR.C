@@ -488,7 +488,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
           // Cuts bits
           vector<int> cuts={0,0,0,0,0,0,0,0};
-          if (angle<=2*pi/3){
+          if (angle<=1.0){
             cuts[0]=1;
           }
           if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -510,17 +510,17 @@ void CLoop::Fill(double weight, int z_sample) {
             cuts[5]=1;
           }
           if (inside) {
-            if (reco_mass<140 && reco_mass>60) {
+            if (reco_mass<120 && reco_mass>60) {
               cuts[6]=1;
             }
           }
           if (outside_lep) {
-            if (reco_mass_outside<140 && reco_mass_outside>60) {
+            if (reco_mass_outside<120 && reco_mass_outside>60) {
               cuts[6]=1;
             }
           }
           if (outside_tau) {
-            if (reco_mass_outside<140 && reco_mass_outside>60) {
+            if (reco_mass_outside<120 && reco_mass_outside>60) {
               cuts[6]=1;
           }
           }

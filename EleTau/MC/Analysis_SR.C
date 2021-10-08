@@ -458,7 +458,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
           // Cuts bits
           vector<int> cuts={0,0,0,0,0,0,0,0,0,0};
-          if (angle<=2*pi/3){
+          if (angle<=1.0){
             cuts[0]=1;
           }
           if (tau_0_ele_bdt_score_trans_retuned>=0.05) {
