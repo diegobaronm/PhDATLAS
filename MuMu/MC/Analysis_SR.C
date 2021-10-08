@@ -35,44 +35,6 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-/* string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
-  string str1="NOPASS";
-  string str2="NOPASS";
-  string str3="NOPASS";
-  string str4="NOPASS";
-  string str5="NOPASS";
-  string str6="NOPASS";
-  if (cond1){
-    str1="Passed";
-  }
-  if (cond2){
-    str2="Passed";
-  }
-  if (cond3){
-    str3="Passed";
-  }
-  if (cond4){
-    str4="Passed";
-  }
-  if (cond5){
-    str5="Passed";
-  }
-  if (cond6){
-    str6="Passed";
-  }
-  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
-}
-
-string print(std::vector<int> const &input)
-{
-  string cuts="";
-	for (int i = 0; i < input.size(); i++) {
-		cuts=cuts+to_string(input.at(i))+',';
-	}
-  return cuts+'\n';
-}
-*/
-
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
 
@@ -231,7 +193,7 @@ void CLoop::Book(double lumFactor) {
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==2 /*&& useEvent==1*/){
+    if (n_muons==2){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(muon_1_p4->Phi(),met_reco_p4->Phi());
@@ -327,11 +289,11 @@ void CLoop::Fill(double weight, int z_sample) {
           cuts[5]=1;
         }
         if(event_number%2==0){
-          if(muon_1_p4->Pt()>=(b+20)){
+          if(muon_1_p4->Pt()>=(b+10)){
             cuts[6]=1;
           }
         } else{
-          if(muon_0_p4->Pt()>=(a+20)){
+          if(muon_0_p4->Pt()>=(a+10)){
             cuts[6]=1;
           }
         }
