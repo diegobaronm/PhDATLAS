@@ -350,11 +350,26 @@ void CLoop::Book(double lumFactor) {
     h_n_tracks_cuts = new TH1F("n_tracks_cuts","n_tracks_cuts",40,0,40);
     h_n_tracks_cuts_tpt = new TH1F("n_tracks_cuts_tpt","n_tracks_cuts_tpt",40,0,40);
 
+    // TEST HISTOGRAMS
+
+    h_n_taus_topo = new TH1F("n_taus_topo","n Taus",4,0,4);
+    h_n_taus_topo_cuts = new TH1F("n_taus_topo_cuts","n Taus",4,0,4);
+    h_n_taus_loose_topo = new TH1F("n_taus_loose_topo","n Taus Loose",4,0,4);
+    h_n_taus_loose_topo_cuts = new TH1F("n_taus_loose_topo_cuts","n Taus Loose",4,0,4);
+    h_n_taus_tight_topo = new TH1F("n_taus_tight_topo","n Taus Tight",4,0,4);
+    h_n_taus_tight_topo_cuts = new TH1F("n_taus_tight_topo_cuts","n Taus Tight",4,0,4);
+
+    h_delta_phi_vs_mcweight = new TH2F("delta_phi_vs_mcweight","DeltaPhi vs MC weight",32,0.0,3.2,2000,-100.0,100.0);
+    h_delta_phi_vs_puweight = new TH2F("delta_phi_vs_puweight","DeltaPhi vs PU weight",32,0.0,3.2,2000,-100.0,100.0);
+    h_delta_phi_vs_mcpuweight = new TH2F("delta_phi_vs_mcpuweight","DeltaPhi vs MC*PU weight",32,0.0,3.2,2000,-100.0,100.0);
+    h_delta_phi_vs_muonweight = new TH2F("delta_phi_vs_muonweight","DeltaPhi vs muon weight",32,0.0,3.2,2000,-100.0,100.0);
+    h_delta_phi_vs_jetweight = new TH2F("delta_phi_vs_jetweight","DeltaPhi vs jet weight",32,0.0,3.2,2000,-100.0,100.0);
+    h_delta_phi_vs_totalweight = new TH2F("delta_phi_vs_totalweight","DeltaPhi vs Total weight",32,0.0,3.2,2000,-100.0,100.0);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==1 && n_taus_rnn_loose>=1 && weight > -190){
+    if (n_muons==1 && n_taus_rnn_loose>=1 && weight > -190 ){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
@@ -376,7 +391,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float ql=muon_0_q;
       float qtau=tau_0_q;
 
-      if (ql==qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
+      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
 
         h_delta_phi_second_stage->Fill(angle,weight);
         //topology
@@ -506,7 +521,7 @@ void CLoop::Fill(double weight, int z_sample) {
           if (muon_0_p4->Pt()>=27) {
             cuts[4]=1;
           }
-          if (omega>-0.2 && omega <1.6) {
+          if (omega> -0.2 && omega <1.6) {
             cuts[5]=1;
           }
           if (inside) {
@@ -547,6 +562,14 @@ void CLoop::Fill(double weight, int z_sample) {
 
           if (cuts==c_phi||cuts==c_all) {
             h_delta_phi_cuts_butphi->Fill(angle,weight);
+            h_delta_phi_vs_mcweight->Fill(angle,weight_mc);
+            h_delta_phi_vs_puweight->Fill(angle,NOMINAL_pileup_combined_weight);
+            h_delta_phi_vs_mcpuweight->Fill(angle,weight_mc*NOMINAL_pileup_combined_weight);
+            h_delta_phi_vs_muonweight->Fill(angle,muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium
+            *muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA);
+            h_delta_phi_vs_jetweight->Fill(angle,jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT
+            *jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+            h_delta_phi_vs_totalweight->Fill(angle,weight);
           }
           if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
             h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
@@ -620,6 +643,10 @@ void CLoop::Fill(double weight, int z_sample) {
           h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
           h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
           h_trans_lep_mass_topo->Fill(lepmet_mass,weight);
+
+          h_n_taus_topo->Fill(n_taus,weight);
+          h_n_taus_loose_topo->Fill(n_taus_rnn_loose,weight);
+          h_n_taus_tight_topo->Fill(n_taus_rnn_tight,weight);
 
           if (weight!=1){
             if (tau_0_n_charged_tracks==1){
@@ -1049,6 +1076,10 @@ void CLoop::Fill(double weight, int z_sample) {
                           h_ratio_ptjet_zpt_cuts_tpt->Fill(r_jpt_zpt,weight);
                           h_ratio_lpt_tpt_cuts_tpt->Fill(r_lpt_tpt,weight);
 
+                          h_n_taus_topo_cuts->Fill(n_taus,weight);
+                          h_n_taus_loose_topo_cuts->Fill(n_taus_rnn_loose,weight);
+                          h_n_taus_tight_topo_cuts->Fill(n_taus_rnn_tight,weight);
+
                           /*ofstream interesting;
                           interesting.open("Events_v24.csv", ios::out | ios::app);
                           interesting << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", "+to_string(n_taus)+", ";
@@ -1420,6 +1451,20 @@ void CLoop::Style(double lumFactor) {
     h_n_tracks->Write();
     h_n_tracks_cuts->Write();
     h_n_tracks_cuts_tpt->Write();
+
+    h_delta_phi_vs_mcweight->Write();
+    h_delta_phi_vs_puweight->Write();
+    h_delta_phi_vs_mcpuweight->Write();
+    h_delta_phi_vs_muonweight->Write();
+    h_delta_phi_vs_jetweight->Write();
+    h_delta_phi_vs_totalweight->Write();
+
+    h_n_taus_topo->Write();
+    h_n_taus_topo_cuts->Write();
+    h_n_taus_loose_topo->Write();
+    h_n_taus_loose_topo_cuts->Write();
+    h_n_taus_tight_topo->Write();
+    h_n_taus_tight_topo_cuts->Write();
 }
 
 #endif // End header guard

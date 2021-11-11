@@ -243,4 +243,18 @@ TH1F * h_n_tracks;
 TH1F * h_n_tracks_cuts;
 TH1F * h_n_tracks_cuts_tpt;
 
+TH2F * h_delta_phi_vs_mcweight;
+TH2F * h_delta_phi_vs_puweight;
+TH2F * h_delta_phi_vs_mcpuweight;
+TH2F * h_delta_phi_vs_muonweight;
+TH2F * h_delta_phi_vs_jetweight;
+TH2F * h_delta_phi_vs_totalweight;
+
+TH1F * h_n_taus_topo;
+TH1F * h_n_taus_topo_cuts;
+TH1F * h_n_taus_loose_topo;
+TH1F * h_n_taus_loose_topo_cuts;
+TH1F * h_n_taus_tight_topo;
+TH1F * h_n_taus_tight_topo_cuts;
+
 #endif

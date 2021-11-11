@@ -129,7 +129,7 @@ void CLoop::Fill(double weight, int z_sample) {
 
         double a{50},b{47};
 
-        if (angle<=11*pi/18){
+        if (angle<=1.0){
           cuts[0]=1;
         }
         if (n_bjets_MV2c10_FixedCutBEff_85==0){
@@ -144,15 +144,15 @@ void CLoop::Fill(double weight, int z_sample) {
         if (elec_1_p4->Pt()>=b) {
           cuts[4]=1;
         }
-        if (inv_mass<100 && inv_mass>80) {
+        if (inv_mass<110 && inv_mass>70) {
           cuts[5]=1;
         }
         if(event_number%2==0){
-          if(elec_1_p4->Pt()>=(b+20)){
+          if(elec_1_p4->Pt()>=(b+30)){
             cuts[6]=1;
           }
         } else{
-          if(elec_0_p4->Pt()>=(a+20)){
+          if(elec_0_p4->Pt()>=(a+30)){
             cuts[6]=1;
           }
         }

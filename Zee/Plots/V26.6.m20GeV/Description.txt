@@ -1,0 +1,1 @@
+Everything is the same than V26.6 apart from the reduction in lepton pT cut by 10 GeV.

@@ -1,39 +1,39 @@
 # IGNORE THE OUTPUT DIRECTORIES
-TauMu/MC/out/
+TauMu/MC/out/*
 TauMu/MC/output/*
 TauMu/MC/error/*
 TauMu/MC/log/*
-TauMu/DATA/out/
+TauMu/DATA/out/*
 TauMu/DATA/output/*
 TauMu/DATA/error/*
 TauMu/DATA/log/*
 
 
-EleTau/MC/out/
+EleTau/MC/out/*
 EleTau/MC/output/*
 EleTau/MC/error/*
 EleTau/MC/log/*
-EleTau/DATA/out/
+EleTau/DATA/out/*
 EleTau/DATA/output/*
 EleTau/DATA/error/*
 EleTau/DATA/log/*
 
 
-MuMu/MC/out/
+MuMu/MC/out/*
 MuMu/MC/output/*
 MuMu/MC/error/*
 MuMu/MC/log/*
-MuMu/DATA/out/
+MuMu/DATA/out/*
 MuMu/DATA/output/*
 MuMu/DATA/error/*
 MuMu/DATA/log/*
 
 
-Zee/MC/out/
+Zee/MC/out/*
 Zee/MC/output/*
 Zee/MC/error/*
 Zee/MC/log/*
-Zee/DATA/out/
+Zee/DATA/out/*
 Zee/DATA/output/*
 Zee/DATA/error/*
 Zee/DATA/log/*

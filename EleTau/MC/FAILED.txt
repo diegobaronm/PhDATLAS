@@ -1,7 +1,0 @@
-Ztautau_2018_sys_0 yes NOMINAL
-Ztautau_2018_sys_1 yes NOMINAL
-Ztautau_2018_sys_0 yes NOMINAL
-Ztautau_2018_sys_1 yes NOMINAL
-Ztautau_2018_sys_2 yes NOMINAL
-Ztautau_2018_sys_3 yes NOMINAL
-Ztautau_2018_sys_4 yes NOMINAL
