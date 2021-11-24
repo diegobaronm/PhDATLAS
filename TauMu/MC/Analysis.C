@@ -51,256 +51,395 @@ double del_phi(double phi_1, double phi_2){
     return delta;
 }
 
-/*string event_rejected(bool cond1, bool cond2, bool cond3, bool cond4, bool cond5, bool cond6){
-  string str1="NOPASS";
-  string str2="NOPASS";
-  string str3="NOPASS";
-  string str4="NOPASS";
-  string str5="NOPASS";
-  string str6="NOPASS";
-  if (cond1){
-    str1="Passed";
-  }
-  if (cond2){
-    str2="Passed";
-  }
-  if (cond3){
-    str3="Passed";
-  }
-  if (cond4){
-    str4="Passed";
-  }
-  if (cond5){
-    str5="Passed";
-  }
-  if (cond6){
-    str6="Passed";
-  }
-  return ", "+str1+", "+str2+", "+str3+", "+str4+", "+str5+", "+str6+"\n";
-}
-
-string print(std::vector<int> const &input)
-{
-  string cuts="";
-	for (int i = 0; i < input.size(); i++) {
-		cuts=cuts+to_string(input.at(i))+',';
-	}
-  return cuts+'\n';
-}
-*/
 
 void CLoop::Book(double lumFactor) {
     double pi=TMath::Pi();
-
-    // VARIABLES ONLY ONCE
-
-    //VARIABLES FOLLOWED AFTER EACH CUT
-    // Event number and run number
-    h_RunN_topo = new TH1F("RunN_topo","Run number",94000,276000,370000);
-    h_RunN_topo_tpt = new TH1F("RunN_topo_tpt","Run number",94000,276000,370000);
-
-    h_EventN_RN363738_topo = new TH1F("EventN_RN363738_topo","Event number RN(363738)",100000,0.0,3.0e9);
-    h_EventN_RN363738_topo_tpt = new TH1F("EventN_RN363738_topo_tpt","Event number RN(363738)",100000,0,3.0e9);
-
-    h_EventN_RN363910_topo = new TH1F("EventN_RN363910_topo","Event number RN(363910)",100000,0.0,3.0e9);
-    h_EventN_RN363910_topo_tpt = new TH1F("EventN_RN363910_topo_tpt","Event number RN(363910)",100000,0.0,3.0e9);
-
-    // pT light-jets
-    h_ljet1_pt_topo = new TH1F("ljet1_pt_topo","Light-jet 1 pT",200,0,200);
-    h_ljet1_pt_topo_cuts = new TH1F("ljet1_pt_topo_cuts","Light-jet 1 pT",200,0,200);
-    h_ljet1_pt_topo_cuts_tpt = new TH1F("ljet1_pt_topo_cuts_tpt","Light-jet 1 pT",200,0,200);
-
-    h_ljet2_pt_topo = new TH1F("ljet2_pt_topo","Light-jet 2 pT",200,0,200);
-    h_ljet2_pt_topo_cuts = new TH1F("ljet2_pt_topo_cuts","Light-jet 2 pT",200,0,200);
-    h_ljet2_pt_topo_cuts_tpt = new TH1F("ljet2_pt_topo_cuts_tpt","Light-jet 2 pT",200,0,200);
-
-    h_ljet3_pt_topo = new TH1F("ljet3_pt_topo","Light-jet 3 pT",200,0,200);
-    h_ljet3_pt_topo_cuts = new TH1F("ljet3_pt_topo_cuts","Light-jet 3 pT",200,0,200);
-    h_ljet3_pt_topo_cuts_tpt = new TH1F("ljet3_pt_topo_cuts_tpt","Light-jet 3 pT",200,0,200);
-
-    // Histograms for lepton
-    h_lep_pt0_topo = new TH1F("lep_pt0_topo","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi = new TH1F("lep_pt0_topo_dphi","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag = new TH1F("lep_pt0_topo_dphi_btag","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso = new TH1F("lep_pt0_topo_dphi_btag_iso","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of lep1",200,0,200);
-    h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt","Transverse momentum of lep1",200,0,200);
-
-    // Histograms for lepton+nu
-    h_lep_pt0nu_topo = new TH1F("lep+nu_pt_topo","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi = new TH1F("lep+nu_pt_topo_dphi","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag = new TH1F("lep+nu_pt_topo_dphi_btag","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso = new TH1F("lep+nu_pt_topo_dphi_btag_iso","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn = new TH1F("lep+nu_pt_topo_dphi_btag_iso_rnn","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu = new TH1F("lep+nu_pt_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("lep+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("lep+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of lep1+nu",200,0,200);
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("lep+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of lep1+nu",200,0,200);
-
-    h_lep_phi_topo= new TH1F("lep_phi_topo","Lepton phi angle",64,-3.2,3.2);
-    h_lep_phi_cuts= new TH1F("lep_phi_cuts","Lepton phi angle",64,-3.2,3.2);
-    h_lep_phi_cuts_tpt= new TH1F("lep_phi_cuts_tpt","Lepton phi angle",64,-3.2,3.2);
-    // Histograms for tau
-    h_lep_pt1_topo = new TH1F("tau_pt_topo","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi = new TH1F("tau_pt_topo_dphi","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag = new TH1F("tau_pt_topo_dphi_btag","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso = new TH1F("tau_pt_topo_dphi_btag_iso","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn = new TH1F("tau_pt_topo_dphi_btag_iso_rnn","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_inside","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_outside","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside","Transverse momentum of tau",200,0,200);
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside","Transverse momentum of tau",200,0,200);
-
-    // Histograms for tau+nu
-    h_lep_pt1nu_topo = new TH1F("tau+nu_pt_topo","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi = new TH1F("tau+nu_pt_topo_dphi","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag = new TH1F("tau+nu_pt_topo_dphi_btag","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso = new TH1F("tau+nu_pt_topo_dphi_btag_iso","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Transverse momentum of tau+nu",200,0,200);
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau+nu_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of tau+nu",200,0,200);
-
-    // Histograms for sum pT leptons
-    h_sum_pt_topo = new TH1F("sum_pt_pt_topo","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi = new TH1F("sum_pt_pt_topo_dphi","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag = new TH1F("sum_pt_pt_topo_dphi_btag","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso = new TH1F("sum_pt_pt_topo_dphi_btag_iso","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso_rnn = new TH1F("sum_pt_pt_topo_dphi_btag_iso_rnn","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu = new TH1F("sum_pt_pt_topo_dphi_btag_iso_rnn_ptmu","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("sum_pt_pt_topo_dphi_btag_iso_rnn_ptmu_omega","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("sum_pt_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Sum of pT",400,0,400);
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("sum_pt_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Sum of pT",400,0,400);
-    // Histograms for sum pT leptons spliting by ZpT and number of prongs
-    // a=0 t0 100, b=100 to 150, c=150 to inf
-    h_sum_pt_topo_1p_ZpTa = new TH1F("sum_pt_pt_topo_1p_ZpTa","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_topo_1p_ZpTb = new TH1F("sum_pt_pt_topo_1p_ZpTb","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_topo_1p_ZpTc = new TH1F("sum_pt_pt_topo_1p_ZpTc","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_topo_3p_ZpTa = new TH1F("sum_pt_pt_topo_3p_ZpTa","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_topo_3p_ZpTb = new TH1F("sum_pt_pt_topo_3p_ZpTb","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_topo_3p_ZpTc = new TH1F("sum_pt_pt_topo_3p_ZpTc","Sum of pT 3 prong",400,0,400);
-
-    h_sum_pt_cuts_1p_ZpTa = new TH1F("sum_pt_pt_cuts_1p_ZpTa","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_1p_ZpTb = new TH1F("sum_pt_pt_cuts_1p_ZpTb","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_1p_ZpTc = new TH1F("sum_pt_pt_cuts_1p_ZpTc","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_3p_ZpTa = new TH1F("sum_pt_pt_cuts_3p_ZpTa","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_cuts_3p_ZpTb = new TH1F("sum_pt_pt_cuts_3p_ZpTb","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_cuts_3p_ZpTc = new TH1F("sum_pt_pt_cuts_3p_ZpTc","Sum of pT 3 prong",400,0,400);
-
-    h_sum_pt_cuts_tpt_1p_ZpTa = new TH1F("sum_pt_pt_cuts_tpt_1p_ZpTa","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_tpt_1p_ZpTb = new TH1F("sum_pt_pt_cuts_tpt_1p_ZpTb","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_tpt_1p_ZpTc = new TH1F("sum_pt_pt_cuts_tpt_1p_ZpTc","Sum of pT 1 prong",400,0,400);
-    h_sum_pt_cuts_tpt_3p_ZpTa = new TH1F("sum_pt_pt_cuts_tpt_3p_ZpTa","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_cuts_tpt_3p_ZpTb = new TH1F("sum_pt_pt_cuts_tpt_3p_ZpTb","Sum of pT 3 prong",400,0,400);
-    h_sum_pt_cuts_tpt_3p_ZpTc = new TH1F("sum_pt_pt_cuts_tpt_3p_ZpTc","Sum of pT 3 prong",400,0,400);
-
-    h_tau_phi_topo= new TH1F("tau_phi_topo","Tau phi",64,-3.2,3.2);
-    h_tau_phi_cuts= new TH1F("tau_phi_cuts","Tau phi",64,-3.2,3.2);
-    h_tau_phi_cuts_tpt= new TH1F("tau_phi_cuts_tpt","Tau phi",64,-3.2,3.2);
-    h_tau_nprongs_topo=new TH1F("tau_nprongs_topo","Number of charged tracks",4,0,4);
-    h_tau_nprongs_cuts=new TH1F("tau_nprongs_cuts","Number of charged tracks",4,0,4);
-    h_tau_nprongs_cuts_tpt=new TH1F("tau_nprongs_cuts_tpt","Number of charged tracks",4,0,4);
-
-    // MET Histograms
-    h_met_topo = new TH1F("MET_topo","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi = new TH1F("MET_topo_dphi","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag = new TH1F("MET_topo_dphi_btag","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso = new TH1F("MET_topo_dphi_btag_iso","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso_rnn = new TH1F("MET_topo_dphi_btag_iso_rnn","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso_rnn_ptmu = new TH1F("MET_topo_dphi_btag_iso_rnn_ptmu","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("MET_topo_dphi_btag_iso_rnn_ptmu_omega","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("MET_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Missing Transverse momentum",300,0,300);
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("MET_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Missing Transverse momentum",300,0,300);
-
-    // Invariant mass histograms
-    // Non reco histos
-    //Transeverse lepton mass
-    h_trans_lep_mass_topo = new TH1F("transverse_lepton_mass_topo","transverse mass lepton",300,0,300);
-    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","transverse mass lepton",300,0,300);
-    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("transverse_lepton_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","transverse mass lepton",300,0,300);
-
-    // reco histos
-    h_reco_mass_topo = new TH1F("reco_mass_topo","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi = new TH1F("reco_mass_topo_dphi","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag = new TH1F("h_reco_mass_topo_dphi_btag","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso = new TH1F("h_reco_mass_topo_dphi_btag_iso","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn_ptmu","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","reco mass in between",300,0,300);
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt = new TH1F("h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt","reco mass in between",300,0,300);
-
-    h_reco_mass_met_outside_topo = new TH1F("reco_mass_met_outside_topo","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi = new TH1F("reco_mass_met_outside_topo_dphi","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag = new TH1F("reco_mass_met_outside_topo_dphi_btag","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","reco mass outside",300,0,300);
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt = new TH1F("reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt","reco mass outside",300,0,300);
-    // rnn Score histograms
-    h_rnn_score_1prong_topo = new TH1F("rnn_score_1prong_topo","rnn score 1 track",100,0,1);
-    h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt","rnn score 1 track",100,0,1);
-    h_rnn_score_3prong_topo = new TH1F("rnn_score_3prong_topo","rnn score 3 track",100,0,1);
-    h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt = new TH1F("rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt","rnn score 3 track",100,0,1);
-    /*
-    h_rnn_score_1prong_topo_match = new TH1F("rnn_score_1prong_topo_match","rnn score 1 track",100,0,1);
-    h_rnn_score_3prong_topo_match = new TH1F("rnn_score_3prong_topo_match","rnn score 3 track",100,0,1);
-    */
     if (lumFactor!=1)
     {
-      h_tau_matched_1p_topo = new TH1F("tau_matched_1p_topo","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi = new TH1F("tau_matched_1p_topo_dphi","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi_btag = new TH1F("tau_matched_1p_topo_dphi_btag","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi_btag_iso = new TH1F("tau_matched_1p_topo_dphi_btag_iso","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn = new TH1F("tau_matched_1p_topo_dphi_btag_iso_rnn","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu","Tau truth matched 1 prong",2,0,2);
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega","Tau truth matched 1 prong",2,0,2);
       h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Tau truth matched 1 prong",2,0,2);
       h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Tau truth matched 1 prong",2,0,2);
 
-      h_tau_matched_3p_topo = new TH1F("tau_matched_3p_topo","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi = new TH1F("tau_matched_3p_topo_dphi","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi_btag = new TH1F("tau_matched_3p_topo_dphi_btag","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi_btag_iso = new TH1F("tau_matched_3p_topo_dphi_btag_iso","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn = new TH1F("tau_matched_3p_topo_dphi_btag_iso_rnn","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu = new TH1F("tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu","Tau truth matched 3 prong",2,0,2);
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega = new TH1F("tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega","Tau truth matched 3 prong",2,0,2);
       h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Tau truth matched 3 prong",2,0,2);
       h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Tau truth matched 3 prong",2,0,2);
 
-      h_Z_pt_truth_inside_topo = new TH1F("Z_pt_truth_inside_topo","Z_truth boson transverse momentum inside",400,0,400);
-      h_Z_pt_truth_cuts_inside = new TH1F("Z_pt_truth_cuts_inside","Z_truth boson transverse momentum inside",400,0,400);
-      h_Z_pt_truth_cuts_tpt_inside = new TH1F("Z_pt_truth_cuts_tpt_inside","Z_truth boson transverse momentum inside",400,0,400);
-      h_Z_pt_truth_outside_topo = new TH1F("Z_pt_truth_outside_topo","Z_truth boson transverse momentum outside",400,0,400);
-      h_Z_pt_truth_cuts_outside = new TH1F("Z_pt_truth_cuts_outside","Z_truth boson transverse momentum outside",400,0,400);
-      h_Z_pt_truth_cuts_tpt_outside = new TH1F("Z_pt_truth_cuts_tpt_outside","Z_truth boson transverse momentum outside",400,0,400);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+
+
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+
+
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium = new TH1F("tau_matched_3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium","Systematic related yield",2,0,2);
+
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco = new TH1F("tau_matched_1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection = new TH1F("tau_matched_1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco = new TH1F("tau_matched_1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection = new TH1F("tau_matched_1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection","Systematic related yield",2,0,2);
+
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco = new TH1F("tau_matched_1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection = new TH1F("tau_matched_1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco = new TH1F("tau_matched_1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection = new TH1F("tau_matched_1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection","Systematic related yield",2,0,2);
+
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco = new TH1F("tau_matched_3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection = new TH1F("tau_matched_3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco = new TH1F("tau_matched_3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection = new TH1F("tau_matched_3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection","Systematic related yield",2,0,2);
+
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85 = new TH1F("tau_matched_3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT = new TH1F("tau_matched_3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco = new TH1F("tau_matched_3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection = new TH1F("tau_matched_3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco = new TH1F("tau_matched_3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco","Systematic related yield",2,0,2);
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection = new TH1F("tau_matched_3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection","Systematic related yield",2,0,2);
     }
-
-    // Jet Number Histograms
-    h_jet_n_topo = new TH1F("jet_n_topo","Number of jets",10,-1,9);
-    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco","Number of jets",10,-1,9);
-    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Number of jets",10,-1,9);
-
-
-    h_b_tag_topo = new TH1F("b_tag_topo","b taging variable",2,0,2);
-    h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt","b taging variable",2,0,2);
-
-
-    // Isolation variables Histograms
-    h_muon_0_iso_topo = new TH1F("muon_0_iso_topo","lepton 1 isolation",2,0,2);
-    h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt = new TH1F("muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt","lepton 1 isolation",2,0,2);
 
     // Angular variable
     h_omega_topo = new TH1F("omega_topo","omega variable",60,-3.0,3.0);
@@ -314,68 +453,15 @@ void CLoop::Book(double lumFactor) {
     h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","omega variable",60,-3.0,3.0);
     h_omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt = new TH1F("omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt","omega variable",60,-3.0,3.0);
 
-    h_Z_pt_reco_inside_topo = new TH1F("Z_pt_inside_topo","Z boson transverse momentum inside",400,0,400);
-    h_Z_pt_reco_cuts_inside = new TH1F("Z_pt_cuts_inside","Z boson transverse momentum inside",400,0,400);
-    h_Z_pt_reco_cuts_tpt_inside = new TH1F("Z_pt_cuts_tpt_inside","Z boson transverse momentum inside",400,0,400);
-    h_Z_pt_reco_outside_topo = new TH1F("Z_pt_outside_topo","Z boson transverse momentum outside",400,0,400);
-    h_Z_pt_reco_cuts_outside = new TH1F("Z_pt_cuts_outside","Z boson transverse momentum outside",400,0,400);
-    h_Z_pt_reco_cuts_tpt_outside = new TH1F("Z_pt_cuts_tpt_outside","Z boson transverse momentum outside",400,0,400);
-
-    h_delta_phi= new TH1F("delta_phi","Delta phi lepton-tau",32,0,3.2);
-    h_delta_phi_second_stage= new TH1F("delta_phi_second_stage","Delta phi lepton-tau_second_stage",32,0,3.2);
-    h_delta_phi_topo= new TH1F("delta_phi_topo","Delta phi lepton-tau",32,0,3.2);
-    h_delta_phi_cuts= new TH1F("delta_phi_cuts","Delta phi lepton-tau",32,0,3.2);
-    h_delta_phi_cuts_tpt= new TH1F("delta_phi_cuts_tpt","Delta phi lepton-tau",32,0,3.2);
-    h_delta_phi_cuts_butphi= new TH1F("delta_phi_cuts_butphi","Delta phi lepton-tau",32,0,3.2);
-
-    //MJ BG DISCRIMINATION VARIABLES
-    h_ratio_ptjet_zpt_topo = new TH1F("ratio_ptjet_zpt_topo","ratio_ptjet_zpt",40,0,4);
-    h_ratio_lpt_tpt_topo = new TH1F("ratio_lpt_tpt_topo","ratio_lpt_tpt",40,0,4);
-    h_ratio_ptjet_zpt_cuts = new TH1F("ratio_ptjet_zpt_cuts","ratio_ptjet_zpt",40,0,4);
-    h_ratio_lpt_tpt_cuts = new TH1F("ratio_lpt_tpt_cuts","ratio_lpt_tpt",40,0,4);
-    h_ratio_ptjet_zpt_cuts_tpt = new TH1F("ratio_ptjet_zpt_cuts_tpt","ratio_ptjet_zpt",40,0,4);
-    h_ratio_lpt_tpt_cuts_tpt = new TH1F("ratio_lpt_tpt_cuts_tpt","ratio_lpt_tpt",40,0,4);
-
-    //n TRACKS
-    h_n_fake_tracks = new TH1F("n_fake_tracks","n_fake_tracks",40,0,40);
-    h_n_core_tracks = new TH1F("n_core_tracks","n_core_tracks",40,0,40);
-    h_n_isolation_tracks = new TH1F("n_isolation_tracks","n_isolation_tracks",40,0,40);
-    h_n_fake_tracks_cuts = new TH1F("n_fake_tracks_cuts","n_fake_tracks_cuts",40,0,40);
-    h_n_core_tracks_cuts = new TH1F("n_core_tracks_cuts","n_core_tracks_cuts",40,0,40);
-    h_n_isolation_tracks_cuts = new TH1F("n_isolation_tracks_cuts","n_isolation_tracks_cuts",40,0,40);
-    h_n_fake_tracks_cuts_tpt = new TH1F("n_fake_tracks_cuts_tpt","n_fake_tracks_cuts_tpt",40,0,40);
-    h_n_core_tracks_cuts_tpt = new TH1F("n_core_tracks_cuts_tpt","n_core_tracks_cuts_tpt",40,0,40);
-    h_n_isolation_tracks_cuts_tpt = new TH1F("n_isolation_tracks_cuts_tpt","n_isolation_tracks_cuts_tpt",40,0,40);
-    h_n_tracks = new TH1F("n_tracks","n_tracks",40,0,40);
-    h_n_tracks_cuts = new TH1F("n_tracks_cuts","n_tracks_cuts",40,0,40);
-    h_n_tracks_cuts_tpt = new TH1F("n_tracks_cuts_tpt","n_tracks_cuts_tpt",40,0,40);
-
-    // TEST HISTOGRAMS
-
-    h_n_taus_topo = new TH1F("n_taus_topo","n Taus",4,0,4);
-    h_n_taus_topo_cuts = new TH1F("n_taus_topo_cuts","n Taus",4,0,4);
-    h_n_taus_loose_topo = new TH1F("n_taus_loose_topo","n Taus Loose",4,0,4);
-    h_n_taus_loose_topo_cuts = new TH1F("n_taus_loose_topo_cuts","n Taus Loose",4,0,4);
-    h_n_taus_tight_topo = new TH1F("n_taus_tight_topo","n Taus Tight",4,0,4);
-    h_n_taus_tight_topo_cuts = new TH1F("n_taus_tight_topo_cuts","n Taus Tight",4,0,4);
-
-    h_delta_phi_vs_mcweight = new TH2F("delta_phi_vs_mcweight","DeltaPhi vs MC weight",32,0.0,3.2,2000,-100.0,100.0);
-    h_delta_phi_vs_puweight = new TH2F("delta_phi_vs_puweight","DeltaPhi vs PU weight",32,0.0,3.2,2000,-100.0,100.0);
-    h_delta_phi_vs_mcpuweight = new TH2F("delta_phi_vs_mcpuweight","DeltaPhi vs MC*PU weight",32,0.0,3.2,2000,-100.0,100.0);
-    h_delta_phi_vs_muonweight = new TH2F("delta_phi_vs_muonweight","DeltaPhi vs muon weight",32,0.0,3.2,2000,-100.0,100.0);
-    h_delta_phi_vs_jetweight = new TH2F("delta_phi_vs_jetweight","DeltaPhi vs jet weight",32,0.0,3.2,2000,-100.0,100.0);
-    h_delta_phi_vs_totalweight = new TH2F("delta_phi_vs_totalweight","DeltaPhi vs Total weight",32,0.0,3.2,2000,-100.0,100.0);
 }
 
 void CLoop::Fill(double weight, int z_sample) {
     double pi=TMath::Pi();
-    if (n_muons==1 && n_taus_rnn_loose>=1 && weight > -190 ){
+    if (n_muons==1 && n_taus_rnn_loose>=1 && weight > -190 && useEvent==1){
       //angles
       double angle_l_MET=del_phi(muon_0_p4->Phi(),met_reco_p4->Phi());
       double angle_tau_MET=del_phi(tau_0_p4->Phi(),met_reco_p4->Phi());
       double angle=del_phi(tau_0_p4->Phi(),muon_0_p4->Phi());
-
-      h_delta_phi->Fill(angle,weight);
 
       bool trigger_decision= false;
       bool trigger_match= false;
@@ -391,9 +477,7 @@ void CLoop::Fill(double weight, int z_sample) {
       float ql=muon_0_q;
       float qtau=tau_0_q;
 
-      if (ql!=qtau && angle<3*pi/4 && trigger_decision && lepton_id && trigger_match ) {
-
-        h_delta_phi_second_stage->Fill(angle,weight);
+      if (ql!=qtau && angle<13*pi/18 && trigger_decision && lepton_id && trigger_match ) {
         //topology
         bool inside= abs(angle-(angle_l_MET+angle_tau_MET))< 0.00001; //ANGLE BEING USED pi/2 AND 2.0943
         bool outside_lep= angle_l_MET<angle_tau_MET && abs(angle-(angle_l_MET+angle_tau_MET)) > 0.00001 && cos(angle_l_MET)>0;
@@ -435,56 +519,31 @@ void CLoop::Fill(double weight, int z_sample) {
           {
             truth_z_pt=truth_Z_p4->Pt()/1000;
           }
-          double tau_nu_pt=0.0;
+
           if (inside) {
-            tau_nu_pt=tau_0_p4->Pt()+pt_tau_nu;
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+pt_tau_nu*cos(tau_0_p4->Phi())+pt_lep_nu*cos(muon_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+pt_tau_nu*sin(tau_0_p4->Phi())+pt_lep_nu*sin(muon_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
-
             if (z_sample==0){
               truth_z_pt=Z_pt;
             }
-            h_Z_pt_reco_inside_topo->Fill(Z_pt,weight);
-            if (weight!=1){
-              h_Z_pt_truth_inside_topo->Fill(truth_z_pt,weight);
-            }
-            r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
           if (outside_tau) {
-            tau_nu_pt=tau_0_p4->Pt()+neutrino_pt;
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(tau_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(tau_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
             if (z_sample==0){
               truth_z_pt=Z_pt;
             }
-            h_Z_pt_reco_outside_topo->Fill(Z_pt,weight);
-            if (weight!=1){
-              h_Z_pt_truth_outside_topo->Fill(truth_z_pt,weight);
-            }
-            r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
           if (outside_lep) {
-            tau_nu_pt=tau_0_p4->Pt();
             Z_pt_x=tau_0_p4->Pt()*cos(tau_0_p4->Phi())+muon_0_p4->Pt()*cos(muon_0_p4->Phi())+neutrino_pt*cos(muon_0_p4->Phi());
             Z_pt_y=tau_0_p4->Pt()*sin(tau_0_p4->Phi())+muon_0_p4->Pt()*sin(muon_0_p4->Phi())+neutrino_pt*sin(muon_0_p4->Phi());
             Z_pt=sqrt(Z_pt_x*Z_pt_x+Z_pt_y*Z_pt_y);
             if (z_sample==0){
               truth_z_pt=Z_pt;
             }
-            h_Z_pt_reco_outside_topo->Fill(Z_pt,weight);
-            if (weight!=1){
-              h_Z_pt_truth_outside_topo->Fill(truth_z_pt,weight);
-            }
-            r_jpt_zpt=ljet_0_p4->Pt()/Z_pt;
           }
-
-          // non RECO mass
-          double lepmet_mass=sqrt(2*muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi())));
-          //double inv_taulep=sqrt((2*muon_0_p4->Pt()*tau_0_p4->Pt())*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi())));
-          //double trans_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(1-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(1-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
-          //double visi_mass=sqrt(2*(muon_0_p4->Pt()*tau_0_p4->Pt()*(cosh(muon_0_p4->Eta()-tau_0_p4->Eta())-cos(muon_0_p4->Phi()-tau_0_p4->Phi()))+muon_0_p4->Pt()*met_reco_p4->Pt()*(cosh(muon_0_p4->Eta())-cos(muon_0_p4->Phi()-met_reco_p4->Phi()))+tau_0_p4->Pt()*met_reco_p4->Pt()*(cosh(tau_0_p4->Eta())-cos(tau_0_p4->Phi()-met_reco_p4->Phi()))));
 
           // ANGULAR VARIABLE DEFINITION
           double omega=0.0;
@@ -543,646 +602,418 @@ void CLoop::Fill(double weight, int z_sample) {
             cuts[7]=1;
           }
 
-          /*ofstream interesting_events;
-          if (in_events_to_dump){
-            interesting_events.open("Events_in_v24_omega_recomass.csv", ios::out | ios::app);
-            interesting_events << to_string(event_number)+", "+to_string(run_number)+", "+to_string(omega)+", "+to_string(reco_mass)+", "+to_string(reco_mass_outside)+", "<<to_string(inside)+", "<< print(cuts);
-          }
-          interesting_events.close();*/
-
-          vector<int> c_phi={0,1,1,1,1,1,1,1};
-          vector<int> c_btag={1,0,1,1,1,1,1,1};
-          vector<int> c_iso={1,1,0,1,1,1,1,1};
-          vector<int> c_rnn={1,1,1,0,1,1,1,1};
-          vector<int> c_ptmu={1,1,1,1,0,1,1,1};
-          vector<int> c_omega={1,1,1,1,1,0,1,1};
-          vector<int> c_mreco={1,1,1,1,1,1,0,1};
-          vector<int> c_tpt={1,1,1,1,1,1,1,0};
           vector<int> c_all={1,1,1,1,1,1,1,1};
+          vector<int> c_omega={1,1,1,1,1,0,1,1};
 
-          if (cuts==c_phi||cuts==c_all) {
-            h_delta_phi_cuts_butphi->Fill(angle,weight);
-            h_delta_phi_vs_mcweight->Fill(angle,weight_mc);
-            h_delta_phi_vs_puweight->Fill(angle,NOMINAL_pileup_combined_weight);
-            h_delta_phi_vs_mcpuweight->Fill(angle,weight_mc*NOMINAL_pileup_combined_weight);
-            h_delta_phi_vs_muonweight->Fill(angle,muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium*muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium
-            *muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad*muon_0_NOMINAL_MuEffSF_Reco_QualMedium*muon_0_NOMINAL_MuEffSF_TTVA);
-            h_delta_phi_vs_jetweight->Fill(angle,jet_NOMINAL_central_jets_global_effSF_JVT*jet_NOMINAL_central_jets_global_ineffSF_JVT*jet_NOMINAL_forward_jets_global_effSF_JVT
-            *jet_NOMINAL_forward_jets_global_ineffSF_JVT*jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85*jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
-            h_delta_phi_vs_totalweight->Fill(angle,weight);
-          }
-          if ((cuts==c_btag||cuts==c_all) && n_jets!=0) {
-            h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_bjets_MV2c10_FixedCutBEff_85,weight);
-          }
-          if (cuts==c_iso||cuts==c_all) {
-            h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_iso_TightTrackOnly_FixedRad,weight);
-          }
-          if (cuts==c_rnn||cuts==c_all) {
-            if (tau_0_n_charged_tracks==1){
-              h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight);
-            }
-            if (tau_0_n_charged_tracks==3){
-              h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Fill(tau_0_jet_rnn_score_trans,weight);
-            }
-          }
-          if (cuts==c_ptmu||cuts==c_all) {
-            h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
-          }
           if (cuts==c_omega||cuts==c_all) {
             h_omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt->Fill(omega,weight);
           }
-          if (inside) {
-            if (cuts==c_mreco||cuts==c_all) {
-              h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Fill(reco_mass,weight);
-            }
-            if (cuts==c_tpt||cuts==c_all) {
-              h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside->Fill(tau_0_p4->Pt(),weight);
-            }
-          }
-          if (outside_lep) {
-            if (cuts==c_mreco||cuts==c_all) {
-              h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Fill(reco_mass_outside,weight);
-            }
-            if (cuts==c_tpt||cuts==c_all) {
-              h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-            }
-          }
-          if (outside_tau) {
-            if (cuts==c_mreco||cuts==c_all) {
-              h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Fill(reco_mass_outside,weight);
-            }
-            if (cuts==c_tpt||cuts==c_all) {
-              h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Fill(tau_0_p4->Pt(),weight);
-            }
-          }
-          //  Filling histos
-          if (tau_0_n_charged_tracks==1){
-            h_rnn_score_1prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
-          }
-          if (tau_0_n_charged_tracks==3){
-            h_rnn_score_3prong_topo->Fill(tau_0_jet_rnn_score_trans,weight);
-          }
-          h_RunN_topo->Fill(run_number,weight);
-          if(run_number==363738){h_EventN_RN363738_topo->Fill(event_number,weight);}
-          if(run_number==363910){h_EventN_RN363910_topo->Fill(event_number,weight);}
-          h_jet_n_topo->Fill(n_jets, weight);
-          h_muon_0_iso_topo->Fill(muon_0_iso_TightTrackOnly_FixedRad,weight);
+
           h_omega_topo->Fill(omega,weight);
-          h_met_topo->Fill(met_reco_p4->Pt(),weight);
-          h_lep_pt0_topo->Fill(muon_0_p4->Pt(),weight);
-          h_lep_pt1_topo->Fill(tau_0_p4->Pt(),weight);
-          h_lep_phi_topo->Fill(muon_0_p4->Phi(),weight);
-          h_tau_phi_topo->Fill(tau_0_p4->Phi(),weight);
-          h_delta_phi_topo->Fill(angle,weight);
-          h_tau_nprongs_topo->Fill(tau_0_n_charged_tracks,weight);
-          h_n_fake_tracks->Fill(tau_0_n_fake_tracks,weight);
-          h_n_core_tracks->Fill(tau_0_n_core_tracks,weight);
-          h_n_isolation_tracks->Fill(tau_0_n_isolation_tracks,weight);
-          h_n_tracks->Fill(tau_0_n_all_tracks,weight);
-          h_ljet1_pt_topo->Fill(ljet_0_p4->Pt(),weight);
-          h_ljet2_pt_topo->Fill(ljet_1_p4->Pt(),weight);
-          h_ljet3_pt_topo->Fill(ljet_2_p4->Pt(),weight);
-          h_trans_lep_mass_topo->Fill(lepmet_mass,weight);
-
-          h_n_taus_topo->Fill(n_taus,weight);
-          h_n_taus_loose_topo->Fill(n_taus_rnn_loose,weight);
-          h_n_taus_tight_topo->Fill(n_taus_rnn_tight,weight);
-
-          if (weight!=1){
-            if (tau_0_n_charged_tracks==1){
-              h_tau_matched_1p_topo->Fill(tau_0_truth_isHadTau,weight);
-            }
-            if (tau_0_n_charged_tracks==3){
-              h_tau_matched_3p_topo->Fill(tau_0_truth_isHadTau,weight);
-            }
-          }
-
-          if (inside) {
-            h_reco_mass_topo->Fill(reco_mass,weight);
-            h_lep_pt0nu_topo->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-            h_sum_pt_topo->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-            if (tau_0_n_charged_tracks==1){
-              if (Z_pt<100){
-                h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              }
-            }
-            if (tau_0_n_charged_tracks==3){
-              if (Z_pt<100){
-                h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              }
-            }
-          }
-          if (outside_lep) {
-            h_reco_mass_met_outside_topo->Fill(reco_mass_outside,weight);
-            h_lep_pt0nu_topo->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt(),weight);
-            h_sum_pt_topo->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-            if (tau_0_n_charged_tracks==1){
-              if (Z_pt<100){
-                h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-            }
-            if (tau_0_n_charged_tracks==3){
-              if (Z_pt<100){
-                h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-            }
-          }
-          if (outside_tau){
-            h_reco_mass_met_outside_topo->Fill(reco_mass_outside,weight);
-            h_lep_pt0nu_topo->Fill(muon_0_p4->Pt(),weight);
-            h_lep_pt1nu_topo->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-            h_sum_pt_topo->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-            if (tau_0_n_charged_tracks==1){
-              if (Z_pt<100){
-                h_sum_pt_topo_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-            }
-            if (tau_0_n_charged_tracks==3){
-              if (Z_pt<100){
-                h_sum_pt_topo_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>100 && Z_pt<150){
-                h_sum_pt_topo_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              } if (Z_pt>150) {
-                h_sum_pt_topo_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-            }
-          }
-
-          h_ratio_ptjet_zpt_topo->Fill(r_jpt_zpt,weight);
-          h_ratio_lpt_tpt_topo->Fill(r_lpt_tpt,weight);
           // ANGLE CUT
           if (cuts[0]==1){
-            h_met_topo_dphi->Fill(met_reco_p4->Pt(),weight);
-            h_lep_pt0_topo_dphi->Fill(muon_0_p4->Pt(),weight);
-            h_lep_pt1_topo_dphi->Fill(tau_0_p4->Pt(),weight);
             h_omega_topo_dphi->Fill(omega,weight);
-
-            if (inside) {
-              h_reco_mass_topo_dphi->Fill(reco_mass,weight);
-              h_lep_pt0nu_topo_dphi->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-              h_lep_pt1nu_topo_dphi->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-              h_sum_pt_topo_dphi->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-            }
-            if (outside_lep) {
-              h_reco_mass_met_outside_topo_dphi->Fill(reco_mass_outside,weight);
-              h_lep_pt0nu_topo_dphi->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-              h_lep_pt1nu_topo_dphi->Fill(tau_0_p4->Pt(),weight);
-              h_sum_pt_topo_dphi->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-            }
-            if (outside_tau){
-              h_reco_mass_met_outside_topo_dphi->Fill(reco_mass_outside,weight);
-              h_lep_pt0nu_topo_dphi->Fill(muon_0_p4->Pt(),weight);
-              h_lep_pt1nu_topo_dphi->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-              h_sum_pt_topo_dphi->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-            }
-            if (weight!=1){
-              if (tau_0_n_charged_tracks==1){
-                h_tau_matched_1p_topo_dphi->Fill(tau_0_truth_isHadTau,weight);
-              }
-              if (tau_0_n_charged_tracks==3){
-                h_tau_matched_3p_topo_dphi->Fill(tau_0_truth_isHadTau,weight);
-              }
-            }
 
             // B TAGGING CUT
             if (cuts[1]==1 || n_jets==0) {
-              h_met_topo_dphi_btag->Fill(met_reco_p4->Pt(),weight);
-              h_lep_pt0_topo_dphi_btag->Fill(muon_0_p4->Pt(),weight);
-              h_lep_pt1_topo_dphi_btag->Fill(tau_0_p4->Pt(),weight);
-              h_omega_topo_dphi_btag->Fill(omega,weight);
 
-              if (inside) {
-                h_reco_mass_topo_dphi_btag->Fill(reco_mass,weight);
-                h_lep_pt0nu_topo_dphi_btag->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                h_lep_pt1nu_topo_dphi_btag->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                h_sum_pt_topo_dphi_btag->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-              }
-              if (outside_lep) {
-                h_reco_mass_met_outside_topo_dphi_btag->Fill(reco_mass_outside,weight);
-                h_lep_pt0nu_topo_dphi_btag->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                h_lep_pt1nu_topo_dphi_btag->Fill(tau_0_p4->Pt(),weight);
-                h_sum_pt_topo_dphi_btag->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-              if (outside_tau){
-                h_reco_mass_met_outside_topo_dphi_btag->Fill(reco_mass_outside,weight);
-                h_lep_pt0nu_topo_dphi_btag->Fill(muon_0_p4->Pt(),weight);
-                h_lep_pt1nu_topo_dphi_btag->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                h_sum_pt_topo_dphi_btag->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-              }
-              if (weight!=1){
-                if (tau_0_n_charged_tracks==1){
-                  h_tau_matched_1p_topo_dphi_btag->Fill(tau_0_truth_isHadTau,weight);
-                }
-                if (tau_0_n_charged_tracks==3){
-                  h_tau_matched_3p_topo_dphi_btag->Fill(tau_0_truth_isHadTau,weight);
-                }
-              }
+              h_omega_topo_dphi_btag->Fill(omega,weight);
 
               // ISOLATION CUT
               if (cuts[2]==1) {
-                h_met_topo_dphi_btag_iso->Fill(met_reco_p4->Pt(),weight);
-                h_lep_pt0_topo_dphi_btag_iso->Fill(muon_0_p4->Pt(),weight);
-                h_lep_pt1_topo_dphi_btag_iso->Fill(tau_0_p4->Pt(),weight);
                 h_omega_topo_dphi_btag_iso->Fill(omega,weight);
-
-                if (inside) {
-                  h_reco_mass_topo_dphi_btag_iso->Fill(reco_mass,weight);
-                  h_lep_pt0nu_topo_dphi_btag_iso->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                  h_lep_pt1nu_topo_dphi_btag_iso->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                  h_sum_pt_topo_dphi_btag_iso->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                }
-                if (outside_lep) {
-                  h_reco_mass_met_outside_topo_dphi_btag_iso->Fill(reco_mass_outside,weight);
-                  h_lep_pt0nu_topo_dphi_btag_iso->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                  h_lep_pt1nu_topo_dphi_btag_iso->Fill(tau_0_p4->Pt(),weight);
-                  h_sum_pt_topo_dphi_btag_iso->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                }
-                if (outside_tau){
-                  h_reco_mass_met_outside_topo_dphi_btag_iso->Fill(reco_mass_outside,weight);
-                  h_lep_pt0nu_topo_dphi_btag_iso->Fill(muon_0_p4->Pt(),weight);
-                  h_lep_pt1nu_topo_dphi_btag_iso->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                  h_sum_pt_topo_dphi_btag_iso->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                }
-                if (weight!=1){
-                  if (tau_0_n_charged_tracks==1){
-                    h_tau_matched_1p_topo_dphi_btag_iso->Fill(tau_0_truth_isHadTau,weight);
-                  }
-                  if (tau_0_n_charged_tracks==3){
-                    h_tau_matched_3p_topo_dphi_btag_iso->Fill(tau_0_truth_isHadTau,weight);
-                  }
-                }
-
                 // RNN SCORE
                 if (cuts[3]==1) {
-                  h_met_topo_dphi_btag_iso_rnn->Fill(met_reco_p4->Pt(),weight);
-                  h_lep_pt0_topo_dphi_btag_iso_rnn->Fill(muon_0_p4->Pt(),weight);
-                  h_lep_pt1_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt(),weight);
                   h_omega_topo_dphi_btag_iso_rnn->Fill(omega,weight);
-
-                  if (inside) {
-                    h_reco_mass_topo_dphi_btag_iso_rnn->Fill(reco_mass,weight);
-                    h_lep_pt0nu_topo_dphi_btag_iso_rnn->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                    h_lep_pt1nu_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                    h_sum_pt_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                  }
-                  if (outside_lep) {
-                    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn->Fill(reco_mass_outside,weight);
-                    h_lep_pt0nu_topo_dphi_btag_iso_rnn->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                    h_lep_pt1nu_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt(),weight);
-                    h_sum_pt_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                  }
-                  if (outside_tau){
-                    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn->Fill(reco_mass_outside,weight);
-                    h_lep_pt0nu_topo_dphi_btag_iso_rnn->Fill(muon_0_p4->Pt(),weight);
-                    h_lep_pt1nu_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                    h_sum_pt_topo_dphi_btag_iso_rnn->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                  }
-                  if (weight!=1){
-                    if (tau_0_n_charged_tracks==1){
-                      h_tau_matched_1p_topo_dphi_btag_iso_rnn->Fill(tau_0_truth_isHadTau,weight);
-                    }
-                    if (tau_0_n_charged_tracks==3){
-                      h_tau_matched_3p_topo_dphi_btag_iso_rnn->Fill(tau_0_truth_isHadTau,weight);
-                    }
-                  }
-
                   // TRANSVERSE MASS LEPTON CUT
                   if (cuts[4]==1) {
-                    h_met_topo_dphi_btag_iso_rnn_ptmu->Fill(met_reco_p4->Pt(),weight);
-                    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt(),weight);
-                    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt(),weight);
                     h_omega_topo_dphi_btag_iso_rnn_ptmu->Fill(omega,weight);
-
-                    if (inside) {
-                      h_reco_mass_topo_dphi_btag_iso_rnn_ptmu->Fill(reco_mass,weight);
-                      h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                      h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                      h_sum_pt_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                    }
-                    if (outside_lep) {
-                      h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
-                      h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                      h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt(),weight);
-                      h_sum_pt_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                    }
-                    if (outside_tau){
-                      h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu->Fill(reco_mass_outside,weight);
-                      h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu->Fill(muon_0_p4->Pt(),weight);
-                      h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                      h_sum_pt_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                    }
-                    if (weight!=1){
-                      if (tau_0_n_charged_tracks==1){
-                        h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_truth_isHadTau,weight);
-                      }
-                      if (tau_0_n_charged_tracks==3){
-                        h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu->Fill(tau_0_truth_isHadTau,weight);
-                      }
-                    }
-
-
                       // OMEGA CUT
                     if (cuts[5]==1) {
-                      h_met_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(met_reco_p4->Pt(),weight);
-                      h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
                       h_omega_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(omega,weight);
-
-                      if (inside) {
-                        h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside->Fill(tau_0_p4->Pt(),weight);
-                        h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass,weight);
-                        h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                        h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                        h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                      }
-                      if (outside_lep) {
-                        h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
-                        h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
-                        h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                        h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt(),weight);
-                        h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                      }
-                      if (outside_tau){
-                        h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Fill(tau_0_p4->Pt(),weight);
-                        h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(reco_mass_outside,weight);
-                        h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(muon_0_p4->Pt(),weight);
-                        h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                        h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                      }
-                      if (weight!=1){
-                        if (tau_0_n_charged_tracks==1){
-                          h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_truth_isHadTau,weight);
-                        }
-                        if (tau_0_n_charged_tracks==3){
-                          h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega->Fill(tau_0_truth_isHadTau,weight);
-                        }
-                      }
-
                         // RECO MASS CUT
                       if (cuts[6]==1) {
-                        h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(met_reco_p4->Pt(),weight);
-                        h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(n_jets, weight);
-                        h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
+
                         h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(omega,weight);
-                        h_lep_phi_cuts->Fill(muon_0_p4->Phi(),weight);
-                        h_tau_phi_cuts->Fill(tau_0_p4->Phi(),weight);
-                        h_delta_phi_cuts->Fill(angle,weight);
-                        h_tau_nprongs_cuts->Fill(tau_0_n_charged_tracks,weight);
-                        h_n_fake_tracks_cuts->Fill(tau_0_n_fake_tracks,weight);
-                        h_n_core_tracks_cuts->Fill(tau_0_n_core_tracks,weight);
-                        h_n_isolation_tracks_cuts->Fill(tau_0_n_isolation_tracks,weight);
-                        h_n_tracks_cuts->Fill(tau_0_n_all_tracks,weight);
-                        h_ljet1_pt_topo_cuts->Fill(ljet_0_p4->Pt(),weight);
-                        h_ljet2_pt_topo_cuts->Fill(ljet_1_p4->Pt(),weight);
-                        h_ljet3_pt_topo_cuts->Fill(ljet_2_p4->Pt(),weight);
-                        h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(lepmet_mass,weight);
-                        h_ratio_ptjet_zpt_cuts->Fill(r_jpt_zpt,weight);
-                        h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
 
                         if (weight!=1){
                           if (tau_0_n_charged_tracks==1){
                             h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_truth_isHadTau,weight);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                            h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                            h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                            h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                            h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                            h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                            h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                            h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                            h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
+                            h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
                           }
                           if (tau_0_n_charged_tracks==3){
                             h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_truth_isHadTau,weight);
-                          }
-                        }
-                        if (inside) {
-                          h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass,weight);
-                          h_Z_pt_reco_cuts_inside->Fill(Z_pt,weight);
-                          h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                          h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                          h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                          if (tau_0_n_charged_tracks==1){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            }
-                          }
-                          if (tau_0_n_charged_tracks==3){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            }
-                          }
-                          if (weight!=1){
-                            h_Z_pt_truth_cuts_inside->Fill(truth_z_pt,weight);
-                          }
-                        }
-                        if (outside_lep) {
-                          h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-                          h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-                          h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                          h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt(),weight);
-                          h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                          if (tau_0_n_charged_tracks==1){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            }
-                          }
-                          if (tau_0_n_charged_tracks==3){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            }
-                          }
-                          if (weight!=1){
-                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt,weight);
-                          }
-                        }
-                        if (outside_tau){
-                          h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(reco_mass_outside,weight);
-                          h_Z_pt_reco_cuts_outside->Fill(Z_pt,weight);
-                          h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(muon_0_p4->Pt(),weight);
-                          h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                          h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                          if (tau_0_n_charged_tracks==1){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            }
-                          }
-                          if (tau_0_n_charged_tracks==3){
-                            if (Z_pt<100){
-                              h_sum_pt_cuts_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>100 && Z_pt<150){
-                              h_sum_pt_cuts_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            } if (Z_pt>150) {
-                              h_sum_pt_cuts_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            }
-                          }
-                          if (weight!=1){
-                            h_Z_pt_truth_cuts_outside->Fill(truth_z_pt,weight);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                            h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                            h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                            h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                            h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                            h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                            h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                            h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                            h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                            h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
+                            h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
                           }
                         }
                         //TAU PT CUT
                         if (cuts[7]==1){
-                          h_RunN_topo_tpt->Fill(run_number,weight);
-                          if(run_number==363738){h_EventN_RN363738_topo_tpt->Fill(event_number,weight);}
-                          if(run_number==363910){h_EventN_RN363910_topo_tpt->Fill(event_number,weight);}
-                          h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(met_reco_p4->Pt(),weight);
-                          h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(n_jets, weight);
-                          h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
                           h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(omega,weight);
-                          h_lep_phi_cuts_tpt->Fill(muon_0_p4->Phi(),weight);
-                          h_tau_phi_cuts_tpt->Fill(tau_0_p4->Phi(),weight);
-                          h_delta_phi_cuts_tpt->Fill(angle,weight);
-                          h_tau_nprongs_cuts_tpt->Fill(tau_0_n_charged_tracks,weight);
-                          h_n_fake_tracks_cuts_tpt->Fill(tau_0_n_fake_tracks,weight);
-                          h_n_core_tracks_cuts_tpt->Fill(tau_0_n_core_tracks,weight);
-                          h_n_isolation_tracks_cuts_tpt->Fill(tau_0_n_isolation_tracks,weight);
-                          h_n_tracks_cuts_tpt->Fill(tau_0_n_all_tracks,weight);
-                          h_ljet1_pt_topo_cuts_tpt->Fill(ljet_0_p4->Pt(),weight);
-                          h_ljet2_pt_topo_cuts_tpt->Fill(ljet_1_p4->Pt(),weight);
-                          h_ljet3_pt_topo_cuts_tpt->Fill(ljet_2_p4->Pt(),weight);
-                          h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(lepmet_mass,weight);
-                          h_ratio_ptjet_zpt_cuts_tpt->Fill(r_jpt_zpt,weight);
-                          h_ratio_lpt_tpt_cuts_tpt->Fill(r_lpt_tpt,weight);
-
-                          h_n_taus_topo_cuts->Fill(n_taus,weight);
-                          h_n_taus_loose_topo_cuts->Fill(n_taus_rnn_loose,weight);
-                          h_n_taus_tight_topo_cuts->Fill(n_taus_rnn_tight,weight);
-
-                          /*ofstream interesting;
-                          interesting.open("Events_v24.csv", ios::out | ios::app);
-                          interesting << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", "+to_string(n_taus)+", ";
-                          interesting<< to_string(muon_0_p4->Pt())+", "+to_string(muon_0_p4->Eta())+", "+to_string(muon_0_p4->Phi())+", "+to_string(ql)+", "+to_string(muon_0_iso_FCTightTrackOnly_FixedRad)+", "+to_string(n_muons)+", "+to_string(n_electrons)+", ";
-                          interesting << to_string(met_reco_p4->Pt())+", "+to_string(met_reco_p4->Phi())+", ";
-                          interesting << to_string(angle)+", "+to_string(angle_tau_MET)+", "+to_string(angle_l_MET)+", "+to_string(n_bjets_MV2c10_FixedCutBEff_85)+", "+to_string(event_number)+", "+to_string(run_number)+", ";
-                          interesting << to_string(elec_0_p4->Pt())+", "+to_string(elec_0_p4->Eta())+", "+to_string(elec_0_p4->Phi())+", "+to_string(elec_0_q);
-                          interesting << event_rejected(trigger_decision,trigger_match,lepton_id,ql!=qtau,angle<3*pi/4,signal_events);
-                          interesting.close();*/
 
                           if (weight!=1){
                             if (tau_0_n_charged_tracks==1){
                               h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_truth_isHadTau,weight);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                              h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                              h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
+                              h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
                             }
                             if (tau_0_n_charged_tracks==3){
                               h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_truth_isHadTau,weight);
-                            }
-                          }
-                          if (inside) {
-                            h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass,weight);
-                            h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Fill(tau_0_p4->Pt(),weight);
-                            h_Z_pt_reco_cuts_tpt_inside->Fill(Z_pt,weight);
-                            h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt()+pt_lep_nu,weight);
-                            h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+pt_tau_nu,weight);
-                            h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                            if (tau_0_n_charged_tracks==1){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              }
-                            }
-                            if (tau_0_n_charged_tracks==3){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+pt_tau_nu+muon_0_p4->Pt()+pt_lep_nu,weight);
-                              }
-                            }
-                            if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_inside->Fill(truth_z_pt,weight);
-                            }
-                          }
-                          if (outside_lep) {
-                            h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
-                            h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
-                            h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
-                            h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt()+neutrino_pt,weight);
-                            h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt(),weight);
-                            h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            if (tau_0_n_charged_tracks==1){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              }
-                            }
-                            if (tau_0_n_charged_tracks==3){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              }
-                            }
-                            if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt,weight);
-                            }
-                          }
-                          if (outside_tau){
-                            h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(reco_mass_outside,weight);
-                            h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Fill(tau_0_p4->Pt(),weight);
-                            h_Z_pt_reco_cuts_tpt_outside->Fill(Z_pt,weight);
-                            h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(muon_0_p4->Pt(),weight);
-                            h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+neutrino_pt,weight);
-                            h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                            if (tau_0_n_charged_tracks==1){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_1p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_1p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_1p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              }
-                            }
-                            if (tau_0_n_charged_tracks==3){
-                              if (Z_pt<100){
-                                h_sum_pt_cuts_tpt_3p_ZpTa->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>100 && Z_pt<150){
-                                h_sum_pt_cuts_tpt_3p_ZpTb->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              } if (Z_pt>150) {
-                                h_sum_pt_cuts_tpt_3p_ZpTc->Fill(tau_0_p4->Pt()+muon_0_p4->Pt()+neutrino_pt,weight);
-                              }
-                            }
-                            if (weight!=1){
-                              h_Z_pt_truth_cuts_tpt_outside->Fill(truth_z_pt,weight);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad/muon_0_NOMINAL_MuEffSF_IsoLoose_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad/muon_0_NOMINAL_MuEffSF_IsoTightTrackOnly_FixedRad);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium/muon_0_NOMINAL_MuEffSF_Reco_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA/muon_0_NOMINAL_MuEffSF_TTVA);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Fill(tau_0_truth_isHadTau,weight*muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium/muon_0_NOMINAL_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_effSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Fill(tau_0_truth_isHadTau,weight*jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85/jet_NOMINAL_global_ineffSF_MV2c10_FixedCutBEff_85);
+                              h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT/jet_NOMINAL_central_jets_global_effSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT/jet_NOMINAL_central_jets_global_ineffSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT/jet_NOMINAL_forward_jets_global_effSF_JVT);
+                              h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Fill(tau_0_truth_isHadTau,weight*jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT/jet_NOMINAL_forward_jets_global_ineffSF_JVT);
+                              h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
+                              h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Fill(tau_0_truth_isHadTau,weight*tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco/tau_0_NOMINAL_TauEffSF_reco);
                             }
                           }
                         }
@@ -1199,204 +1030,387 @@ void CLoop::Fill(double weight, int z_sample) {
   }
 
 void CLoop::Style(double lumFactor) {
-    // This function is where you can control the style elements of your histograms and write them to a file
-    // It is called once per data set
 
-    // For example, set some properties of the lep_n histogram
-    /*h_lep_n->GetXaxis()->SetTitle("Number of leptons per event"); // label x axis
-    h_lep_n->GetYaxis()->SetTitle("Number of entries/bin"); // label y axis
-    h_lep_n->SetTitle("Number of leptons  per event");
-    h_lep_n->SetLineColor(kRed);*/ // set the line colour to red
-    // For more information see https://root.cern.ch/root/htmldoc/guides/users-guide/Histograms.html
-
-    // Write histograms to a file
-    // This needs to be done for each histogram
-    h_RunN_topo->Write();
-    h_RunN_topo_tpt->Write();
-
-    h_EventN_RN363738_topo->Write();
-    h_EventN_RN363738_topo_tpt->Write();
-
-    h_EventN_RN363910_topo->Write();
-    h_EventN_RN363910_topo_tpt->Write();
-
-    h_trans_lep_mass_topo->Write();
-    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_trans_lep_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
     if (lumFactor!=1){
-      h_tau_matched_1p_topo->Write();
-      h_tau_matched_1p_topo_dphi->Write();
-      h_tau_matched_1p_topo_dphi_btag->Write();
-      h_tau_matched_1p_topo_dphi_btag_iso->Write();
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn->Write();
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu->Write();
-      h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
       h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
       h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
-      h_tau_matched_3p_topo->Write();
-      h_tau_matched_3p_topo_dphi->Write();
-      h_tau_matched_3p_topo_dphi_btag->Write();
-      h_tau_matched_3p_topo_dphi_btag_iso->Write();
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn->Write();
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu->Write();
-      h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
       h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
       h_tau_matched_3p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
 
-      h_Z_pt_truth_inside_topo->Write();
-      h_Z_pt_truth_cuts_inside->Write();
-      h_Z_pt_truth_cuts_tpt_inside->Write();
-      h_Z_pt_truth_outside_topo->Write();
-      h_Z_pt_truth_cuts_outside->Write();
-      h_Z_pt_truth_cuts_tpt_outside->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Write();
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection->Write();
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Write();
+      h_tm1p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection->Write();
+
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Write();
+      h_tm1p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Write();
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Write();
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection->Write();
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Write();
+      h_tm1p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection->Write();
+
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Write();
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection->Write();
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Write();
+      h_tm3p_cuts_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection->Write();
+
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_STAT_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1down_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoLoose_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_ISO_SYS_1up_MuEffSF_IsoTightTrackOnly_FixedRad->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_STAT_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1down_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_RECO_SYS_LOWPT_1up_MuEffSF_Reco_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1down_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_STAT_1up_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1down_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TTVA_SYS_1up_MuEffSF_TTVA->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigStatUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1down_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu20_iloose_L1MU15_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_muon_0_MUON_EFF_TrigSystUncertainty_1up_MuEffSF_HLT_mu26_ivarmedium_OR_HLT_mu50_QualMedium->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_B_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_C_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_0_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_1_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_2_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_Eigen_Light_3_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1down_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_effSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_FT_EFF_extrapolation_from_charm_1up_global_ineffSF_MV2c10_FixedCutBEff_85->Write();
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1down_central_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_JvtEfficiency_1up_central_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1down_forward_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_effSF_JVT->Write();
+      h_tm3p_cuts_tpt_jet_JET_fJvtEfficiency_1up_forward_jets_global_ineffSF_JVT->Write();
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_reco->Write();
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1down_TauEffSF_selection->Write();
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_reco->Write();
+      h_tm3p_cuts_tpt_tau_0_TAUS_TRUEHADTAU_EFF_RECO_TOTAL_1up_TauEffSF_selection->Write();
     }
-    h_rnn_score_1prong_topo->Write();
-    h_rnn_score_1prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Write();
-    h_rnn_score_3prong_topo->Write();
-    h_rnn_score_3prong_topo_dphi_btag_iso_ptmu_omega_mreco_tpt->Write();
-    /*
-    h_rnn_score_1prong_topo_match->Write();
-    h_rnn_score_3prong_topo_match->Write();
-    */
-    // Writing jet pT
-    h_ljet1_pt_topo->Write();
-    h_ljet1_pt_topo_cuts->Write();
-    h_ljet1_pt_topo_cuts_tpt->Write();
-
-    h_ljet2_pt_topo->Write();
-    h_ljet2_pt_topo_cuts->Write();
-    h_ljet2_pt_topo_cuts_tpt->Write();
-
-    h_ljet3_pt_topo->Write();
-    h_ljet3_pt_topo_cuts->Write();
-    h_ljet3_pt_topo_cuts_tpt->Write();
-
-    //Writing lep pT
-    h_lep_pt0_topo->Write();
-    h_lep_pt0_topo_dphi->Write();
-    h_lep_pt0_topo_dphi_btag->Write();
-    h_lep_pt0_topo_dphi_btag_iso->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-    h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt->Write();
-
-    //Writing lep pT+nu
-    h_lep_pt0nu_topo->Write();
-    h_lep_pt0nu_topo_dphi->Write();
-    h_lep_pt0nu_topo_dphi_btag->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_lep_pt0nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-
-    //Writing tau pT
-    h_lep_pt1_topo->Write();
-    h_lep_pt1_topo_dphi->Write();
-    h_lep_pt1_topo_dphi_btag->Write();
-    h_lep_pt1_topo_dphi_btag_iso->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_inside->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_inside->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Write();
-    h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Write();
-
-    //Writing tau pT+nu
-    h_lep_pt1nu_topo->Write();
-    h_lep_pt1nu_topo_dphi->Write();
-    h_lep_pt1nu_topo_dphi_btag->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_lep_pt1nu_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-
-    h_sum_pt_topo->Write();
-    h_sum_pt_topo_dphi->Write();
-    h_sum_pt_topo_dphi_btag->Write();
-    h_sum_pt_topo_dphi_btag_iso->Write();
-    h_sum_pt_topo_dphi_btag_iso_rnn->Write();
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_sum_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-
-    h_sum_pt_topo_1p_ZpTa->Write();
-    h_sum_pt_topo_1p_ZpTb->Write();
-    h_sum_pt_topo_1p_ZpTc->Write();
-    h_sum_pt_topo_3p_ZpTa->Write();
-    h_sum_pt_topo_3p_ZpTb->Write();
-    h_sum_pt_topo_3p_ZpTc->Write();
-
-    h_sum_pt_cuts_1p_ZpTa->Write();
-    h_sum_pt_cuts_1p_ZpTb->Write();
-    h_sum_pt_cuts_1p_ZpTc->Write();
-    h_sum_pt_cuts_3p_ZpTa->Write();
-    h_sum_pt_cuts_3p_ZpTb->Write();
-    h_sum_pt_cuts_3p_ZpTc->Write();
-
-    h_sum_pt_cuts_tpt_1p_ZpTa->Write();
-    h_sum_pt_cuts_tpt_1p_ZpTb->Write();
-    h_sum_pt_cuts_tpt_1p_ZpTc->Write();
-    h_sum_pt_cuts_tpt_3p_ZpTa->Write();
-    h_sum_pt_cuts_tpt_3p_ZpTb->Write();
-    h_sum_pt_cuts_tpt_3p_ZpTc->Write();
-
-    //Writing MET
-    h_met_topo->Write();
-    h_met_topo_dphi->Write();
-    h_met_topo_dphi_btag->Write();
-    h_met_topo_dphi_btag_iso->Write();
-    h_met_topo_dphi_btag_iso_rnn->Write();
-    h_met_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_met_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-
-    //Writing reco
-    h_reco_mass_topo->Write();
-    h_reco_mass_topo_dphi->Write();
-    h_reco_mass_topo_dphi_btag->Write();
-    h_reco_mass_topo_dphi_btag_iso->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-    h_reco_mass_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Write();
-
-    h_reco_mass_met_outside_topo->Write();
-    h_reco_mass_met_outside_topo_dphi->Write();
-    h_reco_mass_met_outside_topo_dphi_btag->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-    h_reco_mass_met_outside_topo_dphi_btag_iso_rnn_ptmu_omega_tpt->Write();
-
-    //Writing jet number
-    h_jet_n_topo->Write();
-    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Write();
-    h_jet_n_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
-    //Writing b-tag
-    h_b_tag_topo->Write();
-    h_b_tag_topo_dphi_iso_rnn_ptmu_omega_mreco_tpt->Write();
-
-    //Writing isolation variables
-    h_muon_0_iso_topo->Write();
-    h_muon_0_iso_topo_dphi_btag_iso2_rnn_ptmu_omega_mreco_tpt->Write();
 
     h_omega_topo->Write();
     h_omega_topo_dphi->Write();
@@ -1409,62 +1423,6 @@ void CLoop::Style(double lumFactor) {
     h_omega_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
     h_omega_topo_dphi_btag_iso_rnn_ptmu_mreco_tpt->Write();
 
-    h_Z_pt_reco_inside_topo->Write();
-    h_Z_pt_reco_cuts_inside->Write();
-    h_Z_pt_reco_cuts_tpt_inside->Write();
-    h_Z_pt_reco_outside_topo->Write();
-    h_Z_pt_reco_cuts_outside->Write();
-    h_Z_pt_reco_cuts_tpt_outside->Write();
-
-    h_lep_phi_topo->Write();
-    h_tau_phi_topo->Write();
-    h_delta_phi->Write();
-    h_delta_phi_second_stage->Write();
-    h_delta_phi_topo->Write();
-    h_tau_nprongs_topo->Write();
-    h_lep_phi_cuts->Write();
-    h_lep_phi_cuts_tpt->Write();
-    h_tau_phi_cuts->Write();
-    h_tau_phi_cuts_tpt->Write();
-    h_delta_phi_cuts->Write();
-    h_delta_phi_cuts_tpt->Write();
-    h_delta_phi_cuts_butphi->Write();
-    h_tau_nprongs_cuts->Write();
-    h_tau_nprongs_cuts_tpt->Write();
-
-    h_ratio_ptjet_zpt_topo->Write();
-    h_ratio_lpt_tpt_topo->Write();
-    h_ratio_ptjet_zpt_cuts->Write();
-    h_ratio_lpt_tpt_cuts->Write();
-    h_ratio_ptjet_zpt_cuts_tpt->Write();
-    h_ratio_lpt_tpt_cuts_tpt->Write();
-
-    h_n_fake_tracks->Write();
-    h_n_core_tracks->Write();
-    h_n_isolation_tracks->Write();
-    h_n_fake_tracks_cuts->Write();
-    h_n_core_tracks_cuts->Write();
-    h_n_isolation_tracks_cuts->Write();
-    h_n_fake_tracks_cuts_tpt->Write();
-    h_n_core_tracks_cuts_tpt->Write();
-    h_n_isolation_tracks_cuts_tpt->Write();
-    h_n_tracks->Write();
-    h_n_tracks_cuts->Write();
-    h_n_tracks_cuts_tpt->Write();
-
-    h_delta_phi_vs_mcweight->Write();
-    h_delta_phi_vs_puweight->Write();
-    h_delta_phi_vs_mcpuweight->Write();
-    h_delta_phi_vs_muonweight->Write();
-    h_delta_phi_vs_jetweight->Write();
-    h_delta_phi_vs_totalweight->Write();
-
-    h_n_taus_topo->Write();
-    h_n_taus_topo_cuts->Write();
-    h_n_taus_loose_topo->Write();
-    h_n_taus_loose_topo_cuts->Write();
-    h_n_taus_tight_topo->Write();
-    h_n_taus_tight_topo_cuts->Write();
 }
 
 #endif // End header guard
