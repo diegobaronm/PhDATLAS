@@ -130,6 +130,16 @@ void CLoop::Book(double lumFactor) {
     h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt","Transverse momentum of lep1",200,0,200);
     h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt = new TH1F("lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt","Transverse momentum of lep1",200,0,200);
 
+    h_lep_pt_1p_cuts = new TH1F("lep_pt_1p_cuts","Transverse momentum of light lepton 1 prongs",200,0,200);
+    h_lep_pt_1p_cuts_tpt = new TH1F("lep_pt_1p_cuts_tpt","Transverse momentum of light lepton 1 prongs",200,0,200);
+    h_lep_pt_3p_cuts = new TH1F("lep_pt_3p_cuts","Transverse momentum of light lepton 3 prongs",200,0,200);
+    h_lep_pt_3p_cuts_tpt = new TH1F("lep_pt_3p_cuts_tpt","Transverse momentum of light lepton 3 prongs",200,0,200);
+
+    h_lep_eta_1p_cuts = new TH1F("lep_eta_1p_cuts","Eta of light lepton 1 prongs",50,-2.5,2.5);
+    h_lep_eta_1p_cuts_tpt = new TH1F("lep_eta_1p_cuts_tpt","Eta of light lepton 1 prongs",50,-2.5,2.5);
+    h_lep_eta_3p_cuts = new TH1F("lep_eta_3p_cuts","Eta of light lepton 3 prongs",50,-2.5,2.5);
+    h_lep_eta_3p_cuts_tpt = new TH1F("lep_eta_3p_cuts_tpt","Eta of light lepton 3 prongs",50,-2.5,2.5);
+
     // Histograms for lepton+nu
     h_lep_pt0nu_topo = new TH1F("lep+nu_pt_topo","Transverse momentum of lep1+nu",200,0,200);
     h_lep_pt0nu_topo_dphi = new TH1F("lep+nu_pt_topo_dphi","Transverse momentum of lep1+nu",200,0,200);
@@ -157,6 +167,21 @@ void CLoop::Book(double lumFactor) {
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_inside","Transverse momentum of tau",200,0,200);
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside = new TH1F("tau_pt_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside","Transverse momentum of tau",200,0,200);
+
+    h_tau_pt_1p_cuts = new TH1F("tau_pt_1p_cuts","Transverse momentum of tau lepton 1 prongs",200,0,200);
+    h_tau_pt_1p_cuts_tpt = new TH1F("tau_pt_1p_cuts_tpt","Transverse momentum of tau lepton 1 prongs",200,0,200);
+    h_tau_pt_3p_cuts = new TH1F("tau_pt_3p_cuts","Transverse momentum of tau lepton 3 prongs",200,0,200);
+    h_tau_pt_3p_cuts_tpt = new TH1F("tau_pt_3p_cuts_tpt","Transverse momentum of tau lepton 3 prongs",200,0,200);
+
+    h_tau_eta_1p_cuts = new TH1F("tau_eta_1p_cuts","Eta of tau lepton 1 prongs",50,-2.5,2.5);
+    h_tau_eta_1p_cuts_tpt = new TH1F("tau_eta_1p_cuts_tpt","Eta of tau lepton 1 prongs",50,-2.5,2.5);
+    h_tau_eta_3p_cuts = new TH1F("tau_eta_3p_cuts","Eta of tau lepton 3 prongs",50,-2.5,2.5);
+    h_tau_eta_3p_cuts_tpt = new TH1F("tau_eta_3p_cuts_tpt","Eta of tau lepton 3 prongs",50,-2.5,2.5);
+
+    h_delta_R_taulep_1p_cuts = new TH1F("delta_R_taulep_1p_cuts","DeltaR tau-lep 1 prongs",30,0,1.5);
+    h_delta_R_taulep_1p_cuts_tpt = new TH1F("delta_R_taulep_1p_cuts_tpt","DeltaR tau-lep 1 prongs",30,0,1.5);
+    h_delta_R_taulep_3p_cuts = new TH1F("delta_R_taulep_3p_cuts","DeltaR tau-lep 3 prongs",30,0,1.5);
+    h_delta_R_taulep_3p_cuts_tpt = new TH1F("delta_R_taulep_3p_cuts_tpt","DeltaR tau-lep 3 prongs",30,0,1.5);
 
     // Histograms for tau+nu
     h_lep_pt1nu_topo = new TH1F("tau+nu_pt_topo","Transverse momentum of tau+nu",200,0,200);
@@ -960,6 +985,21 @@ void CLoop::Fill(double weight, int z_sample) {
                         h_ratio_ptjet_zpt_cuts->Fill(r_jpt_zpt,weight);
                         h_ratio_lpt_tpt_cuts->Fill(r_lpt_tpt,weight);
 
+                        if (tau_0_n_charged_tracks==1){
+                          h_lep_pt_1p_cuts->Fill(muon_0_p4->Pt(),weight);
+                          h_lep_eta_1p_cuts->Fill(muon_0_p4->Eta(),weight);
+                          h_tau_pt_1p_cuts->Fill(tau_0_p4->Pt(),weight);
+                          h_tau_eta_1p_cuts->Fill(tau_0_p4->Eta(),weight);
+                          h_delta_R_taulep_1p_cuts->Fill(tau_0_p4->DeltaR(*muon_0_p4),weight);
+                        }
+                        if (tau_0_n_charged_tracks==3){
+                          h_lep_pt_3p_cuts->Fill(muon_0_p4->Pt(),weight);
+                          h_lep_eta_3p_cuts->Fill(muon_0_p4->Eta(),weight);
+                          h_tau_pt_3p_cuts->Fill(tau_0_p4->Pt(),weight);
+                          h_tau_eta_3p_cuts->Fill(tau_0_p4->Eta(),weight);
+                          h_delta_R_taulep_3p_cuts->Fill(tau_0_p4->DeltaR(*muon_0_p4),weight);
+                        }
+
                         if (weight!=1){
                           if (tau_0_n_charged_tracks==1){
                             h_tau_matched_1p_topo_dphi_btag_iso_rnn_ptmu_omega_mreco->Fill(tau_0_truth_isHadTau,weight);
@@ -1080,15 +1120,20 @@ void CLoop::Fill(double weight, int z_sample) {
                           h_n_taus_loose_topo_cuts->Fill(n_taus_rnn_loose,weight);
                           h_n_taus_tight_topo_cuts->Fill(n_taus_rnn_tight,weight);
 
-                          /*ofstream interesting;
-                          interesting.open("Events_v24.csv", ios::out | ios::app);
-                          interesting << to_string(tau_0_p4->Pt())+", "+to_string(tau_0_p4->Eta())+", "+to_string(tau_0_p4->Phi())+", "+to_string(qtau)+", "+to_string(tau_0_jet_rnn_score_trans)+", "+to_string(n_taus)+", ";
-                          interesting<< to_string(muon_0_p4->Pt())+", "+to_string(muon_0_p4->Eta())+", "+to_string(muon_0_p4->Phi())+", "+to_string(ql)+", "+to_string(muon_0_iso_FCTightTrackOnly_FixedRad)+", "+to_string(n_muons)+", "+to_string(n_electrons)+", ";
-                          interesting << to_string(met_reco_p4->Pt())+", "+to_string(met_reco_p4->Phi())+", ";
-                          interesting << to_string(angle)+", "+to_string(angle_tau_MET)+", "+to_string(angle_l_MET)+", "+to_string(n_bjets_MV2c10_FixedCutBEff_85)+", "+to_string(event_number)+", "+to_string(run_number)+", ";
-                          interesting << to_string(elec_0_p4->Pt())+", "+to_string(elec_0_p4->Eta())+", "+to_string(elec_0_p4->Phi())+", "+to_string(elec_0_q);
-                          interesting << event_rejected(trigger_decision,trigger_match,lepton_id,ql!=qtau,angle<3*pi/4,signal_events);
-                          interesting.close();*/
+                          if (tau_0_n_charged_tracks==1){
+                            h_lep_pt_1p_cuts_tpt->Fill(muon_0_p4->Pt(),weight);
+                            h_lep_eta_1p_cuts_tpt->Fill(muon_0_p4->Eta(),weight);
+                            h_tau_pt_1p_cuts_tpt->Fill(tau_0_p4->Pt(),weight);
+                            h_tau_eta_1p_cuts_tpt->Fill(tau_0_p4->Eta(),weight);
+                            h_delta_R_taulep_1p_cuts_tpt->Fill(tau_0_p4->DeltaR(*muon_0_p4),weight);
+                          }
+                          if (tau_0_n_charged_tracks==3){
+                            h_lep_pt_3p_cuts_tpt->Fill(muon_0_p4->Pt(),weight);
+                            h_lep_eta_3p_cuts_tpt->Fill(muon_0_p4->Eta(),weight);
+                            h_tau_pt_3p_cuts_tpt->Fill(tau_0_p4->Pt(),weight);
+                            h_tau_eta_3p_cuts_tpt->Fill(tau_0_p4->Eta(),weight);
+                            h_delta_R_taulep_3p_cuts_tpt->Fill(tau_0_p4->DeltaR(*muon_0_p4),weight);
+                          }
 
                           if (weight!=1){
                             if (tau_0_n_charged_tracks==1){
@@ -1285,6 +1330,16 @@ void CLoop::Style(double lumFactor) {
     h_lep_pt0_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt->Write();
     h_lep_pt0_topo_dphi_btag_iso_rnn_omega_mreco_tpt->Write();
 
+    h_lep_pt_1p_cuts->Write();
+    h_lep_pt_1p_cuts_tpt->Write();
+    h_lep_pt_3p_cuts->Write();
+    h_lep_pt_3p_cuts_tpt->Write();
+
+    h_lep_eta_1p_cuts->Write();
+    h_lep_eta_1p_cuts_tpt->Write();
+    h_lep_eta_3p_cuts->Write();
+    h_lep_eta_3p_cuts_tpt->Write();
+
     //Writing lep pT+nu
     h_lep_pt0nu_topo->Write();
     h_lep_pt0nu_topo_dphi->Write();
@@ -1309,6 +1364,21 @@ void CLoop::Style(double lumFactor) {
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_outside->Write();
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_tpt_outside->Write();
     h_lep_pt1_topo_dphi_btag_iso_rnn_ptmu_omega_mreco_outside->Write();
+
+    h_tau_pt_1p_cuts->Write();
+    h_tau_pt_1p_cuts_tpt->Write();
+    h_tau_pt_3p_cuts->Write();
+    h_tau_pt_3p_cuts_tpt->Write();
+
+    h_tau_eta_1p_cuts->Write();
+    h_tau_eta_1p_cuts_tpt->Write();
+    h_tau_eta_3p_cuts->Write();
+    h_tau_eta_3p_cuts_tpt->Write();
+
+    h_delta_R_taulep_1p_cuts->Write();
+    h_delta_R_taulep_1p_cuts_tpt->Write();
+    h_delta_R_taulep_3p_cuts->Write();
+    h_delta_R_taulep_3p_cuts_tpt->Write();
 
     //Writing tau pT+nu
     h_lep_pt1nu_topo->Write();
